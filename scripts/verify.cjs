@@ -31,7 +31,6 @@ const titles=new Set();
 for(const slug of slugs){await go('/expertises/'+slug);
  if(await count('h1')!==1)throw Error('Titre unique manquant : '+slug);
  titles.add(await page.title());
- if(await count('.crumbs')!==1)throw Error('Fil d’Ariane manquant : '+slug);
  if(await count('.mock')<1)throw Error('Interface de démonstration manquante : '+slug);
  if(await count('.channel-grid .channel-card')<2)throw Error('Maillage entre expertises manquant : '+slug);
  if(await count('.faq details')<3)throw Error('FAQ trop courte : '+slug);

@@ -136,10 +136,6 @@ listing='<div class="hero-shell"><header class="hero listing-hero">'+nav('../')+
 (root/'expertises').mkdir(exist_ok=True)
 sector_names={s['slug']:s['name'] for s in sectors}
 
-def crumbs(name):
- return ('<nav class="crumbs" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span>'
-         f'<a href="/expertises">Expertises</a><span aria-hidden="true">›</span><span aria-current="page">{name}</span></nav>')
-
 def ld(items):
  return '<script type="application/ld+json">'+json.dumps(items,ensure_ascii=False)+'</script>'
 
@@ -147,7 +143,7 @@ for e in EXPERTISES:
  dtitle,dline=DEMO[e['slug']]
  path=f'expertises/{e["slug"]}'
  hero=('<div class="hero-shell"><header class="hero xp-hero">'+nav()+
-   '<div class="hero-copy xp-hero-copy">'+crumbs(e['name'])+
+   '<div class="hero-copy xp-hero-copy">'+
    f'<div class="hero-eyebrow">{e["eyebrow"]}</div><h1>{e["h1"]}</h1><p class="lead">{e["lead"]}</p>'
    f'<div class="hero-cta"><a class="btn btn-lime" href="#contact">{e["cta"]} <span class="arrow-circle">↗</span></a>'
    '<a class="btn btn-glass" href="/#methode">Voir notre méthode</a></div></div></header></div>')
