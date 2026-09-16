@@ -22,9 +22,13 @@ Accueil (pourquoi, secteurs, constat et cinq étapes, audit, mesure & suivi, mé
 
 La section présente ce que SHYFT installe chez ses clients : Search Console, Google Analytics, tableau de bord partagé, CRM et emailing. Le tableau de bord affiché sur l’accueil est une illustration avec des données fictives, étiquetée comme telle. Chaque page métier reprend trois indicateurs propres au secteur et la source de chaque chiffre (`scripts/sector_growth.py`, dictionnaire `MEASURE`). Le site lui-même n’embarque aucun outil de mesure d’audience.
 
+## Déployer sur Vercel
+
+Importer le dépôt GitHub dans Vercel avec le preset « Other », sans commande de build ni répertoire de sortie : les pages HTML sont servies telles quelles et `api/lead.js` devient automatiquement la fonction `POST /api/lead`. Ajouter la variable d’environnement `LEAD_WEBHOOK_URL` (et `LEAD_WEBHOOK_TOKEN` si l’outil l’exige) dans les réglages du projet, puis redéployer. Sans cette variable, le site s’affiche mais le formulaire répond « service pas encore disponible », sans faux succès. Le fichier `server.mjs` ne sert qu’en local.
+
 ## Envoyer les audits
 
-Le serveur Node (18 ou supérieur) valide les données et utilise la fonction isolée `sendLead()` dans `server.mjs`. Configurer `LEAD_WEBHOOK_URL` avec le webhook du CRM ou de l’outil email ; `LEAD_WEBHOOK_TOKEN` est facultatif. Ces secrets restent côté serveur. Sans configuration, l’API retourne une erreur explicite et n’affiche jamais de faux succès. Aucune demande n’est enregistrée localement.
+La validation et l’envoi sont dans `lib/lead.mjs`, partagé par le serveur local (`server.mjs`, Node 18 ou supérieur) et la fonction Vercel (`api/lead.js`). Configurer `LEAD_WEBHOOK_URL` avec le webhook du CRM ou de l’outil email ; `LEAD_WEBHOOK_TOKEN` est facultatif. Ces secrets restent côté serveur. Sans configuration, l’API retourne une erreur explicite et n’affiche jamais de faux succès. Aucune demande n’est enregistrée localement.
 
 ## Avant la mise en ligne
 
@@ -37,6 +41,7 @@ Le serveur Node (18 ou supérieur) valide les données et utilise la fonction is
 
 - `assets/base.css` : styles hérités du fichier original.
 - `assets/design.css` : direction graphique, responsive, section Mesure et pages légales.
+- `lib/lead.mjs` : validation et envoi des demandes ; `api/lead.js` : fonction Vercel ; `server.mjs` : serveur local.
 - `assets/site.js` : menus, cartes, formulaire et simulateurs.
 - `assets/sectors.json` : contenus structurés des métiers.
 - `assets/og.png` : image de partage 1200 × 630, générée par `scripts/og.cjs`.
