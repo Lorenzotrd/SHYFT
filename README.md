@@ -16,7 +16,7 @@ Ouvrir http://localhost:4173. `index.html` est la page d’accueil pour l’héb
 
 ## Pages
 
-Accueil (pourquoi, secteurs, constat et cinq étapes, audit, mesure & suivi, méthode, équipe, FAQ, formulaire), index des secteurs, six pages métier (marché vu par les futurs clients, parcours d’une demande, quatre leviers, mesure & suivi, simulateur, FAQ), mentions légales et politique de confidentialité. Les exemples de recherches des pages métier sont des requêtes types sans volume, définis dans `scripts/sector_growth.py` (`SEARCHES`, `JOURNEY`).
+Accueil (pourquoi, secteurs, constat et cinq étapes, audit, mesure & suivi, méthode, FAQ, formulaire), index des secteurs, six pages métier (marché vu par les futurs clients, parcours d’une demande, quatre leviers, mesure & suivi, simulateur, FAQ), mentions légales et politique de confidentialité. Les exemples de recherches des pages métier sont des requêtes types sans volume, définis dans `scripts/sector_growth.py` (`SEARCHES`, `JOURNEY`).
 
 ## Mesure & suivi
 
@@ -34,7 +34,6 @@ La validation et l’envoi sont dans `lib/lead.mjs`, partagé par le serveur loc
 
 - Renseigner `SITE_URL` dans `scripts/redesign.py` puis régénérer : canonical, `og:image`, `sitemap.xml` et `robots.txt` utilisent cette adresse.
 - Compléter les passages surlignés des pages `mentions-legales.html` et `confidentialite.html` (identité de l’entreprise, hébergeur, prestataires, durée de conservation, email de contact).
-- Compléter le rôle de Quentin dans la section équipe.
 - Mettre en place une protection contre les abus adaptée à l’hébergement (limitation de débit sur `/api/lead`).
 
 ## Organisation

@@ -47,3 +47,5 @@ form.lead .legal a{color:inherit}
 @media(max-width:640px){.steps.three{grid-template-columns:1fr}}
 /* Étiquette neutre (canal d'une recherche), dans les tons ciel existants. */
 .tag.info{background:#e3f3fa;color:#0b506c}
+/* Mobile : la flèche gardait sa taille desktop et chevauchait la carte blanche. */
+@media(max-width:640px){.giant-arrow{font-size:88px;top:46px;right:24px}}
