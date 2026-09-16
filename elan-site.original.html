@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Élan · Des demandes qualifiées pour les PME et réseaux français</title>
+<meta name="description" content="Élan génère des demandes qualifiées pour les loueurs de matériel, réseaux de franchise, artisans et PME : SEO, Google Ads, Meta Ads et IA, avec un audit offert.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky-1:#1B63D6; --sky-2:#3F8EF0; --sky-3:#9CCBFF;
+  --ink:#0E1A2B; --ink-soft:#44546A; --paper:#F3F6FA; --card:#FFFFFF; --mist:#E4EBF3;
+  --lime:#D9FF5B; --lime-ink:#1D2A06; --line:rgba(14,26,43,.10);
+  --font:"Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono:"Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --r-xl:34px; --r-lg:24px; --r-md:16px; --r-sm:11px;
+  --wrap:1180px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#E9EFF7; --ink-soft:#A3B2C6; --paper:#0B1422; --card:#132033; --mist:#1A2A40; --line:rgba(233,239,247,.12);
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#E9EFF7; --ink-soft:#A3B2C6; --paper:#0B1422; --card:#132033; --mist:#1A2A40; --line:rgba(233,239,247,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px;border-radius:8px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;font:500 15px/1 var(--font);padding:15px 22px;border-radius:999px;text-decoration:none;transition:transform .15s ease, background .15s ease}
+.btn:active{transform:scale(.98)}
+.btn-lime{background:var(--lime);color:var(--lime-ink)}
+.btn-lime:hover{background:#E6FF8A}
+.btn-lime .dot{width:26px;height:26px;border-radius:50%;background:var(--lime-ink);display:grid;place-items:center}
+.btn-glass{background:rgba(14,40,90,.28);color:#fff;border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(8px)}
+.btn-glass:hover{background:rgba(14,40,90,.4)}
+
+/* ---------- Hero ---------- */
+.hero-shell{padding:12px}
+.hero{position:relative;border-radius:var(--r-xl);overflow:hidden;min-height:820px;color:#fff;
+  background:linear-gradient(180deg,var(--sky-1) 0%,var(--sky-2) 45%,var(--sky-3) 100%)}
+.nav{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:22px 30px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:22px;letter-spacing:-.02em}
+.logo svg{display:block}
+.nav-links{display:flex;gap:34px;list-style:none;margin:0;padding:0;font-family:var(--mono);font-size:13px;letter-spacing:.02em}
+.nav-links a{text-decoration:none;opacity:.9}
+.nav-links a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.nav .btn{padding:11px 18px;font-size:14px}
+.hero-copy{position:relative;z-index:4;text-align:center;max-width:1020px;margin:64px auto 0;padding:0 20px}
+.hero h1{margin:0;font-weight:500;font-size:clamp(40px,6.2vw,76px);line-height:1.02;letter-spacing:-.045em}
+.hero h1 .l2{display:block;color:rgba(255,255,255,.72)}
+.hero p.lead{margin:24px auto 0;max-width:620px;font-size:clamp(16px,1.6vw,19px);color:rgba(255,255,255,.9)}
+.hero-cta{margin-top:34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* clouds */
+.clouds{position:absolute;inset:auto 0 0 0;height:62%;z-index:1;pointer-events:none}
+.cloud{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,.55) 55%,rgba(255,255,255,0));filter:blur(6px)}
+.clouds .c1{width:620px;height:260px;left:-160px;bottom:40px}
+.clouds .c2{width:520px;height:220px;right:-120px;bottom:90px}
+.clouds .c3{width:900px;height:280px;left:18%;bottom:-120px}
+.clouds .c4{width:380px;height:160px;left:8%;bottom:220px;opacity:.7}
+.clouds .c5{width:420px;height:170px;right:12%;bottom:260px;opacity:.6}
+.clouds .c6{width:1200px;height:260px;left:-10%;bottom:-170px}
+@media (prefers-reduced-motion:no-preference){
+  .clouds .c4,.clouds .c5{animation:drift 26s ease-in-out infinite alternate}
+  .clouds .c2{animation:drift 34s ease-in-out infinite alternate-reverse}
+  @keyframes drift{from{transform:translateX(-24px)}to{transform:translateX(24px)}}
+}
+
+/* arc of signal cards */
+.arc{position:relative;z-index:3;margin:70px auto 0;height:250px;perspective:1300px}
+.arc-track{position:absolute;left:50%;top:0;transform-style:preserve-3d}
+.sig{position:absolute;top:0;width:170px;min-height:200px;border-radius:18px;padding:14px;color:var(--ink);
+  background:#fff;box-shadow:0 30px 60px -30px rgba(10,40,100,.55);font-size:12.5px;line-height:1.35;
+  transform-origin:center center}
+.sig .k{font-family:var(--mono);font-size:10.5px;color:#5B6B82}
+.sig .v{font-weight:600;font-size:15px;letter-spacing:-.01em;margin-top:4px}
+.sig .row{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid #EEF2F7}
+.sig .row:first-of-type{border-top:0}
+.sig.dark{background:#0E1A2B;color:#fff}
+.sig.dark .k{color:#9FB0C6}
+.sig.lime{background:var(--lime);color:var(--lime-ink)}
+.sig.lime .k{color:#4A5A1A}
+.sig.glass{background:rgba(255,255,255,.22);color:#fff;border:1px solid rgba(255,255,255,.5);backdrop-filter:blur(10px)}
+.sig.glass .k{color:rgba(255,255,255,.85)}
+.pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:#1FBF6B;margin-right:6px;vertical-align:1px}
+.bars{display:flex;align-items:flex-end;gap:6px;height:84px;margin-top:14px}
+.bars span{flex:1;border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,#3F8EF0,#9CCBFF)}
+.check{display:flex;gap:8px;align-items:center;padding:4px 0}
+.check i{width:15px;height:15px;border-radius:50%;background:var(--lime);display:inline-block;flex:none;position:relative}
+.check i::after{content:"";position:absolute;left:4px;top:3px;width:5px;height:7px;border:solid var(--lime-ink);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.check.wait i{background:transparent;border:1.5px dashed #9FB0C6}
+.check.wait i::after{display:none}
+.stars{color:#F5B400;letter-spacing:1px}
+.arc-caption{position:relative;z-index:4;text-align:center;margin-top:18px;font-size:14px;color:#0E2F66}
+@media (prefers-reduced-motion:no-preference){
+  .sig{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes rise{from{opacity:0;translate:0 60px}to{opacity:1;translate:0 0}}
+}
+
+/* ---------- Sector marquee ---------- */
+.marquee{overflow:hidden;padding:30px 0 10px;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee-inner{display:flex;gap:56px;width:max-content}
+.marquee-inner span{display:flex;align-items:center;gap:10px;font-weight:500;color:var(--ink-soft);white-space:nowrap;font-size:17px}
+.marquee-inner svg{opacity:.7}
+@media (prefers-reduced-motion:no-preference){
+  .marquee-inner{animation:scroll 38s linear infinite}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+}
+
+/* ---------- Sections ---------- */
+section.block{padding:110px 0}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-soft);margin-bottom:18px}
+.kicker::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sky-2)}
+h2.title{margin:0;font-weight:500;font-size:clamp(32px,4.2vw,52px);line-height:1.06;letter-spacing:-.04em;max-width:820px}
+.center{text-align:center}
+.center h2.title{margin-left:auto;margin-right:auto}
+.sub{color:var(--ink-soft);max-width:600px;margin:18px 0 0}
+.center .sub{margin-left:auto;margin-right:auto}
+
+/* bento */
+.bento{margin-top:56px;display:grid;grid-template-columns:1.05fr 1fr 1fr;grid-template-rows:auto auto;gap:18px}
+.tile{border-radius:var(--r-lg);padding:28px;position:relative;overflow:hidden}
+.tile h3{margin:0;font-weight:500;letter-spacing:-.02em;font-size:22px;line-height:1.2}
+.tile p{margin:10px 0 0;font-size:15.5px}
+.tile.skyt{grid-row:span 2;color:#fff;background:linear-gradient(180deg,var(--sky-1),var(--sky-2) 60%,var(--sky-3));min-height:430px;display:flex;flex-direction:column;justify-content:flex-end}
+.tile.skyt .cloud{opacity:.9}
+.tile.skyt .inner{position:relative;z-index:2;background:rgba(255,255,255,.96);color:#0E1A2B;border-radius:var(--r-md);padding:22px}
+.tile.skyt .big{font-size:44px;font-weight:500;letter-spacing:-.04em;line-height:1}
+.tile.grey{background:var(--card);border:1px solid var(--line)}
+.tile.limet{background:var(--lime);color:var(--lime-ink)}
+.tile.darkt{background:#0E1A2B;color:#fff}
+.tile.wide{grid-column:span 2}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{font-size:13.5px;padding:7px 12px;border-radius:999px;background:var(--mist);color:var(--ink)}
+.tile.limet .chip{background:rgba(29,42,6,.1);color:var(--lime-ink)}
+
+/* sectors tabs */
+.tabs{margin-top:48px;display:flex;gap:8px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink);font:500 15px/1 var(--font);padding:13px 18px;border-radius:999px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.panel{margin-top:22px;display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+.panel[hidden]{display:none}
+.panel-main{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:36px}
+.panel-main h3{margin:0;font-size:30px;font-weight:500;letter-spacing:-.03em;line-height:1.1}
+.panel-main .pain{margin:14px 0 0;color:var(--ink-soft);max-width:520px}
+.dolist{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:12px}
+.dolist li{display:flex;gap:12px;align-items:flex-start}
+.dolist li i{flex:none;width:22px;height:22px;border-radius:7px;background:var(--lime);margin-top:1px;position:relative}
+.dolist li i::after{content:"";position:absolute;left:8px;top:5px;width:5px;height:9px;border:solid var(--lime-ink);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.panel-side{border-radius:var(--r-lg);padding:32px;color:#fff;background:linear-gradient(160deg,var(--sky-1),var(--sky-2));display:flex;flex-direction:column;justify-content:space-between;gap:24px;position:relative;overflow:hidden}
+.panel-side .from{font-size:14px;color:rgba(255,255,255,.85)}
+.panel-side .fig{font-size:clamp(46px,5vw,64px);font-weight:500;letter-spacing:-.05em;line-height:1}
+.panel-side .fig small{font-size:18px;letter-spacing:-.01em;font-weight:400}
+.panel-side .quote{font-size:16px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:var(--r-md);padding:16px}
+.panel-side .src{font-size:12.5px;color:rgba(255,255,255,.75)}
+
+/* audit */
+.audit{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center}
+.report{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px;box-shadow:0 40px 80px -50px rgba(14,40,90,.45)}
+.report-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.report-head b{font-weight:600;letter-spacing:-.01em}
+.report-head span{font-size:13px;color:var(--ink-soft)}
+.rrow{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:15px 0;border-bottom:1px solid var(--line)}
+.rrow:last-child{border-bottom:0}
+.rrow .t{font-weight:500}
+.rrow .d{font-size:14px;color:var(--ink-soft);margin-top:2px}
+.tag{font-size:12.5px;font-weight:500;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.tag.warn{background:#FFF1D6;color:#7A4B00}
+.tag.bad{background:#FFE1DE;color:#8E1F14}
+.tag.ok{background:#E4F7D0;color:#2D5A0C}
+.audit ul.plain{margin:26px 0 30px;padding:0;list-style:none;display:grid;gap:10px;color:var(--ink-soft)}
+.audit ul.plain li::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--sky-2);margin-right:12px;vertical-align:3px}
+
+/* method */
+.steps{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.step{border-top:2px solid var(--ink);padding-top:22px}
+.step .n{font-family:var(--mono);font-size:14px;color:var(--ink-soft)}
+.step h3{margin:10px 0 0;font-size:21px;font-weight:500;letter-spacing:-.02em}
+.step p{margin:10px 0 0;color:var(--ink-soft);font-size:15.5px}
+
+/* pay model */
+.pay{margin-top:28px;display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
+.pay .big{background:var(--ink);color:var(--paper);border-radius:var(--r-lg);padding:40px}
+.pay .big h3{margin:0;font-size:clamp(28px,3.2vw,40px);font-weight:500;letter-spacing:-.035em;line-height:1.08}
+.pay .big p{margin:16px 0 0;opacity:.8;max-width:520px}
+.pay .side{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:32px;display:grid;gap:18px;align-content:start}
+.pay .side div b{display:block;font-weight:500;font-size:18px;letter-spacing:-.01em}
+.pay .side div span{color:var(--ink-soft);font-size:15px}
+
+/* team */
+.team{margin-top:48px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:820px}
+.person{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px;display:flex;gap:18px;align-items:center}
+.avatar{width:64px;height:64px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:600;font-size:22px;color:#fff;background:linear-gradient(160deg,var(--sky-1),var(--sky-3))}
+.person:nth-child(2) .avatar{background:var(--lime);color:var(--lime-ink)}
+.person b{display:block;font-size:19px;font-weight:500;letter-spacing:-.01em}
+.person span{color:var(--ink-soft);font-size:15px}
+
+/* faq */
+.faq{margin-top:44px;max-width:860px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 44px 22px 0;font-size:19px;font-weight:500;letter-spacing:-.01em;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:14px;height:14px;margin-top:-9px;border:solid var(--ink);border-width:0 2px 2px 0;transform:rotate(45deg);transition:transform .2s ease}
+.faq details[open] summary::after{transform:rotate(-135deg);margin-top:-2px}
+.faq details p{margin:0 0 22px;color:var(--ink-soft);max-width:720px}
+
+/* final cta */
+.final{position:relative;border-radius:var(--r-xl);overflow:hidden;color:#fff;background:linear-gradient(180deg,var(--sky-1),var(--sky-2) 70%,#78B4F8);padding:80px 24px 90px}
+.final .clouds{height:34%}
+.final p,.final h2{text-shadow:0 1px 18px rgba(14,47,102,.25)}
+.final-grid{position:relative;z-index:3;max-width:var(--wrap);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.final h2{margin:0;font-weight:500;font-size:clamp(34px,4.6vw,58px);line-height:1.03;letter-spacing:-.045em}
+.final p{margin:18px 0 0;color:rgba(255,255,255,.9);max-width:460px}
+form.lead{background:rgba(255,255,255,.97);color:#0E1A2B;border-radius:var(--r-lg);padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:14px;box-shadow:0 40px 80px -40px rgba(10,40,100,.6)}
+form.lead .full{grid-column:1 / -1}
+form.lead label{display:grid;gap:6px;font-size:13.5px;font-weight:500;color:#44546A}
+form.lead input,form.lead select{font:400 16px/1.2 var(--font);color:#0E1A2B;background:#F3F6FA;border:1px solid #D9E2EC;border-radius:12px;padding:13px 14px;width:100%}
+form.lead input:focus,form.lead select:focus{outline:2px solid var(--sky-2);outline-offset:1px;border-color:transparent}
+form.lead .btn{justify-content:center;width:100%;padding:17px}
+form.lead .legal{font-size:12.5px;color:#5B6B82;margin:0}
+.done{display:none;grid-column:1 / -1;text-align:center;padding:30px 10px}
+.done b{display:block;font-size:24px;font-weight:500;letter-spacing:-.02em}
+.done span{color:#44546A}
+form.lead.sent > :not(.done){display:none}
+form.lead.sent .done{display:block}
+footer{padding:40px 0 50px;color:var(--ink-soft);font-size:14.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer .logo{color:var(--ink);font-size:19px}
+
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .nav-links{display:none}
+  .bento{grid-template-columns:1fr 1fr}
+  .tile.skyt{grid-row:auto;grid-column:1 / -1;min-height:360px}
+  .panel,.audit,.pay,.final-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:36px}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .hero{min-height:0;padding-bottom:40px}
+  .nav{padding:18px}
+  .nav .btn{display:none}
+  .hero-copy{margin-top:34px}
+  .arc{height:auto;perspective:none;margin-top:44px}
+  .arc-track{position:static;transform:none;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 20px 20px}
+  .sig{position:relative;flex:none;transform:none !important;left:auto !important;scroll-snap-align:center}
+  .bento{grid-template-columns:1fr}
+  .tile.wide{grid-column:auto}
+  .steps{grid-template-columns:1fr}
+  .team{grid-template-columns:1fr}
+  section.block{padding:80px 0}
+  .panel-main,.panel-side{padding:26px}
+  form.lead{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<div class="hero-shell">
+<header class="hero" id="top">
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="logo" href="#top" aria-label="Élan, accueil">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M3 24 L13 6 L18 15 L21 10 L27 24 Z" fill="#fff"/><circle cx="23" cy="6" r="3" fill="#D9FF5B"/></svg>
+      Élan
+    </a>
+    <ul class="nav-links">
+      <li><a href="#secteurs">Secteurs</a></li>
+      <li><a href="#audit">Audit offert</a></li>
+      <li><a href="#methode">Méthode</a></li>
+      <li><a href="#faq">Questions</a></li>
+    </ul>
+    <a class="btn btn-lime" href="#contact">Demander l'audit</a>
+  </nav>
+
+  <div class="hero-copy">
+    <h1>Vos clients vous cherchent.<span class="l2">On vous rend impossible&nbsp;à&nbsp;rater.</span></h1>
+    <p class="lead">Élan génère des demandes qualifiées pour les PME et les réseaux français : location de matériel, franchises, rénovation. Référencement, Google, Meta et IA, pilotés ensemble et payés au résultat.</p>
+    <div class="hero-cta">
+      <a class="btn btn-glass" href="#secteurs">Voir ce qu'on fait pour vous</a>
+      <a class="btn btn-lime" href="#contact">Recevoir mon audit offert
+        <span class="dot" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 9 L9 3 M4 3 H9 V8" stroke="#D9FF5B" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="arc" aria-label="Exemples de signaux suivis dans un tableau de bord Élan">
+    <div class="arc-track" id="arcTrack">
+      <div class="sig">
+        <div class="k">Recherches locales</div>
+        <div class="v">680 / mois</div>
+        <div class="bars" aria-hidden="true"><span style="height:38%"></span><span style="height:52%"></span><span style="height:47%"></span><span style="height:66%"></span><span style="height:74%"></span><span style="height:92%"></span></div>
+        <div class="k" style="margin-top:10px">Location matériel, Tours</div>
+      </div>
+      <div class="sig">
+        <div class="k"><span class="pulse"></span>Nouvelle demande</div>
+        <div class="v">Nacelle 12 m</div>
+        <div class="row"><span>Ville</span><b>Poitiers</b></div>
+        <div class="row"><span>Durée</span><b>3 jours</b></div>
+        <div class="row"><span>Réponse</span><b>en 2 min</b></div>
+      </div>
+      <div class="sig lime">
+        <div class="k">Candidat franchisé</div>
+        <div class="v">Qualifié</div>
+        <div class="row" style="border-color:rgba(29,42,6,.15)"><span>Apport</span><b>150 k€</b></div>
+        <div class="row" style="border-color:rgba(29,42,6,.15)"><span>Zone</span><b>Lyon</b></div>
+        <div class="row" style="border-color:rgba(29,42,6,.15)"><span>Délai</span><b>&lt; 6 mois</b></div>
+      </div>
+      <div class="sig dark">
+        <div class="k">Audit en cours</div>
+        <div class="v">Votre entreprise</div>
+        <div class="check"><i></i>Référencement</div>
+        <div class="check"><i></i>Publicité Google</div>
+        <div class="check"><i></i>Publicité Meta</div>
+        <div class="check"><i></i>Fiches Google</div>
+        <div class="check wait"><i></i>Visibilité IA</div>
+      </div>
+      <div class="sig glass">
+        <div class="k">Fiche Google</div>
+        <div class="v">4,6 <span class="stars" aria-hidden="true">★★★★★</span></div>
+        <div class="k" style="margin-top:8px">94 avis</div>
+        <div class="k" style="margin-top:22px">Appels ce mois</div>
+        <div class="v">+ 31</div>
+      </div>
+      <div class="sig">
+        <div class="k">Demande de devis</div>
+        <div class="v">Extension 30 m²</div>
+        <div class="row"><span>Budget</span><b>60 k€</b></div>
+        <div class="row"><span>Visite</span><b>jeudi</b></div>
+        <div class="row"><span>Source</span><b>Google</b></div>
+      </div>
+      <div class="sig">
+        <div class="k">Coût par demande</div>
+        <div class="v">Suivi en direct</div>
+        <div class="bars" aria-hidden="true"><span style="height:88%"></span><span style="height:71%"></span><span style="height:64%"></span><span style="height:52%"></span><span style="height:47%"></span><span style="height:41%"></span></div>
+      </div>
+    </div>
+  </div>
+  <p class="arc-caption">Aperçu des signaux suivis pour chaque client, dans un tableau partagé</p>
+
+  <div class="clouds" aria-hidden="true">
+    <div class="cloud c4"></div><div class="cloud c5"></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div><div class="cloud c6"></div>
+  </div>
+</header>
+</div>
+
+<!-- ================= SECTORS MARQUEE ================= -->
+<div class="marquee" aria-label="Secteurs accompagnés">
+  <div class="marquee-inner" id="marquee">
+    <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 18h13l4-6h-6l-2-5H5z"/><circle cx="7" cy="19" r="2"/><circle cx="16" cy="19" r="2"/></svg>Location de matériel</span>
+    <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="9" width="7" height="11"/><rect x="14" y="4" width="7" height="16"/></svg>Réseaux de franchise</span>
+    <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11 12 4l9 7v9H3z"/><path d="M9 20v-6h6v6"/></svg>Rénovation et artisans</span>
+    <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-5h6v5"/></svg>Immobilier</span>
+    <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>Services à domicile</span>
+    <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Commerces multi sites</span>
+  </div>
+</div>
+
+<main>
+
+<!-- ================= WHY ================= -->
+<section class="block">
+  <div class="wrap center">
+    <div class="kicker">Pourquoi Élan</div>
+    <h2 class="title">Une équipe d'acquisition pour les entreprises qui n'en ont pas</h2>
+    <p class="sub">Beaucoup de PME et de réseaux ont un bon produit, un site, parfois une agence. Ce qui manque, c'est quelqu'un qui relie tout jusqu'à la demande reçue.</p>
+  </div>
+  <div class="wrap">
+    <div class="bento">
+      <div class="tile skyt">
+        <div class="cloud" style="width:420px;height:180px;left:-80px;top:40px"></div>
+        <div class="cloud" style="width:360px;height:150px;right:-90px;top:130px;opacity:.7"></div>
+        <div class="inner">
+          <div class="big">Au résultat</div>
+          <p>Vous payez les demandes, les rendez vous ou les candidats qualifiés que l'on vous apporte. Tout est compté dans un tableau que vous voyez comme nous.</p>
+        </div>
+      </div>
+      <div class="tile grey">
+        <h3>Un audit offert avant de parler prix</h3>
+        <p style="color:var(--ink-soft)">On regarde votre visibilité Google, vos publicités, vos fiches Google, votre site et ce que les IA disent de vous. Vous repartez avec les constats, même sans travailler avec nous.</p>
+      </div>
+      <div class="tile limet">
+        <h3>Tous les canaux, un seul pilote</h3>
+        <div class="chips"><span class="chip">Référencement</span><span class="chip">Google Ads</span><span class="chip">Meta Ads</span><span class="chip">Fiches Google</span><span class="chip">Visibilité IA</span><span class="chip">Relances automatiques</span></div>
+      </div>
+      <div class="tile darkt wide">
+        <h3>Chaque demande reçoit une réponse en quelques minutes</h3>
+        <p style="opacity:.8;max-width:620px">Une demande rappelée le lendemain est souvent perdue. On met en place la réponse immédiate par SMS ou WhatsApp, les relances et la fusion des doublons, pour qu'aucun contact payé ne se perde.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTORS ================= -->
+<section class="block" id="secteurs" style="padding-top:20px">
+  <div class="wrap">
+    <div class="kicker">Secteurs</div>
+    <h2 class="title">Ce qu'on fait, selon votre métier</h2>
+    <p class="sub">Chaque secteur a ses recherches, ses clients et ses cycles. On ne vend pas la même chose à un loueur de nacelles et à un réseau de 100 restaurants.</p>
+
+    <div class="tabs" role="tablist" aria-label="Choisir un secteur">
+      <button class="tab" role="tab" id="t-loc" aria-controls="p-loc" aria-selected="true">Location de matériel</button>
+      <button class="tab" role="tab" id="t-fra" aria-controls="p-fra" aria-selected="false" tabindex="-1">Réseaux de franchise</button>
+      <button class="tab" role="tab" id="t-ren" aria-controls="p-ren" aria-selected="false" tabindex="-1">Rénovation et artisans</button>
+      <button class="tab" role="tab" id="t-ser" aria-controls="p-ser" aria-selected="false" tabindex="-1">Services et immobilier</button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-loc" aria-labelledby="t-loc">
+      <div class="panel-main">
+        <h3>Vos machines louées plus souvent</h3>
+        <p class="pain">Vos clients pros vous connaissent. Mais l'artisan ou le particulier qui cherche une mini pelle ou une nacelle près de chez lui tombe sur les grands réseaux nationaux.</p>
+        <ul class="dolist">
+          <li><i></i><span>Une page par matériel et par ville de votre zone de livraison</span></li>
+          <li><i></i><span>Google Ads sur votre rayon, avec un budget sur votre propre compte</span></li>
+          <li><i></i><span>Réponse immédiate par WhatsApp ou SMS, même le week end</span></li>
+          <li><i></i><span>Fiches Google de vos agences unifiées et avis collectés après chaque location</span></li>
+        </ul>
+      </div>
+      <div class="panel-side">
+        <div class="from">Exemple relevé pendant un audit</div>
+        <div><div class="fig">280<small> recherches par mois</small></div><p style="margin:10px 0 0">pour une nacelle ou un camion nacelle, dans une seule ville moyenne.</p></div>
+        <div class="quote">Sur la première page : les réseaux nationaux et un annuaire. Pas le loueur indépendant du coin.</div>
+        <div class="src">Source : Semrush, septembre 2026</div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-fra" aria-labelledby="t-fra" hidden>
+      <div class="panel-main">
+        <h3>Plus de candidats qualifiés pour vos ouvertures</h3>
+        <p class="pain">Chaque franchisé signé vaut des centaines de milliers d'euros sur la durée du contrat. Pourtant, beaucoup de candidats passent par des portails qui les partagent avec vos concurrents.</p>
+        <ul class="dolist">
+          <li><i></i><span>Meta Ads de recrutement par région et par profil, avec vos vrais franchisés en vidéo</span></li>
+          <li><i></i><span>Qualification sur l'apport, la zone et le délai avant le rendez vous</span></li>
+          <li><i></i><span>Candidatures envoyées dans votre CRM, doublons fusionnés, relances automatiques</span></li>
+          <li><i></i><span>Pack marketing local pour chaque point de vente du réseau</span></li>
+        </ul>
+      </div>
+      <div class="panel-side">
+        <div class="from">Exemple relevé pendant un audit</div>
+        <div><div class="fig">880<small> recherches par mois</small></div><p style="margin:10px 0 0">pour « franchise rentable », avec un clic à moins de 1 $.</p></div>
+        <div class="quote">Sur la première page : trois portails, des blogs, une vidéo. Aucune enseigne.</div>
+        <div class="src">Source : Semrush, septembre 2026</div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-ren" aria-labelledby="t-ren" hidden>
+      <div class="panel-main">
+        <h3>Des demandes de devis qui valent le déplacement</h3>
+        <p class="pain">Les chantiers se gagnent souvent au premier rappel. Entre les curieux, les doublons et les demandes rappelées trop tard, une grande partie du budget publicitaire se perd.</p>
+        <ul class="dolist">
+          <li><i></i><span>Pages locales par métier et par commune, avec photos de vrais chantiers</span></li>
+          <li><i></i><span>Formulaire en plusieurs étapes : type de travaux, surface, budget, délai</span></li>
+          <li><i></i><span>Rappel rapide et prise de rendez vous pour la visite technique</span></li>
+          <li><i></i><span>Avis clients et fiche Google entretenus chaque mois</span></li>
+        </ul>
+      </div>
+      <div class="panel-side">
+        <div class="from">Ce qu'on mesure pour vous</div>
+        <div><div class="fig">Coût<small> par devis qualifié</small></div><p style="margin:10px 0 0">et pas seulement le coût par clic ou par formulaire.</p></div>
+        <div class="quote">Une demande sans budget ni délai n'est pas comptée comme une demande qualifiée.</div>
+        <div class="src">Critères définis avec vous au démarrage</div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-ser" aria-labelledby="t-ser" hidden>
+      <div class="panel-main">
+        <h3>Des clients locaux, agence par agence</h3>
+        <p class="pain">Agences immobilières, services à domicile, commerces à plusieurs adresses : chaque point de vente a besoin de visibilité dans sa ville, sans que le siège perde le contrôle de la marque.</p>
+        <ul class="dolist">
+          <li><i></i><span>Fiches Google gérées pour chaque adresse : horaires, photos, publications, avis</span></li>
+          <li><i></i><span>Campagnes locales déclinées depuis un modèle validé par le siège</span></li>
+          <li><i></i><span>Recrutement d'intervenants ou de collaborateurs quand c'est le vrai frein</span></li>
+          <li><i></i><span>Un tableau de suivi par agence et un pour tout le réseau</span></li>
+        </ul>
+      </div>
+      <div class="panel-side">
+        <div class="from">Abonnement par établissement</div>
+        <div><div class="fig">1<small> fiche entretenue chaque mois</small></div><p style="margin:10px 0 0">par agence, restaurant ou boutique du réseau.</p></div>
+        <div class="quote">Nom identique partout, horaires justes, réponse à chaque avis : la base pour sortir sur « près de moi ».</div>
+        <div class="src">Proposé au siège, souscrit par chaque établissement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AUDIT ================= -->
+<section class="block" id="audit" style="background:var(--mist)">
+  <div class="wrap audit">
+    <div>
+      <div class="kicker">Audit offert</div>
+      <h2 class="title">On regarde votre entreprise comme vos futurs clients la voient</h2>
+      <ul class="plain">
+        <li>Ce que les gens tapent sur Google dans votre zone, et qui sort devant vous</li>
+        <li>Vos publicités visibles sur Meta et Google</li>
+        <li>Vos fiches Google, vos avis et leur cohérence</li>
+        <li>Votre site : demande en ligne, mobile, points techniques</li>
+        <li>Ce que ChatGPT, Gemini et Google IA répondent sur votre métier</li>
+      </ul>
+      <a class="btn btn-lime" href="#contact">Recevoir mon audit offert</a>
+    </div>
+    <div class="report" aria-label="Exemple de synthèse d'audit">
+      <div class="report-head"><b>Synthèse d'audit</b><span>Exemple anonymisé</span></div>
+      <div class="rrow"><div><div class="t">Recherches hors marque</div><div class="d">Absent de la première page sur les recherches par ville</div></div><span class="tag bad">À construire</span></div>
+      <div class="rrow"><div><div class="t">Publicité Google</div><div class="d">Aucune annonce, alors que les clics coûtent moins de 1 $</div></div><span class="tag bad">Absente</span></div>
+      <div class="rrow"><div><div class="t">Fiches Google</div><div class="d">Deux agences, deux noms différents</div></div><span class="tag warn">À unifier</span></div>
+      <div class="rrow"><div><div class="t">Site</div><div class="d">Catalogue en PDF, aucune demande en ligne</div></div><span class="tag warn">À adapter</span></div>
+      <div class="rrow"><div><div class="t">Avis clients</div><div class="d">Plus d'avis que les concurrents locaux</div></div><span class="tag ok">Point fort</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= METHOD ================= -->
+<section class="block" id="methode">
+  <div class="wrap">
+    <div class="kicker">Méthode</div>
+    <h2 class="title">De l'audit aux premières demandes, sans engagement long</h2>
+    <div class="steps">
+      <div class="step"><div class="n">Étape 1</div><h3>Audit offert</h3><p>On analyse votre visibilité et on vous présente les constats, avec les chiffres de votre marché.</p></div>
+      <div class="step"><div class="n">Étape 2</div><h3>Plan chiffré</h3><p>On estime ensemble ce que valent les demandes pour vous, avec vos vrais chiffres de transformation.</p></div>
+      <div class="step"><div class="n">Étape 3</div><h3>Test de 60 jours</h3><p>On lance sur un périmètre réduit : quelques services ou quelques villes, pour mesurer vite.</p></div>
+      <div class="step"><div class="n">Étape 4</div><h3>Pilotage continu</h3><p>On garde ce qui marche, on coupe le reste, et on étend aux autres zones ou métiers.</p></div>
+    </div>
+
+    <div class="pay">
+      <div class="big">
+        <h3>Vous payez ce qui arrive. Pas ce qu'on promet.</h3>
+        <p>Rémunération par demande, rendez vous ou candidat qualifié, définie avec vous au départ. Le budget publicitaire reste sur votre propre compte.</p>
+      </div>
+      <div class="side">
+        <div><b>Tableau partagé</b><span>Chaque demande est comptée et visible par vous.</span></div>
+        <div><b>Votre site et vos partenaires restent en place</b><span>On travaille en renfort, pas en remplacement.</span></div>
+        <div><b>Pas d'engagement long</b><span>Un test court d'abord, la suite si les chiffres suivent.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TEAM ================= -->
+<section class="block" style="padding-top:20px">
+  <div class="wrap">
+    <div class="kicker">L'équipe</div>
+    <h2 class="title">Deux interlocuteurs, du premier appel aux résultats</h2>
+    <div class="team">
+      <div class="person"><div class="avatar" aria-hidden="true">L</div><div><b>Lorenzo</b><span>Co-fondateur, stratégie et acquisition</span></div></div>
+      <div class="person"><div class="avatar" aria-hidden="true">Q</div><div><b>Quentin</b><span>Co-fondateur</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="block" id="faq" style="padding-top:20px">
+  <div class="wrap">
+    <div class="kicker">Questions</div>
+    <h2 class="title">Ce qu'on nous demande avant de commencer</h2>
+    <div class="faq">
+      <details><summary>Qu'est ce que contient l'audit offert ?</summary><p>Une analyse de vos recherches Google locales, de vos publicités visibles, de vos fiches Google, de votre site et de votre visibilité dans les IA. On vous présente les constats en visio, avec les chiffres de votre marché.</p></details>
+      <details><summary>On travaille déjà avec une agence. Vous la remplacez ?</summary><p>Non. On regarde d'abord ce qui fonctionne et on se place en renfort sur ce qui manque, souvent la génération et le suivi des demandes.</p></details>
+      <details><summary>Comment êtes vous rémunérés ?</summary><p>Principalement au résultat : par demande, rendez vous ou candidat qualifié, selon des critères définis ensemble. Certains volets, comme la mise en place technique, peuvent être facturés à part.</p></details>
+      <details><summary>Vous utilisez l'IA ?</summary><p>Oui, pour analyser plus vite, produire des variantes de publicités et répondre aux demandes en quelques minutes. Chaque recommandation est vérifiée par un humain avant de vous être présentée.</p></details>
+      <details><summary>Avec quelles entreprises travaillez vous ?</summary><p>Des PME et des réseaux en France : loueurs de matériel, réseaux de franchise, entreprises de rénovation, agences immobilières et services à plusieurs adresses.</p></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FINAL CTA ================= -->
+<div class="hero-shell" id="contact">
+  <div class="final">
+    <div class="clouds" aria-hidden="true"><div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div><div class="cloud c6"></div></div>
+    <div class="final-grid">
+      <div>
+        <h2>Voyons ce que Google, Meta et les IA disent de votre entreprise.</h2>
+        <p>Laissez vos coordonnées : on prépare votre audit et on vous le présente en visio.</p>
+      </div>
+      <form class="lead" id="leadForm" novalidate>
+        <label>Prénom et nom<input name="nom" autocomplete="name" required></label>
+        <label>Entreprise<input name="entreprise" autocomplete="organization" required></label>
+        <label class="full">Site internet<input name="site" type="url" inputmode="url" placeholder="https://" autocomplete="url"></label>
+        <label>Secteur
+          <select name="secteur" required>
+            <option value="">Choisir</option>
+            <option>Location de matériel</option>
+            <option>Réseau de franchise</option>
+            <option>Rénovation et artisans</option>
+            <option>Immobilier</option>
+            <option>Services à domicile</option>
+            <option>Autre</option>
+          </select>
+        </label>
+        <label>Téléphone<input name="tel" type="tel" autocomplete="tel"></label>
+        <label class="full">Email professionnel<input name="email" type="email" autocomplete="email" required></label>
+        <p class="legal full">Vos informations servent uniquement à préparer votre audit et à vous recontacter.</p>
+        <button class="btn btn-lime full" type="submit">Recevoir mon audit offert</button>
+        <p class="legal full" id="formError" role="alert" style="color:#8E1F14;display:none">Renseignez votre nom, votre entreprise, votre secteur et un email valide.</p>
+        <div class="done" role="status"><b>Demande reçue</b><span>On prépare votre audit et on revient vers vous pour fixer la visio.</span></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top"><svg width="24" height="24" viewBox="0 0 30 30" aria-hidden="true"><path d="M3 24 L13 6 L18 15 L21 10 L27 24 Z" fill="currentColor"/><circle cx="23" cy="6" r="3" fill="#8DBA1E"/></svg>Élan</a>
+    <span>Acquisition pour les PME et réseaux français</span>
+    <a href="#contact">Demander l'audit</a>
+  </div>
+</footer>
+
+<script>
+/* 3D arc placement */
+(function(){
+  const track=document.getElementById('arcTrack');
+  const cards=[...track.children];
+  function layout(){
+    if(window.matchMedia('(max-width:640px)').matches){cards.forEach(c=>{c.style.transform='';c.style.left='';c.style.zIndex='';});return;}
+    const n=cards.length, mid=(n-1)/2, gap=Math.min(178, window.innerWidth/8.2);
+    cards.forEach((c,i)=>{
+      const o=i-mid, a=Math.abs(o);
+      const x=o*gap-85, rot=-o*17, z=-a*a*26, y=a*a*6;
+      c.style.left=x+'px';
+      c.style.transform=`translate3d(0,${y}px,${z}px) rotateY(${rot}deg)`;
+      c.style.zIndex=String(10-Math.round(a));
+      c.style.animationDelay=(0.08*a)+'s';
+    });
+  }
+  layout(); addEventListener('resize',layout);
+})();
+
+/* marquee: duplicate content for seamless loop */
+(function(){const m=document.getElementById('marquee'); m.innerHTML+=m.innerHTML; [...m.children].slice(m.children.length/2).forEach(el=>el.setAttribute('aria-hidden','true'));})();
+
+/* tabs */
+(function(){
+  const tabs=[...document.querySelectorAll('[role="tab"]')];
+  function select(t){
+    tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});
+    t.focus();
+  }
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>select(t));
+    t.addEventListener('keydown',e=>{
+      if(e.key==='ArrowRight'){e.preventDefault();select(tabs[(i+1)%tabs.length]);}
+      if(e.key==='ArrowLeft'){e.preventDefault();select(tabs[(i-1+tabs.length)%tabs.length]);}
+    });
+  });
+})();
+
+/* lead form: replace sendLead with your form backend when going live */
+(function(){
+  const f=document.getElementById('leadForm'), err=document.getElementById('formError');
+  async function sendLead(data){ /* brancher ici le CRM, Sequenzy ou un service de formulaire */ return true; }
+  f.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const d=Object.fromEntries(new FormData(f));
+    const okEmail=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email||'');
+    if(!d.nom||!d.entreprise||!d.secteur||!okEmail){err.style.display='block';return;}
+    err.style.display='none';
+    try{ await sendLead(d); f.classList.add('sent'); }catch(_){ err.textContent="La demande n'est pas partie. Réessayez dans un instant."; err.style.display='block'; }
+  });
+})();
+</script>
+</body>
+</html>

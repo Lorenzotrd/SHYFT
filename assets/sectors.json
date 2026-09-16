@@ -1,0 +1,188 @@
+[
+  {
+    "slug": "location-de-materiel",
+    "name": "Location de matériel",
+    "icon": "↗",
+    "title": "Vos machines louées.<br>Pas immobilisées.",
+    "desc": "Devenez le premier réflexe des artisans et particuliers qui cherchent du matériel près de chez eux.",
+    "short": "Remplissez votre planning de location.",
+    "photo": "equipment",
+    "pain": [
+      "Les grands réseaux passent devant vous sur Google.",
+      "Votre catalogue est en PDF et les demandes arrivent par téléphone.",
+      "Les recherches continuent après la fermeture de vos agences."
+    ],
+    "services": [
+      "Des pages par matériel et par ville de livraison.",
+      "Des campagnes Google Ads sur votre rayon réel.",
+      "Un formulaire de demande simple, pensé pour le mobile.",
+      "Une réponse automatique et un suivi des demandes.",
+      "Des fiches Google cohérentes pour chaque agence."
+    ],
+    "metrics": [
+      "Demandes de location qualifiées",
+      "Coût par demande",
+      "Visibilité par matériel et par ville"
+    ],
+    "pay": "demande de location qualifiée",
+    "signal": "Demande de location",
+    "value": "Nacelle 12 m",
+    "question": "Et si le matériel demandé est indisponible ?",
+    "answer": "Les campagnes et formulaires se concentrent sur les familles de matériel que vous souhaitez louer. Les critères de qualification précisent comment traiter une indisponibilité."
+  },
+  {
+    "slug": "reseaux-de-franchise",
+    "name": "Réseaux de franchise",
+    "icon": "⊞",
+    "title": "Vos prochaines ouvertures<br>commencent ici.",
+    "desc": "Rencontrez des candidats qui ont le bon apport, la bonne zone et un vrai projet entrepreneurial.",
+    "short": "Rencontrez vos futurs franchisés.",
+    "photo": "franchise",
+    "pain": [
+      "Les portails partagent les mêmes candidats avec vos concurrents.",
+      "Les candidatures se perdent entre les tableaux et le CRM.",
+      "Vos campagnes attirent du volume, mais peu de profils adaptés."
+    ],
+    "services": [
+      "Des campagnes Meta par région et par profil.",
+      "Une qualification sur l’apport, la zone et le délai.",
+      "Des candidatures centralisées dans votre CRM.",
+      "Des relances pour les candidats encore en réflexion.",
+      "Des contenus pour faire découvrir votre enseigne."
+    ],
+    "metrics": [
+      "Candidatures qualifiées",
+      "Coût par rendez-vous",
+      "Part des profils répondant aux critères"
+    ],
+    "pay": "candidat qualifié ou rendez-vous",
+    "signal": "Projet de franchise",
+    "value": "Profil qualifié",
+    "question": "Comment définissez-vous un candidat qualifié ?",
+    "answer": "Nous fixons ensemble les critères avant le lancement : apport personnel, territoire souhaité, calendrier et adéquation avec le réseau."
+  },
+  {
+    "slug": "renovation-artisans",
+    "name": "Rénovation & artisans",
+    "icon": "⌂",
+    "title": "De beaux chantiers.<br>De vrais projets.",
+    "desc": "Recevez des demandes de devis avec un besoin clair, un budget et une zone qui vous correspondent.",
+    "short": "Trouvez les chantiers qui vous ressemblent.",
+    "photo": "renovation",
+    "pain": [
+      "Vous passez trop de temps sur des demandes sans budget.",
+      "Les prospects sont déjà chez un concurrent quand vous rappelez.",
+      "Votre savoir-faire est visible sur les chantiers, moins sur Google."
+    ],
+    "services": [
+      "Des pages par métier et commune, avec vos vrais chantiers.",
+      "Un formulaire qui précise travaux, surface, budget et délai.",
+      "Des annonces sur les prestations que vous voulez développer.",
+      "Une réponse rapide et une prise de rendez-vous simplifiée.",
+      "Une fiche Google et des avis clients entretenus."
+    ],
+    "metrics": [
+      "Devis qualifiés reçus",
+      "Coût par devis qualifié",
+      "Rendez-vous de visite technique"
+    ],
+    "pay": "demande de devis qualifiée",
+    "signal": "Projet de rénovation",
+    "value": "Extension 30 m²",
+    "question": "Puis-je choisir les types de chantiers ?",
+    "answer": "Oui. Nous définissons les prestations, la zone et les critères de projet qui vous intéressent avant de créer les campagnes."
+  },
+  {
+    "slug": "immobilier",
+    "name": "Immobilier",
+    "icon": "⌑",
+    "title": "Votre prochain mandat<br>est peut-être tout près.",
+    "desc": "Faites connaître votre agence aux propriétaires qui préparent une vente dans votre secteur.",
+    "short": "Créez plus de contacts avec les vendeurs.",
+    "photo": "property",
+    "pain": [
+      "Votre visibilité dépend surtout des portails immobiliers.",
+      "Les demandes d’estimation manquent de contexte.",
+      "Votre expertise locale est difficile à distinguer en ligne."
+    ],
+    "services": [
+      "Des pages locales dédiées à vos quartiers.",
+      "Des campagnes orientées estimation et projet de vente.",
+      "Un formulaire qui précise le bien et le calendrier.",
+      "Un suivi des demandes jusqu’au rendez-vous.",
+      "Une fiche Google à jour et une collecte d’avis."
+    ],
+    "metrics": [
+      "Contacts vendeurs qualifiés",
+      "Coût par contact vendeur",
+      "Rendez-vous d’estimation"
+    ],
+    "pay": "contact vendeur qualifié ou rendez-vous",
+    "signal": "Projet immobilier",
+    "value": "Estimation de bien",
+    "question": "Travaillez-vous sur une zone précise ?",
+    "answer": "Oui. Les pages et les campagnes sont construites autour de vos communes et quartiers, selon les biens et mandats recherchés."
+  },
+  {
+    "slug": "services-a-domicile",
+    "name": "Services à domicile",
+    "icon": "♡",
+    "title": "Plus proche des familles.<br>Plus visible localement.",
+    "desc": "Reliez votre agence aux familles qui ont besoin de vous, dans les zones où vos équipes interviennent.",
+    "short": "Développez votre activité de proximité.",
+    "photo": "homecare",
+    "pain": [
+      "Les familles ne trouvent pas toujours votre agence locale.",
+      "Les demandes arrivent hors de votre zone d’intervention.",
+      "L’acquisition n’est pas alignée avec vos disponibilités."
+    ],
+    "services": [
+      "Des pages par prestation et zone d’intervention.",
+      "Des campagnes adaptées à votre capacité d’accueil.",
+      "Une qualification du besoin et de la fréquence.",
+      "Une réponse initiale et des relances organisées.",
+      "Un suivi par agence, partagé avec le siège."
+    ],
+    "metrics": [
+      "Demandes dans votre zone",
+      "Coût par contact qualifié",
+      "Rendez-vous d’évaluation"
+    ],
+    "pay": "demande qualifiée ou rendez-vous",
+    "signal": "Besoin à domicile",
+    "value": "Intervention régulière",
+    "question": "Peut-on adapter les campagnes à nos capacités ?",
+    "answer": "Oui. Nous définissons les prestations et zones prioritaires avec vous et ajustons les campagnes lorsque vos disponibilités changent."
+  },
+  {
+    "slug": "commerces-multi-sites",
+    "name": "Commerces multi-sites",
+    "icon": "▦",
+    "title": "Une seule marque.<br>Un cran au-dessus, à chaque adresse.",
+    "desc": "Développez la visibilité locale de chaque établissement avec une stratégie cohérente à l’échelle du réseau.",
+    "short": "Faites rayonner chacune de vos adresses.",
+    "photo": "retail",
+    "pain": [
+      "Les fiches de vos établissements sont inégales.",
+      "Les campagnes locales sont difficiles à coordonner.",
+      "Le siège manque de visibilité sur les contacts par adresse."
+    ],
+    "services": [
+      "Des fiches Google cohérentes et à jour.",
+      "Des pages propres à chaque établissement.",
+      "Des campagnes locales déclinées depuis votre marque.",
+      "Un parcours de contact ou de réservation simplifié.",
+      "Un suivi par point de vente et une vue réseau."
+    ],
+    "metrics": [
+      "Contacts par établissement",
+      "Coût par contact local",
+      "Réservations ou rendez-vous"
+    ],
+    "pay": "contact qualifié, avec périmètre défini par établissement",
+    "signal": "Visibilité du réseau",
+    "value": "Chaque adresse compte",
+    "question": "Faut-il lancer tous les établissements ensemble ?",
+    "answer": "Non. Le test peut commencer sur quelques adresses avant d’étendre la méthode aux autres établissements du réseau."
+  }
+]
