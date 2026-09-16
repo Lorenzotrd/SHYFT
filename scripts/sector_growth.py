@@ -90,8 +90,8 @@ def _mini(kind):
   return ('<div class="mini mini-map" aria-hidden="true"><span class="pin" style="left:22%;top:30%"></span>'
           '<span class="pin is-you" style="left:54%;top:52%"></span><span class="pin" style="left:76%;top:26%"></span>'
           '<span class="pin" style="left:38%;top:74%"></span></div>')
- return ('<div class="mini mini-flow" aria-hidden="true"><span>Demande</span><em>↓</em>'
-         '<span>Qualifiée</span><em>↓</em><span class="is-you">Client</span></div>')
+ return ('<div class="mini mini-flow" aria-hidden="true"><span>Demande</span><em>→</em>'
+         '<span>Qualifiée</span><em>→</em><span class="is-you">Client</span></div>')
 
 def channels(s):
  d=DATA[s['slug']]
