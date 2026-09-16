@@ -36,7 +36,7 @@ Chaque page expertise suit la même ossature sans être un clone : problème, ap
 
 ## Structure d’une page métier
 
-Colonne vertébrale commune : marché du visiteur, parcours d’une demande en quatre étapes décalées, quatre leviers en bento, mesure, simulateur, FAQ, formulaire. Les quatre leviers renvoient vers l’expertise correspondante.
+Colonne vertébrale commune : marché du visiteur, parcours d’une demande en quatre étapes décalées, quatre leviers, mesure, simulateur, FAQ, formulaire. Chaque carte de levier montre un exemple concret propre au secteur, défini dans `EXAMPLES` (`scripts/sector_growth.py`) : les adresses des pages construites, les mots-clés ciblés et exclus, la fiche Google telle qu’elle apparaît, les questions du formulaire. Chaque carte renvoie vers l’expertise correspondante.
 
 À cela s’ajoute une section que le métier est le seul à avoir, placée à un endroit différent selon le secteur (`SIGNATURE` dans `scripts/sector_growth.py`, champ `after`) :
 

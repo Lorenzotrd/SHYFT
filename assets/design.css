@@ -254,41 +254,34 @@ a.channel-card{text-decoration:none;display:block;transition:border-color .2s,tr
 a.channel-card:hover{border-color:#c9d3bd;transform:translateY(-2px)}
 a.channel-card .channel-number{color:#5b7a12}
 
-/* ============ Pages métier : leviers en bento et parcours décalé ============ */
-.lever-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:44px}
-.lever{background:#fff;border:1px solid #e4e8df;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:0;position:relative;overflow:hidden}
-.lever-wide{grid-column:span 4}
-.lever-narrow{grid-column:span 2}
-.lever-text{flex:1;min-width:0;display:flex;flex-direction:column}
-.lever-n{font:11px var(--mono);color:#7b847a;display:block;margin-bottom:14px}
-.lever h3{margin:0;font-size:21px;letter-spacing:-.035em;line-height:1.2}
-.lever h4{margin:6px 0 0;font-size:13px;font-weight:400;color:#5b7a12}
-.lever p{margin:12px 0 0;font-size:14px;line-height:1.6;color:var(--ink-soft)}
-.lever ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px}
-.lever li{font-size:13px;line-height:1.5;color:var(--ink-soft);padding-left:16px;position:relative}
-.lever li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 1px #b9d94a}
-.lever .text-link{margin-top:20px;align-self:flex-start}
-.lever-visual{width:auto;margin-top:auto;padding-top:26px}
+/* ============ Pages métier : leviers et parcours ============ */
+.lever-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+.lever{background:#fff;border:1px solid #e4e8df;border-radius:20px;padding:30px;display:flex;flex-direction:column}
+.lever-n{font:11px var(--mono);color:#7b847a;display:block;margin-bottom:16px}
+.lever h3{margin:0;font-size:22px;letter-spacing:-.04em;line-height:1.2}
+.lever h4{margin:7px 0 0;font-size:13px;font-weight:400;color:#5b7a12}
+.lever p{margin:14px 0 0;font-size:14px;line-height:1.65;color:var(--ink-soft)}
+.lever .text-link{margin-top:22px;align-self:flex-start}
 
-
-/* Petites interfaces décoratives des cartes. */
-.mini{width:100%;background:var(--mist);border:1px solid #e6eae0;border-radius:14px;padding:18px}
-.mini-bar{display:block;font:10px var(--mono);color:#7b847a;background:#fff;border:1px solid #e3e7de;border-radius:999px;padding:7px 12px;margin-bottom:12px}
-.mini-row{display:flex;flex-direction:column;gap:5px;padding:7px 0;border-top:1px solid #e6eae0}
-.mini-row:first-of-type{border-top:0}
-.mini-row i{display:block;height:5px;border-radius:3px;background:#d2d9cd}
-.mini-row.is-you{border-left:2px solid var(--lime);padding-left:9px}
-.mini-row.is-you i:first-child{background:#0b8fc4}
-.mini-tag{display:inline-block;font:9px var(--mono);background:#1b201e;color:#fff;border-radius:4px;padding:3px 7px;margin-bottom:10px}
-.mini-bars{display:flex;align-items:flex-end;gap:5px;height:44px;margin-top:12px}
-.mini-bars b{flex:1;height:var(--h);border-radius:2px 2px 0 0;background:linear-gradient(#1ca9d4,#bfeef3)}
-.mini-map{position:relative;background-image:radial-gradient(#dfe5d8 1px,transparent 1px);background-size:14px 14px;height:128px}
-.mini-map .pin{position:absolute;width:11px;height:11px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#a9b79c}
-.mini-map .pin.is-you{background:var(--lime);width:16px;height:16px;box-shadow:0 0 0 4px #d5ff6340}
-.mini-flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.mini-flow span{font-size:11px;background:#fff;border:1px solid #e3e7de;border-radius:999px;padding:7px 11px}
-.mini-flow span.is-you{background:var(--lime);border-color:var(--lime)}
-.mini-flow em{font-style:normal;color:#a9b79c;font-size:12px;line-height:1}
+/* Panneau d'exemples concrets, propre à chaque levier. */
+.lever-demo{margin-top:auto;padding-top:24px}
+.demo-label{font:10px var(--mono);color:#7b847a;display:block;margin-bottom:11px}
+.lever-demo ul{margin:0;padding:0;list-style:none;background:var(--mist);border:1px solid #e6eae0;border-radius:14px;overflow:hidden}
+.lever-demo li{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 16px;border-top:1px solid #e6eae0;font-size:13px}
+.lever-demo li:first-child{border-top:0}
+.demo-pages li{display:block;font:11.5px var(--mono);line-height:1.5;color:#0b506c;overflow-wrap:anywhere}
+.demo-kw span{color:var(--ink);min-width:0}
+.demo-kw em{font-style:normal;flex:none}
+.demo-form span{color:var(--ink-soft)}
+.demo-form b{font-weight:500;text-align:right}
+.demo-form .demo-result{background:var(--lime);border-top-color:#c5e85a}
+.demo-form .demo-result span{color:#3c4a28}
+.demo-form .demo-result b{color:#1d2a06}
+.demo-gbp{background:var(--mist);border:1px solid #e6eae0;border-radius:14px;padding:16px}
+.demo-gbp b{display:block;font-size:14px;font-weight:500}
+.demo-gbp i{font-style:normal;display:block;font-size:12px;color:var(--ink-soft);margin-top:4px}
+.gbp-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+.gbp-actions span{font-size:11px;background:#fff;border:1px solid #dfe4d8;border-radius:999px;padding:6px 11px;color:#0b506c}
 
 /* Parcours : cartes décalées, l'œil suit la progression. */
 .journey{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:46px 0 0;padding:0;align-items:start}
@@ -305,9 +298,6 @@ a.channel-card .channel-number{color:#5b7a12}
 .jstep:last-child p,.jstep:last-child em{color:#3c4a28}
 
 @media(max-width:980px){
- .lever-grid{grid-template-columns:repeat(2,1fr)}
- .lever-wide,.lever-narrow{grid-column:span 1;flex-direction:column}
- .lever-visual{width:auto;margin-top:22px}
  .journey{grid-template-columns:1fr 1fr;gap:16px 16px}
  .jstep:nth-child(2){margin-top:34px}
  .jstep:nth-child(3){margin-top:0}
@@ -320,11 +310,7 @@ a.channel-card .channel-number{color:#5b7a12}
  .jstep,.jstep:nth-child(2),.jstep:nth-child(3),.jstep:nth-child(4){margin-top:0;min-height:0;padding:22px}
 }
 
-@media(max-width:640px){.mini-map{height:112px}}
 
-/* Les cartes larges reçoivent un visuel pleine largeur, les étroites un visuel plus compact. */
-.lever-wide .mini-flow{gap:10px;justify-content:space-between;max-width:420px}
-.lever-wide .mini-bars{height:52px}
 
 /* ============ Section propre à chaque métier ============ */
 .sig-section{background:#f4f5f1}
@@ -420,3 +406,5 @@ a.channel-card .channel-number{color:#5b7a12}
 /* Une grille laisse déborder un enfant large sans min-width:0. */
 .views>*,.chains>*,.lever,.mock{min-width:0}
 .table-scroll{max-width:100%}
+
+@media(max-width:640px){.demo-pages li{font-size:11px}.lever-demo li{padding:11px 14px}}

@@ -93,15 +93,33 @@ def _mini(kind):
  return ('<div class="mini mini-flow" aria-hidden="true"><span>Demande</span><em>→</em>'
          '<span>Qualifiée</span><em>→</em><span class="is-you">Client</span></div>')
 
+def _demo(kind, ex):
+ """Panneau d'exemples concrets : du texte réel, pas une maquette grise."""
+ if kind=='seo':
+  items=''.join(f'<li>{u}</li>' for u in ex['seo'])
+  return f'<span class="demo-label">Les pages qu’on construit sur votre site</span><ul class="demo-pages">{items}</ul>'
+ if kind=='ads':
+  items=''.join(f'<li><span>{k}</span><em class="tag {c}">{d}</em></li>' for k,d,c in ex['ads'])
+  return f'<span class="demo-label">Ce qu’on cible, ce qu’on exclut</span><ul class="demo-kw">{items}</ul>'
+ if kind=='google':
+  name,rating,hours,actions=ex['google']
+  acts=''.join(f'<span>{a}</span>' for a in actions)
+  return ('<span class="demo-label">Votre fiche, tenue à jour</span>'
+          f'<div class="demo-gbp"><b>{name}</b><i>{rating}</i><i>{hours}</i>'
+          f'<div class="gbp-actions">{acts}</div></div>')
+ items=''.join(f'<li><span>{q}</span><b>{a}</b></li>' for q,a in ex['conversion'])
+ return ('<span class="demo-label">Ce que le formulaire demande</span>'
+         f'<ul class="demo-form">{items}<li class="demo-result"><span>Résultat</span>'
+         '<b>Une demande qualifiée</b></li></ul>')
+
 def channels(s):
- d=DATA[s['slug']]
+ d=DATA[s['slug']]; ex=EXAMPLES[s['slug']]
  cards=''
- for i,(name,subtitle,key,expertise,kind,items) in enumerate(LEVERS):
-  bullets=''.join(f'<li>{x}</li>' for x in items)
-  cards+=(f'<article class="lever lever-{SPANS[i]}"><div class="lever-text"><span class="lever-n">0{i+1}</span>'
-          f'<h3>{name}</h3><h4>{subtitle}</h4><p>{d[key]}</p><ul>{bullets}</ul>'
-          f'<a class="text-link" href="/expertises/{expertise}">Voir notre expertise ↗</a></div>'
-          f'<div class="lever-visual">{_mini(kind)}</div></article>')
+ for i,(name,subtitle,key,expertise,kind,_items) in enumerate(LEVERS):
+  cards+=(f'<article class="lever"><span class="lever-n">0{i+1}</span>'
+          f'<h3>{name}</h3><h4>{subtitle}</h4><p>{d[key]}</p>'
+          f'<div class="lever-demo">{_demo(key,ex)}</div>'
+          f'<a class="text-link" href="/expertises/{expertise}">Voir notre expertise ↗</a></article>')
  return ('<section class="block expertise-section"><div class="wrap"><div class="section-top">'
          '<div><div class="kicker">Comment on génère vos opportunités</div>'
          f'<h2 class="title">{TITLES[s["slug"]]["levers"]}</h2></div>'
@@ -225,3 +243,39 @@ def signature(s):
  return ('<section class="block sig-section" id="specificite"><div class="wrap"><div class="section-top">'
          f'<div><div class="kicker">{d["kicker"]}</div><h2 class="title">{d["title"]}</h2></div>'
          f'<p class="sub">{d["lead"]}</p></div>{d["html"]()}</div></section>')
+
+
+# ---------- Exemples concrets affichés dans chaque carte de levier ----------
+# Du texte réel plutôt qu'une maquette grise : ce qu'on construit vraiment, secteur par secteur.
+EXAMPLES = {
+'location-de-materiel': dict(
+ seo=['/location-nacelle-12m/poitiers','/mini-pelle-1-5t/tours','/echafaudage-roulant/angers'],
+ ads=[('location nacelle poitiers','Ciblé','ok'),('prix location nacelle','Enchère basse','warn'),('nacelle occasion à vendre','Exclu','bad')],
+ google=('Votre agence · Poitiers','4,7 ★ · 128 avis','Ouvert · ferme à 18 h',['Itinéraire','Appeler','Demander un devis']),
+ conversion=[('Quel matériel ?','Nacelle 12 m'),('Quelles dates ?','du 12 au 15 mars'),('Livraison où ?','Chantier, Poitiers')]),
+'reseaux-de-franchise': dict(
+ seo=['/devenir-franchise','/investissement-et-apport','/nos-territoires-disponibles'],
+ ads=[('ouvrir une franchise restauration','Ciblé','ok'),('franchise sans apport','Enchère basse','warn'),('emploi en franchise','Exclu','bad')],
+ google=('Votre enseigne · Tours','4,5 ★ · 96 avis','Ouvert · ferme à 22 h',['Itinéraire','Réserver','Voir la carte']),
+ conversion=[('Apport disponible ?','150 000 €'),('Quelle zone ?','Lyon et périphérie'),('Sous quel délai ?','moins de 6 mois')]),
+'renovation-artisans': dict(
+ seo=['/renovation-salle-de-bain/tours','/extension-maison/amboise','/renovation-complete/blois'],
+ ads=[('rénovation salle de bain tours','Ciblé','ok'),('prix extension maison','Enchère basse','warn'),('emploi maçon','Exclu','bad')],
+ google=('Votre entreprise · Tours','4,8 ★ · 64 avis','Ouvert · ferme à 18 h',['Itinéraire','Appeler','Demander un devis']),
+ conversion=[('Quels travaux ?','Extension 30 m²'),('Quel budget ?','autour de 60 000 €'),('Pour quand ?','printemps prochain')]),
+'immobilier': dict(
+ seo=['/estimation/tours-centre','/vendre-son-bien/amboise','/prix-au-m2/blois'],
+ ads=[('estimation appartement tours','Ciblé','ok'),('prix m2 tours','Enchère basse','warn'),('location appartement tours','Exclu','bad')],
+ google=('Votre agence · Tours','4,6 ★ · 212 avis','Ouvert · ferme à 19 h',['Itinéraire','Appeler','Estimer mon bien']),
+ conversion=[('Quel bien ?','Appartement, 78 m²'),('Où ?','Tours centre'),('Projet de vente ?','dans les 3 mois')]),
+'services-a-domicile': dict(
+ seo=['/aide-a-domicile/tours','/menage-repassage/blois','/garde-d-enfants/amboise'],
+ ads=[('aide à domicile tours','Ciblé','ok'),('tarif horaire ménage','Enchère basse','warn'),('emploi aide à domicile','Exclu','bad')],
+ google=('Votre agence · Tours','4,7 ★ · 87 avis','Ouvert · ferme à 18 h',['Itinéraire','Appeler','Être rappelé']),
+ conversion=[('Quel besoin ?','Aide au quotidien'),('Quelle fréquence ?','3 fois par semaine'),('Quelle commune ?','Saint-Avertin')]),
+'commerces-multi-sites': dict(
+ seo=['/magasins/tours-centre','/magasins/blois','/nos-adresses'],
+ ads=[('votre enseigne tours','Ciblé','ok'),('horaires votre enseigne','Enchère basse','warn'),('recrutement votre enseigne','Exclu','bad')],
+ google=('Votre enseigne · Tours centre','4,6 ★ · 143 avis','Ouvert · ferme à 20 h',['Itinéraire','Réserver','Voir les horaires']),
+ conversion=[('Quelle adresse ?','Tours centre'),('Pour quand ?','samedi 14 h'),('Combien de personnes ?','4 personnes')]),
+}
