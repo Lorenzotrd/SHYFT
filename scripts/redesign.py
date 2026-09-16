@@ -65,11 +65,11 @@ STEPS='''<div class="steps three">
 body=old.split('<body>',1)[1].split('<script>',1)[0]
 body=re.sub(r'<nav class="nav".*?</nav>',nav(),body,flags=re.S)
 body=body.replace('<main>','<main id="main">')
-body=body.replace('<div class="hero-copy">','<div class="hero-copy"><div class="hero-eyebrow"><span></span> Pour les PME solides sur le terrain</div>',1)
+body=body.replace('<div class="hero-copy">','<div class="hero-copy"><div class="hero-eyebrow"><span></span> Audit offert · Paiement au résultat</div>',1)
 body=body.replace('Vos clients vous cherchent.<span class="l2">On vous rend impossible&nbsp;à&nbsp;rater.</span>','Votre prochain client<br><span class="l2">vous cherche déjà.</span>')
 body=body.replace('Élan génère des demandes qualifiées pour les PME et les réseaux français : location de matériel, franchises, rénovation. Référencement, Google, Meta et IA, pilotés ensemble et payés au résultat.','SHYFT apporte aux PME bien implantées sur le terrain les demandes qui leur manquent en ligne. On repère celles de votre marché, on les capte, on mesure ce qu’elles rapportent.')
 body=body.replace('<a class="btn btn-glass" href="#secteurs">Voir ce qu\'on fait pour vous</a>','<a class="btn btn-glass" href="#methode">Voir notre méthode</a>')
-body=body.replace('Aperçu des signaux suivis pour chaque client, dans un tableau partagé','<span class="caption-dot"></span> Vos objectifs. Notre point de départ. <span class="demo-label">Illustrations de parcours, données fictives</span>')
+body=body.replace('Aperçu des signaux suivis pour chaque client, dans un tableau partagé','<span class="caption-dot"></span> Vos objectifs. Notre point de départ.')
 body=body.replace('tableau de bord Élan','tableau de bord '+BRAND).replace('Pourquoi Élan','Pourquoi '+BRAND)
 body=body.replace('<div class="v">680 / mois</div>','<div class="v">Être trouvé, ici.</div>')
 body=body.replace('<div class="v">4,6 <span class="stars" aria-hidden="true">★★★★★</span></div>','<div class="v">Votre présence locale</div>').replace('94 avis','Horaires · Photos · Avis').replace('Appels ce mois','Le bon contact').replace('+ 31','Au bon endroit')
