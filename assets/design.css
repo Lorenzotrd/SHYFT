@@ -253,3 +253,72 @@ form.lead .legal a{color:inherit}
 a.channel-card{text-decoration:none;display:block;transition:border-color .2s,transform .2s;border:1px solid transparent}
 a.channel-card:hover{border-color:#c9d3bd;transform:translateY(-2px)}
 a.channel-card .channel-number{color:#5b7a12}
+
+/* ============ Pages métier : leviers en bento et parcours décalé ============ */
+.lever-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:44px}
+.lever{background:#fff;border:1px solid #e4e8df;border-radius:20px;padding:30px;display:flex;gap:26px;position:relative;overflow:hidden}
+.lever-wide{grid-column:span 4}
+.lever-wide .lever-text{padding:8px 0}
+.lever-narrow{grid-column:span 2;flex-direction:column}
+.lever-text{flex:1;min-width:0;display:flex;flex-direction:column}
+.lever-n{font:11px var(--mono);color:#7b847a;display:block;margin-bottom:14px}
+.lever h3{margin:0;font-size:21px;letter-spacing:-.035em;line-height:1.2}
+.lever h4{margin:6px 0 0;font-size:13px;font-weight:400;color:#5b7a12}
+.lever p{margin:12px 0 0;font-size:14px;line-height:1.6;color:var(--ink-soft)}
+.lever ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.lever li{font-size:13px;line-height:1.5;color:var(--ink-soft);padding-left:16px;position:relative}
+.lever li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 1px #b9d94a}
+.lever .text-link{margin-top:20px;align-self:flex-start}
+.lever-visual{flex:none;width:220px;display:flex;align-items:center}
+.lever-narrow .lever-visual{width:auto;margin-top:22px}
+
+/* Petites interfaces décoratives des cartes. */
+.mini{width:100%;background:var(--mist);border:1px solid #e6eae0;border-radius:14px;padding:16px;min-height:132px}
+.mini-bar{display:block;font:10px var(--mono);color:#7b847a;background:#fff;border:1px solid #e3e7de;border-radius:999px;padding:7px 12px;margin-bottom:12px}
+.mini-row{display:flex;flex-direction:column;gap:5px;padding:7px 0;border-top:1px solid #e6eae0}
+.mini-row:first-of-type{border-top:0}
+.mini-row i{display:block;height:5px;border-radius:3px;background:#d2d9cd}
+.mini-row.is-you{border-left:2px solid var(--lime);padding-left:9px}
+.mini-row.is-you i:first-child{background:#0b8fc4}
+.mini-tag{display:inline-block;font:9px var(--mono);background:#1b201e;color:#fff;border-radius:4px;padding:3px 7px;margin-bottom:10px}
+.mini-bars{display:flex;align-items:flex-end;gap:5px;height:44px;margin-top:12px}
+.mini-bars b{flex:1;height:var(--h);border-radius:2px 2px 0 0;background:linear-gradient(#1ca9d4,#bfeef3)}
+.mini-map{position:relative;background-image:radial-gradient(#dfe5d8 1px,transparent 1px);background-size:14px 14px;min-height:150px}
+.mini-map .pin{position:absolute;width:11px;height:11px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#a9b79c}
+.mini-map .pin.is-you{background:var(--lime);width:16px;height:16px;box-shadow:0 0 0 4px #d5ff6340}
+.mini-flow{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-height:0;justify-content:center}
+.mini-flow span{font-size:11px;background:#fff;border:1px solid #e3e7de;border-radius:999px;padding:7px 11px}
+.mini-flow span.is-you{background:var(--lime);border-color:var(--lime)}
+.mini-flow em{font-style:normal;color:#a9b79c;font-size:12px;margin-left:14px;line-height:1}
+
+/* Parcours : cartes décalées, l'œil suit la progression. */
+.journey{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:46px 0 0;padding:0;align-items:start}
+.jstep{background:var(--mist);border-radius:18px;padding:24px;display:flex;flex-direction:column;min-height:196px}
+.jstep:nth-child(2){margin-top:26px}
+.jstep:nth-child(3){margin-top:52px}
+.jstep:nth-child(4){margin-top:78px}
+.jbadge{align-self:flex-start;font:10px var(--mono);background:#fff;border:1px solid #e3e7de;border-radius:999px;padding:6px 11px;margin-bottom:16px}
+.jstep b{font-size:19px;font-weight:500;letter-spacing:-.035em;line-height:1.2}
+.jstep p{margin:9px 0 0;font-size:13px;line-height:1.6;color:var(--ink-soft)}
+.jstep em{font-style:normal;font:10px var(--mono);color:#6b746a;margin-top:auto;padding-top:16px}
+.jstep:last-child{background:var(--lime)}
+.jstep:last-child .jbadge{background:#ffffff80;border-color:#ffffff90}
+.jstep:last-child p,.jstep:last-child em{color:#3c4a28}
+
+@media(max-width:980px){
+ .lever-grid{grid-template-columns:repeat(2,1fr)}
+ .lever-wide,.lever-narrow{grid-column:span 1;flex-direction:column}
+ .lever-visual{width:auto;margin-top:22px}
+ .journey{grid-template-columns:1fr 1fr;gap:16px 16px}
+ .jstep:nth-child(2){margin-top:34px}
+ .jstep:nth-child(3){margin-top:0}
+ .jstep:nth-child(4){margin-top:34px}
+}
+@media(max-width:640px){
+ .lever-grid{grid-template-columns:1fr;gap:12px}
+ .lever{padding:24px}
+ .journey{grid-template-columns:1fr;gap:12px}
+ .jstep,.jstep:nth-child(2),.jstep:nth-child(3),.jstep:nth-child(4){margin-top:0;min-height:0;padding:22px}
+}
+
+@media(max-width:640px){.mini{min-height:118px}.mini-map{min-height:132px}}

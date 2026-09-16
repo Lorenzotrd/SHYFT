@@ -29,10 +29,16 @@ Adresses sans extension, servies par `cleanUrls` sur Vercel et par le serveur lo
 | `/expertises/agence-ia` | Agents, automatisations, CRM, relances |
 | `/expertises/landing-pages-cro` | Landing pages, formulaires, optimisation de la conversion |
 | `/expertises/data-tracking` | GA4, Tag Manager, suivi des appels, attribution, tableau de bord |
-| `/secteurs` et `/secteurs/<métier>` | Les six pages métier |
+| `/secteurs` et `/secteurs/<métier>` | Les six pages métier : marché, parcours en étapes décalées, quatre leviers en bento, mesure, simulateur |
 | `/mentions-legales`, `/confidentialite` | Pages légales |
 
 Chaque page expertise suit la même ossature sans être un clone : problème, approche, interface de démonstration propre au sujet, ce qu’on met en place, point de vigilance, parcours, indicateurs, maillage vers les autres expertises, secteurs concernés, FAQ, formulaire. L’interface change à chaque fois : page de résultats Google pour le SEO, conversation pour le GEO, annonce et termes exclus pour Google Ads, créations comparées pour Meta, chaînes d’automatisation pour l’IA, entonnoir pour la conversion, tableau de bord pour la data.
+
+## Structure d’une page métier
+
+Marché du visiteur, parcours d’une demande en quatre étapes décalées, puis les quatre leviers présentés en bento asymétrique : deux grandes cartes et deux petites, chacune avec trois éléments concrets, une petite interface décorative dessinée en CSS et un lien vers l’expertise correspondante. Viennent ensuite la mesure, le simulateur, la FAQ et le formulaire. Les leviers et leurs visuels sont définis dans `LEVERS` et `_mini()` (`scripts/sector_growth.py`).
+
+Aucun bandeau de chiffres de performance, aucun logo client et aucun compteur d’entreprises accompagnées, tant qu’il n’y a rien de publiable.
 
 ## Modifier les contenus
 

@@ -18,12 +18,6 @@ def growth(s):
  revenue=clients*d['value']
  return f'''<section class="block growth-section" id="potentiel"><div class="wrap"><div class="section-top"><div><div class="kicker">Des prospects. Des clients. Du chiffre d’affaires.</div><h2 class="title">Ce que de nouveaux clients<br>peuvent changer pour vous.</h2></div><p class="sub">Rendez votre acquisition concrète. <br>Ajustez les hypothèses avec vos propres chiffres.</p></div><div class="growth-calculator" data-growth><div class="growth-inputs"><span class="simulation-label">Simulation illustrative · pas un résultat client</span><h3>Partons de votre activité.</h3><label for="growth-leads">Nombre de prospects qualifiés<input id="growth-leads" data-input="leads" type="number" min="0" max="100000" step="1" value="{d['leads']}" required></label><label for="growth-rate">Taux de transformation en {d['client']} (%)<input id="growth-rate" data-input="rate" type="number" min="0" max="100" step="0.1" value="{d['rate']}" required></label><label for="growth-value">{d['unit']}<input id="growth-value" data-input="value" type="number" min="0" max="10000000" step="1" value="{d['value']}" required></label><p class="growth-hint">Valeurs de démonstration librement choisies, sans référence à une moyenne du marché. Utilisez un même groupe de prospects suivi jusqu’à l’issue commerciale.</p></div><div class="growth-results" aria-live="polite" aria-atomic="true"><div class="growth-funnel"><div><span>01 · Acquisition</span><strong data-output="leads">{d['leads']}</strong><p>prospects qualifiés</p></div><span class="funnel-arrow" aria-hidden="true">→</span><div><span>02 · Conversion</span><strong data-output="clients">{number(clients)}</strong><p>{d['client']}</p></div></div><div class="growth-revenue"><span>03 · {d['result']}</span><strong><span data-output="revenue">{number(revenue)}</span> <small>€ HT</small></strong><p data-output="formula">{d['leads']} prospects × {d['rate']} % × {number(d['value'])} €</p></div><p class="growth-note">{d['note']} Le CA n’est pas une marge : budgets publicitaires, honoraires et coûts d’exploitation ne sont pas déduits. Aucune performance n’est garantie.</p><p class="growth-error" role="status" hidden>Complétez les trois valeurs : nombres positifs ou nuls, taux compris entre 0 et 100 %.</p></div></div><div class="growth-next"><span>On valide les hypothèses et les objectifs pendant votre audit.</span><a class="text-link" href="#contact">Recevoir mon audit offert ↗</a></div></div></section>'''
 
-def channels(s):
- d=DATA[s['slug']]
- entries=[('SEO & référencement naturel','Capter une recherche utile',d['seo']),('Google Ads','Générer des prospects ciblés',d['ads']),('Fiche Google / Google My Business','Convertir la proximité en contacts',d['google']),('Optimisation de l’acquisition','Transformer les prospects en clients',d['conversion'])]
- cards=''.join(f'<article class="channel-card"><span class="channel-number">0{i+1} ↗</span><h3>{name}</h3><h4>{title}</h4><p>{text}</p></article>' for i,(name,title,text) in enumerate(entries))
- return '<section class="block expertise-section"><div class="wrap"><div class="kicker">Comment on génère vos opportunités</div><h2 class="title">Quatre leviers.<br>Un objectif : vos nouveaux clients.</h2><p class="sub">On relie votre visibilité, les demandes reçues et leur transformation commerciale. Chaque levier répond à une étape précise.</p><div class="channel-grid">'+cards+'</div></div></section>'
-
 # Mesure & suivi : trois indicateurs par secteur et la source de chaque chiffre.
 MEASURE = {
 'location-de-materiel': [('Demandes de location qualifiées','Comptées dans votre CRM, avec la source de chaque demande.'),('Coût par demande','Google Ads et Analytics, par matériel et par campagne.'),('Visibilité par matériel et par ville','Search Console : requêtes, positions et pages qui sortent.')],
@@ -66,6 +60,61 @@ def market(s):
  pains=''.join(f'<li>{p}</li>' for p in s['pain'])
  return f'<section class="block" id="marche"><div class="wrap audit"><div><div class="kicker">Votre marché</div><h2 class="title">{WHO[s["slug"]]}<br>cherchent déjà.</h2><p class="sub">Des exemples de recherches dans votre métier. Et ce qui se passe aujourd’hui quand elles arrivent :</p><ul class="plain">{pains}</ul><a class="btn btn-lime" href="#contact">Recevoir mon audit offert</a></div><div class="report" aria-label="Exemples de recherches de vos futurs clients"><div class="report-head"><b>Ce qu’ils tapent</b><span>Exemples, sans volume</span></div>{rows}</div></div></section>'
 
+# Les quatre leviers d'un secteur : bento asymétrique, chaque carte renvoie vers l'expertise correspondante.
+# (nom, sous-titre, clé du texte dans DATA, expertise liée, visuel, trois éléments concrets)
+LEVERS = [
+ ('SEO & référencement naturel','Capter une recherche utile','seo','seo','serp',
+  ['Pages par prestation et par ville','Contenu qui répond aux recherches réelles','Suivi des positions et du trafic hors marque']),
+ ('Google Ads','Générer des prospects ciblés','ads','google-ads','ads',
+  ['Mots-clés à intention commerciale','Exclusions et ciblage sur votre zone','Suivi des conversions et des appels']),
+ ('Fiche Google et Maps','Convertir la proximité en contacts','google','seo','map',
+  ['Catégories, services, photos, horaires','Avis collectés et traités','Une fiche à jour par établissement']),
+ ('Optimisation de l’acquisition','Transformer les prospects en clients','conversion','landing-pages-cro','flow',
+  ['Un formulaire qui qualifie sans décourager','Réponse rapide et relances automatiques','Suivi de la demande jusqu’à la signature']),
+]
+SPANS = ['wide','narrow','narrow','wide']
+
+def _mini(kind):
+ """Petite interface décorative, dans la palette du site."""
+ if kind=='serp':
+  return ('<div class="mini mini-serp" aria-hidden="true"><span class="mini-bar">métier + ville</span>'
+          '<div class="mini-row is-you"><i style="width:72%"></i><i style="width:45%"></i></div>'
+          '<div class="mini-row"><i style="width:58%"></i><i style="width:36%"></i></div>'
+          '<div class="mini-row"><i style="width:64%"></i></div></div>')
+ if kind=='ads':
+  return ('<div class="mini mini-ads" aria-hidden="true"><span class="mini-tag">Annonce</span>'
+          '<div class="mini-row"><i style="width:80%"></i><i style="width:52%"></i></div>'
+          '<div class="mini-bars"><b style="--h:34%"></b><b style="--h:52%"></b><b style="--h:44%"></b>'
+          '<b style="--h:70%"></b><b style="--h:88%"></b></div></div>')
+ if kind=='map':
+  return ('<div class="mini mini-map" aria-hidden="true"><span class="pin" style="left:22%;top:30%"></span>'
+          '<span class="pin is-you" style="left:54%;top:52%"></span><span class="pin" style="left:76%;top:26%"></span>'
+          '<span class="pin" style="left:38%;top:74%"></span></div>')
+ return ('<div class="mini mini-flow" aria-hidden="true"><span>Demande</span><em>↓</em>'
+         '<span>Qualifiée</span><em>↓</em><span class="is-you">Client</span></div>')
+
+def channels(s):
+ d=DATA[s['slug']]
+ cards=''
+ for i,(name,subtitle,key,expertise,kind,items) in enumerate(LEVERS):
+  bullets=''.join(f'<li>{x}</li>' for x in items)
+  cards+=(f'<article class="lever lever-{SPANS[i]}"><div class="lever-text"><span class="lever-n">0{i+1}</span>'
+          f'<h3>{name}</h3><h4>{subtitle}</h4><p>{d[key]}</p><ul>{bullets}</ul>'
+          f'<a class="text-link" href="/expertises/{expertise}">Voir notre expertise ↗</a></div>'
+          f'<div class="lever-visual">{_mini(kind)}</div></article>')
+ return ('<section class="block expertise-section"><div class="wrap"><div class="section-top">'
+         '<div><div class="kicker">Comment on génère vos opportunités</div>'
+         '<h2 class="title">Quatre leviers.<br>Un objectif : vos nouveaux clients.</h2></div>'
+         '<p class="sub">On relie votre visibilité, les demandes reçues et leur transformation commerciale. '
+         'Chaque levier répond à une étape précise.</p></div>'
+         f'<div class="lever-grid">{cards}</div></div></section>')
+
 def journey(s):
- steps=''.join(f'<div class="step"><div class="n">0{i+1} · {role}</div><h3>{title}</h3><p>{text}</p></div>' for i,(title,text,role) in enumerate(JOURNEY[s['slug']]))
- return f'<section class="block" id="parcours"><div class="wrap"><div class="section-top"><div><div class="kicker">Votre parcours d’acquisition</div><h2 class="title">Du clic<br>à la signature.</h2></div><p class="sub">{DATA[s["slug"]]["follow"]}</p></div><div class="steps">{steps}</div></div></section>'
+ steps=''.join(
+  f'<li class="jstep"><span class="jbadge">Étape {i+1}</span><b>{title}</b><p>{text}</p><em>{role}</em></li>'
+  for i,(title,text,role) in enumerate(JOURNEY[s['slug']]))
+ return ('<section class="block" id="parcours"><div class="wrap"><div class="section-top">'
+         '<div><div class="kicker">Votre parcours d’acquisition</div>'
+         '<h2 class="title">Du clic<br>à la signature.</h2></div>'
+         f'<p class="sub">{DATA[s["slug"]]["follow"]}</p></div>'
+         f'<ol class="journey">{steps}</ol></div></section>')

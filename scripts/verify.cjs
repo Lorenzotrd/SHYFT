@@ -45,8 +45,10 @@ if(titles.size!==slugs.length)throw Error('Titres de page en double');
 await go('/secteurs');
 const sectors=require('../assets/sectors.json');
 for(const s of sectors){await go('/secteurs/'+s.slug);
+ if(await count('.lever-grid .lever')!==4)throw Error('Leviers en bento manquants : '+s.slug);
+ if(await count('.lever-grid a[href^="/expertises/"]')!==4)throw Error('Liens vers les expertises manquants : '+s.slug);
  if(await count('#mesure .metric-grid article')!==3)throw Error('Bloc mesure manquant : '+s.slug);
- if(await count('#marche .rrow')!==3||await count('#parcours .step')!==4)throw Error('Marché ou parcours manquant : '+s.slug);
+ if(await count('#marche .rrow')!==3||await count('#parcours .jstep')!==4)throw Error('Marché ou parcours manquant : '+s.slug);
  const opts=await page.locator('select[name="secteur"] option').allTextContents();
  if(new Set(opts).size!==opts.length)throw Error('Doublon dans le choix du secteur : '+s.slug);
 }
