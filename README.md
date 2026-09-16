@@ -1,5 +1,9 @@
 # SHYFT
 
+## Positionnement
+
+SHYFT construit le canal commercial digital des PME bien implantées sur le terrain : identifier les demandes de leur marché, les capter, les convertir et mesurer le chiffre d’affaires qu’elles rapportent. Sur le site, la même idée est dite avec les mots des clients : « les demandes qui vous manquent en ligne ». Méthode en trois temps : Identifier (audit offert et plan chiffré), Construire (test de 60 jours), Développer (pilotage au résultat).
+
 Site de l’agence SHYFT : SEO, Google Ads, Meta Ads, IA et mesure pour les PME et réseaux français. HTML léger sans framework : bleu ciel, photographies de nuages, accent citron, cartes en arc, six pages métier, section Mesure & suivi, pages légales et formulaire connecté à une API.
 
 ## Voir le site
@@ -12,7 +16,7 @@ Ouvrir http://localhost:4173. `index.html` est la page d’accueil pour l’héb
 
 ## Pages
 
-Accueil (pourquoi, secteurs, expertises, audit, mesure & suivi, méthode, équipe, FAQ, formulaire), index des secteurs, six pages métier (location de matériel, réseaux de franchise, rénovation et artisans, immobilier, services à domicile, commerces multi-sites), mentions légales et politique de confidentialité.
+Accueil (pourquoi, secteurs, constat et cinq étapes, audit, mesure & suivi, méthode, équipe, FAQ, formulaire), index des secteurs, six pages métier (marché vu par les futurs clients, parcours d’une demande, quatre leviers, mesure & suivi, simulateur, FAQ), mentions légales et politique de confidentialité. Les exemples de recherches des pages métier sont des requêtes types sans volume, définis dans `scripts/sector_growth.py` (`SEARCHES`, `JOURNEY`).
 
 ## Mesure & suivi
 

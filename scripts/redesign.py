@@ -1,6 +1,6 @@
 from pathlib import Path
 import re, json
-from sector_growth import DATA, growth, channels, measure
+from sector_growth import DATA, growth, channels, measure, market, journey
 
 BRAND='SHYFT'
 YEAR=2026
@@ -30,7 +30,7 @@ def grid(prefix=''):
  return '<div class="sector-grid">'+''.join(f'''<a class="sector-card" href="{prefix}secteurs/{s['slug']}.html"><div class="sector-photo"><img src="{prefix}assets/{s['photo']}.jpg" loading="lazy" alt="" width="800" height="600"><span class="sector-number">0{i+1}</span><span class="sector-open" aria-hidden="true">↗</span></div><div class="sector-text"><h3>{s['name']}</h3><p>{s['short']}</p></div></a>''' for i,s in enumerate(sectors))+'</div>'
 
 def footer(prefix=''):
- return f'''<footer class="site-footer"><div class="wrap footer-top"><div><a class="logo" href="{prefix}index.html" aria-label="{BRAND}, accueil">{logo}</a><p>Votre savoir-faire mérite<br>d’être trouvé.</p></div><div><span class="footer-label">Explorer</span><a href="{prefix}secteurs/index.html">Nos secteurs</a><a href="{prefix}index.html#expertises">Nos expertises</a><a href="{prefix}index.html#mesure">Mesure &amp; suivi</a><a href="{prefix}index.html#methode">Notre méthode</a><a href="{prefix}index.html#a-propos">L’agence</a></div><div><span class="footer-label">Votre prochain pas</span><a href="#contact">Recevoir mon audit offert ↗</a><p>Pour les PME et réseaux français.</p></div></div><div class="wrap footer-bottom"><span>© {YEAR} {BRAND}. On avance ensemble.</span><span class="footer-legal"><a href="{prefix}mentions-legales.html">Mentions légales</a><a href="{prefix}confidentialite.html">Confidentialité</a></span><span>Stratégie · Acquisition · Mesure</span></div></footer>'''
+ return f'''<footer class="site-footer"><div class="wrap footer-top"><div><a class="logo" href="{prefix}index.html" aria-label="{BRAND}, accueil">{logo}</a><p>Votre savoir-faire mérite<br>d’être trouvé.</p></div><div><span class="footer-label">Explorer</span><a href="{prefix}secteurs/index.html">Nos secteurs</a><a href="{prefix}index.html#expertises">Nos expertises</a><a href="{prefix}index.html#mesure">Mesure &amp; suivi</a><a href="{prefix}index.html#methode">Notre méthode</a><a href="{prefix}index.html#a-propos">L’agence</a></div><div><span class="footer-label">Votre prochain pas</span><a href="#contact">Recevoir mon audit offert ↗</a><p>Pour les PME bien implantées<br>sur le terrain.</p></div></div><div class="wrap footer-bottom"><span>© {YEAR} {BRAND}. On avance ensemble.</span><span class="footer-legal"><a href="{prefix}mentions-legales.html">Mentions légales</a><a href="{prefix}confidentialite.html">Confidentialité</a></span><span>Stratégie · Acquisition · Mesure</span></div></footer>'''
 
 # Formulaire : repris de l'original, secteur présélectionné sur les pages métier, lien vers la confidentialité.
 form=re.search(r'<div class="hero-shell" id="contact">.*?</div>\s*</div>\s*\n\s*<footer>',old,re.S).group(0).rsplit('<footer>',1)[0]
@@ -54,14 +54,21 @@ def page(title,description,body,prefix='',path=''):
  extra=f'<link rel="canonical" href="{SITE_URL}/{path}"><meta property="og:url" content="{SITE_URL}/{path}"><meta property="og:image" content="{SITE_URL}/assets/og.png">' if SITE_URL else ''
  return f'<!doctype html><html lang="fr" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title><meta name="description" content="{description}"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:type" content="website">{extra}<meta name="theme-color" content="#067bb1"><link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="{prefix}assets/base.css"><link rel="stylesheet" href="{prefix}assets/design.css"></head><body><a class="skip-link" href="#main">Aller au contenu</a>{body}<script src="{prefix}assets/site.js" defer></script></body></html>'
 
+STEPS='''<div class="steps three">
+      <div class="step"><div class="n">Étape 1 · Audit offert et plan chiffré</div><h3>Identifier</h3><p>On analyse votre visibilité, on vous présente les constats avec les chiffres de votre marché, et on estime ensemble ce que valent les demandes pour vous.</p></div>
+      <div class="step"><div class="n">Étape 2 · Test de 60 jours</div><h3>Construire</h3><p>On lance sur un périmètre réduit, quelques services ou quelques villes, pour mesurer vite ce qui fonctionne.</p></div>
+      <div class="step"><div class="n">Étape 3 · Pilotage au résultat</div><h3>Développer</h3><p>On garde ce qui marche, on coupe le reste, et on étend aux autres zones ou métiers.</p></div>
+    </div>
+
+    '''
 # ---------- Accueil ----------
 body=old.split('<body>',1)[1].split('<script>',1)[0]
 body=re.sub(r'<nav class="nav".*?</nav>',nav(),body,flags=re.S)
 body=body.replace('<main>','<main id="main">')
-body=body.replace('<div class="hero-copy">','<div class="hero-copy"><div class="hero-eyebrow"><span></span> L’agence qui fait avancer votre activité</div>',1)
+body=body.replace('<div class="hero-copy">','<div class="hero-copy"><div class="hero-eyebrow"><span></span> Pour les PME solides sur le terrain</div>',1)
 body=body.replace('Vos clients vous cherchent.<span class="l2">On vous rend impossible&nbsp;à&nbsp;rater.</span>','Votre prochain client<br><span class="l2">vous cherche déjà.</span>')
-body=body.replace('Élan génère des demandes qualifiées pour les PME et les réseaux français : location de matériel, franchises, rénovation. Référencement, Google, Meta et IA, pilotés ensemble et payés au résultat.','On fait se rencontrer votre savoir-faire et les bonnes personnes. <br>SEO, publicité, IA et mesure. Une stratégie claire, des contacts qualifiés.')
-body=body.replace('Voir ce qu\'on fait pour vous','Découvrir notre approche')
+body=body.replace('Élan génère des demandes qualifiées pour les PME et les réseaux français : location de matériel, franchises, rénovation. Référencement, Google, Meta et IA, pilotés ensemble et payés au résultat.','SHYFT apporte aux PME bien implantées sur le terrain les demandes qui leur manquent en ligne. On repère celles de votre marché, on les capte, on mesure ce qu’elles rapportent.')
+body=body.replace('<a class="btn btn-glass" href="#secteurs">Voir ce qu\'on fait pour vous</a>','<a class="btn btn-glass" href="#methode">Voir notre méthode</a>')
 body=body.replace('Aperçu des signaux suivis pour chaque client, dans un tableau partagé','<span class="caption-dot"></span> Vos objectifs. Notre point de départ. <span class="demo-label">Illustrations de parcours, données fictives</span>')
 body=body.replace('tableau de bord Élan','tableau de bord '+BRAND).replace('Pourquoi Élan','Pourquoi '+BRAND)
 body=body.replace('<div class="v">680 / mois</div>','<div class="v">Être trouvé, ici.</div>')
@@ -72,8 +79,8 @@ bento='''<div class="bento"><div class="tile skyt"><span class="tile-eyebrow">Un
 body=re.sub(r'<div class="bento">.*?\n    </div>\n  </div>\n</section>',bento+'\n</div>\n</section>',body,count=1,flags=re.S)
 sectorsection='''<section class="block" id="secteurs"><div class="wrap"><div class="section-top"><div><div class="kicker">À chaque métier, sa vitesse</div><h2 class="title">Votre secteur.<br>Vos vrais enjeux.</h2></div><p class="sub">On ne remplit pas un planning de location<br>comme on recrute un franchisé.<br>Découvrez une approche pensée pour vous.</p></div>'''+grid()+'''<div class="sector-tail"><span>Votre métier n’est pas dans la liste ? Parlons-en.</span><a class="text-link" href="#contact">Échanger sur mon projet ↗</a></div></div></section>'''
 body=re.sub(r'<section class="block" id="secteurs".*?</section>',sectorsection,body,flags=re.S)
-expert='''<section class="block expertise-section" id="expertises"><div class="wrap"><div class="section-top"><div><div class="kicker">Les bons leviers, ensemble</div><h2 class="title">Une stratégie.<br>Plusieurs façons d’avancer.</h2></div><p class="sub">Du premier clic au premier échange,<br>on relie chaque étape de votre acquisition.</p></div><div class="expertise-list">'''
-for i,(name,desc,tags) in enumerate([('Être trouvé','Soyez présent quand vos futurs clients cherchent une solution.','Référencement naturel · Fiches Google'),('Donner envie','Faites découvrir votre offre aux bonnes personnes, au bon moment.','Google Ads · Meta Ads'),('Créer le contact','Transformez l’intérêt en une demande simple et bien qualifiée.','Pages de conversion · Formulaires'),('Garder le lien','Répondez plus vite et suivez chaque opportunité jusqu’au bout.','CRM · Emailing · Relances automatiques'),('Mesurer et piloter','Chaque demande est comptée, chaque euro est suivi, dans un tableau partagé.','Search Console · Google Analytics · Tableau de bord')]):
+expert='''<section class="block expertise-section" id="expertises"><div class="wrap"><div class="section-top"><div><div class="kicker">Le constat</div><h2 class="title">Le digital ne manque pas d’outils.<br>Il manque d’une stratégie commune.</h2></div><p class="sub">Meta, Google, une landing page, un CRM : souvent tout existe, mais rien n’est relié.<br>On relie chaque étape, du premier clic au chiffre d’affaires.</p></div><div class="expertise-list">'''
+for i,(name,desc,tags) in enumerate([('Être trouvé','Soyez présent quand vos futurs clients cherchent une solution.','Visibilité : référencement naturel · fiches Google'),('Donner envie','Faites découvrir votre offre aux bonnes personnes, au bon moment.','Acquisition : Google Ads · Meta Ads'),('Créer le contact','Transformez l’intérêt en une demande simple et bien qualifiée.','Site et conversion : pages, formulaires, site si nécessaire'),('Garder le lien','Répondez plus vite et suivez chaque opportunité jusqu’au bout.','CRM, automatisation et IA : relances · emailing'),('Mesurer et piloter','Chaque demande est comptée, chaque euro est suivi, dans un tableau partagé.','Données et pilotage : Search Console · Analytics · tableau de bord')]):
  expert+=f'<details {"open" if i==0 else ""}><summary><span class="expert-number">0{i+1}</span><h3>{name}</h3><span class="expert-tags">{tags}</span><span class="expert-plus">+</span></summary><p>{desc}</p></details>'
 expert+='</div></div></section>'
 body=body.replace('<!-- ================= AUDIT ================= -->',expert+'<!-- ================= AUDIT ================= -->')
@@ -91,11 +98,13 @@ mesure+='''</div></div><div class="sector-tail"><span>Tout est installé dans vo
 '''
 body=body.replace('<!-- ================= METHOD ================= -->',mesure+'<!-- ================= METHOD ================= -->')
 body=body.replace('<details><summary>Avec quelles entreprises travaillez vous ?','<details><summary>Comment suit-on les résultats ?</summary><p>Search Console, Google Analytics et votre CRM sont installés dans vos comptes. Un tableau de bord partagé compte chaque demande, sa source et son coût. Vous y accédez à tout moment.</p></details>\n      <details><summary>Avec quelles entreprises travaillez vous ?')
+body,n=re.subn(r'<div class="steps">.*?</div>\s*\n\s*<div class="pay">',lambda m: STEPS+'<div class="pay">',body,count=1,flags=re.S)
+assert n==1, 'steps'
 body=body.replace('<section class="block" style="padding-top:20px">','<section class="block" id="a-propos" style="padding-top:20px">',1)
 body=body[:body.index('<!-- ================= FINAL CTA ================= -->')]+contact()+footer()
 for marker in ('id="mesure"','Comment suit-on les résultats','À installer','confidentialite.html'):
  assert marker in body, marker
-(root/'index.html').write_text(page(BRAND+' · Votre prochain client vous cherche déjà.','SEO, Google Ads, Meta Ads, IA et mesure pour les PME et réseaux français. Six secteurs, une approche au résultat. Découvrez votre audit offert.',body,'',''))
+(root/'index.html').write_text(page(BRAND+' · Votre prochain client vous cherche déjà.','SHYFT apporte aux PME bien implantées sur le terrain les demandes qui leur manquent en ligne : SEO, Google Ads, Meta Ads, CRM et mesure. Six secteurs, une approche au résultat. Audit offert.',body,'',''))
 
 # ---------- Pages métier ----------
 (root/'secteurs').mkdir(exist_ok=True)
@@ -103,8 +112,7 @@ for s in sectors:
  p='../'
  s={**s, 'desc': DATA[s['slug']]['intro']}
  hero=f'''<div class="hero-shell"><header class="hero sector-hero">{nav(p)}<div class="sector-hero-grid"><div><div class="hero-eyebrow">{s['name']}</div><h1>{s['title']}</h1><p class="lead">{s['desc']}</p><a class="btn btn-lime" href="#contact">Recevoir mon audit offert <span class="arrow-circle">↗</span></a></div><div class="sector-cover"><img src="../assets/{s['photo']}.jpg" alt="" width="800" height="600"><div class="floating-signal"><span class="pulse"></span>{s['signal']}<strong>{s['value']}</strong><small>Exemple de parcours</small></div></div></div></header></div>'''
- main='<main id="main">'+growth(s)+'<section class="block"><div class="wrap"><div class="kicker">On connaît le point de départ</div><h2 class="title">Ce qui freine votre développement.</h2><div class="pain-grid">'+''.join(f'<article><span>0{i+1}</span><h3>{pain}</h3></article>' for i,pain in enumerate(s['pain']))+'</div></div></section>'
- main+=channels(s)+measure(s)
+ main='<main id="main">'+market(s)+journey(s)+channels(s)+measure(s)+growth(s)
  faqs=[(s['question'],s['answer']),('Faut-il refaire notre site ?','Pas nécessairement. Nous partons de votre site et de vos outils actuels. Des pages ou formulaires ciblés peuvent compléter ce qui existe.'),('Que contient l’audit offert ?',f'Un état des lieux de votre visibilité, de vos parcours de contact et de vos opportunités pour votre activité : {s["name"].lower()}. Les recommandations sont adaptées à votre zone.'),('Comment suit-on les résultats ?','Search Console, Google Analytics et votre CRM sont installés dans vos comptes. Un tableau de bord partagé compte chaque demande, sa source et son coût.'),('Qui définit ce qui est qualifié ?','Vous et nous, avant le test. Les critères sont écrits et partagés pour suivre les demandes avec la même définition.')]
  main+='<section class="block" style="padding-top:0"><div class="wrap"><div class="kicker">Vos questions</div><h2 class="title">Avant de se lancer.</h2><div class="faq">'+''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q,a in faqs)+'</div></div></section></main>'
  schema={'@context':'https://schema.org','@type':'FAQPage','mainEntity':[{'@type':'Question','name':q,'acceptedAnswer':{'@type':'Answer','text':a}} for q,a in faqs]}
