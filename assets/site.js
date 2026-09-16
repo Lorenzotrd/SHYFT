@@ -1,13 +1,13 @@
 /* Shared navigation, illustrative card layout and audit delivery. */
 const nav=document.querySelector('.nav');
 const menu=document.querySelector('.menu-toggle');
-const dropdown=document.querySelector('.dropdown-toggle');
-const sectorMenu=document.querySelector('.dropdown-menu');
-function closeMenus(){nav?.classList.remove('menu-open');menu?.setAttribute('aria-expanded','false');if(sectorMenu)sectorMenu.hidden=true;dropdown?.setAttribute('aria-expanded','false')}
-menu?.addEventListener('click',()=>{const open=nav.classList.toggle('menu-open');menu.setAttribute('aria-expanded',String(open));});
-dropdown?.addEventListener('click',()=>{sectorMenu.hidden=!sectorMenu.hidden;dropdown.setAttribute('aria-expanded',String(!sectorMenu.hidden));});
+const dropdowns=[...document.querySelectorAll('.dropdown')].map(d=>({toggle:d.querySelector('.dropdown-toggle'),panel:d.querySelector('.dropdown-menu')})).filter(d=>d.toggle&&d.panel);
+function closePanels(){dropdowns.forEach(d=>{d.panel.hidden=true;d.toggle.setAttribute('aria-expanded','false')})}
+function closeMenus(){nav?.classList.remove('menu-open');menu?.setAttribute('aria-expanded','false');closePanels()}
+menu?.addEventListener('click',()=>{const open=nav.classList.toggle('menu-open');menu.setAttribute('aria-expanded',String(open));if(!open)closePanels()});
+dropdowns.forEach(d=>d.toggle.addEventListener('click',()=>{const opening=d.panel.hidden;closePanels();if(opening){d.panel.hidden=false;d.toggle.setAttribute('aria-expanded','true')}}));
 document.addEventListener('click',e=>{if(!nav?.contains(e.target))closeMenus()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){const target=!sectorMenu?.hidden?dropdown:menu;closeMenus();target?.focus()}});
+document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;const open=dropdowns.find(d=>!d.panel.hidden);const target=open?open.toggle:menu;closeMenus();target?.focus()});
 document.querySelectorAll('.navigation a').forEach(a=>a.addEventListener('click',closeMenus));
 const track=document.querySelector('#arcTrack');
 function layout(){if(!track)return;const cards=[...track.children];if(innerWidth<=640){cards.forEach(c=>{c.style.transform='';c.style.left='';c.style.zIndex=''});return}const mid=(cards.length-1)/2,gap=Math.min(183,innerWidth/8.1);cards.forEach((c,i)=>{const o=i-mid,a=Math.abs(o);c.style.left=(o*gap-85)+'px';c.style.transform=`translate3d(0,${a*a*6}px,${-a*a*20}px) rotateY(${-o*15}deg) rotateZ(${o*1.8}deg)`;c.style.zIndex=String(10-Math.round(a));c.style.animationDelay=(a*.06)+'s'})}

@@ -1,6 +1,8 @@
 from pathlib import Path
 import re, json
 from sector_growth import DATA, growth, channels, measure, market, journey
+import expertises as XP
+from expertises import EXPERTISES, BY_SLUG, GROUPS, DEMO, url as xurl
 
 BRAND='SHYFT'
 YEAR=2026
@@ -23,22 +25,27 @@ sectors=[
 logo='<span class="brandmark" aria-hidden="true">↗</span>shyft<span class="brand-dot">.</span>'
 
 def nav(prefix=''):
- links=''.join(f'<a href="{prefix}secteurs/{s["slug"]}.html">{s["name"]}<span>↗</span></a>' for s in sectors)
- return f'''<nav class="nav" aria-label="Navigation principale"><a class="logo" href="{prefix}index.html" aria-label="{BRAND}, accueil">{logo}</a><button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span>☰</span></button><div class="navigation" id="navigation"><div class="dropdown"><button class="dropdown-toggle" aria-expanded="false" aria-controls="sector-menu">Nos secteurs <span>⌄</span></button><div class="dropdown-menu" id="sector-menu" hidden>{links}<a href="{prefix}secteurs/index.html">Tous les secteurs <span>→</span></a></div></div><a href="{prefix}index.html#expertises">Nos expertises</a><a href="{prefix}index.html#mesure">Mesure &amp; suivi</a><a href="{prefix}index.html#methode">Notre méthode</a></div><a class="btn btn-lime nav-cta" href="#contact">Parlons de votre projet <span class="arrow-circle">↗</span></a></nav>'''
+ slinks=''.join(f'<a href="/secteurs/{s["slug"]}">{s["name"]}<span aria-hidden="true">↗</span></a>' for s in sectors)
+ cols=''
+ for gname,gslugs in GROUPS:
+  links=''.join(f'<a href="{xurl(sl)}"><span class="mega-text"><b>{BY_SLUG[sl]["menu"]}</b><i>{BY_SLUG[sl]["hint"]}</i></span><span aria-hidden="true">↗</span></a>' for sl in gslugs)
+  cols+=f'<div class="mega-col"><span class="mega-label">{gname}</span>{links}</div>'
+ return f'''<nav class="nav" aria-label="Navigation principale"><a class="logo" href="/" aria-label="{BRAND}, accueil">{logo}</a><button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span>☰</span></button><div class="navigation" id="navigation"><div class="dropdown"><button class="dropdown-toggle" aria-expanded="false" aria-controls="sector-menu">Nos secteurs <span aria-hidden="true">⌄</span></button><div class="dropdown-menu" id="sector-menu" hidden>{slinks}<a href="/secteurs">Tous les secteurs <span aria-hidden="true">→</span></a></div></div><div class="dropdown mega"><button class="dropdown-toggle" aria-expanded="false" aria-controls="expertise-menu">Nos expertises <span aria-hidden="true">⌄</span></button><div class="dropdown-menu mega-menu" id="expertise-menu" hidden><div class="mega-cols">{cols}</div><a class="mega-all" href="/expertises">Toutes nos expertises <span aria-hidden="true">→</span></a></div></div><a href="/#methode">Notre méthode</a></div><a class="btn btn-lime nav-cta" href="#contact">Parlons de votre projet <span class="arrow-circle">↗</span></a></nav>'''
 
 def grid(prefix=''):
- return '<div class="sector-grid">'+''.join(f'''<a class="sector-card" href="{prefix}secteurs/{s['slug']}.html"><div class="sector-photo"><img src="{prefix}assets/{s['photo']}.jpg" loading="lazy" alt="" width="800" height="600"><span class="sector-number">0{i+1}</span><span class="sector-open" aria-hidden="true">↗</span></div><div class="sector-text"><h3>{s['name']}</h3><p>{s['short']}</p></div></a>''' for i,s in enumerate(sectors))+'</div>'
+ return '<div class="sector-grid">'+''.join(f'''<a class="sector-card" href="/secteurs/{s['slug']}"><div class="sector-photo"><img src="/assets/{s['photo']}.jpg" loading="lazy" alt="" width="800" height="600"><span class="sector-number">0{i+1}</span><span class="sector-open" aria-hidden="true">↗</span></div><div class="sector-text"><h3>{s['name']}</h3><p>{s['short']}</p></div></a>''' for i,s in enumerate(sectors))+'</div>'
 
 def footer(prefix=''):
- return f'''<footer class="site-footer"><div class="wrap footer-top"><div><a class="logo" href="{prefix}index.html" aria-label="{BRAND}, accueil">{logo}</a><p>Votre savoir-faire mérite<br>d’être trouvé.</p></div><div><span class="footer-label">Explorer</span><a href="{prefix}secteurs/index.html">Nos secteurs</a><a href="{prefix}index.html#expertises">Nos expertises</a><a href="{prefix}index.html#mesure">Mesure &amp; suivi</a><a href="{prefix}index.html#methode">Notre méthode</a></div><div><span class="footer-label">Votre prochain pas</span><a href="#contact">Recevoir mon audit offert ↗</a><p>Pour les PME bien implantées<br>sur le terrain.</p></div></div><div class="wrap footer-bottom"><span>© {YEAR} {BRAND}. On avance ensemble.</span><span class="footer-legal"><a href="{prefix}mentions-legales.html">Mentions légales</a><a href="{prefix}confidentialite.html">Confidentialité</a></span><span>Stratégie · Acquisition · Mesure</span></div></footer>'''
+ xl=''.join(f'<a href="{xurl(e["slug"])}">{e["name"]}</a>' for e in EXPERTISES)
+ return f'''<footer class="site-footer"><div class="wrap footer-top"><div><a class="logo" href="/" aria-label="{BRAND}, accueil">{logo}</a><p>Votre savoir-faire mérite<br>d’être trouvé.</p></div><div><span class="footer-label">Nos expertises</span>{xl}</div><div><span class="footer-label">Explorer</span><a href="/secteurs">Nos secteurs</a><a href="/expertises">Toutes nos expertises</a><a href="/#methode">Notre méthode</a></div><div><span class="footer-label">Votre prochain pas</span><a href="#contact">Recevoir mon audit offert ↗</a><p>Pour les PME bien implantées<br>sur le terrain.</p></div></div><div class="wrap footer-bottom"><span>© {YEAR} {BRAND}. On avance ensemble.</span><span class="footer-legal"><a href="/mentions-legales">Mentions légales</a><a href="/confidentialite">Confidentialité</a></span><span>Stratégie · Acquisition · Mesure</span></div></footer>'''
 
 # Formulaire : repris de l'original, secteur présélectionné sur les pages métier, lien vers la confidentialité.
 form=re.search(r'<div class="hero-shell" id="contact">.*?</div>\s*</div>\s*\n\s*<footer>',old,re.S).group(0).rsplit('<footer>',1)[0]
 form=form.replace('Voyons ce que Google, Meta et les IA disent de votre entreprise.','Et si on passait<br>à la vitesse supérieure&nbsp;?').replace('Laissez vos coordonnées : on prépare votre audit et on vous le présente en visio.','Tout commence par un regard neuf. Parlez-nous de votre entreprise, on identifie vos prochaines opportunités.')
 form=form.replace('novalidate','').replace('<label>Prénom et nom','<div class="form-heading full"><span class="kicker">Faisons connaissance</span><h3>Votre audit commence ici.</h3></div><label>Prénom et nom')
-form=form.replace('<p class="legal full">Vos informations servent uniquement à préparer votre audit et à vous recontacter.</p>','<label class="honeypot" aria-hidden="true">Ne pas remplir<input name="website_check" tabindex="-1" autocomplete="off"></label><p class="legal full">Vos informations servent uniquement à préparer votre audit et à vous recontacter. <a href="{PFX}confidentialite.html">Politique de confidentialité</a>.</p>')
+form=form.replace('<p class="legal full">Vos informations servent uniquement à préparer votre audit et à vous recontacter.</p>','<label class="honeypot" aria-hidden="true">Ne pas remplir<input name="website_check" tabindex="-1" autocomplete="off"></label><p class="legal full">Vos informations servent uniquement à préparer votre audit et à vous recontacter. <a href="/confidentialite">Politique de confidentialité</a>.</p>')
 form=re.sub(r'<select name="secteur" required>.*?</select>','{SELECT}',form,flags=re.S)
-assert '{SELECT}' in form and '{PFX}' in form
+assert '{SELECT}' in form
 
 def options(selected=None):
  names=[s['name'] for s in sectors]+['Autre']
@@ -46,13 +53,13 @@ def options(selected=None):
  return '<select name="secteur" required>'+first+''.join(f'<option{" selected" if n==selected else ""}>{n}</option>' for n in names)+'</select>'
 
 def contact(prefix='',selected=None):
- return form.replace('{SELECT}',options(selected)).replace('{PFX}',prefix)
+ return form.replace('{SELECT}',options(selected))
 
 def page(title,description,body,prefix='',path=''):
  # Sur mobile, certains <br> sont masqués : un espace avant chaque <br> évite les mots collés.
  body=re.sub(r'(?<=\S)<br>',' <br>',body)
  extra=f'<link rel="canonical" href="{SITE_URL}/{path}"><meta property="og:url" content="{SITE_URL}/{path}"><meta property="og:image" content="{SITE_URL}/assets/og.png">' if SITE_URL else ''
- return f'<!doctype html><html lang="fr" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title><meta name="description" content="{description}"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:type" content="website">{extra}<meta name="theme-color" content="#067bb1"><link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="{prefix}assets/base.css"><link rel="stylesheet" href="{prefix}assets/design.css"></head><body><a class="skip-link" href="#main">Aller au contenu</a>{body}<script src="{prefix}assets/site.js" defer></script></body></html>'
+ return f'<!doctype html><html lang="fr" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title><meta name="description" content="{description}"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:type" content="website">{extra}<meta name="theme-color" content="#067bb1"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/design.css"></head><body><a class="skip-link" href="#main">Aller au contenu</a>{body}<script src="/assets/site.js" defer></script></body></html>'
 
 STEPS='''<div class="steps three">
       <div class="step"><div class="n">Étape 1 · Audit offert et plan chiffré</div><h3>Identifier</h3><p>On analyse votre visibilité, on vous présente les constats avec les chiffres de votre marché, et on estime ensemble ce que valent les demandes pour vous.</p></div>
@@ -79,10 +86,12 @@ bento='''<div class="bento"><div class="tile skyt"><span class="tile-eyebrow">Un
 body=re.sub(r'<div class="bento">.*?\n    </div>\n  </div>\n</section>',bento+'\n</div>\n</section>',body,count=1,flags=re.S)
 sectorsection='''<section class="block" id="secteurs"><div class="wrap"><div class="section-top"><div><div class="kicker">À chaque métier, sa vitesse</div><h2 class="title">Votre secteur.<br>Vos vrais enjeux.</h2></div><p class="sub">On ne remplit pas un planning de location<br>comme on recrute un franchisé.<br>Découvrez une approche pensée pour vous.</p></div>'''+grid()+'''<div class="sector-tail"><span>Votre métier n’est pas dans la liste ? Parlons-en.</span><a class="text-link" href="#contact">Échanger sur mon projet ↗</a></div></div></section>'''
 body=re.sub(r'<section class="block" id="secteurs".*?</section>',sectorsection,body,flags=re.S)
-expert='''<section class="block expertise-section" id="expertises"><div class="wrap"><div class="section-top"><div><div class="kicker">Le constat</div><h2 class="title">Le digital ne manque pas d’outils.<br>Il manque d’une stratégie commune.</h2></div><p class="sub">Meta, Google, une landing page, un CRM : souvent tout existe, mais rien n’est relié.<br>On relie chaque étape, du premier clic au chiffre d’affaires.</p></div><div class="expertise-list">'''
-for i,(name,desc,tags) in enumerate([('Être trouvé','Soyez présent quand vos futurs clients cherchent une solution.','Visibilité : référencement naturel · fiches Google'),('Donner envie','Faites découvrir votre offre aux bonnes personnes, au bon moment.','Acquisition : Google Ads · Meta Ads'),('Créer le contact','Transformez l’intérêt en une demande simple et bien qualifiée.','Site et conversion : pages, formulaires, site si nécessaire'),('Garder le lien','Répondez plus vite et suivez chaque opportunité jusqu’au bout.','CRM, automatisation et IA : relances · emailing'),('Mesurer et piloter','Chaque demande est comptée, chaque euro est suivi, dans un tableau partagé.','Données et pilotage : Search Console · Analytics · tableau de bord')]):
- expert+=f'<details {"open" if i==0 else ""}><summary><span class="expert-number">0{i+1}</span><h3>{name}</h3><span class="expert-tags">{tags}</span><span class="expert-plus">+</span></summary><p>{desc}</p></details>'
-expert+='</div></div></section>'
+expert=('<section class="block expertise-section" id="expertises"><div class="wrap"><div class="section-top">'
+ '<div><div class="kicker">Nos expertises</div><h2 class="title">Le digital ne manque pas d’outils.<br>Il manque d’une stratégie commune.</h2></div>'
+ '<p class="sub">De la première recherche au client signé, on connecte les bons leviers<br>autour d’un seul objectif : une acquisition mesurable.</p></div>'
+ +XP.cards()+
+ '<div class="sector-tail"><span>Sept expertises, une seule chaîne : être trouvé, générer, convertir, automatiser, mesurer.</span>'
+ '<a class="text-link" href="/expertises">Découvrir toutes nos expertises ↗</a></div></div></section>')
 body=body.replace('<!-- ================= AUDIT ================= -->',expert+'<!-- ================= AUDIT ================= -->')
 body=body.replace('Aucune annonce, alors que les clics coûtent moins de 1 $','Une opportunité de visibilité à étudier dans votre zone').replace('Exemple anonymisé','Exemple illustratif')
 # Audit : la mesure devient un point contrôlé.
@@ -93,7 +102,7 @@ tools=[('Google Search Console','Ce que les gens tapent pour vous trouver, vos p
 mesure='''<!-- ================= MESURE ================= -->
 <section class="block measure-section" id="mesure"><div class="wrap"><div class="section-top"><div><div class="kicker">Mesure &amp; suivi</div><h2 class="title">Ce qu’on installe<br>pour tout mesurer.</h2></div><p class="sub">Payés au résultat, on a besoin de chiffres justes.<br>Chaque demande est comptée, chaque euro est suivi.</p></div><div class="measure-grid"><div class="report measure-board" aria-label="Exemple de tableau de bord partagé"><div class="report-head"><b>Tableau de bord partagé</b><span>Illustration, données fictives</span></div><div class="rrow"><div><div class="t">Demandes qualifiées</div><div class="d">Ce mois, toutes sources confondues</div></div><b class="measure-value">42</b></div><div class="rrow"><div><div class="t">Coût par demande</div><div class="d">Google Ads et Meta Ads</div></div><b class="measure-value">38 €</b></div><div class="rrow"><div><div class="t">Sources</div><div class="d">Google 61 % · Meta 24 % · Direct 15 %</div></div><span class="tag ok">Analytics</span></div><div class="rrow"><div><div class="t">Rendez-vous pris</div><div class="d">Suivis dans votre CRM</div></div><b class="measure-value">11</b></div><div class="rrow"><div><div class="t">Relances envoyées</div><div class="d">Séquence email automatique</div></div><b class="measure-value">27</b></div></div><div class="measure-list">'''
 mesure+=''.join(f'<article><span class="expert-number">0{i+1}</span><div><h3>{n}</h3><p>{d}</p></div></article>' for i,(n,d) in enumerate(tools))
-mesure+='''</div></div><div class="sector-tail"><span>Tout est installé dans vos comptes Google, votre CRM et votre outil email. Si on arrête, vous gardez tout.</span><a class="text-link" href="#contact">Recevoir mon audit offert ↗</a></div></div></section>
+mesure+='''</div></div><div class="sector-tail"><span>Tout est installé dans vos comptes Google, votre CRM et votre outil email. Si on arrête, vous gardez tout.</span><a class="text-link" href="/expertises/data-tracking">Voir l’expertise Data &amp; Tracking ↗</a></div></div></section>
 
 '''
 body=body.replace('<!-- ================= METHOD ================= -->',mesure+'<!-- ================= METHOD ================= -->')
@@ -104,7 +113,7 @@ body,n=re.subn(r'<!-- =+ TEAM =+ -->.*?</section>\n','',body,count=1,flags=re.S)
 assert n==1, 'team'
 body=body.replace('<section class="block" id="faq" style="padding-top:20px">','<section class="block" id="faq">',1)
 body=body[:body.index('<!-- ================= FINAL CTA ================= -->')]+contact()+footer()
-for marker in ('id="mesure"','Comment suit-on les résultats','À installer','confidentialite.html'):
+for marker in ('id="mesure"','Comment suit-on les résultats','À installer','/confidentialite','xp-card','/expertises'):
  assert marker in body, marker
 (root/'index.html').write_text(page(BRAND+' · Votre prochain client vous cherche déjà.','SHYFT apporte aux PME bien implantées sur le terrain les demandes qui leur manquent en ligne : SEO, Google Ads, Meta Ads, CRM et mesure. Six secteurs, une approche au résultat. Audit offert.',body,'',''))
 
@@ -113,25 +122,109 @@ for marker in ('id="mesure"','Comment suit-on les résultats','À installer','co
 for s in sectors:
  p='../'
  s={**s, 'desc': DATA[s['slug']]['intro']}
- hero=f'''<div class="hero-shell"><header class="hero sector-hero">{nav(p)}<div class="sector-hero-grid"><div><div class="hero-eyebrow">{s['name']}</div><h1>{s['title']}</h1><p class="lead">{s['desc']}</p><a class="btn btn-lime" href="#contact">Recevoir mon audit offert <span class="arrow-circle">↗</span></a></div><div class="sector-cover"><img src="../assets/{s['photo']}.jpg" alt="" width="800" height="600"><div class="floating-signal"><span class="pulse"></span>{s['signal']}<strong>{s['value']}</strong><small>Exemple de parcours</small></div></div></div></header></div>'''
+ hero=f'''<div class="hero-shell"><header class="hero sector-hero">{nav(p)}<div class="sector-hero-grid"><div><div class="hero-eyebrow">{s['name']}</div><h1>{s['title']}</h1><p class="lead">{s['desc']}</p><a class="btn btn-lime" href="#contact">Recevoir mon audit offert <span class="arrow-circle">↗</span></a></div><div class="sector-cover"><img src="/assets/{s['photo']}.jpg" alt="" width="800" height="600"><div class="floating-signal"><span class="pulse"></span>{s['signal']}<strong>{s['value']}</strong><small>Exemple de parcours</small></div></div></div></header></div>'''
  main='<main id="main">'+market(s)+journey(s)+channels(s)+measure(s)+growth(s)
  faqs=[(s['question'],s['answer']),('Faut-il refaire notre site ?','Pas nécessairement. Nous partons de votre site et de vos outils actuels. Des pages ou formulaires ciblés peuvent compléter ce qui existe.'),('Que contient l’audit offert ?',f'Un état des lieux de votre visibilité, de vos parcours de contact et de vos opportunités pour votre activité : {s["name"].lower()}. Les recommandations sont adaptées à votre zone.'),('Comment suit-on les résultats ?','Search Console, Google Analytics et votre CRM sont installés dans vos comptes. Un tableau de bord partagé compte chaque demande, sa source et son coût.'),('Qui définit ce qui est qualifié ?','Vous et nous, avant le test. Les critères sont écrits et partagés pour suivre les demandes avec la même définition.')]
  main+='<section class="block" style="padding-top:0"><div class="wrap"><div class="kicker">Vos questions</div><h2 class="title">Avant de se lancer.</h2><div class="faq">'+''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q,a in faqs)+'</div></div></section></main>'
  schema={'@context':'https://schema.org','@type':'FAQPage','mainEntity':[{'@type':'Question','name':q,'acceptedAnswer':{'@type':'Answer','text':a}} for q,a in faqs]}
- (root/'secteurs'/f'{s["slug"]}.html').write_text(page(s['name']+' · '+BRAND,s['desc'],hero+main+contact(p,s['name'])+footer(p)+'<script type="application/ld+json">'+json.dumps(schema,ensure_ascii=False)+'</script>',p,f'secteurs/{s["slug"]}.html'))
+ (root/'secteurs'/f'{s["slug"]}.html').write_text(page(s['name']+' · '+BRAND,s['desc'],hero+main+contact(p,s['name'])+footer(p)+'<script type="application/ld+json">'+json.dumps(schema,ensure_ascii=False)+'</script>',p,f'secteurs/{s["slug"]}'))
 listing='<div class="hero-shell"><header class="hero listing-hero">'+nav('../')+'<div class="hero-copy"><div class="hero-eyebrow">Nos secteurs</div><h1>Chaque métier a ses défis.<br><span class="l2">Trouvons le bon rythme.</span></h1><p class="lead">Une approche d’acquisition qui part de votre réalité.</p></div></header></div><main id="main"><section class="block"><div class="wrap">'+grid('../')+'</div></section></main>'+contact('../')+footer('../')
-(root/'secteurs/index.html').write_text(page('Nos six secteurs d’expertise · '+BRAND,'Location, franchise, rénovation, immobilier, services à domicile et commerces multi-sites : découvrez nos approches.',listing,'../','secteurs/index.html'))
+(root/'secteurs/index.html').write_text(page('Nos six secteurs d’expertise · '+BRAND,'Location, franchise, rénovation, immobilier, services à domicile et commerces multi-sites : découvrez nos approches.',listing,'../','secteurs'))
+
+
+# ---------- Pages expertises ----------
+(root/'expertises').mkdir(exist_ok=True)
+sector_names={s['slug']:s['name'] for s in sectors}
+
+def crumbs(name):
+ return ('<nav class="crumbs" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span>'
+         f'<a href="/expertises">Expertises</a><span aria-hidden="true">›</span><span aria-current="page">{name}</span></nav>')
+
+def ld(items):
+ return '<script type="application/ld+json">'+json.dumps(items,ensure_ascii=False)+'</script>'
+
+for e in EXPERTISES:
+ dtitle,dline=DEMO[e['slug']]
+ path=f'expertises/{e["slug"]}'
+ hero=('<div class="hero-shell"><header class="hero xp-hero">'+nav()+
+   '<div class="hero-copy xp-hero-copy">'+crumbs(e['name'])+
+   f'<div class="hero-eyebrow">{e["eyebrow"]}</div><h1>{e["h1"]}</h1><p class="lead">{e["lead"]}</p>'
+   f'<div class="hero-cta"><a class="btn btn-lime" href="#contact">{e["cta"]} <span class="arrow-circle">↗</span></a>'
+   '<a class="btn btn-glass" href="/#methode">Voir notre méthode</a></div></div></header></div>')
+ m='<main id="main">'
+ m+=('<section class="block"><div class="wrap"><div class="section-top"><div><div class="kicker">Le problème</div>'
+     f'<h2 class="title">{e["problem_title"]}</h2></div><p class="sub">Ce qu’on retrouve le plus souvent au début d’un audit.</p></div>'
+     +XP.problem_grid(e)+'</div></section>')
+ m+=('<section class="block expertise-section"><div class="wrap"><div class="kicker">Notre approche</div>'
+     '<h2 class="title">Comment on s’y prend.</h2>'+XP.approach_cards(e)+'</div></section>')
+ m+=(f'<section class="block"><div class="wrap"><div class="section-top"><div><div class="kicker">En pratique</div>'
+     f'<h2 class="title">{dtitle}</h2></div><p class="sub">{dline}</p></div>'+XP.visual(e)+'</div></section>')
+ m+=('<section class="block" style="padding-top:0"><div class="wrap"><div class="kicker">Ce qu’on met en place</div>'
+     '<h2 class="title">Le détail du travail.</h2>'+XP.build_grid(e)+'</div></section>')
+ m+=(f'<section class="block" style="padding-top:0"><div class="wrap"><div class="sector-pay xp-aside">'
+     f'<div><div class="kicker">À retenir</div><h2>{e["aside_title"]}</h2></div><p>{e["aside"]}</p></div></div></section>')
+ if e['visual']!='workflow':
+  m+=('<section class="block"><div class="wrap"><div class="kicker">Le parcours</div>'
+      '<h2 class="title">Du premier signal<br>au client.</h2>'+XP.flow(e['flow'])+'</div></section>')
+ m+=('<section class="block"><div class="wrap"><div class="section-top"><div><div class="kicker">Ce qu’on mesure</div>'
+     '<h2 class="title">Les chiffres<br>qu’on regarde.</h2></div><p class="sub">Installés dans vos comptes, réunis dans un tableau partagé.</p></div>'
+     +XP.measure_steps(e)+'</div></section>')
+ m+=XP.complements(e['slug'])
+ m+=XP.sectors_for(e['slug'],sector_names)
+ m+=('<section class="block" style="padding-top:0"><div class="wrap"><div class="kicker">Vos questions</div>'
+     '<h2 class="title">Avant de se lancer.</h2><div class="faq">'+
+     ''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q,a in e['faq'])+'</div></div></section></main>')
+ service={'@context':'https://schema.org','@type':'Service','name':e['name'],'serviceType':e['title'],
+          'description':e['desc'],'provider':{'@type':'Organization','name':BRAND},
+          'areaServed':{'@type':'Country','name':'France'}}
+ crumb={'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[
+   {'@type':'ListItem','position':1,'name':'Accueil'},
+   {'@type':'ListItem','position':2,'name':'Expertises'},
+   {'@type':'ListItem','position':3,'name':e['name']}]}
+ faq={'@context':'https://schema.org','@type':'FAQPage','mainEntity':[
+   {'@type':'Question','name':q,'acceptedAnswer':{'@type':'Answer','text':a}} for q,a in e['faq']]}
+ if SITE_URL:
+  service['url']=f'{SITE_URL}/{path}'
+  for i,item in enumerate(crumb['itemListElement']):
+   item['item']=f'{SITE_URL}/'+['','expertises',path][i]
+ (root/'expertises'/f'{e["slug"]}.html').write_text(
+   page(e['title']+' · '+BRAND, e['desc'], hero+m+contact()+footer()+ld([service,crumb,faq]), '', path))
+
+xhero=('<div class="hero-shell"><header class="hero listing-hero">'+nav()+
+ '<div class="hero-copy"><div class="hero-eyebrow">Nos expertises</div>'
+ '<h1>Être trouvé. Convaincre.<br><span class="l2">Convertir. Mesurer.</span></h1>'
+ '<p class="lead">SEO, publicité, IA, automatisation et données : SHYFT réunit les expertises nécessaires pour construire une acquisition cohérente et mesurable.</p>'
+ '<div class="hero-cta"><a class="btn btn-glass" href="/#methode">Découvrir notre méthode</a>'
+ '<a class="btn btn-lime" href="#contact">Recevoir mon audit offert <span class="arrow-circle">↗</span></a></div>'
+ '</div></header></div>')
+xmain=('<main id="main">'
+ '<section class="block"><div class="wrap"><div class="section-top"><div><div class="kicker">Le système</div>'
+ '<h2 class="title">Cinq temps.<br>Sept expertises.</h2></div>'
+ '<p class="sub">Chaque expertise répond à un moment précis du parcours. Prises séparément, elles produisent des chiffres. Reliées, elles produisent des clients.</p></div>'
+ +XP.system()+'</div></section>'
+ '<section class="block expertise-section"><div class="wrap"><div class="kicker">Le détail</div>'
+ '<h2 class="title">Nos sept expertises.</h2>'
+ '<p class="sub">On ne les active pas toutes en même temps. L’audit dit par où commencer, et le test de 60 jours le vérifie.</p>'
+ +XP.cards()+'</div></section>'
+ '<section class="block"><div class="wrap"><div class="section-top"><div><div class="kicker">Par métier</div>'
+ '<h2 class="title">Et pour<br>votre secteur ?</h2></div>'
+ '<p class="sub">Chaque métier n’a pas besoin des mêmes leviers, ni dans le même ordre.</p></div>'
+ +grid()+'</div></section></main>')
+(root/'expertises/index.html').write_text(page(
+ 'Nos expertises : SEO, GEO, Google Ads, Meta Ads, IA et data · '+BRAND,
+ 'SEO, GEO, Google Ads, Meta Ads, agence IA, landing pages et data : les sept expertises que SHYFT relie pour construire une acquisition mesurable.',
+ xhero+xmain+contact()+footer(),'','expertises'))
 
 # ---------- Pages légales : les passages surlignés sont à compléter avant la mise en ligne ----------
 def simple(eyebrow,h1,lead,content):
  return f'<div class="hero-shell"><header class="hero listing-hero legal-hero">{nav()}<div class="hero-copy"><div class="hero-eyebrow">{eyebrow}</div><h1>{h1}</h1><p class="lead">{lead}</p></div></header></div><main id="main"><section class="block"><div class="wrap"><div class="legal-text">{content}</div></div></section></main>'+contact()+footer()
-mentions=f'''<h2>Éditeur du site</h2><p>{BRAND}, <mark>À compléter : forme juridique, capital social, adresse du siège, numéro SIREN ou RCS, numéro de TVA</mark>.</p><p>Directeur de la publication : <mark>À compléter</mark>. Contact : <mark>À compléter : adresse email</mark>.</p><h2>Hébergement</h2><p><mark>À compléter : nom de l’hébergeur, adresse et téléphone</mark>.</p><h2>Propriété intellectuelle</h2><p>Les textes, la marque {BRAND} et la mise en page de ce site appartiennent à {BRAND}. Toute reproduction sans autorisation écrite est interdite.</p><h2>Crédits</h2><p>Les photographies d’illustration proviennent d’Unsplash et ne représentent ni l’équipe ni des clients. Les chiffres affichés dans les illustrations et les simulateurs sont fictifs. Polices Geist et Geist Mono, chargées depuis Google Fonts.</p><h2>Données personnelles</h2><p>Le traitement des informations du formulaire est décrit dans la <a href="confidentialite.html">politique de confidentialité</a>.</p>'''
+mentions=f'''<h2>Éditeur du site</h2><p>{BRAND}, <mark>À compléter : forme juridique, capital social, adresse du siège, numéro SIREN ou RCS, numéro de TVA</mark>.</p><p>Directeur de la publication : <mark>À compléter</mark>. Contact : <mark>À compléter : adresse email</mark>.</p><h2>Hébergement</h2><p><mark>À compléter : nom de l’hébergeur, adresse et téléphone</mark>.</p><h2>Propriété intellectuelle</h2><p>Les textes, la marque {BRAND} et la mise en page de ce site appartiennent à {BRAND}. Toute reproduction sans autorisation écrite est interdite.</p><h2>Crédits</h2><p>Les photographies d’illustration proviennent d’Unsplash et ne représentent ni l’équipe ni des clients. Les chiffres affichés dans les illustrations et les simulateurs sont fictifs. Polices Geist et Geist Mono, chargées depuis Google Fonts.</p><h2>Données personnelles</h2><p>Le traitement des informations du formulaire est décrit dans la <a href="/confidentialite">politique de confidentialité</a>.</p>'''
 confidentialite=f'''<h2>Responsable du traitement</h2><p>{BRAND}, <mark>À compléter : identité complète et adresse email de contact</mark>.</p><h2>Données collectées</h2><p>Le formulaire d’audit recueille : prénom et nom, entreprise, site internet, secteur, téléphone et email professionnel. Le site ne conserve aucune de ces données sur son serveur : elles sont transmises directement à notre outil de suivi des demandes, <mark>À compléter : nom du CRM ou de l’outil email</mark>.</p><h2>Pourquoi ces données</h2><ul><li>Préparer l’audit offert que vous demandez et vous recontacter pour le présenter (mesures précontractuelles prises à votre demande).</li><li>Poursuivre l’échange commercial si vous le souhaitez (intérêt légitime).</li></ul><p>Aucune prospection sans lien avec votre demande, aucune revente de données.</p><h2>Destinataires</h2><p>L’équipe {BRAND} et les prestataires techniques qui hébergent nos outils : <mark>À compléter : liste des prestataires et localisation des données</mark>.</p><h2>Durée de conservation</h2><p><mark>À compléter, par exemple : trois ans après le dernier contact</mark>.</p><h2>Vos droits</h2><p>Vous pouvez accéder à vos données, les rectifier, demander leur effacement, limiter ou refuser leur traitement et demander leur portabilité. Écrivez à <mark>À compléter : adresse email</mark>. Vous pouvez aussi adresser une réclamation à la CNIL (<a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>).</p><h2>Cookies et mesure d’audience</h2><p>Ce site n’utilise aucun cookie de mesure d’audience ni de publicité. Les polices sont chargées depuis Google Fonts : votre adresse IP est transmise à Google lors du chargement de la page.</p><h2>Sécurité</h2><p>Les données du formulaire sont vérifiées côté serveur, protégées par un champ anti-robot et transmises de façon chiffrée lorsque le site est servi en HTTPS.</p><p>Dernière mise à jour : 16 septembre 2026.</p>'''
-(root/'mentions-legales.html').write_text(page('Mentions légales · '+BRAND,'Informations légales sur l’éditeur et l’hébergeur du site '+BRAND+'.',simple('Informations légales','Mentions légales.','Qui édite ce site et comment nous contacter.',mentions),'','mentions-legales.html'))
-(root/'confidentialite.html').write_text(page('Politique de confidentialité · '+BRAND,'Comment '+BRAND+' utilise les informations du formulaire d’audit et quels sont vos droits.',simple('Vos données','Politique de confidentialité.','Ce qu’on fait de vos informations, et ce qu’on ne fait pas.',confidentialite),'','confidentialite.html'))
+(root/'mentions-legales.html').write_text(page('Mentions légales · '+BRAND,'Informations légales sur l’éditeur et l’hébergeur du site '+BRAND+'.',simple('Informations légales','Mentions légales.','Qui édite ce site et comment nous contacter.',mentions),'','mentions-legales'))
+(root/'confidentialite.html').write_text(page('Politique de confidentialité · '+BRAND,'Comment '+BRAND+' utilise les informations du formulaire d’audit et quels sont vos droits.',simple('Vos données','Politique de confidentialité.','Ce qu’on fait de vos informations, et ce qu’on ne fait pas.',confidentialite),'','confidentialite'))
 
 # ---------- Sitemap, robots, favicon ----------
-urls=['','secteurs/index.html']+[f'secteurs/{s["slug"]}.html' for s in sectors]+['mentions-legales.html','confidentialite.html']
+urls=['','expertises']+[f'expertises/{e["slug"]}' for e in EXPERTISES]+['secteurs']+[f'secteurs/{s["slug"]}' for s in sectors]+['mentions-legales','confidentialite']
 (root/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{BASE}/{u}</loc></url>\n' for u in urls)+'</urlset>\n')
 (root/'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n')
 (root/'assets/favicon.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#d9ff5b"/><path d="M18 46 46 18M19 18h27v27" fill="none" stroke="#152319" stroke-width="7"/></svg>')

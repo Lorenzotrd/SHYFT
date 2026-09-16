@@ -16,7 +16,29 @@ Ouvrir http://localhost:4173. `index.html` est la page d’accueil pour l’héb
 
 ## Pages
 
-Accueil (pourquoi, secteurs, constat et cinq étapes, audit, mesure & suivi, méthode, FAQ, formulaire), index des secteurs, six pages métier (marché vu par les futurs clients, parcours d’une demande, quatre leviers, mesure & suivi, simulateur, FAQ), mentions légales et politique de confidentialité. Les exemples de recherches des pages métier sont des requêtes types sans volume, définis dans `scripts/sector_growth.py` (`SEARCHES`, `JOURNEY`).
+Adresses sans extension, servies par `cleanUrls` sur Vercel et par le serveur local.
+
+| Adresse | Contenu |
+| --- | --- |
+| `/` | Accueil : hero, secteurs, expertises en bento, audit, mesure & suivi, méthode, FAQ, formulaire |
+| `/expertises` | Les cinq temps du système, les sept expertises, les six secteurs |
+| `/expertises/seo` | Référencement naturel, SEO local, Google Business Profile et Maps |
+| `/expertises/geo` | Référencement dans les moteurs de réponse : ChatGPT, Gemini, Perplexity, Google IA |
+| `/expertises/google-ads` | Campagnes Search, locales et Performance Max |
+| `/expertises/meta-ads` | Facebook et Instagram : audiences, créations, qualification |
+| `/expertises/agence-ia` | Agents, automatisations, CRM, relances |
+| `/expertises/landing-pages-cro` | Landing pages, formulaires, optimisation de la conversion |
+| `/expertises/data-tracking` | GA4, Tag Manager, suivi des appels, attribution, tableau de bord |
+| `/secteurs` et `/secteurs/<métier>` | Les six pages métier |
+| `/mentions-legales`, `/confidentialite` | Pages légales |
+
+Chaque page expertise suit la même ossature sans être un clone : problème, approche, interface de démonstration propre au sujet, ce qu’on met en place, point de vigilance, parcours, indicateurs, maillage vers les autres expertises, secteurs concernés, FAQ, formulaire. L’interface change à chaque fois : page de résultats Google pour le SEO, conversation pour le GEO, annonce et termes exclus pour Google Ads, créations comparées pour Meta, chaînes d’automatisation pour l’IA, entonnoir pour la conversion, tableau de bord pour la data.
+
+## Modifier les contenus
+
+- `scripts/expertises.py` : les sept expertises, leurs textes, leurs interfaces de démonstration, le maillage entre elles et la correspondance avec les secteurs (`SECTOR_EXPERTISES`). Ajouter une expertise revient à ajouter une entrée dans `EXPERTISES`, une ligne dans `GROUPS`, une dans `DEMO` et une dans `COMPLEMENTS`.
+- `scripts/sector_growth.py` : contenus des six pages métier et hypothèses des simulateurs.
+- `scripts/redesign.py` : assemblage des pages, navigation, pied de page, sitemap.
 
 ## Mesure & suivi
 
@@ -61,7 +83,15 @@ Les cartes du premier écran et le tableau de bord sont des illustrations, pas d
 
 ## Contrôles effectués
 
-`scripts/verify.cjs` : navigation déroulante, accueil, six pages métier, index et pages légales, section Mesure (cinq outils sur l’accueil, trois indicateurs par métier), absence de doublon dans le choix du secteur, navigation sans chevauchement à 1100 et 1200 pixels, absence de débordement horizontal mobile, erreur d’envoi sans connecteur, aucune erreur JavaScript. `scripts/growth-test.cjs` vérifie les simulateurs. `scripts/api-test.mjs` vérifie l’API avec un webhook local. Ces scripts utilisent le Playwright et Chrome locaux de l’environnement de travail ; adapter leur chemin pour une autre machine.
+`npm test` vérifie l’API. `node scripts/verify.cjs` contrôle 17 pages : ouverture et exclusivité des deux menus déroulants, fermeture par Échap, sept expertises dans le mega-menu, titre et meta description uniques par page, fil d’Ariane, interface de démonstration, maillage, FAQ et données structurées complètes (`Service`, `FAQPage`, `BreadcrumbList`), absence de lien en `.html`, navigation sans chevauchement à 1100 et 1200 pixels, absence de débordement horizontal à 390 pixels sur cinq pages, refus du formulaire sans connecteur et absence d’erreur JavaScript. `scripts/growth-test.cjs` vérifie les six simulateurs. Ces scripts utilisent le Playwright et le Chrome locaux ; adapter leur chemin sur une autre machine.
+
+## À faire avant la mise en ligne
+
+- Renseigner `SITE_URL` dans `scripts/redesign.py`, puis régénérer : canonical, `og:image`, sitemap et données structurées en dépendent.
+- Compléter les passages surlignés des pages légales.
+- Ajouter `LEAD_WEBHOOK_URL` dans les variables d’environnement Vercel.
+- Page « À propos » : prévue plus tard, volontairement absente de la navigation.
+- Aucun cas client, logo, témoignage ni résultat n’est affiché. Les interfaces qui portent des chiffres sont marquées « Démonstration » ou « Données de démonstration ».
 
 ## Acquisition et simulations par secteur
 
