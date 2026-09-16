@@ -6,7 +6,7 @@ import handler from '../api/lead.js';
 let received;
 const mock=http.createServer(async(req,res)=>{let raw='';for await(const c of req)raw+=c;received=JSON.parse(raw);res.end('ok')}).listen(4175,'127.0.0.1');
 process.env.LEAD_WEBHOOK_URL='http://127.0.0.1:4175';
-const child=spawn(process.execPath,['server.mjs'],{env:{...process.env,PORT:'4174'}});
+const child=spawn(process.execPath,['scripts/dev-server.mjs'],{env:{...process.env,PORT:'4174'}});
 try{
  await new Promise((resolve,reject)=>{child.stdout.once('data',resolve);child.once('error',reject);child.once('exit',()=>reject(Error('Server exited')))});
  const send=data=>fetch('http://127.0.0.1:4174/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});

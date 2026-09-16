@@ -1,1 +1,1 @@
-{"name":"shyft-site","version":"1.0.0","private":true,"type":"module","scripts":{"start":"node server.mjs","test":"node scripts/api-test.mjs"}}
+{"name":"shyft-site","version":"1.0.0","private":true,"type":"module","scripts":{"dev":"node scripts/dev-server.mjs","test":"node scripts/api-test.mjs"}}

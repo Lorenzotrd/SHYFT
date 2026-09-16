@@ -1,10 +1,11 @@
-// Serveur local : fichiers statiques et POST /api/lead (même logique que api/lead.js sur Vercel).
+// Serveur local uniquement (npm run dev) : fichiers statiques et POST /api/lead, même logique que api/lead.js sur Vercel.
+// Volontairement hors de la racine : un server.mjs à la racine est déployé par Vercel comme application Node.
 import http from 'node:http';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {handleLead,readStream} from './lib/lead.mjs';
-const root=path.dirname(fileURLToPath(import.meta.url));
+import {handleLead,readStream} from '../lib/lead.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.jpg':'image/jpeg','.svg':'image/svg+xml','.json':'application/json','.png':'image/png','.xml':'application/xml; charset=utf-8','.txt':'text/plain; charset=utf-8'};
 const pages=['/index.html','/mentions-legales.html','/confidentialite.html','/sitemap.xml','/robots.txt'];
 http.createServer(async(req,res)=>{
