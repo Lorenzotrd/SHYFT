@@ -36,9 +36,20 @@ Chaque page expertise suit la même ossature sans être un clone : problème, ap
 
 ## Structure d’une page métier
 
-Marché du visiteur, parcours d’une demande en quatre étapes décalées, puis les quatre leviers présentés en bento asymétrique : deux grandes cartes et deux petites, chacune avec trois éléments concrets, une petite interface décorative dessinée en CSS et un lien vers l’expertise correspondante. Viennent ensuite la mesure, le simulateur, la FAQ et le formulaire. Les leviers et leurs visuels sont définis dans `LEVERS` et `_mini()` (`scripts/sector_growth.py`).
+Colonne vertébrale commune : marché du visiteur, parcours d’une demande en quatre étapes décalées, quatre leviers en bento, mesure, simulateur, FAQ, formulaire. Les quatre leviers renvoient vers l’expertise correspondante.
 
-Aucun bandeau de chiffres de performance, aucun logo client et aucun compteur d’entreprises accompagnées, tant qu’il n’y a rien de publiable.
+À cela s’ajoute une section que le métier est le seul à avoir, placée à un endroit différent selon le secteur (`SIGNATURE` dans `scripts/sector_growth.py`, champ `after`) :
+
+| Secteur | Section propre | Placée après |
+| --- | --- | --- |
+| Location de matériel | Grille matériel × ville : une page par croisement | les leviers |
+| Réseaux de franchise | Deux acquisitions : recruter des franchisés, remplir les points de vente | le marché |
+| Rénovation & artisans | Critères de chantier ciblés et écartés | le marché |
+| Immobilier | Frise du cycle, du contact vendeur à la vente | le parcours |
+| Services à domicile | Capacité par agence et campagnes ajustées | les leviers |
+| Commerces multi-sites | Vue du siège et vue d’une adresse | le parcours |
+
+Les titres de section sont propres à chaque métier (`TITLES`) : « Du clic au chantier signé » pour la rénovation, « Du clic au mandat » pour l’immobilier, et ainsi de suite. Aucun bandeau de chiffres de performance, aucun logo client, aucun compteur d’entreprises accompagnées, tant qu’il n’y a rien de publiable. Les interfaces chiffrées portent la mention « Démonstration ».
 
 ## Modifier les contenus
 

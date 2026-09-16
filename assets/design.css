@@ -325,3 +325,98 @@ a.channel-card .channel-number{color:#5b7a12}
 /* Les cartes larges reçoivent un visuel pleine largeur, les étroites un visuel plus compact. */
 .lever-wide .mini-flow{gap:10px;justify-content:space-between;max-width:420px}
 .lever-wide .mini-bars{height:52px}
+
+/* ============ Section propre à chaque métier ============ */
+.sig-section{background:#f4f5f1}
+.sig-section .mock{background:#fff}
+
+/* Location : grille matériel × ville. */
+.grid-table td:first-child{white-space:nowrap;font-weight:500}
+.grid-table td{vertical-align:middle}
+.cell{display:inline-block;font:10px var(--mono);border-radius:999px;padding:6px 11px;white-space:nowrap}
+.cell.on{background:var(--lime);color:#2c3a10}
+.cell.off{background:var(--mist);color:#8a9387;border:1px dashed #d4dacd}
+
+/* Franchise : deux acquisitions côte à côte. */
+.split{display:grid;grid-template-columns:1fr 54px 1fr;gap:0;margin-top:44px;align-items:stretch}
+.split-col{background:#fff;border:1px solid #e4e8df;border-radius:20px;padding:30px;display:flex;flex-direction:column}
+.split-col.alt{background:#1b201e;border-color:#1b201e;color:#fff}
+.split-label{font:10px var(--mono);color:#7b847a;display:block;margin-bottom:14px}
+.split-col.alt .split-label{color:#9fae94}
+.split-col b{font-size:23px;font-weight:500;letter-spacing:-.04em;line-height:1.2}
+.split-col p{margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--ink-soft)}
+.split-col.alt p{color:#c3cbbd}
+.split-col ul{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:9px}
+.split-col li{font-size:13px;line-height:1.5;color:var(--ink-soft);padding-left:16px;position:relative}
+.split-col li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--lime)}
+.split-col.alt li{color:#c3cbbd}
+.split-col em{font-style:normal;font:10px var(--mono);color:#6b746a;margin-top:auto;padding-top:22px}
+.split-col.alt em{color:#9fae94}
+.split-mid{display:grid;place-items:center}
+.split-mid span{font:11px var(--mono);color:#8a9387;background:#f4f5f1;border-radius:50%;width:38px;height:38px;display:grid;place-items:center;border:1px solid #e0e4db}
+
+/* Rénovation : critères retenus et écartés. */
+.criteria{list-style:none;margin:0;padding:0}
+.criteria li{display:grid;grid-template-columns:26px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-top:1px solid #f0f2ec}
+.criteria li:first-child{border-top:0;padding-top:0}
+.crit-mark{font-size:13px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center}
+.criteria .yes .crit-mark{background:#e4f7d0;color:#2d5a0c}
+.criteria .no .crit-mark{background:#ffe1de;color:#8e1f14}
+.criteria b{display:block;font-size:15px;font-weight:500}
+.criteria i{font-style:normal;font-size:12.5px;color:var(--ink-soft);display:block;margin-top:3px}
+.criteria .no b{color:#8a9387}
+
+/* Immobilier : frise du cycle de vente. */
+.timeline{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:46px 0 0;padding:0}
+.timeline li{position:relative;padding-top:30px}
+.timeline li::before{content:"";position:absolute;top:9px;left:0;right:0;height:1px;background:#d6ddcd}
+.timeline li::after{content:"";position:absolute;top:5px;left:0;width:9px;height:9px;border-radius:50%;background:#b4c3a6;border:2px solid #f4f5f1}
+.timeline li:last-child::after{background:var(--lime);box-shadow:0 0 0 3px #d5ff6355}
+.tl-when{font:10px var(--mono);color:#6b746a;display:block;margin-bottom:9px}
+.timeline b{font-size:18px;font-weight:500;letter-spacing:-.035em;display:block;line-height:1.2}
+.timeline p{margin:8px 0 0;font-size:13px;line-height:1.55;color:var(--ink-soft)}
+.tl-note{max-width:760px;margin-top:28px}
+
+/* Services à domicile : capacité par agence. */
+.capacity{display:grid;gap:14px}
+.cap-row{display:grid;grid-template-columns:180px 1fr 110px auto;gap:16px;align-items:center;padding:13px 0;border-top:1px solid #f0f2ec}
+.cap-row:first-child{border-top:0;padding-top:0}
+.cap-row b{font-size:14px;font-weight:500}
+.cap-bar{height:9px;border-radius:999px;background:#eceee8;overflow:hidden}
+.cap-bar i{display:block;height:100%;width:var(--f);border-radius:999px;background:linear-gradient(90deg,#0a7fae,#05a0e0)}
+.cap-state{font-size:12.5px;color:var(--ink-soft)}
+
+/* Commerces : vue siège et vue adresse. */
+.views{display:grid;grid-template-columns:1.25fr 1fr;gap:20px;align-items:start}
+.views .mock{margin-top:44px}
+.addr{background:var(--mist);border-radius:14px;padding:18px}
+.addr-label{font:10px var(--mono);color:#7b847a;display:block;margin-bottom:6px}
+.addr>b{font-size:17px;font-weight:500;letter-spacing:-.03em;display:block;margin-bottom:12px}
+.addr-line{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:9px 0;border-top:1px solid #e4e8df;font-size:13px}
+.addr-line span{color:var(--ink-soft)}
+.addr-line i{font-style:normal;font-weight:500}
+
+@media(max-width:980px){
+ .split{grid-template-columns:1fr;gap:14px}
+ .split-mid{padding:0}
+ .split-mid span{width:34px;height:34px}
+ .timeline{grid-template-columns:repeat(2,1fr);gap:26px 16px}
+ .views{grid-template-columns:1fr}
+ .views .mock:last-child{margin-top:0}
+ .cap-row{grid-template-columns:150px 1fr auto;row-gap:8px}
+ .cap-state{grid-column:2/-1}
+}
+@media(max-width:640px){
+ .split-col{padding:24px}
+ .split-col b{font-size:20px}
+ .timeline{grid-template-columns:1fr;gap:22px}
+ .timeline li{padding-top:26px}
+ .cap-row{grid-template-columns:1fr auto;row-gap:10px}
+ .cap-bar{grid-column:1/-1}
+ .cap-state{grid-column:1}
+ .criteria li{grid-template-columns:24px 1fr;row-gap:8px}
+ .criteria .tag{grid-column:2}
+}
+/* Une grille laisse déborder un enfant large sans min-width:0. */
+.views>*,.chains>*,.lever,.mock{min-width:0}
+.table-scroll{max-width:100%}

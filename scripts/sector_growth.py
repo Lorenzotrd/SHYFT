@@ -16,7 +16,7 @@ def growth(s):
  d=DATA[s['slug']]
  clients=d['leads']*d['rate']/100
  revenue=clients*d['value']
- return f'''<section class="block growth-section" id="potentiel"><div class="wrap"><div class="section-top"><div><div class="kicker">Des prospects. Des clients. Du chiffre d’affaires.</div><h2 class="title">Ce que de nouveaux clients<br>peuvent changer pour vous.</h2></div><p class="sub">Rendez votre acquisition concrète. <br>Ajustez les hypothèses avec vos propres chiffres.</p></div><div class="growth-calculator" data-growth><div class="growth-inputs"><span class="simulation-label">Simulation illustrative · pas un résultat client</span><h3>Partons de votre activité.</h3><label for="growth-leads">Nombre de prospects qualifiés<input id="growth-leads" data-input="leads" type="number" min="0" max="100000" step="1" value="{d['leads']}" required></label><label for="growth-rate">Taux de transformation en {d['client']} (%)<input id="growth-rate" data-input="rate" type="number" min="0" max="100" step="0.1" value="{d['rate']}" required></label><label for="growth-value">{d['unit']}<input id="growth-value" data-input="value" type="number" min="0" max="10000000" step="1" value="{d['value']}" required></label><p class="growth-hint">Valeurs de démonstration librement choisies, sans référence à une moyenne du marché. Utilisez un même groupe de prospects suivi jusqu’à l’issue commerciale.</p></div><div class="growth-results" aria-live="polite" aria-atomic="true"><div class="growth-funnel"><div><span>01 · Acquisition</span><strong data-output="leads">{d['leads']}</strong><p>prospects qualifiés</p></div><span class="funnel-arrow" aria-hidden="true">→</span><div><span>02 · Conversion</span><strong data-output="clients">{number(clients)}</strong><p>{d['client']}</p></div></div><div class="growth-revenue"><span>03 · {d['result']}</span><strong><span data-output="revenue">{number(revenue)}</span> <small>€ HT</small></strong><p data-output="formula">{d['leads']} prospects × {d['rate']} % × {number(d['value'])} €</p></div><p class="growth-note">{d['note']} Le CA n’est pas une marge : budgets publicitaires, honoraires et coûts d’exploitation ne sont pas déduits. Aucune performance n’est garantie.</p><p class="growth-error" role="status" hidden>Complétez les trois valeurs : nombres positifs ou nuls, taux compris entre 0 et 100 %.</p></div></div><div class="growth-next"><span>On valide les hypothèses et les objectifs pendant votre audit.</span><a class="text-link" href="#contact">Recevoir mon audit offert ↗</a></div></div></section>'''
+ return f'''<section class="block growth-section" id="potentiel"><div class="wrap"><div class="section-top"><div><div class="kicker">Des prospects. Des clients. Du chiffre d’affaires.</div><h2 class="title">{TITLES[s["slug"]]["growth"]}</h2></div><p class="sub">Rendez votre acquisition concrète. <br>Ajustez les hypothèses avec vos propres chiffres.</p></div><div class="growth-calculator" data-growth><div class="growth-inputs"><span class="simulation-label">Simulation illustrative · pas un résultat client</span><h3>Partons de votre activité.</h3><label for="growth-leads">Nombre de prospects qualifiés<input id="growth-leads" data-input="leads" type="number" min="0" max="100000" step="1" value="{d['leads']}" required></label><label for="growth-rate">Taux de transformation en {d['client']} (%)<input id="growth-rate" data-input="rate" type="number" min="0" max="100" step="0.1" value="{d['rate']}" required></label><label for="growth-value">{d['unit']}<input id="growth-value" data-input="value" type="number" min="0" max="10000000" step="1" value="{d['value']}" required></label><p class="growth-hint">Valeurs de démonstration librement choisies, sans référence à une moyenne du marché. Utilisez un même groupe de prospects suivi jusqu’à l’issue commerciale.</p></div><div class="growth-results" aria-live="polite" aria-atomic="true"><div class="growth-funnel"><div><span>01 · Acquisition</span><strong data-output="leads">{d['leads']}</strong><p>prospects qualifiés</p></div><span class="funnel-arrow" aria-hidden="true">→</span><div><span>02 · Conversion</span><strong data-output="clients">{number(clients)}</strong><p>{d['client']}</p></div></div><div class="growth-revenue"><span>03 · {d['result']}</span><strong><span data-output="revenue">{number(revenue)}</span> <small>€ HT</small></strong><p data-output="formula">{d['leads']} prospects × {d['rate']} % × {number(d['value'])} €</p></div><p class="growth-note">{d['note']} Le CA n’est pas une marge : budgets publicitaires, honoraires et coûts d’exploitation ne sont pas déduits. Aucune performance n’est garantie.</p><p class="growth-error" role="status" hidden>Complétez les trois valeurs : nombres positifs ou nuls, taux compris entre 0 et 100 %.</p></div></div><div class="growth-next"><span>On valide les hypothèses et les objectifs pendant votre audit.</span><a class="text-link" href="#contact">Recevoir mon audit offert ↗</a></div></div></section>'''
 
 # Mesure & suivi : trois indicateurs par secteur et la source de chaque chiffre.
 MEASURE = {
@@ -32,7 +32,7 @@ TOOLS = ['Search Console','Google Analytics','Tableau de bord partagé','CRM','E
 def measure(s):
  cards=''.join(f'<article><span>◎</span><h3>{m}</h3><p>{how}</p></article>' for m,how in MEASURE[s['slug']])
  tools=''.join(f'<li>{t}</li>' for t in TOOLS)
- return f'<section class="block" id="mesure"><div class="wrap"><div class="section-top"><div><div class="kicker">Mesure &amp; suivi</div><h2 class="title">Ce qu’on installe<br>pour mesurer.</h2></div><p class="sub">Trois indicateurs suivis avec vos outils,<br>du premier contact au chiffre d’affaires.</p></div><div class="metric-grid">{cards}</div><div class="measure-stack"><span class="kicker">Installé dans vos comptes</span><ul>{tools}</ul><p>Vous gardez tout, même si on arrête.</p></div><div class="sector-pay"><div><div class="kicker">Un modèle aligné</div><h2>Une rémunération par<br>{s["pay"]}.</h2></div><p>On fixe ensemble les critères et les conditions avant le lancement. Le budget publicitaire reste sur votre compte. On commence par un test de 60 jours sur un périmètre réduit.</p></div></div></section>'
+ return f'<section class="block" id="mesure"><div class="wrap"><div class="section-top"><div><div class="kicker">Mesure &amp; suivi</div><h2 class="title">{TITLES[s["slug"]]["measure"]}</h2></div><p class="sub">Trois indicateurs suivis avec vos outils,<br>du premier contact au chiffre d’affaires.</p></div><div class="metric-grid">{cards}</div><div class="measure-stack"><span class="kicker">Installé dans vos comptes</span><ul>{tools}</ul><p>Vous gardez tout, même si on arrête.</p></div><div class="sector-pay"><div><div class="kicker">Un modèle aligné</div><h2>Une rémunération par<br>{s["pay"]}.</h2></div><p>On fixe ensemble les critères et les conditions avant le lancement. Le budget publicitaire reste sur votre compte. On commence par un test de 60 jours sur un périmètre réduit.</p></div></div></section>'
 
 # Ouverture des pages métier : le marché vu par les futurs clients, puis le parcours d'une demande.
 WHO = {'location-de-materiel':'Vos futurs clients','reseaux-de-franchise':'Vos futurs franchisés','renovation-artisans':'Vos futurs clients','immobilier':'Vos futurs vendeurs','services-a-domicile':'Les familles','commerces-multi-sites':'Vos futurs clients'}
@@ -104,7 +104,7 @@ def channels(s):
           f'<div class="lever-visual">{_mini(kind)}</div></article>')
  return ('<section class="block expertise-section"><div class="wrap"><div class="section-top">'
          '<div><div class="kicker">Comment on génère vos opportunités</div>'
-         '<h2 class="title">Quatre leviers.<br>Un objectif : vos nouveaux clients.</h2></div>'
+         f'<h2 class="title">{TITLES[s["slug"]]["levers"]}</h2></div>'
          '<p class="sub">On relie votre visibilité, les demandes reçues et leur transformation commerciale. '
          'Chaque levier répond à une étape précise.</p></div>'
          f'<div class="lever-grid">{cards}</div></div></section>')
@@ -115,6 +115,113 @@ def journey(s):
   for i,(title,text,role) in enumerate(JOURNEY[s['slug']]))
  return ('<section class="block" id="parcours"><div class="wrap"><div class="section-top">'
          '<div><div class="kicker">Votre parcours d’acquisition</div>'
-         '<h2 class="title">Du clic<br>à la signature.</h2></div>'
+         f'<h2 class="title">{TITLES[s["slug"]]["journey"]}</h2></div>'
          f'<p class="sub">{DATA[s["slug"]]["follow"]}</p></div>'
          f'<ol class="journey">{steps}</ol></div></section>')
+
+
+# ---------- Titres propres à chaque métier ----------
+TITLES = {
+'location-de-materiel': dict(journey='Du clic<br>à la location.', levers='Quatre leviers.<br>Un objectif : votre planning rempli.',
+ measure='Ce qu’on suit,<br>de la demande à la location.', growth='Ce que de nouvelles locations<br>peuvent changer.', faq='Avant de se lancer.'),
+'reseaux-de-franchise': dict(journey='Du clic<br>au franchisé signé.', levers='Quatre leviers.<br>Un objectif : vos prochaines ouvertures.',
+ measure='Ce qu’on suit,<br>de la candidature à la signature.', growth='Ce que de nouvelles ouvertures<br>peuvent changer.', faq='Avant d’ouvrir.'),
+'renovation-artisans': dict(journey='Du clic<br>au chantier signé.', levers='Quatre leviers.<br>Un objectif : vos prochains chantiers.',
+ measure='Ce qu’on suit,<br>du devis au chantier.', growth='Ce que de nouveaux chantiers<br>peuvent changer.', faq='Avant le premier chantier.'),
+'immobilier': dict(journey='Du clic<br>au mandat.', levers='Quatre leviers.<br>Un objectif : vos prochains mandats.',
+ measure='Ce qu’on suit,<br>du contact à la vente.', growth='Ce que de nouveaux mandats<br>peuvent changer.', faq='Avant le premier mandat.'),
+'services-a-domicile': dict(journey='Du clic<br>au premier rendez-vous.', levers='Quatre leviers.<br>Un objectif : vos prochaines familles.',
+ measure='Ce qu’on suit,<br>de la demande au démarrage.', growth='Ce que de nouveaux clients<br>peuvent changer.', faq='Avant la première intervention.'),
+'commerces-multi-sites': dict(journey='Du clic<br>à la visite en magasin.', levers='Quatre leviers.<br>Un objectif : du monde à chaque adresse.',
+ measure='Ce qu’on suit,<br>adresse par adresse.', growth='Ce que du trafic en plus<br>peut changer.', faq='Avant d’étendre au réseau.'),
+}
+
+# ---------- La section que ce métier est le seul à avoir ----------
+def _sig_location():
+ rows=[('Nacelle 12 m',[1,1,0]),('Mini-pelle 1,5 t',[1,0,1]),('Échafaudage roulant',[1,1,1]),('Compacteur',[0,1,0])]
+ body=''
+ for name,cells in rows:
+  tds=''.join(f'<td><span class="cell {"on" if c else "off"}">{"Page en ligne" if c else "À créer"}</span></td>' for c in cells)
+  body+=f'<tr><td>{name}</td>{tds}</tr>'
+ return ('<figure class="mock"><figcaption class="mock-head"><b>Une page par croisement</b><span>Démonstration</span></figcaption>'
+  '<div class="table-scroll"><table class="data-table grid-table"><thead><tr><th>Matériel</th><th>Tours</th><th>Poitiers</th><th>Angers</th></tr></thead>'
+  f'<tbody>{body}</tbody></table></div>'
+  '<p class="mock-note">Chaque case est une page qui répond à une recherche précise. C’est long à construire, et c’est exactement ce que les grands réseaux ont fait avant vous.</p></figure>')
+
+def _sig_franchise():
+ left=''.join(f'<li>{x}</li>' for x in ['Campagnes Meta et Google sur les intentions de création','Qualification sur l’apport, la zone et le délai','Candidatures centralisées, relancées jusqu’au rendez-vous'])
+ right=''.join(f'<li>{x}</li>' for x in ['Fiche Google tenue à jour pour chaque établissement','Pages locales déclinées depuis la marque','Demandes remontées au franchisé, vue consolidée au siège'])
+ return ('<div class="split">'
+  f'<div class="split-col"><span class="split-label">01 · Recruter</span><b>Des candidats franchisés</b>'
+  f'<p>Un candidat cherche un projet d’entreprise, pas un produit. Le cycle dure des mois et se joue sur la qualification.</p><ul>{left}</ul>'
+  '<em>Piloté avec le siège</em></div>'
+  '<div class="split-mid" aria-hidden="true"><span>et</span></div>'
+  f'<div class="split-col alt"><span class="split-label">02 · Remplir</span><b>Les points de vente</b>'
+  f'<p>Un client cherche une adresse près de chez lui. Le cycle dure quelques minutes et se joue sur la visibilité locale.</p><ul>{right}</ul>'
+  '<em>Piloté avec chaque franchisé</em></div></div>')
+
+def _sig_renovation():
+ items=[(1,'Rénovation complète','Le cœur de votre savoir-faire'),(1,'Budget à partir de 8 000 €','En dessous, le devis coûte plus qu’il ne rapporte'),
+        (1,'30 km autour de votre atelier','Au-delà, les trajets mangent la marge'),(0,'Dépannage en urgence','Casse le planning des chantiers en cours'),
+        (0,'Projets sans budget arrêté','Beaucoup de devis, peu de signatures')]
+ body=''.join(f'<li class="{"yes" if ok else "no"}"><span class="crit-mark" aria-hidden="true">{"✓" if ok else "✕"}</span>'
+              f'<div><b>{name}</b><i>{why}</i></div><span class="tag {"ok" if ok else "bad"}">{"Ciblé" if ok else "Écarté"}</span></li>'
+              for ok,name,why in items)
+ return ('<figure class="mock"><figcaption class="mock-head"><b>Vos critères de chantier</b><span>Exemple à définir ensemble</span></figcaption>'
+  f'<ul class="criteria">{body}</ul>'
+  '<p class="mock-note">Ces critères pilotent les mots-clés, les zones et les questions du formulaire. Ce qu’on écarte compte autant que ce qu’on cible.</p></figure>')
+
+def _sig_immobilier():
+ steps=[('Jour 0','Contact vendeur','Une demande d’estimation arrive avec le bien et le calendrier.'),
+        ('Jour 3','Rendez-vous','Votre négociateur se déplace, l’estimation est remise.'),
+        ('Semaine 2','Mandat','Le propriétaire signe, ou repousse. Les indécis sont relancés.'),
+        ('Mois 3','Compromis','Un acheteur se positionne. Le contact devient une transaction.'),
+        ('Mois 5','Vente','Les honoraires tombent. La demande d’origine est enfin mesurable.')]
+ body=''.join(f'<li><span class="tl-when">{w}</span><b>{t}</b><p>{d}</p></li>' for w,t,d in steps)
+ return (f'<ol class="timeline">{body}</ol>'
+  '<p class="mock-note tl-note">Durées indicatives, variables selon le bien et le marché. L’enjeu n’est pas la vitesse, c’est de garder la source du contact attachée au dossier pendant tout ce temps.</p>')
+
+def _sig_domicile():
+ rows=[('Agence de Tours',88,'Presque pleine','warn','Campagne ralentie'),
+       ('Agence de Blois',100,'Complète','bad','Campagne en pause'),
+       ('Agence d’Amboise',42,'De la place','ok','Campagne renforcée')]
+ body=''.join(f'<div class="cap-row"><b>{n}</b><div class="cap-bar"><i style="--f:{f}%"></i></div>'
+              f'<span class="cap-state">{s}</span><span class="tag {c}">{a}</span></div>' for n,f,s,c,a in rows)
+ return ('<figure class="mock"><figcaption class="mock-head"><b>Capacité et campagnes</b><span>Démonstration</span></figcaption>'
+  f'<div class="capacity">{body}</div>'
+  '<p class="mock-note">Une campagne qui tourne alors que l’agence est pleine coûte de l’argent et déçoit des familles. Le budget suit vos disponibilités, agence par agence.</p></figure>')
+
+def _sig_commerces():
+ rows=[('Tours centre','41','12','7'),('Blois','28','9','5'),('Amboise','17','4','2')]
+ body=''.join(f'<tr><td>{a}</td><td>{c}</td><td>{r}</td><td><b>{v}</b></td></tr>' for a,c,r,v in rows)
+ return ('<div class="views">'
+  '<figure class="mock"><figcaption class="mock-head"><b>Vue du siège</b><span>Démonstration</span></figcaption>'
+  '<div class="table-scroll"><table class="data-table"><thead><tr><th>Établissement</th><th>Contacts</th><th>Réservations</th><th>Achats</th></tr></thead>'
+  f'<tbody>{body}</tbody></table></div></figure>'
+  '<figure class="mock"><figcaption class="mock-head"><b>Vue d’une adresse</b><span>Démonstration</span></figcaption>'
+  '<div class="addr"><span class="addr-label">Tours centre</span><b>Votre enseigne · Tours</b>'
+  '<div class="addr-line"><span>Fiche Google</span><i>À jour · 4,6 ★</i></div>'
+  '<div class="addr-line"><span>Page locale</span><i>En ligne</i></div>'
+  '<div class="addr-line"><span>Contacts ce mois</span><i>41</i></div>'
+  '<div class="addr-line"><span>Campagne locale</span><i>Active</i></div></div></figure></div>')
+
+SIGNATURE = {
+'location-de-materiel': dict(after='levers', kicker='Votre catalogue', title='Une page par matériel.<br>Une page par ville.',
+ lead='Un artisan ne cherche pas « location de matériel ». Il cherche une machine précise, dans une ville précise, pour des dates précises.', html=_sig_location),
+'reseaux-de-franchise': dict(after='market', kicker='La particularité franchise', title='Deux acquisitions.<br>Pas une.',
+ lead='Un réseau doit recruter des franchisés et faire venir des clients dans leurs points de vente. Deux métiers, deux cycles, deux budgets.', html=_sig_franchise),
+'renovation-artisans': dict(after='market', kicker='Le tri en amont', title='Les chantiers que vous voulez.<br>Pas tous les chantiers.',
+ lead='Le meilleur moyen d’arrêter de perdre du temps sur des demandes sans suite, c’est de décider à l’avance lesquelles vous intéressent.', html=_sig_renovation),
+'immobilier': dict(after='journey', kicker='Le temps long', title='Un contact aujourd’hui.<br>Une vente dans cinq mois.',
+ lead='Votre métier a le cycle le plus long des six que nous accompagnons. C’est ce qui rend la mesure indispensable, et souvent absente.', html=_sig_immobilier),
+'services-a-domicile': dict(after='levers', kicker='Votre contrainte réelle', title='L’acquisition suit<br>vos capacités.',
+ lead='Vous ne cherchez pas le maximum de demandes. Vous cherchez le bon nombre, dans les zones où vos équipes peuvent intervenir.', html=_sig_domicile),
+'commerces-multi-sites': dict(after='journey', kicker='Deux points de vue', title='Le siège voit le réseau.<br>Chaque adresse voit la sienne.',
+ lead='Un directeur d’établissement et un directeur marketing ne regardent pas les mêmes chiffres. Le même suivi doit répondre aux deux.', html=_sig_commerces),
+}
+
+def signature(s):
+ d=SIGNATURE[s['slug']]
+ return ('<section class="block sig-section" id="specificite"><div class="wrap"><div class="section-top">'
+         f'<div><div class="kicker">{d["kicker"]}</div><h2 class="title">{d["title"]}</h2></div>'
+         f'<p class="sub">{d["lead"]}</p></div>{d["html"]()}</div></section>')

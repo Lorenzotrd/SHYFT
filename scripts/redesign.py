@@ -1,6 +1,6 @@
 from pathlib import Path
 import re, json
-from sector_growth import DATA, growth, channels, measure, market, journey
+from sector_growth import DATA, growth, channels, measure, market, journey, signature, SIGNATURE, TITLES
 import expertises as XP
 from expertises import EXPERTISES, BY_SLUG, GROUPS, DEMO, url as xurl
 
@@ -123,7 +123,12 @@ for s in sectors:
  p='../'
  s={**s, 'desc': DATA[s['slug']]['intro']}
  hero=f'''<div class="hero-shell"><header class="hero sector-hero">{nav(p)}<div class="sector-hero-grid"><div><div class="hero-eyebrow">{s['name']}</div><h1>{s['title']}</h1><p class="lead">{s['desc']}</p><a class="btn btn-lime" href="#contact">Recevoir mon audit offert <span class="arrow-circle">↗</span></a></div><div class="sector-cover"><img src="/assets/{s['photo']}.jpg" alt="" width="800" height="600"><div class="floating-signal"><span class="pulse"></span>{s['signal']}<strong>{s['value']}</strong><small>Exemple de parcours</small></div></div></div></header></div>'''
- main='<main id="main">'+market(s)+journey(s)+channels(s)+measure(s)+growth(s)
+ parts=[('market',market(s)),('journey',journey(s)),('levers',channels(s)),('measure',measure(s)),('growth',growth(s))]
+ after=SIGNATURE[s['slug']]['after']
+ main='<main id="main">'
+ for key,html in parts:
+  main+=html
+  if key==after: main+=signature(s)
  faqs=[(s['question'],s['answer']),('Faut-il refaire notre site ?','Pas nécessairement. Nous partons de votre site et de vos outils actuels. Des pages ou formulaires ciblés peuvent compléter ce qui existe.'),('Que contient l’audit offert ?',f'Un état des lieux de votre visibilité, de vos parcours de contact et de vos opportunités pour votre activité : {s["name"].lower()}. Les recommandations sont adaptées à votre zone.'),('Comment suit-on les résultats ?','Search Console, Google Analytics et votre CRM sont installés dans vos comptes. Un tableau de bord partagé compte chaque demande, sa source et son coût.'),('Qui définit ce qui est qualifié ?','Vous et nous, avant le test. Les critères sont écrits et partagés pour suivre les demandes avec la même définition.')]
  main+='<section class="block" style="padding-top:0"><div class="wrap"><div class="kicker">Vos questions</div><h2 class="title">Avant de se lancer.</h2><div class="faq">'+''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q,a in faqs)+'</div></div></section></main>'
  schema={'@context':'https://schema.org','@type':'FAQPage','mainEntity':[{'@type':'Question','name':q,'acceptedAnswer':{'@type':'Answer','text':a}} for q,a in faqs]}
@@ -168,7 +173,7 @@ for e in EXPERTISES:
  m+=XP.complements(e['slug'])
  m+=XP.sectors_for(e['slug'],sector_names)
  m+=('<section class="block" style="padding-top:0"><div class="wrap"><div class="kicker">Vos questions</div>'
-     '<h2 class="title">Avant de se lancer.</h2><div class="faq">'+
+     f'<h2 class="title">{TITLES[s["slug"]]["faq"]}</h2><div class="faq">'+
      ''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q,a in e['faq'])+'</div></div></section></main>')
  service={'@context':'https://schema.org','@type':'Service','name':e['name'],'serviceType':e['title'],
           'description':e['desc'],'provider':{'@type':'Organization','name':BRAND},
