@@ -77,6 +77,18 @@ if(mesureActive){
  if(!await q.locator('.consent').isVisible())throw Error('Le choix ne peut pas être rouvert');
  await q.click('[data-consent="granted"]');await q.waitForTimeout(1500);
  if(!vus.length)throw Error('Google n’est pas chargé après acceptation');
+ // La conversion doit atteindre la couche de données à l'envoi du formulaire.
+ await q.goto(home+'/secteurs/immobilier',{waitUntil:'networkidle'});await q.waitForTimeout(1200);
+ await q.fill('[name="nom"]','Contrôle mesure');await q.fill('[name="entreprise"]','Contrôle');await q.fill('[name="email"]','mesure@example.com');
+ await q.click('button[type="submit"]');await q.waitForTimeout(2500);
+ if(!await q.locator('.done').isVisible())throw Error('Le formulaire n’a pas abouti pendant le contrôle de la mesure');
+ const conversion=await q.evaluate(()=>(window.dataLayer||[]).some(a=>Array.from(a)[0]==='event'&&Array.from(a)[1]==='generate_lead'));
+ if(!conversion)throw Error('L’événement generate_lead n’est pas déclenché à l’envoi du formulaire');
+ const motDePasseMesure=process.env.ADMIN_PASSWORD;
+ if(motDePasseMesure){const e={Authorization:'Bearer '+motDePasseMesure};
+  const l=await (await fetch(home+'/api/admin',{headers:e})).json();
+  const c=(l.leads||[]).find(x=>x.nom==='Contrôle mesure');
+  if(c)await fetch(home+'/api/admin?id='+encodeURIComponent(c.id),{method:'DELETE',headers:e});}
  if((await (await fetch(home+'/confidentialite')).text()).indexOf('Google Analytics')<0)throw Error('La politique de confidentialité ne mentionne pas la mesure');
  await vierge.close();
 }

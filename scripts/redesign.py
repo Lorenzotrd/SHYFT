@@ -11,7 +11,7 @@ YEAR=2026
 SITE_URL=''
 # Identifiant de mesure Google Analytics 4, de la forme G-XXXXXXXXXX.
 # Vide : aucun script de mesure, aucun cookie, aucun bandeau de consentement.
-GA_ID=''
+GA_ID='G-XC6CD5J71S'
 BASE=SITE_URL or 'https://VOTRE-DOMAINE'
 root=Path(__file__).resolve().parent.parent
 old=(root/'elan-site.original.html').read_text()
