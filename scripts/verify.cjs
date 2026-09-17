@@ -21,6 +21,9 @@ if(await page.locator('#sector-menu').isHidden())throw Error('Menu secteurs ferm
 await page.keyboard.press('Escape');
 if(!await page.locator('#sector-menu').isHidden())throw Error('Échap ne ferme pas le menu');
 
+await go('/');
+const accueil=JSON.parse(await page.locator('script[type="application/ld+json"]').textContent()).map(x=>x['@type']);
+if(!accueil.includes('ProfessionalService')||!accueil.includes('WebSite'))throw Error('Identité de l’entreprise absente de l’accueil');
 await go('/expertises');
 if(await count('.system li')!==5)throw Error('Expertises : 5 temps attendus');
 if(await count('.xp-card')!==7)throw Error('Expertises : 7 cartes attendues');

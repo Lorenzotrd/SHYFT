@@ -124,7 +124,7 @@ dict(
  lead='On n’achète pas des clics. On transforme une intention commerciale en demande qualifiée, et on suit ce que cette demande devient jusqu’à la signature.',
  cta='Analyser mes campagnes',
  title='Agence Google Ads pour PME et réseaux',
- desc='SHYFT pilote vos campagnes Google Ads : recherches à intention commerciale, ciblage local, suivi des appels et des demandes. Votre compte et votre budget restent à vous.',
+ desc='Campagnes Google Ads sur les recherches à intention commerciale : ciblage local, suivi des appels et des demandes. Votre compte et votre budget restent à vous.',
  problem_title='Le budget part. Les demandes, moins.',
  problem=[
   'Les campagnes tournent en automatique, sans personne pour surveiller où va l’argent.',
@@ -168,7 +168,7 @@ dict(
  lead='Sur Google, on capte une recherche. Sur Facebook et Instagram, on s’adresse à des gens qui ne vous cherchaient pas encore, mais qui correspondent exactement à votre client.',
  cta='Analyser mon acquisition',
  title='Agence Meta Ads : Facebook et Instagram',
- desc='SHYFT construit vos campagnes Facebook et Instagram : audiences, créations, formulaires qualifiés et relances. Pour créer de la demande là où la recherche ne suffit pas.',
+ desc='Campagnes Facebook et Instagram : audiences, créations comparées, formulaires qualifiés et relances. Pour créer de la demande là où la recherche ne suffit pas.',
  problem_title='Personne ne cherche ce que vous vendez. Pas encore.',
  problem=[
   'Votre métier ne génère pas assez de recherches pour remplir un planning.',
@@ -212,7 +212,7 @@ dict(
  lead='L’intelligence artificielle n’est pas une stratégie. On l’utilise là où elle fait gagner du temps, améliore le suivi ou augmente la conversion. Partout ailleurs, une automatisation classique suffit et coûte moins cher.',
  cta='Identifier ce que je peux automatiser',
  title='Agence IA et automatisation pour PME',
- desc='SHYFT intègre l’IA et l’automatisation dans les PME : qualification des demandes, routage CRM, relances email et SMS, connexion entre vos outils. Sans changer vos logiciels.',
+ desc='IA et automatisation pour PME : qualification des demandes, routage vers le CRM, relances email et SMS, connexion entre vos outils. Sans changer vos logiciels.',
  problem_title='Les demandes arrivent. C’est après que ça coince.',
  problem=[
   'Une demande reçue le soir est traitée le surlendemain, quand le prospect a déjà appelé ailleurs.',
@@ -257,7 +257,7 @@ dict(
  lead='Avant d’acheter plus de trafic, il vaut souvent mieux mieux convertir celui que vous avez déjà. C’est plus rapide, et ça rend toutes les campagnes plus rentables.',
  cta='Analyser mon parcours de conversion',
  title='Landing pages et optimisation de la conversion',
- desc='SHYFT construit des pages et des formulaires qui transforment les visiteurs en demandes qualifiées : une page par intention, un parcours mobile simple, des tests quand le volume le permet.',
+ desc='Des pages et des formulaires qui transforment les visiteurs en demandes qualifiées : une page par intention, un parcours mobile simple, des tests A/B.',
  problem_title='Le trafic est là. Les demandes, non.',
  problem=[
   'Votre page d’accueil parle de vous, pas du besoin de celui qui arrive.',
@@ -301,7 +301,7 @@ dict(
  lead='Qu’est-ce qui vous apporte réellement des clients ? Tant que la réponse n’est pas chiffrée, chaque décision de budget est un pari. Et comme on est payés au résultat, on a besoin des mêmes chiffres que vous.',
  cta='Vérifier mon tracking',
  title='Data, tracking et attribution pour PME',
- desc='SHYFT installe la mesure dans vos comptes : GA4, Tag Manager, suivi des formulaires et des appels, attribution des demandes et tableau de bord du clic jusqu’au client.',
+ desc='La mesure installée dans vos comptes : GA4, Tag Manager, suivi des formulaires et des appels, attribution des demandes, tableau de bord du clic jusqu’au client.',
  problem_title='Des chiffres partout, aucune réponse.',
  problem=[
   'Analytics compte des visites, votre CRM compte des clients, personne ne relie les deux.',

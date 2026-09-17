@@ -25,6 +25,16 @@ sectors=[
  dict(slug='services-a-domicile',name='Services à domicile',icon='♡',title='Plus proche des familles.<br>Plus visible localement.',desc='Reliez votre agence aux familles qui ont besoin de vous, dans les zones où vos équipes interviennent.',short='Développez votre activité de proximité.',photo='homecare',pain=['Les familles ne trouvent pas toujours votre agence locale.','Les demandes arrivent hors de votre zone d’intervention.','L’acquisition n’est pas alignée avec vos disponibilités.'],services=['Des pages par prestation et zone d’intervention.','Des campagnes adaptées à votre capacité d’accueil.','Une qualification du besoin et de la fréquence.','Une réponse initiale et des relances organisées.','Un suivi par agence, partagé avec le siège.'],metrics=['Demandes dans votre zone','Coût par contact qualifié','Rendez-vous d’évaluation'],pay='demande qualifiée ou rendez-vous',signal='Besoin à domicile',value='Intervention régulière',question='Peut-on adapter les campagnes à nos capacités ?',answer='Oui. Nous définissons les prestations et zones prioritaires avec vous et ajustons les campagnes lorsque vos disponibilités changent.'),
  dict(slug='commerces-multi-sites',name='Commerces multi-sites',icon='▦',title='Une seule marque.<br>Un cran au-dessus, à chaque adresse.',desc='Développez la visibilité locale de chaque établissement avec une stratégie cohérente à l’échelle du réseau.',short='Faites rayonner chacune de vos adresses.',photo='retail',pain=['Les fiches de vos établissements sont inégales.','Les campagnes locales sont difficiles à coordonner.','Le siège manque de visibilité sur les contacts par adresse.'],services=['Des fiches Google cohérentes et à jour.','Des pages propres à chaque établissement.','Des campagnes locales déclinées depuis votre marque.','Un parcours de contact ou de réservation simplifié.','Un suivi par point de vente et une vue réseau.'],metrics=['Contacts par établissement','Coût par contact local','Réservations ou rendez-vous'],pay='contact qualifié, avec périmètre défini par établissement',signal='Visibilité du réseau',value='Chaque adresse compte',question='Faut-il lancer tous les établissements ensemble ?',answer='Non. Le test peut commencer sur quelques adresses avant d’étendre la méthode aux autres établissements du réseau.')]
 (root/'assets/sectors.json').write_text(json.dumps(sectors,ensure_ascii=False,indent=2))
+# Titre de référencement, description et texte alternatif de la photo, par métier.
+SEO_SECTEURS = {
+ 'location-de-materiel': ('Agence marketing pour loueurs de matériel', 'Remplissez votre planning de location : pages par matériel et par ville, Google Ads sur votre rayon de livraison, demandes suivies jusqu’à la réservation.', 'Ouvriers sur un chantier équipé de matériel de construction'),
+ 'reseaux-de-franchise': ('Recrutement de franchisés : agence digitale', 'Rencontrez des candidats qualifiés sur l’apport, la zone et le délai. Campagnes Meta et Google, candidatures centralisées et relancées jusqu’au rendez-vous.', 'Réunion d’équipe autour d’un ordinateur portable'),
+ 'renovation-artisans': ('Agence SEO et Google Ads pour artisans', 'Recevez des demandes de devis avec un besoin clair, un budget et une zone qui vous correspondent. Pages par métier et commune, formulaire qui qualifie.', 'Intérieur en cours de rénovation'),
+ 'immobilier': ('Agence marketing immobilier : plus de mandats', 'Captez les propriétaires qui préparent une vente dans votre secteur : pages de quartier, campagnes orientées estimation, suivi du contact jusqu’au mandat.', 'Séjour lumineux d’un logement'),
+ 'services-a-domicile': ('Acquisition pour les services à domicile', 'Des demandes locales qualifiées, dans les zones où vos équipes peuvent intervenir. Pages par prestation et commune, campagnes réglées sur vos capacités.', 'Accompagnement d’une personne à son domicile'),
+ 'commerces-multi-sites': ('Visibilité locale et Google Maps multi-sites', 'Faites venir du monde dans chaque établissement : fiches Google cohérentes, pages locales par adresse, suivi des contacts point de vente par point de vente.', 'Intérieur d’un commerce de centre-ville'),
+}
+
 logo='<span class="brandmark" aria-hidden="true">↗</span>shyft<span class="brand-dot">.</span>'
 
 def nav(prefix=''):
@@ -36,7 +46,7 @@ def nav(prefix=''):
  return f'''<nav class="nav" aria-label="Navigation principale"><a class="logo" href="/" aria-label="{BRAND}, accueil">{logo}</a><button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span>☰</span></button><div class="navigation" id="navigation"><div class="dropdown"><button class="dropdown-toggle" aria-expanded="false" aria-controls="sector-menu">Nos secteurs <span aria-hidden="true">⌄</span></button><div class="dropdown-menu" id="sector-menu" hidden>{slinks}<a href="/secteurs">Tous les secteurs <span aria-hidden="true">→</span></a></div></div><div class="dropdown mega"><button class="dropdown-toggle" aria-expanded="false" aria-controls="expertise-menu">Nos expertises <span aria-hidden="true">⌄</span></button><div class="dropdown-menu mega-menu" id="expertise-menu" hidden><div class="mega-cols">{cols}</div><a class="mega-all" href="/expertises">Toutes nos expertises <span aria-hidden="true">→</span></a></div></div><a href="/#methode">Notre méthode</a></div><a class="btn btn-lime nav-cta" href="#contact">Parlons de votre projet <span class="arrow-circle">↗</span></a></nav>'''
 
 def grid(prefix=''):
- return '<div class="sector-grid">'+''.join(f'''<a class="sector-card" href="/secteurs/{s['slug']}"><div class="sector-photo"><img src="/assets/{s['photo']}.jpg" loading="lazy" alt="" width="800" height="600"><span class="sector-number">0{i+1}</span><span class="sector-open" aria-hidden="true">↗</span></div><div class="sector-text"><h3>{s['name']}</h3><p>{s['short']}</p></div></a>''' for i,s in enumerate(sectors))+'</div>'
+ return '<div class="sector-grid">'+''.join(f'''<a class="sector-card" href="/secteurs/{s['slug']}"><div class="sector-photo"><img src="/assets/{s['photo']}.jpg" loading="lazy" alt="{SEO_SECTEURS[s['slug']][2]}" width="800" height="600"><span class="sector-number">0{i+1}</span><span class="sector-open" aria-hidden="true">↗</span></div><div class="sector-text"><h3>{s['name']}</h3><p>{s['short']}</p></div></a>''' for i,s in enumerate(sectors))+'</div>'
 
 def footer(prefix=''):
  cookies='<a href="#" data-cookies>Gérer les cookies</a>' if GA_ID else ''
@@ -59,6 +69,9 @@ def options(selected=None):
 def contact(prefix='',selected=None):
  return form.replace('{SELECT}',options(selected))
 
+def ld(items):
+ return '<script type="application/ld+json">'+json.dumps(items,ensure_ascii=False)+'</script>'
+
 def analytics():
  return f'<script src="/assets/analytics.js" data-ga="{GA_ID}" defer></script>' if GA_ID else ''
 
@@ -66,7 +79,7 @@ def page(title,description,body,prefix='',path=''):
  # Sur mobile, certains <br> sont masqués : un espace avant chaque <br> évite les mots collés.
  body=re.sub(r'(?<=\S)<br>',' <br>',body)
  extra=f'<link rel="canonical" href="{SITE_URL}/{path}"><meta property="og:url" content="{SITE_URL}/{path}"><meta property="og:image" content="{SITE_URL}/assets/og.png">' if SITE_URL else ''
- return f'<!doctype html><html lang="fr" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title><meta name="description" content="{description}"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:type" content="website">{extra}<meta name="theme-color" content="#067bb1"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/design.css"></head><body><a class="skip-link" href="#main">Aller au contenu</a>{body}<script src="/assets/site.js" defer></script>'+analytics()+'</body></html>'
+ return f'<!doctype html><html lang="fr" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title><meta name="description" content="{description}"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:type" content="website"><meta property="og:site_name" content="{BRAND}"><meta property="og:locale" content="fr_FR"><meta name="twitter:card" content="summary_large_image">{extra}<meta name="theme-color" content="#067bb1"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/design.css"></head><body><a class="skip-link" href="#main">Aller au contenu</a>{body}<script src="/assets/site.js" defer></script>'+analytics()+'</body></html>'
 
 STEPS='''<div class="steps three">
       <div class="step"><div class="n">Étape 1 · Audit offert et plan chiffré</div><h3>Identifier</h3><p>On analyse votre visibilité, on vous présente les constats avec les chiffres de votre marché, et on estime ensemble ce que valent les demandes pour vous.</p></div>
@@ -122,14 +135,27 @@ body=body.replace('<section class="block" id="faq" style="padding-top:20px">','<
 body=body[:body.index('<!-- ================= FINAL CTA ================= -->')]+contact()+footer()
 for marker in ('id="mesure"','Comment suit-on les résultats','À installer','/confidentialite','xp-card','/expertises'):
  assert marker in body, marker
-(root/'index.html').write_text(page(BRAND+' · Votre prochain client vous cherche déjà.','SHYFT apporte aux PME bien implantées sur le terrain les demandes qui leur manquent en ligne : SEO, Google Ads, Meta Ads, CRM et mesure. Six secteurs, une approche au résultat. Audit offert.',body,'',''))
+organisation={'@context':'https://schema.org','@type':'ProfessionalService','name':BRAND,
+ '@id':(SITE_URL+'/#organisation') if SITE_URL else BRAND,
+ 'description':'Agence d’acquisition digitale pour les PME et réseaux bien implantés sur le terrain : référencement, Google Ads, Meta Ads, intelligence artificielle et mesure.',
+ 'areaServed':{'@type':'Country','name':'France'},
+ 'knowsAbout':['Référencement naturel','Référencement local','Google Ads','Meta Ads','Automatisation et intelligence artificielle','Optimisation de la conversion','Mesure et attribution'],
+ 'hasOfferCatalog':{'@type':'OfferCatalog','name':'Nos expertises','itemListElement':[
+  {'@type':'Offer','itemOffered':{'@type':'Service','name':e['name'],
+   **({'url':f'{SITE_URL}/expertises/{e["slug"]}'} if SITE_URL else {})}} for e in EXPERTISES]}}
+if SITE_URL:
+ organisation['url']=SITE_URL+'/'
+ organisation['logo']=SITE_URL+'/assets/og.png'
+site={'@context':'https://schema.org','@type':'WebSite','name':BRAND,'inLanguage':'fr-FR',
+ **({'url':SITE_URL+'/'} if SITE_URL else {})}
+(root/'index.html').write_text(page(BRAND+' · Votre prochain client vous cherche déjà.','SHYFT apporte aux PME bien implantées sur le terrain les demandes qui leur manquent en ligne : SEO, Google Ads, Meta Ads, IA et mesure. Audit offert.',body+ld([organisation,site]),'',''))
 
 # ---------- Pages métier ----------
 (root/'secteurs').mkdir(exist_ok=True)
 for s in sectors:
  p='../'
  s={**s, 'desc': DATA[s['slug']]['intro']}
- hero=f'''<div class="hero-shell"><header class="hero sector-hero">{nav(p)}<div class="sector-hero-grid"><div><div class="hero-eyebrow">{s['name']}</div><h1>{s['title']}</h1><p class="lead">{s['desc']}</p><a class="btn btn-lime" href="#contact">Recevoir mon audit offert <span class="arrow-circle">↗</span></a></div><div class="sector-cover"><img src="/assets/{s['photo']}.jpg" alt="" width="800" height="600"><div class="floating-signal"><span class="pulse"></span>{s['signal']}<strong>{s['value']}</strong><small>Exemple de parcours</small></div></div></div></header></div>'''
+ hero=f'''<div class="hero-shell"><header class="hero sector-hero">{nav(p)}<div class="sector-hero-grid"><div><div class="hero-eyebrow">{s['name']}</div><h1>{s['title']}</h1><p class="lead">{s['desc']}</p><a class="btn btn-lime" href="#contact">Recevoir mon audit offert <span class="arrow-circle">↗</span></a></div><div class="sector-cover"><img src="/assets/{s['photo']}.jpg" alt="{SEO_SECTEURS[s['slug']][2]}" width="800" height="600"><div class="floating-signal"><span class="pulse"></span>{s['signal']}<strong>{s['value']}</strong><small>Exemple de parcours</small></div></div></div></header></div>'''
  parts=[('market',market(s)),('journey',journey(s)),('levers',channels(s)),('measure',measure(s)),('growth',growth(s))]
  after=SIGNATURE[s['slug']]['after']
  main='<main id="main">'
@@ -139,7 +165,21 @@ for s in sectors:
  faqs=[(s['question'],s['answer']),('Faut-il refaire notre site ?','Pas nécessairement. Nous partons de votre site et de vos outils actuels. Des pages ou formulaires ciblés peuvent compléter ce qui existe.'),('Que contient l’audit offert ?',f'Un état des lieux de votre visibilité, de vos parcours de contact et de vos opportunités pour votre activité : {s["name"].lower()}. Les recommandations sont adaptées à votre zone.'),('Comment suit-on les résultats ?','Search Console, Google Analytics et votre CRM sont installés dans vos comptes. Un tableau de bord partagé compte chaque demande, sa source et son coût.'),('Qui définit ce qui est qualifié ?','Vous et nous, avant le test. Les critères sont écrits et partagés pour suivre les demandes avec la même définition.')]
  main+='<section class="block" style="padding-top:0"><div class="wrap"><div class="kicker">Vos questions</div><h2 class="title">Avant de se lancer.</h2><div class="faq">'+''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q,a in faqs)+'</div></div></section></main>'
  schema={'@context':'https://schema.org','@type':'FAQPage','mainEntity':[{'@type':'Question','name':q,'acceptedAnswer':{'@type':'Answer','text':a}} for q,a in faqs]}
- (root/'secteurs'/f'{s["slug"]}.html').write_text(page(s['name']+' · '+BRAND,s['desc'],hero+main+contact(p,s['name'])+footer(p)+'<script type="application/ld+json">'+json.dumps(schema,ensure_ascii=False)+'</script>',p,f'secteurs/{s["slug"]}'))
+ seo_titre,seo_desc,_alt=SEO_SECTEURS[s['slug']]
+ chemin=f'secteurs/{s["slug"]}'
+ service={'@context':'https://schema.org','@type':'Service','name':f'Acquisition digitale · {s["name"]}',
+  'serviceType':seo_titre,'description':seo_desc,'provider':{'@type':'Organization','name':BRAND},
+  'areaServed':{'@type':'Country','name':'France'}}
+ fil={'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[
+  {'@type':'ListItem','position':1,'name':'Accueil'},
+  {'@type':'ListItem','position':2,'name':'Secteurs'},
+  {'@type':'ListItem','position':3,'name':s['name']}]}
+ if SITE_URL:
+  service['url']=f'{SITE_URL}/{chemin}'
+  for i,item in enumerate(fil['itemListElement']):
+   item['item']=f'{SITE_URL}/'+['','secteurs',chemin][i]
+ (root/'secteurs'/f'{s["slug"]}.html').write_text(page(seo_titre+' · '+BRAND,seo_desc,
+  hero+main+contact(p,s['name'])+footer(p)+ld([service,fil,schema]),p,chemin))
 listing='<div class="hero-shell"><header class="hero listing-hero">'+nav('../')+'<div class="hero-copy"><div class="hero-eyebrow">Nos secteurs</div><h1>Chaque métier a ses défis.<br><span class="l2">Trouvons le bon rythme.</span></h1><p class="lead">Une approche d’acquisition qui part de votre réalité.</p></div></header></div><main id="main"><section class="block"><div class="wrap">'+grid('../')+'</div></section></main>'+contact('../')+footer('../')
 (root/'secteurs/index.html').write_text(page('Nos six secteurs d’expertise · '+BRAND,'Location, franchise, rénovation, immobilier, services à domicile et commerces multi-sites : découvrez nos approches.',listing,'../','secteurs'))
 
@@ -147,9 +187,6 @@ listing='<div class="hero-shell"><header class="hero listing-hero">'+nav('../')+
 # ---------- Pages expertises ----------
 (root/'expertises').mkdir(exist_ok=True)
 sector_names={s['slug']:s['name'] for s in sectors}
-
-def ld(items):
- return '<script type="application/ld+json">'+json.dumps(items,ensure_ascii=False)+'</script>'
 
 for e in EXPERTISES:
  dtitle,dline=DEMO[e['slug']]
@@ -219,7 +256,7 @@ xmain=('<main id="main">'
  '<p class="sub">Chaque métier n’a pas besoin des mêmes leviers, ni dans le même ordre.</p></div>'
  +grid()+'</div></section></main>')
 (root/'expertises/index.html').write_text(page(
- 'Nos expertises : SEO, GEO, Google Ads, Meta Ads, IA et data · '+BRAND,
+ 'Nos expertises : SEO, GEO, Ads, IA et data · '+BRAND,
  'SEO, GEO, Google Ads, Meta Ads, agence IA, landing pages et data : les sept expertises que SHYFT relie pour construire une acquisition mesurable.',
  xhero+xmain+contact()+footer(),'','expertises'))
 
