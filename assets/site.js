@@ -12,6 +12,20 @@ document.querySelectorAll('.navigation a').forEach(a=>a.addEventListener('click'
 const track=document.querySelector('#arcTrack');
 function layout(){if(!track)return;const cards=[...track.children];if(innerWidth<=640){cards.forEach(c=>{c.style.transform='';c.style.left='';c.style.zIndex=''});return}const mid=(cards.length-1)/2,gap=Math.min(183,innerWidth/8.1);cards.forEach((c,i)=>{const o=i-mid,a=Math.abs(o);c.style.left=(o*gap-85)+'px';c.style.transform=`translate3d(0,${a*a*6}px,${-a*a*20}px) rotateY(${-o*15}deg) rotateZ(${o*1.8}deg)`;c.style.zIndex=String(10-Math.round(a));c.style.animationDelay=(a*.06)+'s'})}
 layout();addEventListener('resize',layout);
+// Contexte de la demande : page d'origine, campagne et provenance, conservés le temps de la visite.
+const KEEP=['utm_source','utm_medium','utm_campaign','gclid'];
+function memory(key,value){try{if(value!==undefined)sessionStorage.setItem(key,value);return sessionStorage.getItem(key)||''}catch{return value||''}}
+(function context(){
+ const form=document.querySelector('#leadForm');if(!form)return;
+ const params=new URLSearchParams(location.search);
+ KEEP.forEach(k=>{const v=params.get(k);if(v)memory(k,v.slice(0,200))});
+ let first='';
+ try{first=localStorage.getItem('shyft:first')||'';if(!first){first=new Date().toISOString();localStorage.setItem('shyft:first',first)}}catch{first=new Date().toISOString()}
+ const ref=document.referrer&&!document.referrer.includes(location.host)?document.referrer.slice(0,300):'';
+ const values={page:location.pathname,referrer:ref,firstSeen:first};
+ KEEP.forEach(k=>values[k]=memory(k));
+ Object.entries(values).forEach(([name,value])=>{const input=form.querySelector(`input[name="${name}"]`);if(input)input.value=value});
+})();
 const form=document.querySelector('#leadForm');
 form?.addEventListener('submit',async event=>{event.preventDefault();const error=document.querySelector('#formError'),button=form.querySelector('button[type="submit"]');error.style.display='none';const data=Object.fromEntries(new FormData(form));if(!form.reportValidity())return;button.disabled=true;button.textContent='Envoi en cours…';try{if(location.protocol==='file:')throw Error('Le formulaire nécessite le serveur du site pour envoyer votre demande.');const response=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});let result={};try{result=await response.json()}catch{}if(!response.ok||!result.ok)throw Error(result.error||'La demande n’a pas été envoyée. Réessayez dans un instant.');form.classList.add('sent');form.querySelector('.done').setAttribute('tabindex','-1');form.querySelector('.done').focus()}catch(e){error.textContent=e.message||'La demande n’a pas été envoyée. Réessayez dans un instant.';error.style.display='block'}finally{button.disabled=false;button.textContent='Recevoir mon audit offert'}});
 

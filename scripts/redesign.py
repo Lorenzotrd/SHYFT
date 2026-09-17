@@ -43,7 +43,7 @@ def footer(prefix=''):
 form=re.search(r'<div class="hero-shell" id="contact">.*?</div>\s*</div>\s*\n\s*<footer>',old,re.S).group(0).rsplit('<footer>',1)[0]
 form=form.replace('Voyons ce que Google, Meta et les IA disent de votre entreprise.','Et si on passait<br>à la vitesse supérieure&nbsp;?').replace('Laissez vos coordonnées : on prépare votre audit et on vous le présente en visio.','Tout commence par un regard neuf. Parlez-nous de votre entreprise, on identifie vos prochaines opportunités.')
 form=form.replace('novalidate','').replace('<label>Prénom et nom','<div class="form-heading full"><span class="kicker">Faisons connaissance</span><h3>Votre audit commence ici.</h3></div><label>Prénom et nom')
-form=form.replace('<p class="legal full">Vos informations servent uniquement à préparer votre audit et à vous recontacter.</p>','<label class="honeypot" aria-hidden="true">Ne pas remplir<input name="website_check" tabindex="-1" autocomplete="off"></label><p class="legal full">Vos informations servent uniquement à préparer votre audit et à vous recontacter. <a href="/confidentialite">Politique de confidentialité</a>.</p>')
+form=form.replace('<p class="legal full">Vos informations servent uniquement à préparer votre audit et à vous recontacter.</p>','<input type="hidden" name="page"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="gclid"><input type="hidden" name="referrer"><input type="hidden" name="firstSeen"><label class="honeypot" aria-hidden="true">Ne pas remplir<input name="website_check" tabindex="-1" autocomplete="off"></label><p class="legal full">Vos informations servent uniquement à préparer votre audit et à vous recontacter. <a href="/confidentialite">Politique de confidentialité</a>.</p>')
 form=re.sub(r'<select name="secteur" required>.*?</select>','{SELECT}',form,flags=re.S)
 assert '{SELECT}' in form
 
@@ -220,14 +220,50 @@ xmain=('<main id="main">'
 def simple(eyebrow,h1,lead,content):
  return f'<div class="hero-shell"><header class="hero listing-hero legal-hero">{nav()}<div class="hero-copy"><div class="hero-eyebrow">{eyebrow}</div><h1>{h1}</h1><p class="lead">{lead}</p></div></header></div><main id="main"><section class="block"><div class="wrap"><div class="legal-text">{content}</div></div></section></main>'+contact()+footer()
 mentions=f'''<h2>Éditeur du site</h2><p>{BRAND}, <mark>À compléter : forme juridique, capital social, adresse du siège, numéro SIREN ou RCS, numéro de TVA</mark>.</p><p>Directeur de la publication : <mark>À compléter</mark>. Contact : <mark>À compléter : adresse email</mark>.</p><h2>Hébergement</h2><p><mark>À compléter : nom de l’hébergeur, adresse et téléphone</mark>.</p><h2>Propriété intellectuelle</h2><p>Les textes, la marque {BRAND} et la mise en page de ce site appartiennent à {BRAND}. Toute reproduction sans autorisation écrite est interdite.</p><h2>Crédits</h2><p>Les photographies d’illustration proviennent d’Unsplash et ne représentent ni l’équipe ni des clients. Les chiffres affichés dans les illustrations et les simulateurs sont fictifs. Polices Geist et Geist Mono, chargées depuis Google Fonts.</p><h2>Données personnelles</h2><p>Le traitement des informations du formulaire est décrit dans la <a href="/confidentialite">politique de confidentialité</a>.</p>'''
-confidentialite=f'''<h2>Responsable du traitement</h2><p>{BRAND}, <mark>À compléter : identité complète et adresse email de contact</mark>.</p><h2>Données collectées</h2><p>Le formulaire d’audit recueille : prénom et nom, entreprise, site internet, secteur, téléphone et email professionnel. Le site ne conserve aucune de ces données sur son serveur : elles sont transmises directement à notre outil de suivi des demandes, <mark>À compléter : nom du CRM ou de l’outil email</mark>.</p><h2>Pourquoi ces données</h2><ul><li>Préparer l’audit offert que vous demandez et vous recontacter pour le présenter (mesures précontractuelles prises à votre demande).</li><li>Poursuivre l’échange commercial si vous le souhaitez (intérêt légitime).</li></ul><p>Aucune prospection sans lien avec votre demande, aucune revente de données.</p><h2>Destinataires</h2><p>L’équipe {BRAND} et les prestataires techniques qui hébergent nos outils : <mark>À compléter : liste des prestataires et localisation des données</mark>.</p><h2>Durée de conservation</h2><p><mark>À compléter, par exemple : trois ans après le dernier contact</mark>.</p><h2>Vos droits</h2><p>Vous pouvez accéder à vos données, les rectifier, demander leur effacement, limiter ou refuser leur traitement et demander leur portabilité. Écrivez à <mark>À compléter : adresse email</mark>. Vous pouvez aussi adresser une réclamation à la CNIL (<a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>).</p><h2>Cookies et mesure d’audience</h2><p>Ce site n’utilise aucun cookie de mesure d’audience ni de publicité. Les polices sont chargées depuis Google Fonts : votre adresse IP est transmise à Google lors du chargement de la page.</p><h2>Sécurité</h2><p>Les données du formulaire sont vérifiées côté serveur, protégées par un champ anti-robot et transmises de façon chiffrée lorsque le site est servi en HTTPS.</p><p>Dernière mise à jour : 16 septembre 2026.</p>'''
+confidentialite=f'''<h2>Responsable du traitement</h2><p>{BRAND}, <mark>À compléter : identité complète et adresse email de contact</mark>.</p><h2>Données collectées</h2><p>Le formulaire d’audit recueille : prénom et nom, entreprise, site internet, secteur, téléphone et email professionnel. Nous enregistrons également la page depuis laquelle la demande a été envoyée, les paramètres de campagne éventuellement présents dans l’adresse et le site qui vous a orienté vers le nôtre. Ces informations nous servent à savoir quels contenus répondent à vos questions. Aucun profilage publicitaire n’est réalisé.</p><h2>Où elles sont conservées</h2><p>Les demandes sont enregistrées dans un espace privé, accessible uniquement par l’équipe {BRAND} après authentification, et transmises à notre outil de suivi des demandes, <mark>À compléter : nom du CRM ou de l’outil email</mark>. Elles ne sont ni revendues, ni partagées avec des tiers à des fins commerciales.</p><h2>Pourquoi ces données</h2><ul><li>Préparer l’audit offert que vous demandez et vous recontacter pour le présenter (mesures précontractuelles prises à votre demande).</li><li>Poursuivre l’échange commercial si vous le souhaitez (intérêt légitime).</li></ul><p>Aucune prospection sans lien avec votre demande, aucune revente de données.</p><h2>Destinataires</h2><p>L’équipe {BRAND} et les prestataires techniques qui hébergent nos outils : <mark>À compléter : liste des prestataires et localisation des données</mark>.</p><h2>Durée de conservation</h2><p><mark>À compléter, par exemple : trois ans après le dernier contact</mark>. Passé ce délai, ou à votre demande, la fiche est effacée définitivement de notre espace de suivi.</p><h2>Vos droits</h2><p>Vous pouvez accéder à vos données, les rectifier, demander leur effacement, limiter ou refuser leur traitement et demander leur portabilité. Écrivez à <mark>À compléter : adresse email</mark>. Vous pouvez aussi adresser une réclamation à la CNIL (<a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>).</p><h2>Cookies et mesure d’audience</h2><p>Ce site n’utilise aucun cookie de mesure d’audience ni de publicité. Les polices sont chargées depuis Google Fonts : votre adresse IP est transmise à Google lors du chargement de la page.</p><h2>Sécurité</h2><p>Les données du formulaire sont vérifiées côté serveur, protégées par un champ anti-robot et transmises de façon chiffrée lorsque le site est servi en HTTPS.</p><p>Dernière mise à jour : 16 septembre 2026.</p>'''
 (root/'mentions-legales.html').write_text(page('Mentions légales · '+BRAND,'Informations légales sur l’éditeur et l’hébergeur du site '+BRAND+'.',simple('Informations légales','Mentions légales.','Qui édite ce site et comment nous contacter.',mentions),'','mentions-legales'))
 (root/'confidentialite.html').write_text(page('Politique de confidentialité · '+BRAND,'Comment '+BRAND+' utilise les informations du formulaire d’audit et quels sont vos droits.',simple('Vos données','Politique de confidentialité.','Ce qu’on fait de vos informations, et ce qu’on ne fait pas.',confidentialite),'','confidentialite'))
+
+
+# ---------- Panneau des demandes ----------
+admin_body = '''<div class="admin">
+<header class="admin-top"><a class="logo" href="/" aria-label="SHYFT, accueil">{LOGO}</a>
+<div class="admin-top-right"><span class="admin-mode" id="mode" hidden></span>
+<button class="btn btn-ghost" id="logout" hidden>Se déconnecter</button></div></header>
+<main id="main">
+<section class="admin-login" id="login">
+ <div class="admin-card">
+  <span class="kicker">Accès réservé</span><h1>Demandes reçues.</h1>
+  <p>Ce panneau affiche les demandes d’audit envoyées depuis le site.</p>
+  <form id="loginForm"><label>Mot de passe<input type="password" id="pass" autocomplete="current-password" required></label>
+  <button class="btn btn-lime" type="submit">Ouvrir le panneau</button></form>
+  <p class="admin-error" id="loginError" role="alert" hidden></p>
+ </div>
+</section>
+<section class="admin-panel" id="panel" hidden>
+ <div class="admin-head"><div><div class="kicker">Demandes d’audit</div><h1>Vos demandes.</h1></div>
+  <div class="admin-actions"><button class="btn btn-ghost" id="refresh">Actualiser</button>
+  <button class="btn btn-lime" id="export">Exporter en CSV</button></div></div>
+ <div class="admin-stats" id="stats"></div>
+ <div class="admin-filters"><label class="admin-search">Rechercher<input type="search" id="search" placeholder="Nom, entreprise, email, page…"></label>
+  <label>Secteur<select id="sector"><option value="">Tous</option></select></label>
+  <label>Période<select id="period"><option value="">Depuis le début</option><option value="7">7 derniers jours</option><option value="30">30 derniers jours</option><option value="90">90 derniers jours</option></select></label>
+  <span class="admin-count" id="count"></span></div>
+ <div class="table-scroll"><table class="data-table admin-table"><thead><tr>
+  <th>Reçue le</th><th>Contact</th><th>Entreprise</th><th>Secteur</th><th>Page d’origine</th><th>Source</th><th></th>
+ </tr></thead><tbody id="rows"></tbody></table></div>
+ <p class="admin-empty" id="empty" hidden></p>
+ <p class="admin-note">Les demandes sont conservées pour votre suivi commercial. Pensez à les effacer quand elles n’ont plus d’utilité : c’est une obligation, et le panneau le permet ligne par ligne.</p>
+</section>
+</main></div>'''.replace('{LOGO}', logo)
+(root/'admin.html').write_text(page('Demandes · '+BRAND,'Panneau privé de suivi des demandes d’audit.',admin_body,'','admin')
+ .replace('<head>','<head><meta name="robots" content="noindex, nofollow">')
+ .replace('<script src="/assets/site.js" defer></script>','<script src="/assets/admin.js" defer></script>'))
 
 # ---------- Sitemap, robots, favicon ----------
 urls=['','expertises']+[f'expertises/{e["slug"]}' for e in EXPERTISES]+['secteurs']+[f'secteurs/{s["slug"]}' for s in sectors]+['mentions-legales','confidentialite']
 (root/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{BASE}/{u}</loc></url>\n' for u in urls)+'</urlset>\n')
-(root/'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n')
+(root/'robots.txt').write_text(f'User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /api/\nSitemap: {BASE}/sitemap.xml\n')
 (root/'assets/favicon.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#d9ff5b"/><path d="M18 46 46 18M19 18h27v27" fill="none" stroke="#152319" stroke-width="7"/></svg>')
 (root/'elan-site.html').unlink(missing_ok=True)
 print('Généré : accueil, 6 pages métier, index secteurs, 2 pages légales, sitemap.xml, robots.txt')

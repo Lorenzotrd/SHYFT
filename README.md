@@ -65,6 +65,23 @@ La section présente ce que SHYFT installe chez ses clients : Search Console, Go
 
 Importer le dépôt GitHub dans Vercel. Le fichier `vercel.json` impose le preset « Other » : pas de build, les pages HTML sont servies telles quelles et `api/lead.js` devient automatiquement la fonction `POST /api/lead`. Le serveur local est rangé dans `scripts/dev-server.mjs` et il n’y a pas de script `start`, sinon Vercel déploie le serveur Node comme application et ne trouve plus les pages. `.vercelignore` écarte les captures, les scripts et l’original. Ajouter la variable d’environnement `LEAD_WEBHOOK_URL` (et `LEAD_WEBHOOK_TOKEN` si l’outil l’exige) dans les réglages du projet, puis redéployer. Sans cette variable, le site s’affiche mais le formulaire répond « service pas encore disponible », sans faux succès. Le fichier `scripts/dev-server.mjs` ne sert qu’en local.
 
+## Panneau des demandes
+
+Adresse `/admin`, exclue des robots et du sitemap, protégée par un mot de passe. Elle affiche les demandes reçues, permet de filtrer par recherche, secteur et période, d’exporter la totalité en CSV et d’effacer une demande ligne par ligne.
+
+Deux variables d’environnement à créer dans Vercel :
+
+| Variable | Rôle |
+| --- | --- |
+| `ADMIN_PASSWORD` | Mot de passe du panneau. Sans elle, `/admin` répond que le panneau n’est pas configuré. |
+| `KV_REST_API_URL` et `KV_REST_API_TOKEN` | Base Upstash Redis, créée en deux minutes depuis l’onglet Storage de Vercel. Sans elles, rien n’est conservé en ligne. |
+
+En développement, `npm run dev` écrit dans `.leads.json` à la racine, ignoré par Git. Le mot de passe se passe au lancement : `ADMIN_PASSWORD=choisir node scripts/dev-server.mjs`.
+
+Le formulaire enregistre, en plus des champs visibles, la page d’origine, les paramètres de campagne présents dans l’adresse (`utm_source`, `utm_medium`, `utm_campaign`, `gclid`), le site référent et la date de première visite. C’est ce qui permet de savoir quelle page produit des demandes. La politique de confidentialité en rend compte.
+
+Le CSV est encodé en UTF-8 avec marque d’ordre pour s’ouvrir directement dans Excel, séparé par des points-virgules, et les cellules commençant par `=`, `+`, `-` ou `@` sont neutralisées pour éviter qu’un tableur ne les interprète comme des formules.
+
 ## Envoyer les audits
 
 La validation et l’envoi sont dans `lib/lead.mjs`, partagé par le serveur local (`scripts/dev-server.mjs`, Node 18 ou supérieur) et la fonction Vercel (`api/lead.js`). Configurer `LEAD_WEBHOOK_URL` avec le webhook du CRM ou de l’outil email ; `LEAD_WEBHOOK_TOKEN` est facultatif. Ces secrets restent côté serveur. Sans configuration, l’API retourne une erreur explicite et n’affiche jamais de faux succès. Aucune demande n’est enregistrée localement.

@@ -19,6 +19,64 @@ try{
  received=undefined;const ok=await call({...data,nom:'Test Vercel'});assert.equal(ok.code,200);assert.equal(ok.body.ok,true);assert.equal(received.nom,'Test Vercel');
  assert.equal((await call({website_check:'bot',...data})).code,400);
  assert.equal((await call(data,'GET')).code,405);
- delete process.env.LEAD_WEBHOOK_URL;const off=await call(data);assert.equal(off.code,503);assert.match(off.body.error,/pas encore disponible/);
+ // Sans webhook mais avec le stockage local, la demande est conservée : succès légitime.
+ delete process.env.LEAD_WEBHOOK_URL;
+ const stocke=await call({...data,nom:'Stockage seul'});assert.equal(stocke.code,200);
+ // Ni stockage ni webhook : refus explicite, jamais de faux succès.
+ process.env.VERCEL='1';
+ const off=await call(data);assert.equal(off.code,503);assert.match(off.body.error,/pas encore disponible/);
+ delete process.env.VERCEL;
  console.log('API : serveur local et fonction Vercel vérifiés, données invalides refusées, livraison confirmée par webhook local, absence de configuration signalée sans faux succès.');
 }finally{child.kill();mock.close()}
+
+// --- Panneau des demandes : stockage, protection, export CSV, suppression ---
+{
+ const {saveLead, listLeads, deleteLead, storeMode} = await import('../lib/store.mjs');
+ const {checkPassword, toCsv} = await import('../lib/admin.mjs');
+ const adminHandler = (await import('../api/admin.js')).default;
+ const {rm} = await import('node:fs/promises');
+ await rm(new URL('../.leads.json', import.meta.url), {force: true});
+
+ assert.equal(storeMode(), 'local', 'le pilote local doit être actif hors Vercel');
+ const lead = await saveLead({nom: 'Contrôle', entreprise: 'Test', email: 'a@b.fr', secteur: 'Immobilier',
+  page: '/expertises/seo', utm_source: 'google', receivedAt: new Date().toISOString()});
+ assert.ok(lead.id, 'un identifiant est attribué');
+ assert.equal((await listLeads()).length, 1);
+
+ process.env.ADMIN_PASSWORD = 'mot-de-passe-de-test';
+ assert.equal(checkPassword('mauvais'), false);
+ assert.equal(checkPassword(''), false);
+ assert.equal(checkPassword('mot-de-passe-de-test'), true);
+
+ const appel = async (method, url, auth) => {
+  const res = {headers: {}, status(c) {this.code = c; return this}, setHeader(k, v) {this.headers[k] = v},
+   json(b) {this.body = b}, send(b) {this.body = b}};
+  await adminHandler({method, url, headers: auth ? {authorization: 'Bearer ' + auth} : {}}, res);
+  return res;
+ };
+ assert.equal((await appel('GET', '/api/admin')).code, 401, 'refus sans mot de passe');
+ assert.equal((await appel('GET', '/api/admin', 'mauvais')).code, 401, 'refus avec un mauvais mot de passe');
+ const ok = await appel('GET', '/api/admin', 'mot-de-passe-de-test');
+ assert.equal(ok.code, 200);
+ assert.equal(ok.body.count, 1);
+ assert.equal((await appel('POST', '/api/admin', 'mot-de-passe-de-test')).code, 405);
+
+ const csv = await appel('GET', '/api/admin?format=csv', 'mot-de-passe-de-test');
+ assert.match(csv.headers['Content-Type'], /text\/csv/);
+ assert.match(csv.headers['Content-Disposition'], /attachment; filename="shyft-demandes-/);
+ assert.ok(csv.body.startsWith('﻿'), 'le CSV commence par la marque d’ordre pour Excel');
+ assert.match(csv.body, /"Contrôle"/);
+
+ // Une cellule commençant par un signe égal ne doit pas devenir une formule dans un tableur.
+ assert.match(toCsv([{nom: '=1+1', entreprise: 'a"b'}]), /"'=1\+1"/);
+ assert.match(toCsv([{nom: '=1+1', entreprise: 'a"b'}]), /"a""b"/);
+
+ assert.equal((await appel('DELETE', '/api/admin?id=' + lead.id, 'mot-de-passe-de-test')).body.ok, true);
+ assert.equal((await listLeads()).length, 0);
+ assert.equal(await deleteLead('inconnu'), false);
+
+ delete process.env.ADMIN_PASSWORD;
+ assert.equal((await appel('GET', '/api/admin', 'peu importe')).code, 503, 'panneau non configuré');
+ await rm(new URL('../.leads.json', import.meta.url), {force: true});
+ console.log('Panneau : stockage, mot de passe, export CSV protégé contre l’injection de formules et suppression vérifiés.');
+}

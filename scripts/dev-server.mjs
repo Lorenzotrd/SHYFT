@@ -5,6 +5,7 @@ import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {handleLead,readStream} from '../lib/lead.mjs';
+import adminHandler from '../api/admin.js';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.jpg':'image/jpeg','.svg':'image/svg+xml','.json':'application/json','.png':'image/png','.xml':'application/xml; charset=utf-8','.txt':'text/plain; charset=utf-8'};
 const ASSET=/^\/assets\/[a-z0-9.-]+\.(css|js|jpg|svg|png)$/;
@@ -24,6 +25,13 @@ async function resolve(n){
 http.createServer(async(req,res)=>{
  try{
   const url=new URL(req.url,'http://localhost');
+  if(url.pathname==='/api/admin'){
+   // Adaptateur minimal : la fonction Vercel attend req.headers/req.url et un res avec status/json/send.
+   const shim={status(code){this.code=code;return this},setHeader(k,v){res.setHeader(k,v)},
+    json(body){res.writeHead(this.code||200,{'Content-Type':'application/json; charset=utf-8'});res.end(JSON.stringify(body))},
+    send(body){res.writeHead(this.code||200);res.end(body)}};
+   return adminHandler({method:req.method,url:req.url,headers:req.headers},shim);
+  }
   if(url.pathname==='/api/lead'){
    const {status,body}=await handleLead({method:req.method,headers:req.headers,readRaw:()=>readStream(req)});
    res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});return res.end(JSON.stringify(body));

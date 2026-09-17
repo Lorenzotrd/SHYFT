@@ -57,6 +57,9 @@ for(const s of sectors){await go('/secteurs/'+s.slug);
 }
 if(new Set(titres).size!==6)throw Error('Titres de parcours identiques entre secteurs');
 for(const legal of ['/mentions-legales','/confidentialite'])await go(legal);
+const sansMotDePasse=await fetch(home+'/api/admin');
+if(sansMotDePasse.status!==401&&sansMotDePasse.status!==503)throw Error('Le panneau répond sans mot de passe : '+sansMotDePasse.status);
+if((await (await fetch(home+'/robots.txt')).text()).indexOf('Disallow: /admin')<0)throw Error('Le panneau n’est pas exclu des robots');
 
 // Aucun lien interne cassé, aucune extension .html oubliée.
 await go('/');
@@ -77,9 +80,24 @@ if(await page.locator('#expertise-menu').isHidden())throw Error('Accordéon mobi
 await page.locator('.dropdown-toggle').first().click();await page.locator('.dropdown-menu a').nth(3).click();await page.waitForLoadState('networkidle');
 if(await page.locator('select[name="secteur"]').inputValue()!=='Immobilier')throw Error('Secteur mal présélectionné');
 await page.screenshot({path:'qa/sector-mobile.png',fullPage:true});
-await page.locator('[name="nom"]').fill('Test');await page.locator('[name="entreprise"]').fill('Test');await page.locator('[name="email"]').fill('test@example.com');
-await page.locator('button[type="submit"]').click();await page.locator('#formError').waitFor({state:'visible'});
-if(await page.locator('.done').isVisible())throw Error('Faux succès du formulaire');
+// Parcours complet du formulaire : envoi, enregistrement, puis nettoyage de la demande de test.
+const marker='Contrôle automatique '+Date.now();
+await page.locator('[name="nom"]').fill(marker);await page.locator('[name="entreprise"]').fill('Contrôle');await page.locator('[name="email"]').fill('controle@example.com');
+await page.locator('button[type="submit"]').click();
+await Promise.race([page.locator('.done').waitFor({state:'visible',timeout:15000}),page.locator('#formError').waitFor({state:'visible',timeout:15000})]);
+const envoye=await page.locator('.done').isVisible();
+const erreur=(await page.locator('#formError').isVisible())?await page.locator('#formError').innerText():'';
+if(!envoye&&!erreur)throw Error('Le formulaire ne dit rien à l’utilisateur');
+if(!envoye&&!/pas encore disponible|a échoué/.test(erreur))throw Error('Message d’erreur inattendu : '+erreur);
+const motDePasse=process.env.ADMIN_PASSWORD;
+if(envoye&&motDePasse){
+ const entetes={Authorization:'Bearer '+motDePasse};
+ const liste=await (await fetch(home+'/api/admin',{headers:entetes})).json();
+ const cree=(liste.leads||[]).find(l=>l.nom===marker);
+ if(!cree)throw Error('La demande envoyée n’a pas été enregistrée');
+ if(cree.page!=='/secteurs/immobilier')throw Error('Page d’origine non transmise : '+cree.page);
+ await fetch(home+'/api/admin?id='+encodeURIComponent(cree.id),{method:'DELETE',headers:entetes});
+}
 if(errors.length)throw Error('Erreurs JavaScript : '+errors.join(' | '));
-console.log(JSON.stringify({pages:17,expertises:slugs.length,erreurs:errors.length,formulaire:'refus correct sans connecteur'}));
+console.log(JSON.stringify({pages:18,expertises:slugs.length,erreurs:errors.length,formulaire:'parcours complet vérifié'}));
 await browser.close()})().catch(e=>{console.error(e);process.exit(1)});
