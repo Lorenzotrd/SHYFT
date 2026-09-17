@@ -65,6 +65,14 @@ La section présente ce que SHYFT installe chez ses clients : Search Console, Go
 
 Importer le dépôt GitHub dans Vercel. Le fichier `vercel.json` impose le preset « Other » : pas de build, les pages HTML sont servies telles quelles et `api/lead.js` devient automatiquement la fonction `POST /api/lead`. Le serveur local est rangé dans `scripts/dev-server.mjs` et il n’y a pas de script `start`, sinon Vercel déploie le serveur Node comme application et ne trouve plus les pages. `.vercelignore` écarte les captures, les scripts et l’original. Ajouter la variable d’environnement `LEAD_WEBHOOK_URL` (et `LEAD_WEBHOOK_TOKEN` si l’outil l’exige) dans les réglages du projet, puis redéployer. Sans cette variable, le site s’affiche mais le formulaire répond « service pas encore disponible », sans faux succès. Le fichier `scripts/dev-server.mjs` ne sert qu’en local.
 
+## Mesure d’audience
+
+Google Analytics 4 est intégré mais désactivé par défaut. Pour l’activer, renseigner `GA_ID` en tête de `scripts/redesign.py` avec l’identifiant de mesure du format `G-XXXXXXXXXX`, puis régénérer. Tant que cette constante est vide, aucun script de mesure n’est chargé, aucun cookie n’est déposé, aucun bandeau n’apparaît et la politique de confidentialité l’indique.
+
+Une fois activée : rien n’est transmis à Google avant un accord explicite. Le mode consentement démarre en refus, le script de Google n’est téléchargé qu’après acceptation, et un refus est mémorisé sans aucune requête. Le lien « Gérer les cookies » du pied de page permet de revenir sur son choix. Le panneau `/admin` ne charge jamais la mesure.
+
+L’envoi réussi du formulaire déclenche l’événement `generate_lead`, avec le secteur et la page d’origine. La publicité personnalisée reste refusée : si vous lancez un jour Google Ads pour vous-mêmes, il faudra ajouter le consentement publicitaire.
+
 ## Panneau des demandes
 
 Adresse `/admin`, exclue des robots et du sitemap, protégée par un mot de passe. Elle affiche les demandes reçues, permet de filtrer par recherche, secteur et période, d’exporter la totalité en CSV et d’effacer une demande ligne par ligne.

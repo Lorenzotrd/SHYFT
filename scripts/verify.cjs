@@ -57,6 +57,30 @@ for(const s of sectors){await go('/secteurs/'+s.slug);
 }
 if(new Set(titres).size!==6)throw Error('Titres de parcours identiques entre secteurs');
 for(const legal of ['/mentions-legales','/confidentialite'])await go(legal);
+// Mesure d'audience : rien ne part vers Google avant un accord explicite.
+await go('/');
+const mesureActive=await page.locator('script[src="/assets/analytics.js"]').count()>0;
+if(mesureActive){
+ const appels=[];page.on('request',r=>{if(/googletagmanager|google-analytics/.test(r.url()))appels.push(r.url())});
+ const vierge=await browser.newContext({viewport:{width:1440,height:900}});
+ const q=await vierge.newPage();const vus=[];
+ q.on('request',r=>{if(/googletagmanager|google-analytics/.test(r.url()))vus.push(r.url())});
+ await q.goto(home+'/',{waitUntil:'networkidle'});await q.waitForTimeout(800);
+ if(!await q.locator('.consent').isVisible())throw Error('Bandeau de consentement absent');
+ if(vus.length)throw Error('Requête vers Google avant consentement : '+vus[0]);
+ await q.click('[data-consent="denied"]');await q.waitForTimeout(600);
+ if(vus.length)throw Error('Requête vers Google malgré un refus');
+ await q.reload({waitUntil:'networkidle'});await q.waitForTimeout(600);
+ if(await q.locator('.consent').count())throw Error('Le refus n’est pas mémorisé');
+ if(!await q.locator('[data-cookies]').count())throw Error('Lien de gestion des cookies absent du pied de page');
+ await q.click('[data-cookies]');await q.waitForTimeout(300);
+ if(!await q.locator('.consent').isVisible())throw Error('Le choix ne peut pas être rouvert');
+ await q.click('[data-consent="granted"]');await q.waitForTimeout(1500);
+ if(!vus.length)throw Error('Google n’est pas chargé après acceptation');
+ if((await (await fetch(home+'/confidentialite')).text()).indexOf('Google Analytics')<0)throw Error('La politique de confidentialité ne mentionne pas la mesure');
+ await vierge.close();
+}
+if((await (await fetch(home+'/admin')).text()).indexOf('analytics.js')>=0)throw Error('Le panneau privé charge la mesure d’audience');
 const sansMotDePasse=await fetch(home+'/api/admin');
 if(sansMotDePasse.status!==401&&sansMotDePasse.status!==503)throw Error('Le panneau répond sans mot de passe : '+sansMotDePasse.status);
 if((await (await fetch(home+'/robots.txt')).text()).indexOf('Disallow: /admin')<0)throw Error('Le panneau n’est pas exclu des robots');
@@ -99,5 +123,5 @@ if(envoye&&motDePasse){
  await fetch(home+'/api/admin?id='+encodeURIComponent(cree.id),{method:'DELETE',headers:entetes});
 }
 if(errors.length)throw Error('Erreurs JavaScript : '+errors.join(' | '));
-console.log(JSON.stringify({pages:18,expertises:slugs.length,erreurs:errors.length,formulaire:'parcours complet vérifié'}));
+console.log(JSON.stringify({pages:18,expertises:slugs.length,erreurs:errors.length,mesure:mesureActive?'consentement vérifié':'désactivée',formulaire:'parcours complet vérifié'}));
 await browser.close()})().catch(e=>{console.error(e);process.exit(1)});
