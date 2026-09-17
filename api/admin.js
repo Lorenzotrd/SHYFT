@@ -1,15 +1,20 @@
 // Panneau d'administration : liste des demandes, export CSV, suppression. Protégé par ADMIN_PASSWORD.
 import {listLeads, deleteLead, storeMode} from '../lib/store.mjs';
-import {adminReady, checkPassword, bearer, toCsv} from '../lib/admin.mjs';
+import {adminReady, checkPassword, bearer, toCsv, clientKey, attemptState, noteFailure, noteSuccess} from '../lib/admin.mjs';
 
 export default async function handler(req, res) {
  res.setHeader('Cache-Control', 'no-store');
  res.setHeader('X-Robots-Tag', 'noindex, nofollow');
  if (!adminReady()) return res.status(503).json({error: 'Le panneau n’est pas encore configuré : il manque la variable ADMIN_PASSWORD.'});
+ const key = clientKey(req.headers);
+ const state = attemptState(key);
+ if (state.locked) return res.status(429).json({error: 'Trop de tentatives. Réessayez dans quelques minutes.'});
  if (!checkPassword(bearer(req.headers))) {
-  await new Promise(r => setTimeout(r, 400)); // Ralentit les tentatives répétées.
+  noteFailure(key);
+  await new Promise(r => setTimeout(r, 400 + state.wait)); // Le délai grandit à chaque échec.
   return res.status(401).json({error: 'Mot de passe incorrect.'});
  }
+ noteSuccess(key);
  try {
   if (req.method === 'GET') {
    const leads = await listLeads();

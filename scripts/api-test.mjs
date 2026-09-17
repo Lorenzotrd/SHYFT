@@ -80,3 +80,18 @@ try{
  await rm(new URL('../.leads.json', import.meta.url), {force: true});
  console.log('Panneau : stockage, mot de passe, export CSV protégé contre l’injection de formules et suppression vérifiés.');
 }
+
+// --- Limitation des tentatives sur le panneau ---
+{
+ const {attemptState, noteFailure, noteSuccess, clientKey} = await import('../lib/admin.mjs');
+ const ip = '203.0.113.7';
+ assert.equal(clientKey({'x-forwarded-for': '203.0.113.7, 10.0.0.1'}), ip, 'la première adresse est retenue');
+ assert.equal(attemptState(ip).wait, 0, 'aucune pénalité au départ');
+ for (let i = 0; i < 5; i++) noteFailure(ip);
+ assert.ok(attemptState(ip).wait > 0, 'le délai grandit après plusieurs échecs');
+ for (let i = 0; i < 20; i++) noteFailure(ip);
+ assert.equal(attemptState(ip).locked, true, 'blocage au-delà du seuil');
+ noteSuccess(ip);
+ assert.equal(attemptState(ip).locked, false, 'un succès remet le compteur à zéro');
+ console.log('Panneau : délai progressif après échec et blocage temporaire vérifiés.');
+}
