@@ -8,7 +8,7 @@ BRAND='SHYFT'
 YEAR=2026
 # Adresse publique du site, sans barre oblique finale, par exemple 'https://www.shyft.fr'.
 # Vide : pas de canonical ni d'og:image ; le sitemap et robots.txt contiennent un texte à remplacer.
-SITE_URL=''
+SITE_URL='https://www.shyftgrowth.com'
 # Identifiant de mesure Google Analytics 4, de la forme G-XXXXXXXXXX.
 # Vide : aucun script de mesure, aucun cookie, aucun bandeau de consentement.
 GA_ID='G-XC6CD5J71S'

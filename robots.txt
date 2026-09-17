@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /api/
-Sitemap: https://VOTRE-DOMAINE/sitemap.xml
+Sitemap: https://www.shyftgrowth.com/sitemap.xml
