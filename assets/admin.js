@@ -80,15 +80,34 @@ function render() {
   </tr>`).join('');
 }
 
-async function load() {
+// Le panneau ne s'ouvre qu'après une réponse acceptée : un mot de passe refusé
+// ou un panneau non configuré ramène toujours à l'écran de connexion.
+async function fetchLeads() {
  const response = await api();
- if (response.status === 401) { token.set(''); show(false); $('#loginError').hidden = false; $('#loginError').textContent = 'Session expirée. Entrez à nouveau le mot de passe.'; return; }
+ if (response.ok) return {ok: true, data: await response.json()};
+ token.set('');
  const data = await response.json().catch(() => ({}));
- if (!response.ok) { $('#empty').hidden = false; $('#empty').textContent = data.error || 'Le panneau est indisponible.'; return; }
+ return {ok: false, error: data.error || (response.status === 401 ? 'Mot de passe incorrect.' : 'Le panneau est indisponible.')};
+}
+
+function fail(message) {
+ leads = [];
+ show(false);
+ $('#loginError').hidden = false;
+ $('#loginError').textContent = message;
+}
+
+function paint(data) {
  leads = data.leads || [];
- $('#mode').hidden = false;
- $('#mode').textContent = data.mode === 'redis' ? 'Stockage en ligne' : data.mode === 'local' ? 'Stockage local (développement)' : 'Aucun stockage configuré';
+ $('#mode').textContent = data.mode === 'redis' ? 'Stockage en ligne'
+  : data.mode === 'local' ? 'Stockage local (développement)' : 'Aucun stockage configuré';
  fillSectors(); stats(); render();
+}
+
+async function load() {
+ const result = await fetchLeads();
+ if (!result.ok) return fail(result.error);
+ paint(result.data);
 }
 
 function show(authenticated) {
@@ -103,17 +122,11 @@ $('#loginForm').addEventListener('submit', async event => {
  const button = event.target.querySelector('button');
  button.disabled = true; button.textContent = 'Vérification…';
  token.set($('#pass').value);
- const response = await api();
+ const result = await fetchLeads();
  button.disabled = false; button.textContent = 'Ouvrir le panneau';
- if (response.status === 401) {
-  token.set(''); $('#loginError').hidden = false; $('#loginError').textContent = 'Mot de passe incorrect.'; return;
- }
- if (!response.ok) {
-  const data = await response.json().catch(() => ({}));
-  $('#loginError').hidden = false; $('#loginError').textContent = data.error || 'Le panneau est indisponible.'; return;
- }
+ if (!result.ok) return fail(result.error);
  $('#loginError').hidden = true; $('#pass').value = '';
- show(true); await load();
+ show(true); paint(result.data);
 });
 
 $('#logout').addEventListener('click', () => { token.set(''); leads = []; show(false); });
@@ -146,4 +159,10 @@ $('#rows').addEventListener('click', async event => {
  fillSectors(); stats(); render();
 });
 
-if (token.get()) { show(true); load(); } else { show(false); }
+(async function boot() {
+ show(false);
+ if (!token.get()) return;
+ const result = await fetchLeads();
+ if (!result.ok) return fail(result.error);
+ show(true); paint(result.data);
+})();

@@ -81,6 +81,16 @@ if(mesureActive){
  await vierge.close();
 }
 if((await (await fetch(home+'/admin')).text()).indexOf('analytics.js')>=0)throw Error('Le panneau privé charge la mesure d’audience');
+// Le panneau ne doit jamais s'ouvrir sans réponse acceptée du serveur.
+{const q=await browser.newPage({viewport:{width:1280,height:900}});
+ await q.goto(home+'/admin',{waitUntil:'domcontentloaded'});await q.waitForTimeout(400);
+ if(!await q.locator('#login').isVisible())throw Error('L’écran de connexion ne s’affiche pas');
+ if(await q.locator('#panel').isVisible())throw Error('Le panneau s’ouvre sans connexion');
+ await q.fill('#pass','mot-de-passe-volontairement-faux');await q.click('#loginForm button');await q.waitForTimeout(1400);
+ if(await q.locator('#panel').isVisible())throw Error('Le panneau s’ouvre avec un mauvais mot de passe');
+ await q.reload({waitUntil:'domcontentloaded'});await q.waitForTimeout(600);
+ if(await q.locator('#panel').isVisible())throw Error('Le panneau s’ouvre au rechargement après un échec');
+ await q.close();}
 const sansMotDePasse=await fetch(home+'/api/admin');
 if(sansMotDePasse.status!==401&&sansMotDePasse.status!==503)throw Error('Le panneau répond sans mot de passe : '+sansMotDePasse.status);
 if((await (await fetch(home+'/robots.txt')).text()).indexOf('Disallow: /admin')<0)throw Error('Le panneau n’est pas exclu des robots');

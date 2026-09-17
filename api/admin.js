@@ -5,7 +5,7 @@ import {adminReady, checkPassword, bearer, toCsv, clientKey, attemptState, noteF
 export default async function handler(req, res) {
  res.setHeader('Cache-Control', 'no-store');
  res.setHeader('X-Robots-Tag', 'noindex, nofollow');
- if (!adminReady()) return res.status(503).json({error: 'Le panneau n’est pas encore configuré : il manque la variable ADMIN_PASSWORD.'});
+ if (!adminReady()) return res.status(503).json({error: 'Panneau non configuré. Ajoutez la variable d’environnement ADMIN_PASSWORD dans les réglages du projet, puis redéployez.'});
  const key = clientKey(req.headers);
  const state = attemptState(key);
  if (state.locked) return res.status(429).json({error: 'Trop de tentatives. Réessayez dans quelques minutes.'});
