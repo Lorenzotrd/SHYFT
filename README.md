@@ -90,6 +90,14 @@ Le formulaire enregistre, en plus des champs visibles, la page d’origine, les 
 
 Le CSV est encodé en UTF-8 avec marque d’ordre pour s’ouvrir directement dans Excel, séparé par des points-virgules, et les cellules commençant par `=`, `+`, `-` ou `@` sont neutralisées pour éviter qu’un tableur ne les interprète comme des formules.
 
+## Recevoir les demandes dans une feuille Google
+
+Solution la plus simple si l’on ne veut créer aucun compte supplémentaire. Le fichier `scripts/google-sheet.gs` contient le script à coller dans une feuille Google via Extensions puis Apps Script. Après déploiement en application web accessible à tous, l’adresse obtenue, suivie de `?k=` et de la clé secrète choisie dans le script, se colle dans la variable `LEAD_WEBHOOK_URL` de Vercel.
+
+Chaque demande arrive alors dans la feuille avec ses quatorze colonnes, page d’origine et paramètres de campagne compris. Les cellules commençant par `=`, `+`, `-` ou `@` sont neutralisées pour que la feuille ne les interprète pas comme des formules.
+
+Le panneau `/admin` reste vide dans ce mode : il lit la base Upstash, pas la feuille. Les deux peuvent cohabiter, chaque demande partant alors aux deux endroits.
+
 ## Envoyer les audits
 
 La validation et l’envoi sont dans `lib/lead.mjs`, partagé par le serveur local (`scripts/dev-server.mjs`, Node 18 ou supérieur) et la fonction Vercel (`api/lead.js`). Configurer `LEAD_WEBHOOK_URL` avec le webhook du CRM ou de l’outil email ; `LEAD_WEBHOOK_TOKEN` est facultatif. Ces secrets restent côté serveur. Sans configuration, l’API retourne une erreur explicite et n’affiche jamais de faux succès. Aucune demande n’est enregistrée localement.
