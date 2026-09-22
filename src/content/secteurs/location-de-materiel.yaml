@@ -1,0 +1,118 @@
+name: Location de matériel
+order: 1
+short: Remplissez votre planning de location.
+photo: equipment
+alt: Ouvriers sur un chantier équipé de matériel de construction
+seoTitle: Agence marketing pour loueurs de matériel
+seoDescription: 'Remplissez votre planning de location : pages par matériel et par ville, Google Ads sur votre rayon de livraison, demandes suivies jusqu’à la réservation.'
+hero:
+  title: |-
+    Vos machines louées.
+    Pas immobilisées.
+  lead: Nous générons des demandes de location qualifiées et optimisons leur conversion en réservations pour développer votre chiffre d’affaires.
+  signal: Demande de location
+  value: Nacelle 12 m
+who: Vos futurs clients
+pain:
+- Les grands réseaux passent devant vous sur Google.
+- Votre catalogue est en PDF et les demandes arrivent par téléphone.
+- Les recherches continuent après la fermeture de vos agences.
+searches:
+- query: location nacelle 12 m + votre ville
+  meaning: Un artisan, un chantier la semaine prochaine.
+  channel: Google
+- query: louer une mini-pelle le week-end
+  meaning: Un particulier qui compare les prix et les horaires.
+  channel: Google
+- query: loueur de matériel ouvert le samedi
+  meaning: Une recherche sur la carte, depuis un téléphone.
+  channel: Fiche Google
+follow: Demandes reçues → demandes qualifiées → locations conclues → CA de location.
+journey:
+- title: La recherche
+  text: Un artisan tape le matériel et sa ville. Il tombe sur votre page, pas sur celle d’un grand réseau.
+  role: SHYFT
+- title: La demande
+  text: 'Matériel, dates, lieu de livraison : un formulaire simple, ou un appel vers votre agence.'
+  role: SHYFT
+- title: La réponse
+  text: Disponibilité et devis en quelques minutes, relance si pas de retour. Rien ne reste sans réponse.
+  role: SHYFT + vous
+- title: La location
+  text: Votre équipe conclut. La demande est comptée, rattachée à sa source et suivie dans le tableau de bord.
+  role: Votre équipe
+levers:
+  seo: 'Pages par matériel et ville : mini-pelle, nacelle, échafaudage. Une réponse précise aux recherches dans votre zone de livraison.'
+  ads: Campagnes sur les locations recherchées, ciblées sur votre rayon de livraison et les matériels disponibles.
+  google: 'Fiches de vos agences : catégories, matériels, horaires, photos et collecte d’avis après location. Faciliter l’appel et la demande locale.'
+  conversion: Formulaire avec matériel, dates et lieu de livraison. Suivi des appels, réponse rapide et relances jusqu’à la réservation.
+examples:
+  seoPages:
+  - /location-nacelle-12m/poitiers
+  - /mini-pelle-1-5t/tours
+  - /echafaudage-roulant/angers
+  adsKeywords:
+  - keyword: location nacelle poitiers
+    decision: Ciblé
+    state: ok
+  - keyword: prix location nacelle
+    decision: Enchère basse
+    state: warn
+  - keyword: nacelle occasion à vendre
+    decision: Exclu
+    state: bad
+  google:
+    name: Votre agence · Poitiers
+    rating: 4,7 ★ · 128 avis
+    hours: Ouvert · ferme à 18 h
+    actions:
+    - Itinéraire
+    - Appeler
+    - Demander un devis
+  form:
+  - question: Quel matériel ?
+    answer: Nacelle 12 m
+  - question: Quelles dates ?
+    answer: du 12 au 15 mars
+  - question: Livraison où ?
+    answer: Chantier, Poitiers
+measure:
+- name: Demandes de location qualifiées
+  how: Comptées dans votre CRM, avec la source de chaque demande.
+- name: Coût par demande
+  how: Google Ads et Analytics, par matériel et par campagne.
+- name: Visibilité par matériel et par ville
+  how: 'Search Console : requêtes, positions et pages qui sortent.'
+pay: demande de location qualifiée
+growth:
+  leads: 40
+  rate: 25
+  value: 450
+  client: locations conclues
+  unit: Montant moyen d’une location HT (€)
+  result: CA potentiel des locations
+  note: Montant total des locations conclues à partir de ce groupe de prospects, sans supposer de location récurrente.
+titles:
+  journey: |-
+    Du clic
+    à la location.
+  levers: |-
+    Quatre leviers.
+    Un objectif : votre planning rempli.
+  measure: |-
+    Ce qu’on suit,
+    de la demande à la location.
+  growth: |-
+    Ce que de nouvelles locations
+    peuvent changer.
+  faq: Avant de se lancer.
+signature:
+  after: levers
+  kicker: Votre catalogue
+  title: |-
+    Une page par matériel.
+    Une page par ville.
+  lead: Un artisan ne cherche pas « location de matériel ». Il cherche une machine précise, dans une ville précise, pour des dates précises.
+faq:
+  question: Et si le matériel demandé est indisponible ?
+  answer: Les campagnes et formulaires se concentrent sur les familles de matériel que vous souhaitez louer. Les critères de qualification précisent comment traiter une indisponibilité.

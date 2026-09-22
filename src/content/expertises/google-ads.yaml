@@ -1,0 +1,94 @@
+name: Google Ads
+order: 3
+menu: Google Ads
+hint: Capter une intention, tout de suite
+card: Être présent sur les recherches qui ont une intention d’achat, dès le premier jour.
+tag: Générer
+visual: ads
+size: large
+seoTitle: Agence Google Ads pour PME et réseaux
+seoDescription: 'Campagnes Google Ads sur les recherches à intention commerciale : ciblage local, suivi des appels et des demandes. Votre compte et votre budget restent à vous.'
+hero:
+  eyebrow: Publicité Google
+  title: |-
+    Soyez là au moment
+    exact où l’on
+    vous cherche.
+  lead: On n’achète pas des clics. On transforme une intention commerciale en demande qualifiée, et on suit ce que cette demande devient jusqu’à la signature.
+  cta: Analyser mes campagnes
+problemTitle: Le budget part. Les demandes, moins.
+problem:
+- Les campagnes tournent en automatique, sans personne pour surveiller où va l’argent.
+- Vous payez des clics sur des recherches qui ne vous concernent pas.
+- Les annonces envoient sur la page d’accueil, pas sur une réponse.
+- Personne ne sait quelle campagne a amené le dernier client signé.
+approach:
+- title: On part de ce que vous voulez vendre
+  text: Les prestations rentables, les zones que vous couvrez vraiment, les périodes où vous avez de la capacité. Pas de tout le catalogue à la fois.
+- title: On protège le budget avant de le dépenser
+  text: Mots-clés négatifs, exclusions géographiques, plages horaires. Ce qu’on ne dépense pas mal, on le dépense bien.
+- title: On relie l’annonce à une page qui répond
+  text: Une campagne ne vaut que par la page qui la reçoit et par le formulaire qui la termine.
+- title: On installe la mesure avant le premier euro
+  text: Conversions, formulaires et appels suivis dès le départ. Sinon, optimiser revient à deviner.
+demo:
+  title: L’annonce, et ce qu’on refuse de payer.
+  line: Une annonce qui répond exactement à la recherche, et une liste de termes exclus. La deuxième partie compte autant que la première.
+build:
+- name: Structure
+  items:
+  - Campagnes Search sur vos prestations prioritaires
+  - Performance Max quand le volume le justifie
+  - Campagnes locales autour de vos adresses
+  - Ciblage géographique sur votre zone réelle
+- name: Contenu
+  items:
+  - Recherche de mots-clés et d’intentions
+  - Mots-clés négatifs, revus chaque mois
+  - Annonces et variantes comparées
+  - 'Extensions : appel, lieu, prestations, promotions'
+- name: Conversion
+  items:
+  - Landing pages dédiées quand c’est utile
+  - Suivi des conversions et des formulaires
+  - Suivi des appels téléphoniques
+  - Remarketing sur les visiteurs non convertis
+- name: Pilotage
+  items:
+  - Enchères ajustées selon la valeur des demandes
+  - Analyse des termes de recherche réels
+  - Arbitrage entre campagnes et entre zones
+  - Tableau de bord partagé
+asideTitle: Votre compte, votre budget, vos données.
+aside: Les campagnes sont créées sur votre propre compte Google Ads. Le budget publicitaire est débité chez vous, jamais chez nous. Vous voyez chaque dépense en direct, et si la collaboration s’arrête, l’historique et les campagnes restent à vous.
+flow:
+- Recherche
+- Annonce
+- Landing page
+- Demande
+- Client
+measure:
+- title: Coût par clic et part d’impressions
+  text: Pour savoir si vous êtes visible, et à quel prix, sur vos requêtes.
+- title: Taux de conversion par campagne
+  text: Ce que devient le clic une fois sur la page.
+- title: Coût par demande
+  text: L’indicateur qui décide d’augmenter ou de couper un budget.
+- title: Demandes qualifiées et coût par client
+  text: Avec vos données commerciales, quand le suivi jusqu’à la signature est en place.
+complements:
+- expertise: landing-pages-cro
+  why: Le budget publicitaire se gagne ou se perd sur la page d’arrivée.
+- expertise: data-tracking
+  why: Sans suivi des conversions, optimiser revient à deviner.
+- expertise: agence-ia
+  why: Une demande payée doit être rappelée en minutes, pas en jours.
+faq:
+- question: Quel budget faut-il prévoir ?
+  answer: Ça dépend de votre métier, de votre zone et du coût des clics dans votre secteur. On l’estime pendant l’audit, à partir des volumes réels de votre marché, et on commence sur un périmètre réduit pour vérifier avant d’augmenter.
+- question: Qui possède le compte publicitaire ?
+  answer: Vous. On travaille sur votre compte, avec un accès délégué. Le budget reste sur votre moyen de paiement et vous gardez tout si on s’arrête.
+- question: Vous garantissez un retour sur investissement ?
+  answer: Non. On s’engage sur la méthode, la transparence des chiffres et un test court avant d’engager plus. Un coût par demande se constate, il ne se promet pas à l’avance.
+- question: Search ou Performance Max ?
+  answer: 'Search d’abord, presque toujours : c’est là que se trouve l’intention et c’est ce qu’on contrôle le mieux. Performance Max se justifie quand le volume est suffisant et que le suivi des conversions est fiable.'

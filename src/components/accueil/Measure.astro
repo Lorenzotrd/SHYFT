@@ -1,0 +1,10 @@
+---
+// Mesure & suivi : tableau de bord d'illustration et les cinq outils installés chez les clients.
+import { br, nn } from '../../lib/site';
+import { single } from '../../lib/content';
+import type { CollectionEntry } from 'astro:content';
+interface Props { measure: CollectionEntry<'accueil'>['data']['measure'] }
+const { measure } = Astro.props;
+const { tools, dashboard } = await single('mesure');
+---
+<section class="block measure-section" id="mesure"><div class="wrap"><div class="section-top"><div><div class="kicker">{measure.kicker}</div><h2 class="title" set:html={br(measure.title)}></h2></div><p class="sub" set:html={br(measure.sub)}></p></div><div class="measure-grid"><div class="report measure-board" aria-label="Exemple de tableau de bord partagé"><div class="report-head"><b>{measure.boardTitle}</b><span>{measure.boardLabel}</span></div>{dashboard.map((r) => <div class="rrow"><div><div class="t">{r.label}</div><div class="d">{r.detail}</div></div>{r.tag ? <span class="tag ok">{r.tag}</span> : <b class="measure-value">{r.value}</b>}</div>)}</div><div class="measure-list">{tools.map((t, i) => <article><span class="expert-number">{nn(i)}</span><div><h3>{t.name}</h3><p>{t.text}</p></div></article>)}</div></div><div class="sector-tail"><span>{measure.tail}</span><a class="text-link" href="/expertises/data-tracking">{measure.tailLink}</a></div></div></section>

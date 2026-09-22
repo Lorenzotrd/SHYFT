@@ -1,0 +1,9 @@
+---
+import Mock from './Mock.astro';
+const cards: [string, string, string, string][] = [
+  ['c1', 'Version A', '« Vous cherchez à ouvrir votre propre agence ? »', 'Témoignage de franchisé · format vertical'],
+  ['c2', 'Version B', '« 150 000 € d’apport. Une zone. Un projet. »', 'Texte sur fond · format carré'],
+  ['c3', 'Version C', '« Une journée dans l’une de nos agences »', 'Vidéo tournée sur place · format vertical'],
+];
+---
+<Mock title="Créations comparées" label="Démonstration"><div class="creatives">{cards.map(([c, v, t, d]) => <div class={`creative ${c}`}><span>{v}</span><b>{t}</b><i>{d}</i></div>)}</div><div class="aud"><div><span>Audience</span><b>Rayon de 40 km · 30 à 55 ans · intérêt entrepreneuriat</b></div><div><span>Qualification demandée</span><b>Apport · zone souhaitée · délai de lancement</b></div></div></Mock>

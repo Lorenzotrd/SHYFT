@@ -1,0 +1,6 @@
+---
+// Deux acquisitions : recruter des franchisés, remplir les points de vente.
+const left = ['Campagnes Meta et Google sur les intentions de création', 'Qualification sur l’apport, la zone et le délai', 'Candidatures centralisées, relancées jusqu’au rendez-vous'];
+const right = ['Fiche Google tenue à jour pour chaque établissement', 'Pages locales déclinées depuis la marque', 'Demandes remontées au franchisé, vue consolidée au siège'];
+---
+<div class="split"><div class="split-col"><span class="split-label">01 · Recruter</span><b>Des candidats franchisés</b><p>Un candidat cherche un projet d’entreprise, pas un produit. Le cycle dure des mois et se joue sur la qualification.</p><ul>{left.map((x) => <li>{x}</li>)}</ul><em>Piloté avec le siège</em></div><div class="split-mid" aria-hidden="true"><span>et</span></div><div class="split-col alt"><span class="split-label">02 · Remplir</span><b>Les points de vente</b><p>Un client cherche une adresse près de chez lui. Le cycle dure quelques minutes et se joue sur la visibilité locale.</p><ul>{right.map((x) => <li>{x}</li>)}</ul><em>Piloté avec chaque franchisé</em></div></div>

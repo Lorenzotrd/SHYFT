@@ -1,0 +1,7 @@
+---
+// Les cinq temps de la chaîne d'acquisition, reliés aux expertises.
+import { nn } from '../../lib/site';
+import { expertises, single, expertiseUrl, find } from '../../lib/content';
+const [all, nav] = await Promise.all([expertises(), single('navigation')]);
+---
+<ol class="system">{nav.system.map((s, i) => <li><span class="sys-n">{nn(i)}</span><div class="sys-body"><h3>{s.stage}</h3><p>{s.line}</p><div class="sys-chips">{s.expertises.map((id) => <a href={expertiseUrl(id)}>{find(all, id).data.name} <span aria-hidden="true">↗</span></a>)}</div></div></li>)}</ol>

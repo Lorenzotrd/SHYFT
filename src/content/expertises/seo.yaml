@@ -1,0 +1,99 @@
+name: Référencement naturel (SEO)
+order: 1
+menu: Référencement naturel (SEO)
+hint: Google, Maps & visibilité locale
+card: Capter les recherches qui deviennent des demandes, sur Google et sur Maps.
+tag: Être trouvé
+visual: serp
+size: large
+seoTitle: Agence SEO et référencement local
+seoDescription: 'SHYFT construit le référencement naturel des PME : pages services, pages locales, fiche Google et Maps. Objectif : des recherches qui deviennent des demandes.'
+hero:
+  eyebrow: Référencement naturel
+  title: |-
+    Soyez là quand
+    vos clients cherchent.
+  lead: On ne travaille pas le référencement pour faire du trafic. On le travaille pour capter les recherches qui peuvent devenir des demandes commerciales, dans votre zone comme au national.
+  cta: Analyser ma visibilité
+problemTitle: Du trafic, peut-être. Des demandes, non.
+problem:
+- Vous sortez sur votre nom, pas sur ce que les gens tapent vraiment.
+- Les annuaires et les grands réseaux occupent la première page à votre place.
+- Vos fiches Google sont incomplètes, ou différentes d’une agence à l’autre.
+- Personne ne sait quelles pages amènent des contacts.
+approach:
+- title: On part des recherches à intention commerciale
+  text: Un mot-clé qui attire des curieux ne vaut pas un mot-clé qui amène un devis. On sépare les deux avant d’écrire une ligne.
+- title: On construit les pages qui manquent
+  text: Une page par prestation, par métier et par ville d’intervention. C’est ce qui permet de répondre précisément à une recherche précise.
+- title: On traite le local avec la même exigence
+  text: 'Fiche Google, Maps, avis, cohérence des coordonnées : pour une entreprise avec des adresses, c’est souvent ce qui rapporte le plus vite.'
+- title: On juge en demandes, pas en positions
+  text: Les positions sont un moyen de vérifier qu’on avance. Le résultat, ce sont les demandes hors marque.
+demo:
+  title: Ce que voit votre futur client.
+  line: Une recherche, une page de résultats, une fiche Google. Tout se joue sur cet écran, et c’est cet écran-là qu’on travaille.
+build:
+- name: Technique
+  items:
+  - Audit technique et corrections prioritaires
+  - Architecture du site et maillage interne
+  - Vitesse d’affichage et confort mobile
+  - Données structurées
+  - Search Console et suivi de l’indexation
+- name: Contenu
+  items:
+  - Recherche de mots-clés à intention commerciale
+  - Pages prestations et pages métiers
+  - Contenus de fond et réponses aux questions réelles
+  - Optimisation des pages existantes
+  - Netlinking mesuré, sans achat de masse
+- name: Local
+  items:
+  - 'Google Business Profile : catégories, services, photos, horaires'
+  - Google Maps et recherches « près de moi »
+  - Pages locales par ville et par zone
+  - Collecte et réponse aux avis
+  - Cohérence du nom, de l’adresse et du téléphone
+  - 'Multi-établissements : une fiche et une page par adresse'
+- name: Pilotage
+  items:
+  - Analyse concurrentielle
+  - Suivi des positions utiles
+  - Trafic hors marque
+  - Demandes attribuées au référencement
+asideTitle: National ou local, l’objectif reste le même.
+aside: Être présent quand votre client cherche. Sur une requête nationale, ça se joue sur la profondeur du contenu et l’autorité du site. Sur une requête locale, ça se joue sur la fiche Google, les avis et une page qui parle vraiment de la ville. On travaille les deux, avec la même méthode.
+flow:
+- Recherche Google
+- Résultat ou fiche
+- Site ou Google Maps
+- Demande
+- Client
+measure:
+- title: Positions sur les requêtes qui comptent
+  text: Search Console, sur les mots-clés à intention commerciale, pas sur votre marque.
+- title: Trafic hors marque
+  text: Les visites de gens qui ne vous connaissaient pas encore.
+- title: Visibilité locale
+  text: Vues de la fiche, appels, demandes d’itinéraire, établissement par établissement.
+- title: Demandes attribuées au référencement
+  text: Formulaires et appels rattachés à leur source dans votre CRM.
+complements:
+- expertise: geo
+  why: La même base de contenu sert les moteurs de recherche et les moteurs de réponse.
+- expertise: google-ads
+  why: Les demandes tout de suite pendant que le référencement s’installe.
+- expertise: landing-pages-cro
+  why: Le trafic gagné ne vaut que par la page qui le reçoit.
+- expertise: data-tracking
+  why: Pour savoir quelles pages amènent des demandes, pas seulement des visites.
+faq:
+- question: Combien de temps avant les premiers résultats ?
+  answer: Le référencement n’est pas un canal immédiat. Les premières remontées se voient généralement en quelques mois, plus vite en local qu’au national. C’est pour cela qu’on le combine souvent avec Google Ads, qui donne des demandes tout de suite.
+- question: Faut-il refaire notre site ?
+  answer: Rarement. On part du site existant, on corrige ce qui bloque et on ajoute les pages qui manquent. Une refonte n’a de sens que si la structure actuelle empêche tout progrès.
+- question: Le SEO local, c’est une prestation séparée ?
+  answer: 'Non. Fiche Google, Maps et pages locales font partie du référencement. Les séparer n’a aucun sens : c’est le même travail de fond, sur deux surfaces différentes.'
+- question: Vous garantissez la première position ?
+  answer: Non, et personne ne peut le faire. On s’engage sur le travail, la méthode et la transparence des chiffres, pas sur un classement que Google seul décide.

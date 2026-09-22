@@ -1,0 +1,94 @@
+name: Data & Tracking
+order: 7
+menu: Data & Tracking
+hint: Mesurer du clic jusqu’au client
+card: Savoir enfin ce qui apporte des clients, et ce qui ne fait que coûter.
+tag: Mesurer
+visual: dash
+size: large
+seoTitle: Data, tracking et attribution pour PME
+seoDescription: 'La mesure installée dans vos comptes : GA4, Tag Manager, suivi des formulaires et des appels, attribution des demandes, tableau de bord du clic jusqu’au client.'
+hero:
+  eyebrow: Données et pilotage
+  title: |-
+    On ne pilote pas
+    ce qu’on ne mesure pas.
+  lead: Qu’est-ce qui vous apporte réellement des clients ? Tant que la réponse n’est pas chiffrée, chaque décision de budget est un pari. Et comme on est payés au résultat, on a besoin des mêmes chiffres que vous.
+  cta: Vérifier mon tracking
+problemTitle: Des chiffres partout, aucune réponse.
+problem:
+- Analytics compte des visites, votre CRM compte des clients, personne ne relie les deux.
+- Les appels, qui sont souvent la moitié des demandes, ne sont comptés nulle part.
+- 'Les demandes arrivent sans source : impossible de savoir qui les a amenées.'
+- Le budget se répartit à l’intuition, ou pire, sur ce dont on se souvient.
+approach:
+- title: On installe dans vos comptes
+  text: 'Analytics, Tag Manager, Search Console : à votre nom, chez vous. Si on arrête demain, l’historique et les accès restent à vous.'
+- title: On compte ce qui compte
+  text: Un formulaire envoyé, un appel passé, un rendez-vous pris. Les visites sont un indicateur intermédiaire, pas un résultat.
+- title: On fait voyager la source jusqu’au client
+  text: La provenance est attachée à la demande, entre dans le CRM avec elle, et reste visible jusqu’à la signature.
+- title: Un seul tableau, tenu à jour
+  text: Canaux, demandes, coût et clients au même endroit. Vous n’avez pas à ouvrir quatre outils pour vous faire une idée.
+demo:
+  title: Un seul tableau pour décider.
+  line: Les canaux, les demandes, le coût et les clients au même endroit. C’est ce tableau qui dit où mettre l’euro suivant.
+build:
+- name: Installation
+  items:
+  - Google Analytics 4 configuré pour votre activité
+  - Google Tag Manager
+  - Search Console et liaison avec Analytics
+  - Bandeau de consentement conforme
+- name: Ce qu’on suit
+  items:
+  - Envois de formulaires
+  - Appels téléphoniques, avec suivi du numéro affiché
+  - 'Clics importants : itinéraire, téléchargement, prise de rendez-vous'
+  - Étiquettes de campagne sur tous les liens payants
+- name: Attribution
+  items:
+  - Source rattachée à chaque demande
+  - Transmission de la source au CRM
+  - Suivi de la demande jusqu’au client
+  - Rapprochement du chiffre d’affaires quand vos outils le permettent
+- name: Restitution
+  items:
+  - Tableau de bord partagé, à jour
+  - Vue par canal, par campagne et par établissement
+  - Point mensuel sur les arbitrages
+  - Export de vos données quand vous le souhaitez
+asideTitle: La mesure sert d’abord à couper.
+aside: Un tableau de bord n’est pas un objet de décoration. Il sert à voir quel canal coûte trop cher pour ce qu’il rapporte, et à déplacer ce budget ailleurs. C’est pour ça qu’on l’installe avant de lancer les campagnes, et pas trois mois après quand il faut justifier une dépense.
+flow:
+- Source
+- Visite
+- Demande
+- Demande qualifiée
+- Client
+- Chiffre d’affaires
+measure:
+- title: Demandes par canal
+  text: Référencement, Google Ads, Meta Ads, fiche Google, direct.
+- title: Coût par demande
+  text: Par canal et par campagne, budget publicitaire inclus.
+- title: Taux de qualification
+  text: La part des demandes qui méritent le temps d’un commercial.
+- title: Clients et chiffre d’affaires attribués
+  text: Quand vos outils permettent de relier la demande à la signature.
+complements:
+- expertise: seo
+  why: Pour attribuer les demandes aux pages qui les produisent.
+- expertise: google-ads
+  why: Pour piloter les enchères sur des demandes, pas sur des clics.
+- expertise: landing-pages-cro
+  why: Les chiffres désignent la page à corriger en premier.
+faq:
+- question: Et le RGPD dans tout ça ?
+  answer: La mesure d’audience impose un bandeau de consentement dès qu’elle dépose des cookies. On met en place ce qui est nécessaire, et quand c’est possible on propose une solution de mesure sans cookies, qui évite le bandeau tout en donnant les chiffres utiles.
+- question: On a déjà Google Analytics.
+  answer: Presque toutes les entreprises l’ont. La question n’est pas de l’avoir, c’est de savoir s’il compte les demandes et les appels, et si la source arrive jusqu’au CRM. Dans la plupart des audits qu’on fait, la réponse est non.
+- question: Le suivi des appels, comment ça marche ?
+  answer: Un numéro de redirection s’affiche selon la provenance du visiteur. L’appel arrive normalement chez vous, et on sait d’où il vient. Rien n’est enregistré sans que vous l’ayez décidé et annoncé.
+- question: Qui possède les données ?
+  answer: Vous. Les comptes sont créés au nom de votre entreprise et nous y avons un accès délégué, que vous pouvez retirer à tout moment.

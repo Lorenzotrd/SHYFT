@@ -1,0 +1,28 @@
+title: Mentions légales
+eyebrow: Informations légales
+h1: Mentions légales.
+lead: Qui édite ce site et comment nous contacter.
+seoTitle: Mentions légales · SHYFT
+seoDescription: Informations légales sur l’éditeur et l’hébergeur du site SHYFT.
+body: |
+  <h2>Éditeur du site</h2>
+
+  <p>SHYFT, <mark>À compléter : forme juridique, capital social, adresse du siège, numéro SIREN ou RCS, numéro de TVA</mark>.</p>
+
+  <p>Directeur de la publication : <mark>À compléter</mark>. Contact : <mark>À compléter : adresse email</mark>.</p>
+
+  <h2>Hébergement</h2>
+
+  <p><mark>À compléter : nom de l’hébergeur, adresse et téléphone</mark>.</p>
+
+  <h2>Propriété intellectuelle</h2>
+
+  <p>Les textes, la marque SHYFT et la mise en page de ce site appartiennent à SHYFT. Toute reproduction sans autorisation écrite est interdite.</p>
+
+  <h2>Crédits</h2>
+
+  <p>Les photographies d’illustration proviennent d’Unsplash et ne représentent ni l’équipe ni des clients. Les chiffres affichés dans les illustrations et les simulateurs sont fictifs. Polices Geist et Geist Mono (Vercel, licence SIL Open Font License), hébergées sur ce site.</p>
+
+  <h2>Données personnelles</h2>
+
+  <p>Le traitement des informations du formulaire est décrit dans la <a href="/confidentialite">politique de confidentialité</a>.</p>

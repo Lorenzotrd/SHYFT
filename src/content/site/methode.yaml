@@ -1,0 +1,10 @@
+steps:
+- label: Étape 1 · Audit offert et plan chiffré
+  title: Identifier
+  text: On analyse votre visibilité, on vous présente les constats avec les chiffres de votre marché, et on estime ensemble ce que valent les demandes pour vous.
+- label: Étape 2 · Test de 60 jours
+  title: Construire
+  text: On lance sur un périmètre réduit, quelques services ou quelques villes, pour mesurer vite ce qui fonctionne.
+- label: Étape 3 · Pilotage au résultat
+  title: Développer
+  text: On garde ce qui marche, on coupe le reste, et on étend aux autres zones ou métiers.

@@ -1,0 +1,35 @@
+---
+// Section de contact et formulaire d'audit. Sur une page métier, le secteur est présélectionné.
+import { br } from '../lib/site';
+import { sectors, single } from '../lib/content';
+
+interface Props { selected?: string }
+const { selected } = Astro.props;
+const [allSectors, form] = await Promise.all([sectors(), single('formulaire')]);
+const names = [...allSectors.map((s) => s.data.name), 'Autre'];
+---
+<div class="hero-shell" id="contact">
+  <div class="final">
+    <div class="clouds" aria-hidden="true"><div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div><div class="cloud c6"></div></div>
+    <div class="final-grid">
+      <div>
+        <h2 set:html={br(form.title)}></h2>
+        <p>{form.text}</p>
+      </div>
+      <form class="lead" id="leadForm">
+        <div class="form-heading full"><span class="kicker">{form.kicker}</span><h3>{form.heading}</h3></div><label>Prénom et nom<input name="nom" autocomplete="name" required></label>
+        <label>Entreprise<input name="entreprise" autocomplete="organization" required></label>
+        <label class="full">Site internet<input name="site" type="url" inputmode="url" placeholder="https://" autocomplete="url"></label>
+        <label>Secteur
+          <select name="secteur" required>{!selected && <option value="">Choisir</option>}{names.map((n) => <option selected={n === selected}>{n}</option>)}</select>
+        </label>
+        <label>Téléphone<input name="tel" type="tel" autocomplete="tel"></label>
+        <label class="full">Email professionnel<input name="email" type="email" autocomplete="email" required></label>
+        <input type="hidden" name="page"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="gclid"><input type="hidden" name="referrer"><input type="hidden" name="firstSeen"><label class="honeypot" aria-hidden="true">Ne pas remplir<input name="website_check" tabindex="-1" autocomplete="off"></label><p class="legal full">{form.legal} <a href="/confidentialite">Politique de confidentialité</a>.</p>
+        <button class="btn btn-lime full" type="submit">{form.button}</button>
+        <p class="legal full" id="formError" role="alert" style="color:#8E1F14;display:none">{form.error}</p>
+        <div class="done" role="status"><b>{form.doneTitle}</b><span>{form.doneText}</span></div>
+      </form>
+    </div>
+  </div>
+</div>

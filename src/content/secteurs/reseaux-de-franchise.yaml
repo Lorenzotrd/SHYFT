@@ -1,0 +1,118 @@
+name: Réseaux de franchise
+order: 2
+short: Rencontrez vos futurs franchisés.
+photo: franchise
+alt: Réunion d’équipe autour d’un ordinateur portable
+seoTitle: 'Recrutement de franchisés : agence digitale'
+seoDescription: Rencontrez des candidats qualifiés sur l’apport, la zone et le délai. Campagnes Meta et Google, candidatures centralisées et relancées jusqu’au rendez-vous.
+hero:
+  title: |-
+    Vos prochaines ouvertures
+    commencent ici.
+  lead: Nous générons des candidatures qualifiées et structurons leur suivi jusqu’à la signature pour développer votre réseau et ses revenus.
+  signal: Projet de franchise
+  value: Profil qualifié
+who: Vos futurs franchisés
+pain:
+- Les portails partagent les mêmes candidats avec vos concurrents.
+- Les candidatures se perdent entre les tableaux et le CRM.
+- Vos campagnes attirent du volume, mais peu de profils adaptés.
+searches:
+- query: ouvrir une franchise + votre secteur
+  meaning: Un porteur de projet qui compare les enseignes.
+  channel: Google
+- query: devenir franchisé avec 100 000 € d’apport
+  meaning: Un candidat qui vérifie s’il entre dans vos critères.
+  channel: Google
+- query: témoignage de franchisé + votre enseigne
+  meaning: Un profil qui hésite encore et cherche des preuves.
+  channel: Meta
+follow: Candidatures → profils qualifiés → rendez-vous → signatures de franchise.
+journey:
+- title: La découverte
+  text: Un porteur de projet découvre votre enseigne sur Google ou Meta, dans sa région.
+  role: SHYFT
+- title: La candidature
+  text: 'Apport, zone, délai : un formulaire qui qualifie avant de prendre du temps à votre développeur.'
+  role: SHYFT
+- title: La qualification
+  text: Les profils hors critères sont écartés, les candidats en réflexion sont relancés.
+  role: SHYFT + vous
+- title: Le rendez-vous
+  text: Votre développeur reçoit un candidat qualifié, dans le CRM, avec son historique.
+  role: Votre équipe
+levers:
+  seo: 'Pages sur votre concept, l’investissement et les territoires : attirer des candidats qui cherchent une franchise dans votre secteur.'
+  ads: Campagnes Google Ads sur les intentions de création et de franchise, complétées par Meta Ads pour faire découvrir votre enseigne.
+  google: Optimisation des fiches des établissements pour soutenir leur acquisition locale. Un levier distinct du recrutement de franchisés.
+  conversion: Qualification sur apport, zone et délai. Candidatures dans le CRM, dédoublonnage et relances jusqu’au rendez-vous développeur.
+examples:
+  seoPages:
+  - /devenir-franchise
+  - /investissement-et-apport
+  - /nos-territoires-disponibles
+  adsKeywords:
+  - keyword: ouvrir une franchise restauration
+    decision: Ciblé
+    state: ok
+  - keyword: franchise sans apport
+    decision: Enchère basse
+    state: warn
+  - keyword: emploi en franchise
+    decision: Exclu
+    state: bad
+  google:
+    name: Votre enseigne · Tours
+    rating: 4,5 ★ · 96 avis
+    hours: Ouvert · ferme à 22 h
+    actions:
+    - Itinéraire
+    - Réserver
+    - Voir la carte
+  form:
+  - question: Apport disponible ?
+    answer: 150 000 €
+  - question: Quelle zone ?
+    answer: Lyon et périphérie
+  - question: Sous quel délai ?
+    answer: moins de 6 mois
+measure:
+- name: Candidatures qualifiées
+  how: Dans votre CRM, avec apport, zone et délai renseignés.
+- name: Coût par rendez-vous
+  how: Meta Ads, Google Ads et Analytics, par région et par campagne.
+- name: Part des profils répondant aux critères
+  how: Tableau de bord partagé, mis à jour à chaque qualification.
+pay: candidat qualifié ou rendez-vous
+growth:
+  leads: 20
+  rate: 5
+  value: 20000
+  client: signatures de franchise
+  unit: Droit d’entrée moyen HT (€)
+  result: Droits d’entrée potentiels
+  note: Simulation des seuls droits d’entrée à la signature. Elle exclut les redevances futures et le CA des franchisés ; le recrutement peut prendre plusieurs mois.
+titles:
+  journey: |-
+    Du clic
+    au franchisé signé.
+  levers: |-
+    Quatre leviers.
+    Un objectif : vos prochaines ouvertures.
+  measure: |-
+    Ce qu’on suit,
+    de la candidature à la signature.
+  growth: |-
+    Ce que de nouvelles ouvertures
+    peuvent changer.
+  faq: Avant d’ouvrir.
+signature:
+  after: market
+  kicker: La particularité franchise
+  title: |-
+    Deux acquisitions.
+    Pas une.
+  lead: Un réseau doit recruter des franchisés et faire venir des clients dans leurs points de vente. Deux métiers, deux cycles, deux budgets.
+faq:
+  question: Comment définissez-vous un candidat qualifié ?
+  answer: 'Nous fixons ensemble les critères avant le lancement : apport personnel, territoire souhaité, calendrier et adéquation avec le réseau.'

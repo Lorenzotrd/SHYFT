@@ -1,0 +1,8 @@
+---
+import Nav from '../Nav.astro';
+import { br } from '../../lib/site';
+import type { Sector } from '../../lib/content';
+interface Props { sector: Sector }
+const { data: s } = Astro.props.sector;
+---
+<div class="hero-shell"><header class="hero sector-hero"><Nav /><div class="sector-hero-grid"><div><div class="hero-eyebrow">{s.name}</div><h1 set:html={br(s.hero.title)}></h1><p class="lead">{s.hero.lead}</p><a class="btn btn-lime" href="#contact">Recevoir mon audit offert <span class="arrow-circle">↗</span></a></div><div class="sector-cover"><img src={`/assets/${s.photo}.webp`} fetchpriority="high" decoding="async" alt={s.alt} width="800" height="600"><div class="floating-signal"><span class="pulse"></span>{s.hero.signal}<strong>{s.hero.value}</strong><small>Exemple de parcours</small></div></div></div></header></div>

@@ -1,0 +1,93 @@
+name: Meta Ads
+order: 4
+menu: Meta Ads
+hint: Créer la demande sur Facebook & Instagram
+card: Aller chercher des clients qui ne vous cherchaient pas encore.
+tag: Générer
+visual: creative
+size: small
+seoTitle: 'Agence Meta Ads : Facebook et Instagram'
+seoDescription: 'Campagnes Facebook et Instagram : audiences, créations comparées, formulaires qualifiés et relances. Pour créer de la demande là où la recherche ne suffit pas.'
+hero:
+  eyebrow: Publicité Facebook & Instagram
+  title: |-
+    Créez la demande
+    avant qu’elle existe.
+  lead: Sur Google, on capte une recherche. Sur Facebook et Instagram, on s’adresse à des gens qui ne vous cherchaient pas encore, mais qui correspondent exactement à votre client.
+  cta: Analyser mon acquisition
+problemTitle: Personne ne cherche ce que vous vendez. Pas encore.
+problem:
+- Votre métier ne génère pas assez de recherches pour remplir un planning.
+- Vous recrutez des franchisés ou des candidats que Google ne peut pas vous amener.
+- Vos publicités touchent beaucoup de monde, mais les contacts ne sont pas sérieux.
+- Les formulaires remplissent un tableau que personne ne rappelle.
+approach:
+- title: On choisit qui doit voir
+  text: Zone, profil, moment. Un loueur de matériel et un réseau de franchise ne s’adressent pas aux mêmes personnes, et pas au même moment.
+- title: La création fait le travail
+  text: Sur Meta, c’est le visuel et les premiers mots qui décident. On en produit plusieurs, on les compare, on garde ce qui fonctionne.
+- title: On qualifie avant de déranger vos équipes
+  text: Un formulaire trop simple remplit un tableau. Quelques bonnes questions filtrent, et ce qui reste vaut le temps d’un appel.
+- title: On relance
+  text: Un contact Meta n’est presque jamais prêt tout de suite. La relance fait souvent plus de rendez-vous que la campagne elle-même.
+demo:
+  title: Plusieurs créations, une seule gagne.
+  line: On ne devine pas ce qui va fonctionner. On diffuse plusieurs angles en parallèle et on garde celui qui produit des contacts qualifiés.
+build:
+- name: Stratégie
+  items:
+  - 'Objectif défini avec vous : demandes, candidatures, rendez-vous'
+  - Audiences par zone, profil et centres d’intérêt
+  - Audiences similaires à vos meilleurs clients
+  - Budget réparti entre découverte et relance
+- name: Créations
+  items:
+  - Visuels et vidéos courtes adaptés au fil
+  - Plusieurs angles testés en parallèle
+  - Accroches réécrites selon les résultats
+  - Déclinaisons par région ou par établissement
+- name: Capture
+  items:
+  - Formulaires Meta avec questions de qualification
+  - Landing pages quand la page vaut mieux que le formulaire natif
+  - Envoi direct des contacts dans votre CRM
+  - Détection des doublons
+- name: Suite
+  items:
+  - Réponse immédiate par email ou SMS
+  - Séquences de relance sur plusieurs semaines
+  - Retargeting des visiteurs non convertis
+  - Réactivation des contacts anciens
+asideTitle: Google capte. Meta provoque.
+aside: Les deux canaux ne font pas le même travail. Google Ads répond à une demande qui existe déjà et qui est limitée par le nombre de recherches. Meta Ads va créer de l’intérêt chez des gens qui ne vous cherchaient pas, ce qui ouvre un volume plus large mais des contacts plus froids. C’est pour ça qu’ils se complètent, et que la qualification compte encore plus sur Meta.
+flow:
+- Création
+- Audience
+- Contact
+- Qualification
+- Rendez-vous
+measure:
+- title: Coût par contact
+  text: Par campagne, par audience et par création.
+- title: Taux de qualification
+  text: La part des contacts qui correspondent vraiment à vos critères.
+- title: Rendez-vous obtenus
+  text: Ce qui compte réellement pour vos équipes.
+- title: Coût par client
+  text: Quand le suivi jusqu’à la signature est en place dans votre CRM.
+complements:
+- expertise: landing-pages-cro
+  why: Un contact froid a besoin d’une page qui explique avant de demander.
+- expertise: agence-ia
+  why: La relance fait souvent plus de rendez-vous que la campagne.
+- expertise: data-tracking
+  why: Pour distinguer un contact d’un client.
+faq:
+- question: Meta, ça marche pour du B2B ?
+  answer: 'Pour beaucoup de métiers locaux, oui : un dirigeant de PME, un artisan ou un candidat à la franchise sont aussi sur Facebook et Instagram. Ce qui change, c’est le message et la qualification, pas le canal.'
+- question: Les contacts Meta sont-ils de mauvaise qualité ?
+  answer: 'Ils sont plus froids que ceux de Google, c’est normal : la personne ne cherchait rien. La qualité vient des questions de qualification, de la rapidité de réponse et de la relance.'
+- question: Faut-il produire des vidéos ?
+  answer: Souvent, oui, mais pas des films. Des séquences courtes tournées sur vos chantiers, dans vos agences ou avec vos équipes fonctionnent généralement mieux qu’une production léchée.
+- question: Qui possède le compte publicitaire ?
+  answer: Vous, comme pour Google Ads. Le budget reste chez vous et les audiences construites vous appartiennent.

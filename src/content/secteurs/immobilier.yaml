@@ -1,0 +1,146 @@
+name: Immobilier
+order: 4
+short: Créez plus de contacts avec les vendeurs.
+photo: property
+alt: Séjour lumineux d’un logement
+seoTitle: 'Agence marketing immobilier : plus de mandats'
+seoDescription: >-
+  Captez les propriétaires qui préparent une vente dans votre secteur : pages de
+  quartier, campagnes orientées estimation, suivi du contact jusqu’au mandat.
+hero:
+  title: |-
+    Votre prochain mandat
+    est peut-être tout près.
+  lead: >-
+    Nous générons des contacts vendeurs qualifiés et optimisons le parcours
+    jusqu’au mandat, puis le suivi des ventes qui créent votre chiffre
+    d’affaires.
+  signal: Projet immobilier
+  value: Estimation de bien
+who: Vos futurs vendeurs
+pain:
+  - Votre visibilité dépend surtout des portails immobiliers.
+  - Les demandes d’estimation manquent de contexte.
+  - Votre expertise locale est difficile à distinguer en ligne.
+searches:
+  - query: estimation appartement + votre quartier
+    meaning: Un propriétaire qui prépare une vente.
+    channel: Google
+  - query: combien vaut ma maison à + votre ville
+    meaning: Une première recherche, avant de contacter une agence.
+    channel: Google
+  - query: agence immobilière + votre commune, avis
+    meaning: Le choix entre trois agences, sur la carte.
+    channel: Fiche Google
+follow: Contacts vendeurs → estimations → mandats → ventes finalisées.
+journey:
+  - title: La recherche
+    text: >-
+      Un propriétaire prépare une vente et cherche une estimation dans son
+      quartier.
+    role: SHYFT
+  - title: La demande d’estimation
+    text: >-
+      Le bien, le calendrier, les coordonnées : un formulaire qui donne du
+      contexte à votre appel.
+    role: SHYFT
+  - title: Le rendez-vous
+    text: >-
+      Prise de rendez-vous d’estimation, relance des propriétaires pas encore
+      décidés.
+    role: SHYFT + vous
+  - title: Le mandat
+    text: >-
+      Votre négociateur signe. Le contact est suivi jusqu’à la vente, avec sa
+      source et ses honoraires.
+    role: Votre équipe
+levers:
+  seo: >-
+    Pages de quartiers et contenus pour les propriétaires vendeurs : faire
+    connaître votre expertise locale au moment du projet.
+  ads: >-
+    Campagnes Google Ads orientées estimation et vente, sur les communes et
+    types de biens que vous recherchez.
+  google: >-
+    Fiche de l’agence, services, photos, horaires et avis : faciliter la
+    découverte locale et la prise de contact.
+  conversion: >-
+    Formulaire sur le bien et le calendrier. Suivi du contact, rendez-vous
+    d’estimation, mandat et issue de la vente dans le CRM.
+examples:
+  seoPages:
+    - /estimation/tours-centre
+    - /vendre-son-bien/amboise
+    - /prix-au-m2/blois
+  adsKeywords:
+    - keyword: estimation appartement tours
+      decision: Ciblé
+      state: ok
+    - keyword: prix m2 tours
+      decision: Enchère basse
+      state: warn
+    - keyword: location appartement tours
+      decision: Exclu
+      state: bad
+  google:
+    name: Votre agence · Tours
+    rating: 4,6 ★ · 212 avis
+    hours: Ouvert · ferme à 19 h
+    actions:
+      - Itinéraire
+      - Appeler
+      - Estimer mon bien
+  form:
+    - question: Quel bien ?
+      answer: Appartement, 78 m²
+    - question: Où ?
+      answer: Tours centre
+    - question: Projet de vente ?
+      answer: dans les 3 mois
+measure:
+  - name: Contacts vendeurs qualifiés
+    how: Dans votre CRM, avec le bien et le calendrier du projet.
+  - name: Coût par contact vendeur
+    how: Google Ads et Analytics, par commune et par campagne.
+  - name: Rendez-vous d’estimation
+    how: Tableau de bord partagé, de l’estimation au mandat.
+pay: contact vendeur qualifié ou rendez-vous
+growth:
+  leads: 20
+  rate: 10
+  value: 6000
+  client: ventes finalisées
+  unit: Honoraires moyens par vente HT (€)
+  result: Honoraires potentiels
+  note: >-
+    Le taux porte ici sur les ventes effectivement finalisées, pas les mandats.
+    Seuls les honoraires sont comptés, jamais le prix du bien ; le cycle peut
+    durer plusieurs mois.
+titles:
+  journey: |-
+    Du clic
+    au mandat.
+  levers: |-
+    Quatre leviers.
+    Un objectif : vos prochains mandats.
+  measure: |-
+    Ce qu’on suit,
+    du contact à la vente.
+  growth: |-
+    Ce que de nouveaux mandats
+    peuvent changer.
+  faq: Avant le premier mandat.
+signature:
+  after: journey
+  kicker: Le temps long
+  title: |-
+    Un contact aujourd’hui.
+    Une vente dans cinq mois.
+  lead: >-
+    Votre métier a le cycle le plus long des six que nous accompagnons. C’est ce
+    qui rend la mesure indispensable, et souvent absente.
+faq:
+  question: Travaillez-vous sur une zone précise ?
+  answer: >-
+    Oui. Les pages et les campagnes sont construites autour de vos communes et
+    quartiers, selon les biens et mandats recherchés.

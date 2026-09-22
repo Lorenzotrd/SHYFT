@@ -1,5 +1,6 @@
 const {chromium}=require('/Users/lorenzotrichard/.cache/uv/archive-v0/S2ghcOWcglW9BUt0RjW_E/playwright/driver/package');
-const home='http://localhost:4173';
+// Adresse du serveur Astro (npm run dev) ; QA_URL permet de viser une prévisualisation en ligne.
+const home=process.env.QA_URL||'http://127.0.0.1:4321';
 (async()=>{const browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
 const page=await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1});const errors=[];page.on('pageerror',e=>errors.push(e.message));
 const go=async u=>{const r=await page.goto(home+u,{waitUntil:'domcontentloaded'});if(r.status()!==200)throw Error('Statut '+r.status()+' sur '+u);};
@@ -47,7 +48,7 @@ if(titles.size!==slugs.length)throw Error('Titres de page en double');
 
 await go('/secteurs');
 const titres=[];
-const sectors=require('../assets/sectors.json');
+const sectors=require('node:fs').readdirSync(__dirname+'/../src/content/secteurs').filter(f=>f.endsWith('.yaml')).map(f=>({slug:f.replace('.yaml','')}));
 for(const s of sectors){await go('/secteurs/'+s.slug);
  if(await count('.lever-grid .lever')!==4)throw Error('Leviers en bento manquants : '+s.slug);
  if(await count('.lever-grid a[href^="/expertises/"]')!==4)throw Error('Liens vers les expertises manquants : '+s.slug);

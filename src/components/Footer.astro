@@ -1,0 +1,9 @@
+---
+// Pied de page : logo et devise, liste des expertises, liens d'exploration, prochain pas, mentions.
+import { BRAND, YEAR, GA_ID, br } from '../lib/site';
+import { expertises, single, expertiseUrl } from '../lib/content';
+import Logo from './Logo.astro';
+
+const [allExpertises, foot] = await Promise.all([expertises(), single('piedDePage')]);
+---
+<footer class="site-footer"><div class="wrap footer-top"><div><Logo /><p set:html={br(foot.tagline)}></p></div><div><span class="footer-label">Nos expertises</span>{allExpertises.map((e) => <a href={expertiseUrl(e.id)}>{e.data.name}</a>)}</div><div><span class="footer-label">Explorer</span><a href="/secteurs">Nos secteurs</a><a href="/expertises">Toutes nos expertises</a><a href="/#methode">Notre méthode</a></div><div><span class="footer-label">Votre prochain pas</span><a href="#contact">{foot.nextStep}</a><p set:html={br(foot.audience)}></p></div></div><div class="wrap footer-bottom"><span>© {YEAR} {BRAND}. {foot.copyright}</span><span class="footer-legal"><a href="/mentions-legales">Mentions légales</a><a href="/confidentialite">Confidentialité</a>{GA_ID && <a href="#" data-cookies>Gérer les cookies</a>}</span><span>{foot.signature}</span></div></footer>

@@ -1,0 +1,32 @@
+tools:
+- name: Google Search Console
+  short: Search Console
+  text: Ce que les gens tapent pour vous trouver, vos positions et les pages qui sortent.
+- name: Google Analytics
+  short: Google Analytics
+  text: 'D’où viennent vos visiteurs et ce qu’ils font : formulaires envoyés, appels, pages vues.'
+- name: Tableau de bord partagé
+  short: Tableau de bord partagé
+  text: Demandes, coût par demande et rendez-vous réunis dans un seul tableau, mis à jour en continu.
+- name: CRM
+  short: CRM
+  text: Chaque demande centralisée avec sa source et son statut, jusqu’à la signature.
+- name: Emailing
+  short: Emailing
+  text: Des relances automatiques pour les contacts qui ne sont pas encore prêts.
+dashboard:
+- label: Demandes qualifiées
+  detail: Ce mois, toutes sources confondues
+  value: '42'
+- label: Coût par demande
+  detail: Google Ads et Meta Ads
+  value: 38 €
+- label: Sources
+  detail: Google 61 % · Meta 24 % · Direct 15 %
+  tag: Analytics
+- label: Rendez-vous pris
+  detail: Suivis dans votre CRM
+  value: '11'
+- label: Relances envoyées
+  detail: Séquence email automatique
+  value: '27'

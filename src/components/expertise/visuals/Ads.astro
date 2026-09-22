@@ -1,0 +1,8 @@
+---
+import Mock from './Mock.astro';
+const rows: [string, string, string, string][] = [
+  ['location nacelle 12 m poitiers', 'Commerciale', 'ok', 'Enchère haute'], ['prix location nacelle', 'Comparaison', 'warn', 'Enchère basse'],
+  ['nacelle occasion à vendre', 'Hors sujet', 'bad', 'Exclue'], ['formation permis nacelle', 'Hors sujet', 'bad', 'Exclue'],
+];
+---
+<Mock title="Annonce et termes de recherche" label="Démonstration"><div class="ad"><span class="ad-tag">Annonce</span><span class="serp-url">votre-site.fr/location-nacelle</span><b>Nacelle 12 m en location · Livraison sous 24 h à Poitiers</b><p>Devis en deux minutes. Matériel vérifié, livraison sur chantier, assistance au téléphone.</p><div class="ad-links"><span>Tarifs ↗</span><span>Livraison ↗</span><span>Nos agences ↗</span></div></div><div class="table-scroll"><table class="data-table"><thead><tr><th>Ce qui est tapé</th><th>Intention</th><th>Décision</th></tr></thead><tbody>{rows.map(([q, i, c, d]) => <tr><td>{q}</td><td>{i}</td><td><span class={`tag ${c}`}>{d}</span></td></tr>)}</tbody></table></div></Mock>

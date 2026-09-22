@@ -1,0 +1,21 @@
+levers:
+- name: SEO & référencement naturel
+  subtitle: Capter une recherche utile
+  key: seo
+  expertise: seo
+  kind: serp
+- name: Google Ads
+  subtitle: Générer des prospects ciblés
+  key: ads
+  expertise: google-ads
+  kind: ads
+- name: Fiche Google et Maps
+  subtitle: Convertir la proximité en contacts
+  key: google
+  expertise: seo
+  kind: map
+- name: Optimisation de l’acquisition
+  subtitle: Transformer les prospects en clients
+  key: conversion
+  expertise: landing-pages-cro
+  kind: flow

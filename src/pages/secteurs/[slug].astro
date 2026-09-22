@@ -1,0 +1,47 @@
+---
+// Page métier : hero, marché, parcours, leviers, mesure, simulateur, section propre au métier, questions.
+import Base from '../../layouts/Base.astro';
+import SectorHero from '../../components/secteur/SectorHero.astro';
+import Market from '../../components/secteur/Market.astro';
+import Journey from '../../components/secteur/Journey.astro';
+import Levers from '../../components/secteur/Levers.astro';
+import Measure from '../../components/secteur/Measure.astro';
+import Growth from '../../components/secteur/Growth.astro';
+import Signature from '../../components/secteur/Signature.astro';
+import Faq from '../../components/Faq.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import Footer from '../../components/Footer.astro';
+import { BRAND, SITE_URL, br } from '../../lib/site';
+import { sectors, type Sector } from '../../lib/content';
+
+export async function getStaticPaths() {
+  return (await sectors()).map((sector) => ({ params: { slug: sector.id }, props: { sector } }));
+}
+const { sector } = Astro.props as { sector: Sector };
+const s = sector.data;
+const path = `secteurs/${sector.id}`;
+
+const faqs = [
+  s.faq,
+  { question: 'Faut-il refaire notre site ?', answer: 'Pas nécessairement. Nous partons de votre site et de vos outils actuels. Des pages ou formulaires ciblés peuvent compléter ce qui existe.' },
+  { question: 'Que contient l’audit offert ?', answer: `Un état des lieux de votre visibilité, de vos parcours de contact et de vos opportunités pour votre activité : ${s.name.toLowerCase()}. Les recommandations sont adaptées à votre zone.` },
+  { question: 'Comment suit-on les résultats ?', answer: 'Search Console, Google Analytics et votre CRM sont installés dans vos comptes. Un tableau de bord partagé compte chaque demande, sa source et son coût.' },
+  { question: 'Qui définit ce qui est qualifié ?', answer: 'Vous et nous, avant le test. Les critères sont écrits et partagés pour suivre les demandes avec la même définition.' },
+];
+const jsonLd = [
+  { '@context': 'https://schema.org', '@type': 'Service', name: `Acquisition digitale · ${s.name}`, serviceType: s.seoTitle, description: s.seoDescription,
+    provider: { '@type': 'Organization', name: BRAND }, areaServed: { '@type': 'Country', name: 'France' }, url: `${SITE_URL}/${path}` },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Secteurs', item: `${SITE_URL}/secteurs` },
+    { '@type': 'ListItem', position: 3, name: s.name, item: `${SITE_URL}/${path}` } ] },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })) },
+];
+const after = s.signature.after;
+---
+<Base title={`${s.seoTitle} · ${BRAND}`} description={s.seoDescription} path={path} heroImage={`/assets/${s.photo}.webp`} jsonLd={jsonLd}>
+<SectorHero sector={sector} />
+<main id="main"><Market sector={sector} />{after === 'market' && <Signature sector={sector} />}<Journey sector={sector} />{after === 'journey' && <Signature sector={sector} />}<Levers sector={sector} />{after === 'levers' && <Signature sector={sector} />}<Measure sector={sector} /><Growth sector={sector} /><section class="block" style="padding-top:0"><div class="wrap"><div class="kicker">Vos questions</div><h2 class="title" set:html={br(s.titles.faq)}></h2><Faq items={faqs} /></div></section></main>
+<LeadForm selected={s.name} />
+<Footer />
+</Base>

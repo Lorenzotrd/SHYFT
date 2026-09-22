@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro';
+import ListingHero from '../../components/ListingHero.astro';
+import SectorGrid from '../../components/SectorGrid.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import Footer from '../../components/Footer.astro';
+import { single } from '../../lib/content';
+const { secteurs: page } = await single('listes');
+---
+<Base title={page.seoTitle} description={page.seoDescription} path="secteurs">
+<ListingHero eyebrow={page.eyebrow} title={page.title} title2={page.title2} lead={page.lead} />
+<main id="main"><section class="block"><div class="wrap"><SectorGrid /></div></section></main>
+<LeadForm />
+<Footer />
+</Base>

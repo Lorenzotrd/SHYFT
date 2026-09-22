@@ -1,0 +1,74 @@
+groups:
+- name: Acquisition & visibilité
+  expertises:
+  - seo
+  - geo
+  - google-ads
+  - meta-ads
+- name: IA & automatisation
+  expertises:
+  - agence-ia
+- name: Conversion & mesure
+  expertises:
+  - landing-pages-cro
+  - data-tracking
+system:
+- stage: Être trouvé
+  line: Exister au moment où la recherche a lieu.
+  expertises:
+  - seo
+  - geo
+- stage: Générer
+  line: Aller chercher la demande qui ne vient pas seule.
+  expertises:
+  - google-ads
+  - meta-ads
+- stage: Convertir
+  line: Transformer une visite en demande exploitable.
+  expertises:
+  - landing-pages-cro
+- stage: Automatiser
+  line: Répondre vite, suivre, relancer, sans y penser.
+  expertises:
+  - agence-ia
+- stage: Mesurer
+  line: Savoir ce qui apporte des clients, et ce qui n’en apporte pas.
+  expertises:
+  - data-tracking
+sectorExpertises:
+- sector: location-de-materiel
+  expertises:
+  - seo
+  - google-ads
+  - landing-pages-cro
+  - data-tracking
+- sector: reseaux-de-franchise
+  expertises:
+  - meta-ads
+  - seo
+  - geo
+  - agence-ia
+  - data-tracking
+- sector: renovation-artisans
+  expertises:
+  - seo
+  - google-ads
+  - landing-pages-cro
+  - agence-ia
+- sector: immobilier
+  expertises:
+  - seo
+  - google-ads
+  - meta-ads
+  - agence-ia
+- sector: services-a-domicile
+  expertises:
+  - seo
+  - google-ads
+  - meta-ads
+  - agence-ia
+- sector: commerces-multi-sites
+  expertises:
+  - seo
+  - meta-ads
+  - data-tracking

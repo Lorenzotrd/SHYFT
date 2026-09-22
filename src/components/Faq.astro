@@ -1,0 +1,6 @@
+---
+// Liste de questions dépliables. Le JSON-LD FAQPage est construit par la page qui l'utilise.
+interface Props { items: { question: string; answer: string }[] }
+const { items } = Astro.props;
+---
+<div class="faq">{items.map((f) => <details><summary>{f.question}</summary><p>{f.answer}</p></details>)}</div>

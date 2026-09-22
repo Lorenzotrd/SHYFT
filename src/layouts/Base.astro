@@ -1,0 +1,66 @@
+---
+// Gabarit de toutes les pages : en-tête HTML, polices auto-hébergées, préchargement de l'image
+// du hero, feuilles de style, puis le contenu, le script du site et la mesure d'audience.
+import { BRAND, SITE_URL, GA_ID } from '../lib/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Chemin sans barre oblique initiale : '' pour l'accueil, 'secteurs/immobilier'… */
+  path: string;
+  /** Image la plus grande au-dessus de la ligne de flottaison, préchargée en priorité haute. */
+  heroImage?: string;
+  /** Panneau privé : exclu des robots, script propre, aucune mesure d'audience. */
+  admin?: boolean;
+  /** Données structurées, ajoutées en fin de page. */
+  jsonLd?: unknown[];
+}
+
+const { title, description, path, heroImage = '/assets/sky.webp', admin = false, jsonLd } = Astro.props;
+const canonical = `${SITE_URL}/${path}`;
+const fonts = {
+  latin: 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD',
+  ext: 'U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF',
+};
+const face = (family: string, file: string, range: string) =>
+  `@font-face{font-family:'${family}';font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/${file}) format('woff2');unicode-range:${range}}`;
+const fontCss =
+  face('Geist', 'Geist-latin.woff2', fonts.latin) + face('Geist', 'Geist-latin-ext.woff2', fonts.ext) +
+  face('Geist Mono', 'GeistMono-latin.woff2', fonts.latin) + face('Geist Mono', 'GeistMono-latin-ext.woff2', fonts.ext);
+---
+<!doctype html>
+<html lang="fr" data-theme="light">
+<head>
+{admin && <meta name="robots" content="noindex, nofollow">}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{title}</title>
+<meta name="description" content={description}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content={BRAND}>
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href={canonical}>
+<meta property="og:url" content={canonical}>
+<meta property="og:image" content={`${SITE_URL}/assets/og.png`}>
+<meta name="theme-color" content="#067bb1">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/Geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/GeistMono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style set:html={fontCss}></style>
+<link rel="preload" as="image" href={heroImage} fetchpriority="high">
+<link rel="stylesheet" href="/assets/base.css">
+<link rel="stylesheet" href="/assets/design.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu</a>
+<slot />
+{jsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>}
+{admin
+  ? <script is:inline src="/assets/admin.js" defer></script>
+  : <script is:inline src="/assets/site.js" defer></script>}
+{!admin && GA_ID && <script is:inline src="/assets/analytics.js" data-ga={GA_ID} defer></script>}
+</body>
+</html>

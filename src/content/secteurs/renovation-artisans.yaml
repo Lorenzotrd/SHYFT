@@ -1,0 +1,118 @@
+name: Rénovation & artisans
+order: 3
+short: Trouvez les chantiers qui vous ressemblent.
+photo: renovation
+alt: Intérieur en cours de rénovation
+seoTitle: Agence SEO et Google Ads pour artisans
+seoDescription: Recevez des demandes de devis avec un besoin clair, un budget et une zone qui vous correspondent. Pages par métier et commune, formulaire qui qualifie.
+hero:
+  title: |-
+    De beaux chantiers.
+    De vrais projets.
+  lead: Nous générons des demandes de devis qualifiées et améliorons leur suivi pour vous aider à signer davantage de chantiers et développer votre chiffre d’affaires.
+  signal: Projet de rénovation
+  value: Extension 30 m²
+who: Vos futurs clients
+pain:
+- Vous passez trop de temps sur des demandes sans budget.
+- Les prospects sont déjà chez un concurrent quand vous rappelez.
+- Votre savoir-faire est visible sur les chantiers, moins sur Google.
+searches:
+- query: rénovation salle de bain + votre ville
+  meaning: Un projet précis, souvent avec un budget en tête.
+  channel: Google
+- query: prix extension maison 30 m²
+  meaning: Un propriétaire qui se renseigne avant de demander un devis.
+  channel: Google
+- query: artisan rénovation près de moi, avis
+  meaning: Une comparaison sur la carte et sur les avis clients.
+  channel: Fiche Google
+follow: Demandes de devis → projets qualifiés → visites techniques → chantiers signés.
+journey:
+- title: La recherche
+  text: Un propriétaire cherche un artisan pour un projet précis, dans sa commune. Il voit vos réalisations.
+  role: SHYFT
+- title: La demande de devis
+  text: 'Travaux, surface, budget, délai : le formulaire fait le tri avant votre premier appel.'
+  role: SHYFT
+- title: La réponse
+  text: Un rappel rapide et une visite technique proposée avant que le concurrent ne rappelle.
+  role: SHYFT + vous
+- title: Le chantier
+  text: Votre équipe signe. Le devis est suivi jusqu’au chantier, avec sa source et sa valeur.
+  role: Votre équipe
+levers:
+  seo: 'Pages par métier et commune, illustrées par vos réalisations : être trouvé sur les travaux que vous souhaitez réaliser.'
+  ads: Campagnes Google Ads sur vos prestations prioritaires, avec ciblage géographique et suivi des demandes de devis.
+  google: 'Services, zone d’intervention, photos de vrais chantiers et avis clients : donner des raisons de choisir votre entreprise.'
+  conversion: Qualification du type de travaux, de la surface, du budget et du délai. Prise de rendez-vous et relance des devis non signés.
+examples:
+  seoPages:
+  - /renovation-salle-de-bain/tours
+  - /extension-maison/amboise
+  - /renovation-complete/blois
+  adsKeywords:
+  - keyword: rénovation salle de bain tours
+    decision: Ciblé
+    state: ok
+  - keyword: prix extension maison
+    decision: Enchère basse
+    state: warn
+  - keyword: emploi maçon
+    decision: Exclu
+    state: bad
+  google:
+    name: Votre entreprise · Tours
+    rating: 4,8 ★ · 64 avis
+    hours: Ouvert · ferme à 18 h
+    actions:
+    - Itinéraire
+    - Appeler
+    - Demander un devis
+  form:
+  - question: Quels travaux ?
+    answer: Extension 30 m²
+  - question: Quel budget ?
+    answer: autour de 60 000 €
+  - question: Pour quand ?
+    answer: printemps prochain
+measure:
+- name: Devis qualifiés reçus
+  how: Dans votre CRM, avec type de travaux, budget et délai.
+- name: Coût par devis qualifié
+  how: Google Ads et Analytics, par prestation et par commune.
+- name: Rendez-vous de visite technique
+  how: Tableau de bord partagé, du devis au chantier signé.
+pay: demande de devis qualifiée
+growth:
+  leads: 30
+  rate: 20
+  value: 8000
+  client: chantiers signés
+  unit: Montant moyen d’un chantier HT (€)
+  result: CA potentiel des chantiers
+  note: Valeur des chantiers signés issus de ces prospects, avant coûts et selon leur calendrier de réalisation. Ce n’est pas un encaissement immédiat.
+titles:
+  journey: |-
+    Du clic
+    au chantier signé.
+  levers: |-
+    Quatre leviers.
+    Un objectif : vos prochains chantiers.
+  measure: |-
+    Ce qu’on suit,
+    du devis au chantier.
+  growth: |-
+    Ce que de nouveaux chantiers
+    peuvent changer.
+  faq: Avant le premier chantier.
+signature:
+  after: market
+  kicker: Le tri en amont
+  title: |-
+    Les chantiers que vous voulez.
+    Pas tous les chantiers.
+  lead: Le meilleur moyen d’arrêter de perdre du temps sur des demandes sans suite, c’est de décider à l’avance lesquelles vous intéressent.
+faq:
+  question: Puis-je choisir les types de chantiers ?
+  answer: Oui. Nous définissons les prestations, la zone et les critères de projet qui vous intéressent avant de créer les campagnes.

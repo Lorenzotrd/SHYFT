@@ -1,5 +1,9 @@
 node_modules/
+dist/
+.astro/
+.vercel/
 __pycache__/
 .DS_Store
-.vercel
 .leads.json
+.env
+.env.*

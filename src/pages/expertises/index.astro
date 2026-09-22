@@ -1,0 +1,18 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import System from '../../components/expertise/System.astro';
+import ExpertiseCards from '../../components/ExpertiseCards.astro';
+import SectorGrid from '../../components/SectorGrid.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import Footer from '../../components/Footer.astro';
+import { br } from '../../lib/site';
+import { single } from '../../lib/content';
+const { expertises: page } = await single('listes');
+---
+<Base title={page.seoTitle} description={page.seoDescription} path="expertises">
+<div class="hero-shell"><header class="hero listing-hero"><Nav /><div class="hero-copy"><div class="hero-eyebrow">{page.eyebrow}</div><h1>{page.title} <br><span class="l2">{page.title2}</span></h1><p class="lead">{page.lead}</p><div class="hero-cta"><a class="btn btn-glass" href="/#methode">{page.ctaMethod}</a><a class="btn btn-lime" href="#contact">{page.ctaAudit} <span class="arrow-circle">↗</span></a></div></div></header></div>
+<main id="main"><section class="block"><div class="wrap"><div class="section-top"><div><div class="kicker">{page.systemKicker}</div><h2 class="title" set:html={br(page.systemTitle)}></h2></div><p class="sub">{page.systemSub}</p></div><System /></div></section><section class="block expertise-section"><div class="wrap"><div class="kicker">{page.detailKicker}</div><h2 class="title">{page.detailTitle}</h2><p class="sub">{page.detailSub}</p><ExpertiseCards /></div></section><section class="block"><div class="wrap"><div class="section-top"><div><div class="kicker">{page.sectorsKicker}</div><h2 class="title" set:html={br(page.sectorsTitle)}></h2></div><p class="sub">{page.sectorsSub}</p></div><SectorGrid /></div></section></main>
+<LeadForm />
+<Footer />
+</Base>

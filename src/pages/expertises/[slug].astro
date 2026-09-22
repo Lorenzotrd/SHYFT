@@ -1,0 +1,37 @@
+---
+// Page expertise : problème, approche, interface de démonstration, ce qu'on met en place, à retenir,
+// parcours, mesure, expertises complémentaires, secteurs concernés, questions.
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Visual from '../../components/expertise/Visual.astro';
+import Complements from '../../components/expertise/Complements.astro';
+import SectorsFor from '../../components/expertise/SectorsFor.astro';
+import Faq from '../../components/Faq.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import Footer from '../../components/Footer.astro';
+import { BRAND, SITE_URL, br, nn } from '../../lib/site';
+import { expertises, type Expertise } from '../../lib/content';
+
+export async function getStaticPaths() {
+  return (await expertises()).map((expertise) => ({ params: { slug: expertise.id }, props: { expertise } }));
+}
+const { expertise } = Astro.props as { expertise: Expertise };
+const e = expertise.data;
+const path = `expertises/${expertise.id}`;
+
+const jsonLd = [
+  { '@context': 'https://schema.org', '@type': 'Service', name: e.name, serviceType: e.seoTitle, description: e.seoDescription,
+    provider: { '@type': 'Organization', name: BRAND }, areaServed: { '@type': 'Country', name: 'France' }, url: `${SITE_URL}/${path}` },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Expertises', item: `${SITE_URL}/expertises` },
+    { '@type': 'ListItem', position: 3, name: e.name, item: `${SITE_URL}/${path}` } ] },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: e.faq.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })) },
+];
+---
+<Base title={`${e.seoTitle} · ${BRAND}`} description={e.seoDescription} path={path} jsonLd={jsonLd}>
+<div class="hero-shell"><header class="hero xp-hero"><Nav /><div class="hero-copy xp-hero-copy"><div class="hero-eyebrow">{e.hero.eyebrow}</div><h1 set:html={br(e.hero.title)}></h1><p class="lead">{e.hero.lead}</p><div class="hero-cta"><a class="btn btn-lime" href="#contact">{e.hero.cta} <span class="arrow-circle">↗</span></a><a class="btn btn-glass" href="/#methode">Voir notre méthode</a></div></div></header></div>
+<main id="main"><section class="block"><div class="wrap"><div class="section-top"><div><div class="kicker">Le problème</div><h2 class="title" set:html={br(e.problemTitle)}></h2></div><p class="sub">Ce qu’on retrouve le plus souvent au début d’un audit.</p></div><div class="pain-grid four">{e.problem.map((p, i) => <article><span>{nn(i)}</span><h3>{p}</h3></article>)}</div></div></section><section class="block expertise-section"><div class="wrap"><div class="kicker">Notre approche</div><h2 class="title">Comment on s’y prend.</h2><div class="channel-grid">{e.approach.map((a, i) => <article class="channel-card"><span class="channel-number">{nn(i)}</span><h3>{a.title}</h3><p>{a.text}</p></article>)}</div></div></section><section class="block"><div class="wrap"><div class="section-top"><div><div class="kicker">En pratique</div><h2 class="title">{e.demo.title}</h2></div><p class="sub">{e.demo.line}</p></div><Visual kind={e.visual} /></div></section><section class="block" style="padding-top:0"><div class="wrap"><div class="kicker">Ce qu’on met en place</div><h2 class="title">Le détail du travail.</h2><div class="build-grid">{e.build.map((col) => <div class="build-col"><span class="build-label">{col.name}</span><ul>{col.items.map((i) => <li>{i}</li>)}</ul></div>)}</div></div></section><section class="block" style="padding-top:0"><div class="wrap"><div class="sector-pay xp-aside"><div><div class="kicker">À retenir</div><h2 set:html={br(e.asideTitle)}></h2></div><p>{e.aside}</p></div></div></section>{e.visual !== 'workflow' && <section class="block"><div class="wrap"><div class="kicker">Le parcours</div><h2 class="title">Du premier signal <br>au client.</h2><ol class="flow" aria-label="Le parcours">{e.flow.map((s, i) => <li><span>{nn(i)}</span><b>{s}</b></li>)}</ol></div></section>}<section class="block"><div class="wrap"><div class="section-top"><div><div class="kicker">Ce qu’on mesure</div><h2 class="title">Les chiffres <br>qu’on regarde.</h2></div><p class="sub">Installés dans vos comptes, réunis dans un tableau partagé.</p></div><div class="steps">{e.measure.map((m, i) => <div class="step"><div class="n">{nn(i)}</div><h3>{m.title}</h3><p>{m.text}</p></div>)}</div></div></section><Complements expertise={expertise} /><SectorsFor expertise={expertise} /><section class="block" style="padding-top:0"><div class="wrap"><div class="kicker">Vos questions</div><h2 class="title">Avant de se lancer.</h2><Faq items={e.faq} /></div></section></main>
+<LeadForm />
+<Footer />
+</Base>

@@ -1,0 +1,8 @@
+---
+// Le parcours d'une demande en quatre étapes décalées.
+import { br } from '../../lib/site';
+import type { Sector } from '../../lib/content';
+interface Props { sector: Sector }
+const { data: s } = Astro.props.sector;
+---
+<section class="block" id="parcours"><div class="wrap"><div class="section-top"><div><div class="kicker">Votre parcours d’acquisition</div><h2 class="title" set:html={br(s.titles.journey)}></h2></div><p class="sub">{s.follow}</p></div><ol class="journey">{s.journey.map((j, i) => <li class="jstep"><span class="jbadge">Étape {i + 1}</span><b>{j.title}</b><p>{j.text}</p><em>{j.role}</em></li>)}</ol></div></section>

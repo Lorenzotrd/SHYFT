@@ -1,0 +1,38 @@
+---
+// Panneau privé des demandes : exclu des robots et du plan du site, protégé par mot de passe côté API.
+import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
+import { BRAND } from '../lib/site';
+---
+<Base title={`Demandes · ${BRAND}`} description="Panneau privé de suivi des demandes d’audit." path="admin" admin>
+<div class="admin">
+<header class="admin-top"><Logo />
+<div class="admin-top-right"><span class="admin-mode" id="mode" hidden></span>
+<button class="btn btn-ghost" id="logout" hidden>Se déconnecter</button></div></header>
+<main id="main">
+<section class="admin-login" id="login">
+ <div class="admin-card">
+  <span class="kicker">Accès réservé</span><h1>Demandes reçues.</h1>
+  <p>Ce panneau affiche les demandes d’audit envoyées depuis le site.</p>
+  <form id="loginForm"><label>Mot de passe<input type="password" id="pass" autocomplete="current-password" required></label>
+  <button class="btn btn-lime" type="submit">Ouvrir le panneau</button></form>
+  <p class="admin-error" id="loginError" role="alert" hidden></p>
+ </div>
+</section>
+<section class="admin-panel" id="panel" hidden>
+ <div class="admin-head"><div><div class="kicker">Demandes d’audit</div><h1>Vos demandes.</h1></div>
+  <div class="admin-actions"><button class="btn btn-ghost" id="refresh">Actualiser</button>
+  <button class="btn btn-lime" id="export">Exporter en CSV</button></div></div>
+ <div class="admin-stats" id="stats"></div>
+ <div class="admin-filters"><label class="admin-search">Rechercher<input type="search" id="search" placeholder="Nom, entreprise, email, page…"></label>
+  <label>Secteur<select id="sector"><option value="">Tous</option></select></label>
+  <label>Période<select id="period"><option value="">Depuis le début</option><option value="7">7 derniers jours</option><option value="30">30 derniers jours</option><option value="90">90 derniers jours</option></select></label>
+  <span class="admin-count" id="count"></span></div>
+ <div class="table-scroll"><table class="data-table admin-table"><thead><tr>
+  <th>Reçue le</th><th>Contact</th><th>Entreprise</th><th>Secteur</th><th>Page d’origine</th><th>Source</th><th></th>
+ </tr></thead><tbody id="rows"></tbody></table></div>
+ <p class="admin-empty" id="empty" hidden></p>
+ <p class="admin-note">Les demandes sont conservées pour votre suivi commercial. Pensez à les effacer quand elles n’ont plus d’utilité : c’est une obligation, et le panneau le permet ligne par ligne.</p>
+</section>
+</main></div>
+</Base>

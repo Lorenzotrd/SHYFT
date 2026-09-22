@@ -1,0 +1,5 @@
+---
+import Mock from './Mock.astro';
+const steps: [string, string, string][] = [['Visiteurs', '1 000', '100'], ['Interactions', '620', '62'], ['Demandes', '240', '24'], ['Demandes qualifiées', '110', '11']];
+---
+<Mock title="Parcours de conversion" label="Données de démonstration"><div class="funnel">{steps.map(([t, v, w]) => <div class="fstep" style={`--w:${w}%`}><b>{t}</b><span>{v}</span></div>)}</div><p class="mock-note">Chiffres d’illustration, choisis pour montrer comment se lit un parcours. Ce ne sont ni des moyennes de marché, ni un résultat client.</p></Mock>

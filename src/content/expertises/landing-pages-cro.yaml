@@ -1,0 +1,92 @@
+name: Landing Pages & CRO
+order: 6
+menu: Landing Pages & CRO
+hint: Convertir le trafic que vous avez déjà
+card: Transformer plus de visiteurs en demandes, sans acheter plus de trafic.
+tag: Convertir
+visual: funnel
+size: small
+seoTitle: Landing pages et optimisation de la conversion
+seoDescription: 'Des pages et des formulaires qui transforment les visiteurs en demandes qualifiées : une page par intention, un parcours mobile simple, des tests A/B.'
+hero:
+  eyebrow: Conversion
+  title: |-
+    Transformez plus de
+    visiteurs en demandes.
+  lead: Avant d’acheter plus de trafic, il vaut souvent mieux mieux convertir celui que vous avez déjà. C’est plus rapide, et ça rend toutes les campagnes plus rentables.
+  cta: Analyser mon parcours de conversion
+problemTitle: Le trafic est là. Les demandes, non.
+problem:
+- Votre page d’accueil parle de vous, pas du besoin de celui qui arrive.
+- Le formulaire demande dix informations pour un premier contact.
+- Sur mobile, il faut zoomer pour lire et viser pour cliquer.
+- Toutes les publicités envoient au même endroit, quelle que soit la recherche.
+approach:
+- title: Une page par intention
+  text: Quelqu’un qui cherche une nacelle à Poitiers ne doit pas atterrir sur un catalogue général. La page doit répondre à la recherche qui l’a amené.
+- title: On enlève avant d’ajouter
+  text: 'La plupart des pages convertissent mieux une fois débarrassées de ce qui distrait : menus surchargés, blocs décoratifs, deuxième bouton qui part ailleurs.'
+- title: Le formulaire qualifie sans décourager
+  text: Assez de questions pour trier, assez peu pour être rempli. Quand il en faut plusieurs, on découpe en étapes.
+- title: On teste seulement quand le volume le permet
+  text: En dessous d’un certain nombre de visites, un test A/B ne prouve rien. On le dit plutôt que d’habiller une intuition en science.
+demo:
+  title: Où se perdent les visiteurs.
+  line: Le parcours se lit d’une traite. Chaque marche perdue coûte des demandes, et se corrige page par page.
+build:
+- name: Pages
+  items:
+  - Landing pages par prestation, par ville ou par campagne
+  - Reprise des pages existantes qui reçoivent déjà du trafic
+  - Structure lisible en dix secondes
+  - Cohérence entre l’annonce et la page
+- name: Contenu
+  items:
+  - Accroches qui reprennent les mots du visiteur
+  - 'Preuves concrètes : réalisations, zones, délais, garanties'
+  - Objections traitées avant le formulaire
+  - Appel à l’action clair et unique
+- name: Formulaire
+  items:
+  - Champs réduits au nécessaire
+  - Formulaires en plusieurs étapes quand la qualification l’exige
+  - Prise de rendez-vous directe quand c’est pertinent
+  - Messages d’erreur et confirmations compréhensibles
+- name: Technique
+  items:
+  - Vitesse d’affichage
+  - Parcours mobile testé sur vrai téléphone
+  - Suivi des clics et des abandons
+  - Tests A/B quand le trafic le justifie
+asideTitle: Plus de trafic n’est pas toujours la première réponse.
+aside: Doubler le budget publicitaire double le coût. Améliorer la conversion d’une page améliore le rendement de toutes les sources qui pointent dessus, référencement compris, sans dépenser un euro de plus en diffusion. C’est souvent par là qu’on commence, parce que c’est ce qui produit un effet le plus vite.
+flow:
+- Visiteurs
+- Interactions
+- Demandes
+- Demandes qualifiées
+measure:
+- title: Taux de conversion par page
+  text: Page par page, pas une moyenne de site qui ne veut rien dire.
+- title: Taux de complétion du formulaire
+  text: Où les gens abandonnent, et à quel champ.
+- title: Part des demandes qualifiées
+  text: Convertir plus ne sert à rien si la qualité s’effondre.
+- title: Vitesse et confort mobile
+  text: La première cause de départ avant même la lecture.
+complements:
+- expertise: google-ads
+  why: Chaque campagne mérite sa page, pas la page d’accueil.
+- expertise: meta-ads
+  why: Un visiteur qui ne cherchait rien a besoin d’être convaincu.
+- expertise: data-tracking
+  why: On n’améliore une conversion que si on la mesure correctement.
+faq:
+- question: Faut-il refaire tout le site ?
+  answer: Non. On commence par les pages qui reçoivent déjà du trafic et par celles qui reçoivent les campagnes. Une refonte complète est un autre sujet, plus long et plus cher, qui n’est pas toujours nécessaire.
+- question: Combien de trafic faut-il pour un test A/B ?
+  answer: Il faut assez de conversions pour que la différence ne soit pas du hasard, ce que beaucoup de PME n’atteignent pas sur une seule page. En dessous, on s’appuie sur l’analyse du parcours, les enregistrements de comportement et les bonnes pratiques, et on le dit.
+- question: Vous garantissez une hausse de conversion ?
+  answer: Non, et méfiez-vous des agences qui annoncent un pourcentage avant d’avoir vu votre page. On corrige des problèmes identifiés et on mesure ce que ça change, sans promettre de chiffre à l’avance.
+- question: Les pages vous appartiennent ?
+  answer: Non, elles sont à vous. Elles vivent sur votre site ou sur votre hébergement, et vous les gardez si la collaboration s’arrête.

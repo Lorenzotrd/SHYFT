@@ -1,0 +1,7 @@
+---
+// Les six cartes métier, sur l'accueil, la page des secteurs et la page des expertises.
+import { nn } from '../lib/site';
+import { sectors } from '../lib/content';
+const all = await sectors();
+---
+<div class="sector-grid">{all.map((s, i) => <a class="sector-card" href={`/secteurs/${s.id}`}><div class="sector-photo"><img src={`/assets/${s.data.photo}.webp`} loading="lazy" decoding="async" alt={s.data.alt} width="800" height="600"><span class="sector-number">{nn(i)}</span><span class="sector-open" aria-hidden="true">↗</span></div><div class="sector-text"><h3>{s.data.name}</h3><p>{s.data.short}</p></div></a>)}</div>

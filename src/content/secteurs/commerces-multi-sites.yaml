@@ -1,0 +1,118 @@
+name: Commerces multi-sites
+order: 6
+short: Faites rayonner chacune de vos adresses.
+photo: retail
+alt: Intérieur d’un commerce de centre-ville
+seoTitle: Visibilité locale et Google Maps multi-sites
+seoDescription: 'Faites venir du monde dans chaque établissement : fiches Google cohérentes, pages locales par adresse, suivi des contacts point de vente par point de vente.'
+hero:
+  title: |-
+    Une seule marque.
+    Un cran au-dessus, à chaque adresse.
+  lead: Nous générons des contacts locaux et optimisons leur conversion en clients, avec un suivi du chiffre d’affaires établissement par établissement.
+  signal: Visibilité du réseau
+  value: Chaque adresse compte
+who: Vos futurs clients
+pain:
+- Les fiches de vos établissements sont inégales.
+- Les campagnes locales sont difficiles à coordonner.
+- Le siège manque de visibilité sur les contacts par adresse.
+searches:
+- query: votre enseigne + votre ville
+  meaning: Un client qui cherche l’adresse la plus proche.
+  channel: Fiche Google
+- query: votre enseigne horaires, réserver
+  meaning: Une visite ou une réservation dans l’heure.
+  channel: Fiche Google
+- query: meilleur + votre catégorie + votre quartier
+  meaning: Un nouveau client qui ne vous connaît pas encore.
+  channel: Google
+follow: Contacts locaux → réservations ou visites → achats confirmés → CA par établissement.
+journey:
+- title: La recherche
+  text: Un client cherche votre enseigne, ou votre catégorie, près de chez lui. Il tombe sur la bonne adresse.
+  role: SHYFT
+- title: Le contact
+  text: 'Réservation, demande ou itinéraire : un parcours simple depuis la fiche ou la page de l’établissement.'
+  role: SHYFT
+- title: La réponse locale
+  text: L’établissement répond, l’équipe locale est prévenue, les avis sont suivis.
+  role: SHYFT + vous
+- title: L’achat
+  text: Le client vient. Contacts et achats sont rapprochés par point de vente, avec une vue réseau.
+  role: Votre équipe
+levers:
+  seo: 'Une page utile par établissement : offre, informations locales et parcours de contact propres à chaque adresse.'
+  ads: Campagnes Google Ads par zone de chalandise, avec budgets et suivi séparés pour identifier les points de vente qui performent.
+  google: 'Optimisation des fiches du réseau : catégories, horaires, photos, services et réponses aux avis, avec une cohérence de marque.'
+  conversion: Réservation ou demande simplifiée, réponse locale et rapprochement avec les achats lorsque vos outils le permettent.
+examples:
+  seoPages:
+  - /magasins/tours-centre
+  - /magasins/blois
+  - /nos-adresses
+  adsKeywords:
+  - keyword: votre enseigne tours
+    decision: Ciblé
+    state: ok
+  - keyword: horaires votre enseigne
+    decision: Enchère basse
+    state: warn
+  - keyword: recrutement votre enseigne
+    decision: Exclu
+    state: bad
+  google:
+    name: Votre enseigne · Tours centre
+    rating: 4,6 ★ · 143 avis
+    hours: Ouvert · ferme à 20 h
+    actions:
+    - Itinéraire
+    - Réserver
+    - Voir les horaires
+  form:
+  - question: Quelle adresse ?
+    answer: Tours centre
+  - question: Pour quand ?
+    answer: samedi 14 h
+  - question: Combien de personnes ?
+    answer: 4 personnes
+measure:
+- name: Contacts par établissement
+  how: Dans votre CRM, rattachés à chaque adresse.
+- name: Coût par contact local
+  how: Google Ads et Analytics, par zone de chalandise.
+- name: Réservations ou rendez-vous
+  how: Tableau de bord par point de vente, avec une vue réseau.
+pay: contact qualifié, avec périmètre défini par établissement
+growth:
+  leads: 100
+  rate: 20
+  value: 120
+  client: clients ayant acheté
+  unit: Panier moyen du premier achat HT (€)
+  result: CA potentiel des premiers achats
+  note: CA des premiers achats attribués aux contacts, sur le périmètre choisi. Les achats répétés et les visiteurs non identifiés sont exclus.
+titles:
+  journey: |-
+    Du clic
+    à la visite en magasin.
+  levers: |-
+    Quatre leviers.
+    Un objectif : du monde à chaque adresse.
+  measure: |-
+    Ce qu’on suit,
+    adresse par adresse.
+  growth: |-
+    Ce que du trafic en plus
+    peut changer.
+  faq: Avant d’étendre au réseau.
+signature:
+  after: journey
+  kicker: Deux points de vue
+  title: |-
+    Le siège voit le réseau.
+    Chaque adresse voit la sienne.
+  lead: Un directeur d’établissement et un directeur marketing ne regardent pas les mêmes chiffres. Le même suivi doit répondre aux deux.
+faq:
+  question: Faut-il lancer tous les établissements ensemble ?
+  answer: Non. Le test peut commencer sur quelques adresses avant d’étendre la méthode aux autres établissements du réseau.

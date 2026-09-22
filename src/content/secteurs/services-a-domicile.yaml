@@ -1,0 +1,118 @@
+name: Services à domicile
+order: 5
+short: Développez votre activité de proximité.
+photo: homecare
+alt: Accompagnement d’une personne à son domicile
+seoTitle: Acquisition pour les services à domicile
+seoDescription: Des demandes locales qualifiées, dans les zones où vos équipes peuvent intervenir. Pages par prestation et commune, campagnes réglées sur vos capacités.
+hero:
+  title: |-
+    Plus proche des familles.
+    Plus visible localement.
+  lead: Nous générons des demandes locales qualifiées et facilitons leur conversion en clients pour développer votre activité selon les capacités de vos équipes.
+  signal: Besoin à domicile
+  value: Intervention régulière
+who: Les familles
+pain:
+- Les familles ne trouvent pas toujours votre agence locale.
+- Les demandes arrivent hors de votre zone d’intervention.
+- L’acquisition n’est pas alignée avec vos disponibilités.
+searches:
+- query: aide à domicile + votre ville
+  meaning: Une famille qui cherche une agence proche, vite.
+  channel: Google
+- query: ménage à domicile tarif horaire
+  meaning: Un besoin régulier, une comparaison des prix.
+  channel: Google
+- query: agence de services à domicile près de moi
+  meaning: Une recherche sur la carte, souvent le soir.
+  channel: Fiche Google
+follow: Demandes locales → besoins qualifiés → évaluations → nouveaux clients actifs.
+journey:
+- title: La recherche
+  text: Une famille cherche une agence proche pour un besoin précis. Elle trouve la vôtre, pas une plateforme.
+  role: SHYFT
+- title: La demande
+  text: 'Besoin, fréquence, adresse : une demande dans votre zone d’intervention, pas ailleurs.'
+  role: SHYFT
+- title: L’évaluation
+  text: Rappel rapide, rendez-vous d’évaluation, relance organisée si la famille hésite.
+  role: SHYFT + vous
+- title: Le démarrage
+  text: Votre agence démarre le service. Chaque nouveau client est compté, par agence et pour le siège.
+  role: Votre équipe
+levers:
+  seo: Pages par service et commune d’intervention pour répondre aux besoins concrets des familles proches de vos agences.
+  ads: Campagnes Google Ads sur les prestations et zones où vous pouvez accueillir de nouveaux clients.
+  google: 'Fiches des agences : prestations, horaires, photos et avis. Faciliter les appels des familles dans votre secteur.'
+  conversion: Qualification du besoin, de la fréquence et de l’adresse. Rappel, rendez-vous d’évaluation et suivi jusqu’au démarrage du service.
+examples:
+  seoPages:
+  - /aide-a-domicile/tours
+  - /menage-repassage/blois
+  - /garde-d-enfants/amboise
+  adsKeywords:
+  - keyword: aide à domicile tours
+    decision: Ciblé
+    state: ok
+  - keyword: tarif horaire ménage
+    decision: Enchère basse
+    state: warn
+  - keyword: emploi aide à domicile
+    decision: Exclu
+    state: bad
+  google:
+    name: Votre agence · Tours
+    rating: 4,7 ★ · 87 avis
+    hours: Ouvert · ferme à 18 h
+    actions:
+    - Itinéraire
+    - Appeler
+    - Être rappelé
+  form:
+  - question: Quel besoin ?
+    answer: Aide au quotidien
+  - question: Quelle fréquence ?
+    answer: 3 fois par semaine
+  - question: Quelle commune ?
+    answer: Saint-Avertin
+measure:
+- name: Demandes dans votre zone
+  how: Dans votre CRM, avec le besoin, la fréquence et l’adresse.
+- name: Coût par contact qualifié
+  how: Google Ads et Analytics, par prestation et par agence.
+- name: Rendez-vous d’évaluation
+  how: Tableau de bord par agence, avec une vue pour le siège.
+pay: demande qualifiée ou rendez-vous
+growth:
+  leads: 30
+  rate: 30
+  value: 300
+  client: nouveaux clients
+  unit: CA moyen du premier mois par client HT (€)
+  result: CA potentiel du premier mois
+  note: CA du premier mois de service des nouveaux clients. Aucune durée de fidélité ni reconduction future n’est supposée.
+titles:
+  journey: |-
+    Du clic
+    au premier rendez-vous.
+  levers: |-
+    Quatre leviers.
+    Un objectif : vos prochaines familles.
+  measure: |-
+    Ce qu’on suit,
+    de la demande au démarrage.
+  growth: |-
+    Ce que de nouveaux clients
+    peuvent changer.
+  faq: Avant la première intervention.
+signature:
+  after: levers
+  kicker: Votre contrainte réelle
+  title: |-
+    L’acquisition suit
+    vos capacités.
+  lead: Vous ne cherchez pas le maximum de demandes. Vous cherchez le bon nombre, dans les zones où vos équipes peuvent intervenir.
+faq:
+  question: Peut-on adapter les campagnes à nos capacités ?
+  answer: Oui. Nous définissons les prestations et zones prioritaires avec vous et ajustons les campagnes lorsque vos disponibilités changent.

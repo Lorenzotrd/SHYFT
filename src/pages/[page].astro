@@ -1,0 +1,20 @@
+---
+// Pages légales : en-tête simple et contenu HTML issu de la collection « pages ».
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ListingHero from '../components/ListingHero.astro';
+import LeadForm from '../components/LeadForm.astro';
+import Footer from '../components/Footer.astro';
+
+export async function getStaticPaths() {
+  return (await getCollection('pages')).map((page) => ({ params: { page: page.id }, props: { page } }));
+}
+const { page } = Astro.props as { page: CollectionEntry<'pages'> };
+const p = page.data;
+---
+<Base title={p.seoTitle} description={p.seoDescription} path={page.id}>
+<ListingHero eyebrow={p.eyebrow} title={p.h1} lead={p.lead} legal />
+<main id="main"><section class="block"><div class="wrap"><div class="legal-text" set:html={p.body}></div></div></section></main>
+<LeadForm />
+<Footer />
+</Base>

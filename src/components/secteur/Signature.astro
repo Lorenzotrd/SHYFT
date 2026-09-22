@@ -1,0 +1,21 @@
+---
+// La section que ce métier est le seul à avoir. Les textes viennent du contenu, le visuel du composant du secteur.
+import { br } from '../../lib/site';
+import type { Sector } from '../../lib/content';
+import Location from './signatures/Location.astro';
+import Franchise from './signatures/Franchise.astro';
+import Renovation from './signatures/Renovation.astro';
+import Immobilier from './signatures/Immobilier.astro';
+import Domicile from './signatures/Domicile.astro';
+import Commerces from './signatures/Commerces.astro';
+
+interface Props { sector: Sector }
+const { sector } = Astro.props;
+const d = sector.data.signature;
+const visuals: Record<string, any> = {
+  'location-de-materiel': Location, 'reseaux-de-franchise': Franchise, 'renovation-artisans': Renovation,
+  'immobilier': Immobilier, 'services-a-domicile': Domicile, 'commerces-multi-sites': Commerces,
+};
+const Visual = visuals[sector.id];
+---
+<section class="block sig-section" id="specificite"><div class="wrap"><div class="section-top"><div><div class="kicker">{d.kicker}</div><h2 class="title" set:html={br(d.title)}></h2></div><p class="sub">{d.lead}</p></div>{Visual && <Visual />}</div></section>

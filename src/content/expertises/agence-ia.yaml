@@ -1,0 +1,96 @@
+name: Agence IA
+order: 5
+menu: Agence IA
+hint: Agents, automatisations & CRM
+card: Répondre plus vite, qualifier, relancer et relier vos outils, sans y penser.
+tag: Automatiser
+visual: workflow
+size: dark
+seoTitle: Agence IA et automatisation pour PME
+seoDescription: 'IA et automatisation pour PME : qualification des demandes, routage vers le CRM, relances email et SMS, connexion entre vos outils. Sans changer vos logiciels.'
+hero:
+  eyebrow: Agence IA & automatisation
+  title: |-
+    Automatisez ce qui
+    ralentit votre croissance.
+  lead: L’intelligence artificielle n’est pas une stratégie. On l’utilise là où elle fait gagner du temps, améliore le suivi ou augmente la conversion. Partout ailleurs, une automatisation classique suffit et coûte moins cher.
+  cta: Identifier ce que je peux automatiser
+problemTitle: Les demandes arrivent. C’est après que ça coince.
+problem:
+- Une demande reçue le soir est traitée le surlendemain, quand le prospect a déjà appelé ailleurs.
+- Les informations vivent dans les emails, le CRM et un tableau partagé qui n’est plus à jour.
+- Personne ne relance les devis restés sans réponse.
+- Vos commerciaux passent du temps sur des demandes qui n’aboutiront jamais.
+approach:
+- title: On regarde d’abord où part le temps
+  text: Avant d’automatiser quoi que ce soit, on suit une demande de bout en bout et on note chaque endroit où elle attend.
+- title: L’IA quand elle apporte vraiment quelque chose
+  text: 'Comprendre un message écrit à la main, résumer un historique, classer, proposer une première réponse : ce sont des tâches où elle est réellement utile.'
+- title: L’automatisation classique quand elle suffit
+  text: Une règle simple est plus fiable, moins chère et plus facile à corriger qu’un modèle. On ne met pas d’IA là où une condition suffit.
+- title: Un humain garde la main
+  text: Vous définissez ce qui part tout seul et ce qui passe par une validation. Rien ne s’envoie à un client sans que la règle ait été écrite avec vous.
+demo:
+  title: Deux automatisations, de bout en bout.
+  line: Chaque étape est écrite avec vous. Vous décidez de ce qui part tout seul, et de ce qui passe par un humain.
+build:
+- name: Qualification et routage
+  items:
+  - Lecture et résumé des demandes entrantes
+  - Qualification selon vos critères écrits
+  - Attribution au bon commercial ou à la bonne agence
+  - Détection et fusion des doublons
+- name: Suivi et relance
+  items:
+  - Réponse immédiate par email ou SMS
+  - Séquences de relance pour les devis sans réponse
+  - Rappels de rendez-vous
+  - Réactivation des contacts anciens
+- name: Vos outils, reliés
+  items:
+  - CRM au centre, alimenté par toutes les sources
+  - Formulaires du site et formulaires publicitaires
+  - Agenda et prise de rendez-vous en ligne
+  - Connexions par API ou webhook entre vos logiciels
+- name: Assistants internes
+  items:
+  - Aide à la rédaction des réponses types et des devis
+  - Résumé d’un historique client avant un appel
+  - Classement automatique des emails entrants
+  - Extraction d’informations depuis un document
+asideTitle: L’IA quand elle apporte quelque chose. L’automatisation classique quand elle suffit.
+aside: 'C’est la règle qui nous évite de vous vendre de la technologie inutile. Trier des demandes selon trois critères chiffrés ne demande aucune IA : une règle le fait mieux, pour zéro euro par mois. Comprendre un message écrit en langage libre, résumer dix échanges ou rédiger un premier brouillon, c’est là que le modèle gagne son coût. On choisit au cas par cas, et on vous dit lequel des deux on utilise.'
+flow:
+- Nouvelle demande
+- Qualification
+- CRM et commercial assigné
+- Réponse immédiate
+- Relance
+- Rendez-vous
+measure:
+- title: Délai de première réponse
+  text: Le plus souvent, l’indicateur qui change le plus de choses.
+- title: Part des demandes qualifiées automatiquement
+  text: Ce que vos équipes n’ont plus à trier à la main.
+- title: Relances envoyées et réponses obtenues
+  text: Ce que produit le suivi, au-delà de la campagne.
+- title: Rendez-vous pris
+  text: Le résultat visible pour vos commerciaux.
+complements:
+- expertise: google-ads
+  why: Répondre vite à une demande payée change son rendement.
+- expertise: meta-ads
+  why: Qualifier et relancer les contacts issus des formulaires.
+- expertise: landing-pages-cro
+  why: Le formulaire est le point de départ de toute automatisation.
+- expertise: data-tracking
+  why: Automatiser sans mesurer revient à accélérer à l’aveugle.
+faq:
+- question: Faut-il changer de CRM ?
+  answer: Non. On part de vos outils. Si votre CRM tient la route, on le garde et on le relie au reste. On n’en propose un autre que s’il devient le point de blocage, et on vous le dit clairement.
+- question: Est-ce que mes données servent à entraîner une IA ?
+  answer: On utilise des services professionnels dont les conditions excluent l’entraînement sur les données clients, et on ne leur transmet que ce qui est nécessaire au traitement. Les services retenus et ce qui leur est envoyé sont écrits noir sur blanc avant le lancement.
+- question: Et si l’automatisation se trompe ?
+  answer: 'C’est prévu. Chaque règle a une sortie de secours : au moindre doute, la demande part vers un humain plutôt que vers une réponse automatique. On commence toujours avec une validation avant envoi, puis on relâche ce qui s’est montré fiable.'
+- question: Est-ce que ça remplace quelqu’un ?
+  answer: 'Pas dans les PME qu’on accompagne. Ça enlève les tâches qui font perdre du temps aux équipes en place : ressaisie, tri, relances oubliées. Le temps récupéré va aux appels et aux rendez-vous.'

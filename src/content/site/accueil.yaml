@@ -1,0 +1,139 @@
+seoTitle: SHYFT · Votre prochain client vous cherche déjà.
+seoDescription: 'SHYFT apporte aux PME bien implantées sur le terrain les demandes qui leur manquent en ligne : SEO, Google Ads, Meta Ads, IA et mesure. Audit offert.'
+hero:
+  eyebrow: Audit offert · Paiement au résultat
+  title: Votre prochain client
+  title2: vous cherche déjà.
+  lead: SHYFT apporte aux PME bien implantées sur le terrain les demandes qui leur manquent en ligne. On repère celles de votre marché, on les capte, on mesure ce qu’elles rapportent.
+  ctaMethod: Voir notre méthode
+  ctaAudit: Recevoir mon audit offert
+  caption: Vos objectifs. Notre point de départ.
+why:
+  kicker: Pourquoi SHYFT
+  title: |-
+    Vous avez le savoir-faire.
+    On lui donne <span class="inline-spark">↗</span> de la visibilité.
+  sub: |-
+    Une équipe à vos côtés pour transformer les recherches en rencontres,
+    et les premiers contacts en nouvelles opportunités.
+  tiles:
+    sky:
+      eyebrow: Une ambition commune
+      big: Votre croissance.
+      text: Votre métier, votre territoire, vos objectifs. C’est de là que tout part.
+    grey:
+      eyebrow: Pour commencer
+      stat: '60'
+      statUnit: ' jours'
+      title: |-
+        On teste. On mesure.
+        On avance.
+      text: Un périmètre réduit pour identifier ce qui fonctionne avant d’aller plus loin.
+      link: Comprendre la méthode ↗
+    lime:
+      eyebrow: Nos intérêts sont alignés
+      stat: Au résultat
+      text: Des demandes, des rendez-vous, des candidats. Des critères définis ensemble.
+    dark:
+      text: |-
+        Vos outils. Vos comptes.
+        Vous gardez la main.
+sectors:
+  kicker: À chaque métier, sa vitesse
+  title: |-
+    Votre secteur.
+    Vos vrais enjeux.
+  sub: |-
+    On ne remplit pas un planning de location
+    comme on recrute un franchisé.
+    Découvrez une approche pensée pour vous.
+  tail: Votre métier n’est pas dans la liste ? Parlons-en.
+  tailLink: Échanger sur mon projet ↗
+expertises:
+  kicker: Nos expertises
+  title: |-
+    Le digital ne manque pas d’outils.
+    Il manque d’une stratégie commune.
+  sub: |-
+    De la première recherche au client signé, on connecte les bons leviers
+    autour d’un seul objectif : une acquisition mesurable.
+  tail: 'Sept expertises, une seule chaîne : être trouvé, générer, convertir, automatiser, mesurer.'
+  tailLink: Découvrir toutes nos expertises ↗
+audit:
+  kicker: Audit offert
+  title: On regarde votre entreprise comme vos futurs clients la voient
+  items:
+  - Ce que les gens tapent sur Google dans votre zone, et qui sort devant vous
+  - Vos publicités visibles sur Meta et Google
+  - Vos fiches Google, vos avis et leur cohérence
+  - 'Votre site : demande en ligne, mobile, points techniques'
+  - Ce que ChatGPT, Gemini et Google IA répondent sur votre métier
+  - 'Votre suivi : Analytics, Search Console et comptage des demandes'
+  cta: Recevoir mon audit offert
+  reportTitle: Synthèse d'audit
+  reportLabel: Exemple illustratif
+  rows:
+  - label: Recherches hors marque
+    detail: Absent de la première page sur les recherches par ville
+    tag: À construire
+    state: bad
+  - label: Publicité Google
+    detail: Une opportunité de visibilité à étudier dans votre zone
+    tag: Absente
+    state: bad
+  - label: Fiches Google
+    detail: Deux agences, deux noms différents
+    tag: À unifier
+    state: warn
+  - label: Site
+    detail: Catalogue en PDF, aucune demande en ligne
+    tag: À adapter
+    state: warn
+  - label: Mesure
+    detail: Aucun suivi des demandes par source
+    tag: À installer
+    state: bad
+  - label: Avis clients
+    detail: Plus d'avis que les concurrents locaux
+    tag: Point fort
+    state: ok
+measure:
+  kicker: Mesure & suivi
+  title: |-
+    Ce qu’on installe
+    pour tout mesurer.
+  sub: |-
+    Payés au résultat, on a besoin de chiffres justes.
+    Chaque demande est comptée, chaque euro est suivi.
+  boardTitle: Tableau de bord partagé
+  boardLabel: Illustration, données fictives
+  tail: Tout est installé dans vos comptes Google, votre CRM et votre outil email. Si on arrête, vous gardez tout.
+  tailLink: Voir l’expertise Data & Tracking ↗
+method:
+  kicker: Méthode
+  title: De l'audit aux premières demandes, sans engagement long
+  payTitle: Vous payez ce qui arrive. Pas ce qu'on promet.
+  payText: Rémunération par demande, rendez vous ou candidat qualifié, définie avec vous au départ. Le budget publicitaire reste sur votre propre compte.
+  paySide:
+  - title: Tableau partagé
+    text: Chaque demande est comptée et visible par vous.
+  - title: Votre site et vos partenaires restent en place
+    text: On travaille en renfort, pas en remplacement.
+  - title: Pas d'engagement long
+    text: Un test court d'abord, la suite si les chiffres suivent.
+faq:
+  kicker: Questions
+  title: Ce qu'on nous demande avant de commencer
+  items:
+  - question: Qu'est ce que contient l'audit offert ?
+    answer: Une analyse de vos recherches Google locales, de vos publicités visibles, de vos fiches Google, de votre site et de votre visibilité dans les IA. On vous présente les constats en visio, avec les chiffres de votre marché.
+  - question: On travaille déjà avec une agence. Vous la remplacez ?
+    answer: Non. On regarde d'abord ce qui fonctionne et on se place en renfort sur ce qui manque, souvent la génération et le suivi des demandes.
+  - question: Comment êtes vous rémunérés ?
+    answer: 'Principalement au résultat : par demande, rendez vous ou candidat qualifié, selon des critères définis ensemble. Certains volets, comme la mise en place technique, peuvent être facturés à part.'
+  - question: Vous utilisez l'IA ?
+    answer: Oui, pour analyser plus vite, produire des variantes de publicités et répondre aux demandes en quelques minutes. Chaque recommandation est vérifiée par un humain avant de vous être présentée.
+  - question: Comment suit-on les résultats ?
+    answer: Search Console, Google Analytics et votre CRM sont installés dans vos comptes. Un tableau de bord partagé compte chaque demande, sa source et son coût. Vous y accédez à tout moment.
+  - question: Avec quelles entreprises travaillez vous ?
+    answer: 'Des PME et des réseaux en France : loueurs de matériel, réseaux de franchise, entreprises de rénovation, agences immobilières et services à plusieurs adresses.'

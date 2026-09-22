@@ -1,0 +1,91 @@
+name: GEO — Référencement IA
+order: 2
+menu: GEO — Référencement IA
+hint: Être cité dans les réponses IA
+card: Exister dans les réponses de ChatGPT, Gemini, Perplexity et Google IA.
+tag: Être trouvé
+visual: ai
+size: small
+seoTitle: Agence GEO et référencement IA
+seoDescription: 'SHYFT travaille la visibilité des PME dans ChatGPT, Gemini, Perplexity et les réponses IA de Google : contenu structuré, autorité, sources et suivi.'
+hero:
+  eyebrow: GEO · Référencement IA
+  title: |-
+    Soyez visible là où
+    on pose désormais
+    les questions.
+  lead: Une partie de vos futurs clients demande à une IA avant de chercher sur Google. On travaille pour que votre entreprise fasse partie des réponses, et que ce qui est dit sur vous soit exact.
+  cta: Voir comment les IA parlent de mon entreprise
+problemTitle: Une réponse remplace dix résultats.
+problem:
+- Quand l’IA répond, il n’y a plus de première page. Il y a une réponse, et deux ou trois marques citées.
+- 'Les assistants citent ce qu’ils trouvent ailleurs : annuaires, comparateurs, articles. Rarement une PME qui n’a rien publié.'
+- Personne chez vous ne sait ce que ChatGPT répond sur votre métier dans votre ville.
+- Une page écrite pour Google n’est pas toujours lisible par une machine.
+approach:
+- title: On rend votre entreprise compréhensible par une machine
+  text: Qui vous êtes, ce que vous faites, où vous intervenez, pour qui, à quelles conditions. Écrit clairement, structuré, et identique partout où vous apparaissez.
+- title: On publie les formats que les assistants vont chercher
+  text: Réponses à des questions réelles, comparatifs, explications de prix et de délais. Ce sont ces contenus-là qui se retrouvent cités.
+- title: On consolide ce que les autres disent de vous
+  text: 'Une IA se fie aux sources externes : annuaires du secteur, presse locale, fédérations, avis. On met de l’ordre dans ces traces.'
+- title: On teste, et on note ce qui change
+  text: On interroge régulièrement les principaux assistants sur vos questions métier. C’est artisanal, et c’est la seule mesure honnête aujourd’hui.
+demo:
+  title: Ce que répond un assistant.
+  line: La question est posée en langage courant, la réponse cite quelques sources. Notre travail consiste à faire partie de ces sources, avec des informations exactes.
+build:
+- name: Base
+  items:
+  - Structure et clarté des pages
+  - Données structurées et entités
+  - Informations d’entreprise cohérentes sur tout le web
+  - Page de présentation factuelle et vérifiable
+- name: Contenus
+  items:
+  - Questions réelles et réponses complètes
+  - Comparatifs et guides de décision
+  - Explications de prix, de délais et de garanties
+  - FAQ exploitables par les moteurs de réponse
+- name: Autorité
+  items:
+  - Présence sur les sources pertinentes de votre secteur
+  - Mentions et citations externes
+  - Avis et preuves publiques
+  - Cohérence de l’information d’un site à l’autre
+- name: Suivi
+  items:
+  - Relevé régulier sur ChatGPT, Gemini, Perplexity et les réponses IA de Google
+  - Liste des marques citées sur vos questions
+  - Écarts entre ce que dit l’IA et la réalité de votre offre
+asideTitle: Le référencement et le GEO travaillent ensemble.
+aside: 'Le référencement vise les moteurs de recherche, le GEO vise les moteurs de réponse. Les surfaces sont différentes, la base est commune : un contenu clair, une structure lisible, de l’autorité et de la pertinence. Travailler l’un sans l’autre revient à laisser la moitié du chemin à un concurrent.'
+flow:
+- Question posée à une IA
+- Sources consultées
+- Réponse construite
+- Marques citées
+- Visite et demande
+measure:
+- title: Présence dans les réponses
+  text: Relevé manuel sur une liste de questions définie avec vous.
+- title: Exactitude de ce qui est dit
+  text: Ce que l’assistant affirme sur vos prestations, vos zones et vos conditions.
+- title: Sources qui vous amènent
+  text: Les pages et les sites cités quand votre nom apparaît.
+- title: Visites depuis les assistants
+  text: Le trafic référent identifiable dans Analytics.
+complements:
+- expertise: seo
+  why: 'Le socle : structure, autorité et contenu. Sans lui, rien à citer.'
+- expertise: data-tracking
+  why: Pour repérer les visites qui viennent des assistants.
+faq:
+- question: Vous pouvez me mettre premier sur ChatGPT ?
+  answer: Non. Il n’y a ni classement à acheter, ni position à garantir dans une réponse IA. Ce qu’on peut faire, c’est réunir les conditions pour être une source crédible et vérifiable sur votre métier. Toute agence qui vous promet une citation garantie vous raconte une histoire.
+- question: En quoi est-ce différent du référencement classique ?
+  answer: 'La base est commune : du contenu clair, structuré et crédible. Ce qui change, c’est le format des contenus et le poids de ce que les autres sites disent de vous.'
+- question: Comment mesurer quelque chose d’aussi flou ?
+  answer: Par un relevé. On définit ensemble les questions que vos clients posent, on interroge les principaux assistants à intervalle régulier, on note ce qui apparaît et ce qui change. Il n’existe pas aujourd’hui d’outil de mesure fiable et exhaustif, et on ne fait pas semblant du contraire.
+- question: Est-ce que ça vaut le coup maintenant ?
+  answer: Pour la plupart des métiers, l’essentiel des demandes vient encore de Google. Le GEO est un investissement d’avance, pas un remplacement. On le dimensionne comme tel, à côté des canaux qui produisent aujourd’hui.
