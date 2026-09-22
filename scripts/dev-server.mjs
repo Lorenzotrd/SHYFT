@@ -7,8 +7,8 @@ import {fileURLToPath} from 'node:url';
 import {handleLead,readStream} from '../lib/lead.mjs';
 import adminHandler from '../api/admin.js';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.jpg':'image/jpeg','.svg':'image/svg+xml','.json':'application/json','.png':'image/png','.xml':'application/xml; charset=utf-8','.txt':'text/plain; charset=utf-8'};
-const ASSET=/^\/assets\/[a-z0-9.-]+\.(css|js|jpg|svg|png)$/;
+const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.jpg':'image/jpeg','.webp':'image/webp','.woff2':'font/woff2','.svg':'image/svg+xml','.json':'application/json','.png':'image/png','.xml':'application/xml; charset=utf-8','.txt':'text/plain; charset=utf-8'};
+const ASSET=/^\/assets\/(fonts\/)?[A-Za-z0-9.-]+\.(css|js|jpg|webp|svg|png|woff2)$/;
 const FILE=/^\/(sitemap\.xml|robots\.txt)$/;
 const PAGE=/^\/(?:[a-z0-9-]+(?:\/[a-z0-9-]+)?)?$/;
 // Adresses sans extension : /expertises/seo sert expertises/seo.html, comme cleanUrls sur Vercel.
