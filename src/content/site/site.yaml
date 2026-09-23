@@ -3,7 +3,13 @@ nav:
   services: Services
   methode: Méthode
   resultats: Résultats
-  cta: Audit gratuit
+  audit: Audit
+  cta: Parlons de votre projet
+  menu:
+    auditTitre: Audit offert en 24 h
+    auditTexte: Vos six leviers passés au crible, gratuitement
+    rdvTitre: Parlons de votre projet
+    rdvTexte: 30 minutes en visio, sans engagement
 footer:
   accroche: L'acquisition des PME qui veulent des conversions, *pas des impressions.*
   cta: Prendre rendez-vous

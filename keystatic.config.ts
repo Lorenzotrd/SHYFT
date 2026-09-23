@@ -54,6 +54,10 @@ export default config({
         nom: fields.slug({ name: { label: 'Nom' }, slug: { label: 'Adresse', description: 'Ne pas modifier : c’est l’adresse de la page (/expertises/…).' } }),
         nomCourt: text('Nom court', 'Pied de page sur téléphone : « SEO », « IA »…'),
         ordre: fields.integer({ label: 'Ordre d’affichage', defaultValue: 1 }),
+        groupeMenu: fields.select({ label: 'Groupe de menu', description: 'Colonne du menu déroulant Services.', defaultValue: 'Acquisition et visibilité', options: [
+          { label: 'Acquisition et visibilité', value: 'Acquisition et visibilité' }, { label: 'Conversion et mesure', value: 'Conversion et mesure' }, { label: 'IA et automatisation', value: 'IA et automatisation' },
+        ] }),
+        phraseMenu: text('Phrase menu', 'Sous le nom du service, dans le menu déroulant.'),
         seoTitle: text('Titre pour Google'),
         seoDescription: paragraph('Description pour Google'),
         carte: fields.object({
@@ -288,7 +292,14 @@ export default config({
       format: { data: 'yaml' },
       schema: {
         calUrl: fields.url({ label: 'Lien de prise de rendez-vous', validation: { isRequired: true } }),
-        nav: fields.object({ services: text('Menu : Services'), methode: text('Menu : Méthode'), resultats: text('Menu : Résultats'), cta: text('Bouton du menu') }, { label: 'Navigation' }),
+        nav: fields.object({
+          services: text('Menu : Services'), methode: text('Menu : Méthode'), resultats: text('Menu : Résultats'), audit: text('Menu : Audit'),
+          cta: text('Bouton à droite (rendez-vous)'),
+          menu: fields.object({
+            auditTitre: text('Carte jaune : titre'), auditTexte: text('Carte jaune : texte'),
+            rdvTitre: text('Carte noire : titre'), rdvTexte: text('Carte noire : texte'),
+          }, { label: 'Cartes en bas du menu Services' }),
+        }, { label: 'Navigation' }),
         footer: fields.object({ accroche: title('Accroche'), cta: text('Bouton'), editeur: text('Éditeur du site') }, { label: 'Pied de page' }),
       },
     }),

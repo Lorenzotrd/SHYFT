@@ -121,7 +121,10 @@ const accueil = single('accueil', z.object({
 // Réglages communs aux pages refaites : navigation, rendez-vous, pied de page.
 const site = single('site', z.object({
   calUrl: z.url(),
-  nav: z.object({ services: z.string(), methode: z.string(), resultats: z.string(), cta: z.string() }),
+  nav: z.object({
+    services: z.string(), methode: z.string(), resultats: z.string(), audit: z.string(), cta: z.string(),
+    menu: z.object({ auditTitre: z.string(), auditTexte: z.string(), rdvTitre: z.string(), rdvTexte: z.string() }),
+  }),
   footer: z.object({ accroche: lines, cta: z.string(), editeur: z.string() }),
 }));
 
@@ -143,6 +146,9 @@ const services = defineCollection({
     nom: z.string(),
     nomCourt: z.string(),
     ordre: z.number(),
+    // Menu déroulant Services : la colonne (dans l'ordre des options) et la phrase sous le nom.
+    groupeMenu: z.enum(['Acquisition et visibilité', 'Conversion et mesure', 'IA et automatisation']),
+    phraseMenu: z.string(),
     seoTitle: z.string(),
     seoDescription: z.string(),
     carte: z.object({ texte: z.string(), texteCourt: z.string(), icone: z.enum(['repere', 'cible', 'megaphone', 'robot', 'site', 'graphique']), ton: tone }),

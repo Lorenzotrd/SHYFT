@@ -1,9 +1,10 @@
 ---
 // Pictogrammes des maquettes, en trait. La couleur suit currentColor.
-interface Props { name: 'arrow' | 'check' | 'plus' | 'menu' | 'close' | 'trend' | 'repere' | 'cible' | 'megaphone' | 'robot' | 'site' | 'graphique'; size?: number; stroke?: number; class?: string }
+interface Props { name: 'arrow' | 'chevron' | 'check' | 'plus' | 'menu' | 'close' | 'trend' | 'repere' | 'cible' | 'megaphone' | 'robot' | 'site' | 'graphique'; size?: number; stroke?: number; class?: string }
 const { name, size = 16, stroke = 2.4, class: className } = Astro.props;
 const paths: Record<Props['name'], string> = {
   arrow: '<line x1="6" y1="18" x2="18" y2="6"/><polyline points="9 6 18 6 18 15"/>',
+  chevron: '<polyline points="6 9 12 15 18 9"/>',
   check: '<polyline points="5 12.5 10 17 19 7"/>',
   plus: '<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>',
   menu: '<line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/>',
