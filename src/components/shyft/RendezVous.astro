@@ -1,0 +1,36 @@
+---
+// Bloc rendez-vous : 30 minutes en visio, créneau Cal.com en principal, audit offert en secondaire.
+import Bouton from './Bouton.astro';
+import Icon from './Icon.astro';
+import { single } from '../../lib/content';
+import { rich } from '../../lib/site';
+const [rdv, site] = await Promise.all([single('rendezVous'), single('site')]);
+---
+<section class="rdv on-dark" id="rendez-vous" aria-labelledby="rdv-titre">
+  <span class="pill"><span class="dot"></span>{rdv.pastille}</span>
+  <h2 id="rdv-titre" class="h2-xl" set:html={rich(rdv.titre)}></h2>
+  <p>{rdv.texte}</p>
+  <div class="ctas">
+    <Bouton href={site.calUrl} size="lg" emplacement="bloc-rendez-vous" block>{rdv.cta}</Bouton>
+    <Bouton href="/audit-offert" variant="outline-light" size="lg" class="secondary">{rdv.ctaSecondaire}</Bouton>
+  </div>
+  <ul class="garanties">{rdv.garanties.map((g) => <li><Icon name="check" size={16} />{g}</li>)}</ul>
+</section>
+<style>
+  .rdv{margin:var(--section) 40px 0;padding:clamp(44px, 7vw, 100px) clamp(22px, 6.25vw, 90px) clamp(34px, 5.8vw, 84px);border-radius:var(--r-block);background:var(--dark);color:var(--on-dark);display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center}
+  .pill{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid #2e2d28;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--on-dark-soft)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  h2 :global(.serif){color:var(--accent)}
+  p{max-width:580px;font-size:18px;line-height:1.6;color:var(--on-dark-muted)}
+  .ctas{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding-top:8px}
+  .garanties{list-style:none;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 28px;font-size:14px;color:var(--on-dark-soft)}
+  .garanties li{display:inline-flex;align-items:center;gap:8px}
+  .garanties :global(svg){color:var(--accent)}
+  @media (max-width:640px){
+    .rdv{margin-left:10px;margin-right:10px;gap:16px}
+    p{font-size:14px}
+    .ctas{width:100%;flex-direction:column;align-items:stretch}
+    .ctas :global(.secondary){display:none}
+    .garanties{font-size:12px;gap:8px 12px}
+  }
+</style>

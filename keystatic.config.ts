@@ -19,6 +19,10 @@ const expertiseRef = (label = 'Expertise') => fields.relationship({ label, colle
 const sectorRef = (label = 'Secteur') => fields.relationship({ label, collection: 'secteurs', validation: { isRequired: true } });
 const expertiseRefs = (label: string) => fields.array(expertiseRef(), { label, itemLabel: (p) => p.value ?? '' });
 
+const title = (label: string) => fields.text({ label, multiline: true, description: 'Un mot entre astérisques, *comme ceci*, s’affiche en serif italique. ' + BR });
+const titled = () => fields.object({ titre: text('Titre'), texte: paragraph('Texte') });
+const tone = () => fields.select({ label: 'Couleur', defaultValue: 'clair', options: [{ label: 'Blanche', value: 'clair' }, { label: 'Noire', value: 'sombre' }, { label: 'Jaune', value: 'accent' }] });
+
 const sectionHead = {
   kicker: text('Surtitre'),
   title: lines('Titre'),
@@ -33,12 +37,32 @@ export default config({
   ui: {
     brand: { name: 'SHYFT' },
     navigation: {
-      Pages: ['accueil', 'listes', 'secteurs', 'expertises', 'pages'],
-      'Blocs communs': ['methode', 'mesure', 'formulaire', 'piedDePage', 'navigation', 'leviers'],
+      Pages: ['accueil', 'services', 'listes', 'secteurs', 'expertises', 'pages'],
+      'Blocs communs': ['site', 'rendezVous', 'methode', 'mesure', 'formulaire', 'piedDePage', 'navigation', 'leviers'],
     },
   },
 
   collections: {
+    services: collection({
+      label: 'Services',
+      slugField: 'nom',
+      path: 'src/content/services/*',
+      format: { data: 'yaml' },
+      schema: {
+        nom: fields.slug({ name: { label: 'Nom' }, slug: { label: 'Adresse', description: 'Ne pas modifier : c’est l’adresse de la page (/expertises/…).' } }),
+        nomCourt: text('Nom court', 'Pied de page sur téléphone : « SEO », « IA »…'),
+        ordre: fields.integer({ label: 'Ordre d’affichage', defaultValue: 1 }),
+        carte: fields.object({
+          texte: paragraph('Texte de la carte'),
+          texteCourt: paragraph('Texte de la carte sur téléphone'),
+          icone: fields.select({ label: 'Pictogramme', defaultValue: 'repere', options: [
+            { label: 'Repère de carte', value: 'repere' }, { label: 'Cible', value: 'cible' }, { label: 'Mégaphone', value: 'megaphone' },
+            { label: 'Robot', value: 'robot' }, { label: 'Fenêtre de site', value: 'site' }, { label: 'Graphique', value: 'graphique' },
+          ] }),
+          ton: tone(),
+        }, { label: 'Carte sur l’accueil' }),
+      },
+    }),
     secteurs: collection({
       label: 'Secteurs',
       slugField: 'name',
@@ -170,31 +194,77 @@ export default config({
         seoTitle: text('Titre pour Google'),
         seoDescription: paragraph('Description pour Google'),
         hero: fields.object({
-          eyebrow: text('Surtitre'), title: text('Titre, première ligne'), title2: text('Titre, seconde ligne (bleu clair)'),
-          lead: paragraph('Texte d’introduction'), ctaMethod: text('Bouton « méthode »'), ctaAudit: text('Bouton « audit »'), caption: text('Légende sous les cartes'),
+          badge: text('Pastille noire'), badgeTexte: text('Texte de la pastille'),
+          titre: title('Titre'), texte: paragraph('Texte d’introduction'),
+          cta: text('Bouton principal (audit)'), ctaSecondaire: text('Bouton secondaire (rendez-vous)'),
+          legende: text('Légende sous les cartes (téléphone)'),
         }, { label: 'En-tête' }),
-        why: fields.object({
-          ...sectionHead,
-          tiles: fields.object({
-            sky: fields.object({ eyebrow: text('Surtitre'), big: text('Grand texte'), text: paragraph('Texte') }, { label: 'Tuile ciel' }),
-            grey: fields.object({ eyebrow: text('Surtitre'), stat: text('Chiffre'), statUnit: text('Unité'), title: lines('Titre'), text: paragraph('Texte'), link: text('Lien') }, { label: 'Tuile grise' }),
-            lime: fields.object({ eyebrow: text('Surtitre'), stat: text('Grand texte'), text: paragraph('Texte') }, { label: 'Tuile citron' }),
-            dark: fields.object({ text: lines('Texte') }, { label: 'Tuile sombre' }),
-          }, { label: 'Quatre tuiles' }),
-        }, { label: 'Pourquoi SHYFT' }),
-        sectors: fields.object({ ...sectionHead, tail: text('Phrase de fin'), tailLink: text('Lien de fin') }, { label: 'Section secteurs' }),
-        expertises: fields.object({ ...sectionHead, tail: text('Phrase de fin'), tailLink: text('Lien de fin') }, { label: 'Section expertises' }),
+        eventail: fields.array(fields.object({
+          type: fields.select({ label: 'Type de carte', defaultValue: 'lignes', options: [
+            { label: 'Barres (hauteurs dans « Valeurs »)', value: 'barres' },
+            { label: 'Lignes libellé / valeur', value: 'lignes' },
+            { label: 'Liste cochée (valeur « ok » ou « attente »)', value: 'checklist' },
+            { label: 'Grille de positions (25 lettres dans « Valeurs »)', value: 'grille' },
+            { label: 'Barres par source (valeur en %)', value: 'sources' },
+          ] }),
+          ton: tone(),
+          mobile: fields.checkbox({ label: 'Affichée sur téléphone', description: 'Trois cartes au maximum.' }),
+          pastille: fields.checkbox({ label: 'Point vert devant le surtitre' }),
+          surtitre: text('Surtitre'), titre: text('Titre'), pied: text('Ligne du bas (facultatif)'),
+          valeurs: text('Valeurs', 'Barres : hauteurs en % séparées par des virgules. Grille : 25 lettres v, o, r ou n (vert, orange, rouge, noir).'),
+          lignes: fields.array(fields.object({ label: text('Libellé'), valeur: text('Valeur') }), { label: 'Lignes', itemLabel: (p) => p.fields.label.value }),
+        }), { label: 'Éventail de cartes sous l’en-tête', description: 'Sept cartes sur ordinateur, dans l’ordre de gauche à droite.', itemLabel: (p) => p.fields.titre.value }),
+        pourquoi: fields.object({
+          titre: title('Titre'), texte: paragraph('Texte'),
+          items: fields.array(titled(), { label: 'Quatre arguments', itemLabel: (p) => p.fields.titre.value }),
+        }, { label: 'Pourquoi nous choisir' }),
+        services: fields.object({ titre: title('Titre'), texte: paragraph('Texte') }, { label: 'Services', description: 'Les six cartes viennent de la collection Services.' }),
+        methode: fields.object({
+          titre: title('Titre'),
+          etapes: fields.array(titled(), { label: 'Étapes', itemLabel: (p) => p.fields.titre.value }),
+        }, { label: 'Méthode' }),
+        resultats: fields.object({
+          titre: title('Titre'), texte: paragraph('Texte'),
+          grande: fields.object({
+            surtitre: text('Surtitre'), chiffre: text('Chiffre'), legende: text('Légende'),
+            lignes: fields.array(fields.object({ label: text('Libellé'), valeur: text('Valeur') }), { label: 'Lignes', itemLabel: (p) => p.fields.label.value }),
+            cta: text('Bouton (rendez-vous)'),
+          }, { label: 'Grande carte' }),
+          cartes: fields.array(fields.object({
+            surtitre: text('Surtitre'), lien: text('Libellé du lien'),
+            service: fields.relationship({ label: 'Service lié', collection: 'services', validation: { isRequired: true } }),
+            chiffre: text('Chiffre'), legende: text('Légende'), texte: paragraph('Texte'),
+          }), { label: 'Quatre cartes', itemLabel: (p) => `${p.fields.chiffre.value} · ${p.fields.surtitre.value}` }),
+          note: text('Note sous les cartes'),
+        }, { label: 'Résultats' }),
         audit: fields.object({
-          kicker: text('Surtitre'), title: text('Titre'), items: list('Ce qu’on regarde', 'Point'), cta: text('Bouton'),
-          reportTitle: text('Titre de la synthèse'), reportLabel: text('Mention de la synthèse'),
-          rows: fields.array(fields.object({ label: text('Sujet'), detail: text('Constat'), tag: text('Étiquette'), state: state() }), { label: 'Lignes de la synthèse', itemLabel: (p) => p.fields.label.value }),
+          surtitre: text('Surtitre'), titre: title('Titre'), points: list('Ce qu’on regarde', 'Point'), cta: text('Bouton'),
+          syntheseTitre: text('Titre de la synthèse'), syntheseEtiquette: text('Étiquette de la synthèse'),
+          lignes: fields.array(fields.object({ sujet: text('Sujet'), constat: text('Constat'), etiquette: text('Étiquette'), etat: state() }), { label: 'Lignes de la synthèse', itemLabel: (p) => p.fields.sujet.value }),
         }, { label: 'Audit offert' }),
-        measure: fields.object({ ...sectionHead, boardTitle: text('Titre du tableau'), boardLabel: text('Mention du tableau'), tail: text('Phrase de fin'), tailLink: text('Lien de fin') }, { label: 'Mesure & suivi' }),
-        method: fields.object({
-          kicker: text('Surtitre'), title: text('Titre'), payTitle: text('Titre de l’encart rémunération'), payText: paragraph('Texte de l’encart'),
-          paySide: fields.array(fields.object({ title: text('Titre'), text: text('Texte') }), { label: 'Trois garanties', itemLabel: (p) => p.fields.title.value }),
-        }, { label: 'Méthode', description: 'Les trois étapes sont dans « Blocs communs → Méthode ».' }),
-        faq: fields.object({ kicker: text('Surtitre'), title: text('Titre'), items: faqList('Questions') }, { label: 'Questions' }),
+        faq: fields.object({ surtitre: text('Surtitre'), titre: title('Titre'), texte: paragraph('Texte'), cta: text('Bouton'), questions: faqList('Questions') }, { label: 'Questions fréquentes' }),
+      },
+    }),
+
+    site: singleton({
+      label: 'Réglages du site',
+      path: 'src/content/site/site',
+      format: { data: 'yaml' },
+      schema: {
+        calUrl: fields.url({ label: 'Lien de prise de rendez-vous', validation: { isRequired: true } }),
+        nav: fields.object({ services: text('Menu : Services'), methode: text('Menu : Méthode'), resultats: text('Menu : Résultats'), cta: text('Bouton du menu') }, { label: 'Navigation' }),
+        footer: fields.object({ accroche: title('Accroche'), cta: text('Bouton'), editeur: text('Éditeur du site') }, { label: 'Pied de page' }),
+      },
+    }),
+
+    rendezVous: singleton({
+      label: 'Bloc rendez-vous',
+      path: 'src/content/site/rendez-vous',
+      format: { data: 'yaml' },
+      schema: {
+        pastille: text('Pastille'), titre: title('Titre'), texte: paragraph('Texte'),
+        cta: text('Bouton principal (rendez-vous)'), ctaSecondaire: text('Bouton secondaire (audit)'),
+        garanties: list('Garanties', 'Garantie'),
       },
     }),
 

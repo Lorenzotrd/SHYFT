@@ -7,7 +7,7 @@ import Footer from '../../components/Footer.astro';
 import { single } from '../../lib/content';
 const { secteurs: page } = await single('listes');
 ---
-<Base title={page.seoTitle} description={page.seoDescription} path="secteurs">
+<Base title={page.seoTitle} description={page.seoDescription} path="secteurs" noindex>
 <ListingHero eyebrow={page.eyebrow} title={page.title} title2={page.title2} lead={page.lead} />
 <main id="main"><section class="block"><div class="wrap"><SectorGrid /></div></section></main>
 <LeadForm />

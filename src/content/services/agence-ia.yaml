@@ -1,0 +1,8 @@
+nom: IA et automatisation
+nomCourt: IA
+ordre: 4
+carte:
+  texte: 'Devis, relances, appels d''offres, documents à réclamer : le répétitif en moins pour vos équipes.'
+  texteCourt: 'Relances, appels d''offres, documents : le répétitif en moins.'
+  icone: robot
+  ton: clair

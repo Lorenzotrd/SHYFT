@@ -1,0 +1,62 @@
+---
+// Navigation : logo, pilule noire (Services, Méthode, Résultats), bouton « Audit gratuit ».
+// Sur téléphone : une pilule noire avec le logo et un bouton jaune qui ouvre le menu.
+import Icon from './Icon.astro';
+import Bouton from './Bouton.astro';
+import { single } from '../../lib/content';
+const { nav } = await single('site');
+const links = [
+  { href: '/#services', label: nav.services },
+  { href: '/#methode', label: nav.methode },
+  { href: '/#resultats', label: nav.resultats },
+];
+---
+<header class="nav" data-nav>
+  <a class="logo" href="/" aria-label="shyft, accueil">shyft<span>.</span></a>
+  <nav class="links" id="menu-principal" aria-label="Navigation principale">
+    {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    <a class="menu-cta" href="/audit-offert">{nav.cta}</a>
+  </nav>
+  <Bouton href="/audit-offert" size="sm" class="nav-cta">{nav.cta}</Bouton>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu" data-menu>
+    <Icon name="menu" size={18} stroke={2.2} class="i-open" /><Icon name="close" size={18} stroke={2.2} class="i-close" />
+  </button>
+</header>
+<script>
+  // Menu téléphone : ouverture, fermeture au clic sur un lien, à la touche Échap et hors du menu.
+  const nav = document.querySelector<HTMLElement>('[data-nav]');
+  const button = nav?.querySelector<HTMLButtonElement>('[data-menu]');
+  const setOpen = (open: boolean) => {
+    nav?.classList.toggle('open', open);
+    button?.setAttribute('aria-expanded', String(open));
+    button?.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  };
+  button?.addEventListener('click', () => setOpen(!nav?.classList.contains('open')));
+  nav?.querySelectorAll('.links a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && nav?.classList.contains('open')) { setOpen(false); button?.focus(); } });
+  document.addEventListener('click', (e) => { if (nav && !nav.contains(e.target as Node)) setOpen(false); });
+</script>
+<style>
+  .nav{position:relative;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 40px}
+  .logo{font-size:26px;font-weight:700;letter-spacing:-.04em;line-height:1}
+  .logo span{color:var(--accent)}
+  .links{display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:var(--ink)}
+  .links a{padding:11px 18px;border-radius:999px;font-size:14px;font-weight:500;color:var(--on-dark-2);transition:background .2s,color .2s}
+  .links a:hover{background:var(--dark-2);color:var(--on-dark)}
+  .links a:focus-visible{outline-color:var(--accent)}
+  .menu-cta,.menu-btn{display:none}
+  @media (max-width:760px){
+    .nav{margin:14px 14px 0;padding:7px 7px 7px 20px;border-radius:999px;background:var(--ink);flex-wrap:wrap}
+    .logo{font-size:19px;color:var(--on-dark)}
+    :global(.nav-cta){display:none!important}
+    .menu-btn{display:inline-grid;place-items:center;width:44px;height:44px;border:0;border-radius:999px;background:var(--accent);color:var(--ink);cursor:pointer}
+    .menu-btn :global(.i-close){display:none}
+    .nav.open{border-radius:26px;padding-bottom:14px}
+    .nav.open .menu-btn :global(.i-open){display:none}
+    .nav.open .menu-btn :global(.i-close){display:block}
+    .links{display:none;order:3;flex-basis:100%;flex-direction:column;align-items:stretch;gap:2px;margin-top:8px;padding:0 6px 0 0;background:none}
+    .nav.open .links{display:flex}
+    .links a{font-size:20px;padding:14px 4px;border-radius:12px;color:var(--on-dark)}
+    .menu-cta{display:block;margin-top:8px;text-align:center;background:var(--accent);color:var(--ink)!important;font-weight:600}
+  }
+</style>

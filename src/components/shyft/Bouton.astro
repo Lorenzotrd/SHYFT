@@ -1,0 +1,49 @@
+---
+// Bouton en pilule. « accent » : jaune avec rond noir et flèche ; « dark » : noir avec rond jaune ;
+// « outline » : contour, sur fond clair ou sombre. Les liens de rendez-vous portent leur emplacement pour la mesure.
+import Icon from './Icon.astro';
+interface Props {
+  href: string;
+  variant?: 'accent' | 'dark' | 'outline' | 'outline-light';
+  size?: 'sm' | 'md' | 'lg';
+  arrow?: boolean;
+  emplacement?: string;
+  block?: boolean;
+  class?: string;
+}
+const { href, variant = 'accent', size = 'md', arrow, emplacement, block = false, class: className } = Astro.props;
+const withArrow = arrow ?? (variant === 'accent' || variant === 'dark');
+---
+<a class:list={['btn', `btn-${variant}`, `btn-${size}`, { 'btn-arrow': withArrow, 'btn-block': block }, className]} href={href} data-emplacement={emplacement}>
+  <span><slot /></span>
+  {withArrow && <span class="btn-dot"><Icon name="arrow" size={size === 'sm' ? 13 : 16} /></span>}
+</a>
+<style>
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;border-radius:999px;font-weight:600;line-height:1.1;white-space:nowrap;transition:background .2s,color .2s,border-color .2s,transform .15s}
+  .btn:active{transform:scale(.98)}
+  .btn-sm{font-size:14px;gap:10px;min-height:46px;padding:7px 20px}
+  .btn-md{font-size:17px;min-height:62px;padding:9px 28px}
+  .btn-lg{font-size:18px;min-height:66px;padding:10px 30px}
+  .btn-arrow.btn-sm{padding-right:7px}
+  .btn-arrow.btn-md{padding-right:9px}
+  .btn-arrow.btn-lg{padding-right:10px}
+  .btn-dot{flex:none;display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%}
+  .btn-sm .btn-dot{width:32px;height:32px}
+  .btn-lg .btn-dot{width:46px;height:46px}
+  .btn-accent{background:var(--accent);color:var(--ink)}
+  .btn-accent:hover{background:#ffd666}
+  .btn-accent .btn-dot{background:var(--ink);color:var(--accent)}
+  .btn-dark{background:var(--ink);color:var(--on-dark)}
+  .btn-dark:hover{background:#2a2a26}
+  .btn-dark .btn-dot{background:var(--accent);color:var(--ink)}
+  .btn-outline{border:1px solid var(--ink);color:var(--ink)}
+  .btn-outline:hover{background:var(--ink);color:var(--on-dark)}
+  .btn-outline-light{border:1px solid var(--dark-line-2);color:var(--on-dark)}
+  .btn-outline-light:hover{border-color:var(--on-dark)}
+  @media (max-width:640px){
+    .btn-md,.btn-lg{font-size:16px;min-height:58px}
+    .btn-md .btn-dot,.btn-lg .btn-dot{width:42px;height:42px}
+    .btn-block{display:flex;width:100%}
+    .btn-block.btn-arrow{justify-content:space-between;padding-left:24px}
+  }
+</style>

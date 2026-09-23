@@ -12,3 +12,16 @@ export const nn = (i: number) => `0${i + 1}`;
 
 /** Entier avec espace fine comme séparateur de milliers : 20000 → "20 000". */
 export const number = (n: number) => Math.round(n).toLocaleString('fr-FR').replace(/ | /g, ' ');
+
+/** Adresse de prise de rendez-vous, par défaut si le contenu n'en fournit pas. */
+export const CAL_URL = 'https://cal.com/shyftgrowth/30min';
+
+const escapeHtml = (text: string) =>
+  text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+/** Texte éditorial → HTML sûr : *mot* devient le mot en serif italique, un retour à la ligne devient <br>. */
+export const rich = (text: string) =>
+  escapeHtml(text).replace(/\*([^*\n]+)\*/g, '<em class="serif">$1</em>').replace(/\s*\n/g, ' <br>');
+
+/** Deux chiffres : 1 → "01". */
+export const pad = (i: number) => String(i).padStart(2, '0');

@@ -82,35 +82,64 @@ const pages = defineCollection({
 const single = <S extends z.ZodType>(file: string, schema: S) =>
   defineCollection({ loader: glob({ pattern: `${file}.yaml`, base: './src/content/site' }), schema });
 
-const section = { kicker: z.string(), title: lines, sub: lines };
+
+// Accueil refait : chaque bloc de la maquette, dans l'ordre de la page.
+const tone = z.enum(['clair', 'sombre', 'accent']);
+const pair = z.object({ label: z.string(), valeur: z.string() });
+const titled = z.object({ titre: z.string(), texte: z.string() });
 
 const accueil = single('accueil', z.object({
   seoTitle: z.string(),
   seoDescription: z.string(),
-  hero: z.object({ eyebrow: z.string(), title: z.string(), title2: z.string(), lead: z.string(), ctaMethod: z.string(), ctaAudit: z.string(), caption: z.string() }),
-  why: z.object({
-    ...section,
-    tiles: z.object({
-      sky: z.object({ eyebrow: z.string(), big: z.string(), text: z.string() }),
-      grey: z.object({ eyebrow: z.string(), stat: z.string(), statUnit: z.string(), title: lines, text: z.string(), link: z.string() }),
-      lime: z.object({ eyebrow: z.string(), stat: z.string(), text: z.string() }),
-      dark: z.object({ text: lines }),
-    }),
+  hero: z.object({
+    badge: z.string(), badgeTexte: z.string(), titre: lines, texte: z.string(),
+    cta: z.string(), ctaSecondaire: z.string(), legende: z.string(),
   }),
-  sectors: z.object({ ...section, tail: z.string(), tailLink: z.string() }),
-  expertises: z.object({ ...section, tail: z.string(), tailLink: z.string() }),
+  eventail: z.array(z.object({
+    type: z.enum(['barres', 'lignes', 'checklist', 'grille', 'sources']),
+    ton: tone, mobile: z.boolean(), pastille: z.boolean(),
+    surtitre: z.string(), titre: z.string(), pied: z.string(), valeurs: z.string(),
+    lignes: z.array(pair),
+  })),
+  pourquoi: z.object({ titre: lines, texte: z.string(), items: z.array(titled) }),
+  services: z.object({ titre: lines, texte: z.string() }),
+  methode: z.object({ titre: lines, etapes: z.array(titled) }),
+  resultats: z.object({
+    titre: lines, texte: z.string(),
+    grande: z.object({ surtitre: z.string(), chiffre: z.string(), legende: z.string(), lignes: z.array(pair), cta: z.string() }),
+    cartes: z.array(z.object({ surtitre: z.string(), lien: z.string(), service: z.string(), chiffre: z.string(), legende: z.string(), texte: z.string() })),
+    note: z.string(),
+  }),
   audit: z.object({
-    kicker: z.string(), title: z.string(), items: z.array(z.string()), cta: z.string(),
-    reportTitle: z.string(), reportLabel: z.string(),
-    rows: z.array(z.object({ label: z.string(), detail: z.string(), tag: z.string(), state: z.enum(['ok', 'warn', 'bad']) })),
+    surtitre: z.string(), titre: lines, points: z.array(z.string()), cta: z.string(),
+    syntheseTitre: z.string(), syntheseEtiquette: z.string(),
+    lignes: z.array(z.object({ sujet: z.string(), constat: z.string(), etiquette: z.string(), etat: z.enum(['ok', 'warn', 'bad']) })),
   }),
-  measure: z.object({ ...section, boardTitle: z.string(), boardLabel: z.string(), tail: z.string(), tailLink: z.string() }),
-  method: z.object({
-    kicker: z.string(), title: z.string(), payTitle: z.string(), payText: z.string(),
-    paySide: z.array(z.object({ title: z.string(), text: z.string() })),
-  }),
-  faq: z.object({ kicker: z.string(), title: z.string(), items: z.array(faq) }),
+  faq: z.object({ surtitre: z.string(), titre: lines, texte: z.string(), cta: z.string(), questions: z.array(faq) }),
 }));
+
+// Réglages communs aux pages refaites : navigation, rendez-vous, pied de page.
+const site = single('site', z.object({
+  calUrl: z.url(),
+  nav: z.object({ services: z.string(), methode: z.string(), resultats: z.string(), cta: z.string() }),
+  footer: z.object({ accroche: lines, cta: z.string(), editeur: z.string() }),
+}));
+
+const rendezVous = single('rendez-vous', z.object({
+  pastille: z.string(), titre: lines, texte: z.string(), cta: z.string(), ctaSecondaire: z.string(),
+  garanties: z.array(z.string()),
+}));
+
+// Les six services : une fiche par page, le nom du fichier est l'adresse (/expertises/<fichier>).
+const services = defineCollection({
+  loader: glob({ pattern: '*.yaml', base: './src/content/services' }),
+  schema: z.object({
+    nom: z.string(),
+    nomCourt: z.string(),
+    ordre: z.number(),
+    carte: z.object({ texte: z.string(), texteCourt: z.string(), icone: z.enum(['repere', 'cible', 'megaphone', 'robot', 'site', 'graphique']), ton: tone }),
+  }),
+});
 
 const navigation = single('navigation', z.object({
   groups: z.array(z.object({ name: z.string(), expertises: z.array(z.string()) })),
@@ -154,4 +183,4 @@ const listes = single('listes', z.object({
   }),
 }));
 
-export const collections = { secteurs, expertises, pages, accueil, navigation, leviers, methode, mesure, formulaire, piedDePage, listes };
+export const collections = { secteurs, expertises, services, pages, accueil, site, rendezVous, navigation, leviers, methode, mesure, formulaire, piedDePage, listes };

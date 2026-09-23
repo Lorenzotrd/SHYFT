@@ -39,7 +39,7 @@ const jsonLd = [
 ];
 const after = s.signature.after;
 ---
-<Base title={`${s.seoTitle} · ${BRAND}`} description={s.seoDescription} path={path} heroImage={`/assets/${s.photo}.webp`} jsonLd={jsonLd}>
+<Base title={`${s.seoTitle} · ${BRAND}`} description={s.seoDescription} path={path} heroImage={`/assets/${s.photo}.webp`} jsonLd={jsonLd} noindex>
 <SectorHero sector={sector} />
 <main id="main"><Market sector={sector} />{after === 'market' && <Signature sector={sector} />}<Journey sector={sector} />{after === 'journey' && <Signature sector={sector} />}<Levers sector={sector} />{after === 'levers' && <Signature sector={sector} />}<Measure sector={sector} /><Growth sector={sector} /><section class="block" style="padding-top:0"><div class="wrap"><div class="kicker">Vos questions</div><h2 class="title" set:html={br(s.titles.faq)}></h2><Faq items={faqs} /></div></section></main>
 <LeadForm selected={s.name} />

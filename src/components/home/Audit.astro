@@ -1,0 +1,64 @@
+---
+// Audit offert : ce qu'on regarde, et un exemple de synthèse avec des pastilles d'état.
+import Bouton from '../shyft/Bouton.astro';
+import { rich } from '../../lib/site';
+import type { CollectionEntry } from 'astro:content';
+interface Props { audit: CollectionEntry<'accueil'>['data']['audit'] }
+const { audit } = Astro.props;
+---
+<section class="section audit" id="audit" aria-labelledby="audit-titre">
+  <div class="text">
+    <span class="eyebrow">{audit.surtitre}</span>
+    <h2 id="audit-titre" class="h2" set:html={rich(audit.titre)}></h2>
+    <ul>{audit.points.map((p) => <li>{p}</li>)}</ul>
+  </div>
+  <div class="report" aria-label={`${audit.syntheseTitre}, ${audit.syntheseEtiquette.toLowerCase()}`}>
+    <div class="report-head"><b>{audit.syntheseTitre}</b><span>{audit.syntheseEtiquette}</span></div>
+    {audit.lignes.map((l) => (
+      <div class="report-row">
+        <div><b>{l.sujet}</b><span>{l.constat}</span></div>
+        <em class={`tag tag-${l.etat}`}>{l.etiquette}</em>
+      </div>
+    ))}
+  </div>
+  <div class="cta"><Bouton href="/audit-offert" block>{audit.cta}</Bouton></div>
+</section>
+<style>
+  .audit{display:grid;grid-template-columns:minmax(0, 520px) minmax(0, 600px);grid-template-areas:"report text" "report cta";justify-content:space-between;align-items:center;column-gap:70px;row-gap:30px}
+  .text{grid-area:text;display:flex;flex-direction:column;gap:30px;align-self:end}
+  .cta{grid-area:cta;align-self:start}
+  .report{grid-area:report}
+  ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:14px}
+  li{display:flex;align-items:flex-start;gap:14px;font-size:18px;line-height:1.5;color:var(--muted)}
+  li::before{content:"";flex:none;width:8px;height:8px;margin-top:10px;border-radius:50%;background:var(--ink)}
+  .report{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:28px 30px 12px;box-shadow:0 30px 60px -30px rgba(0,0,0,.18)}
+  .report-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+  .report-head b{font-size:17px;font-weight:600;letter-spacing:-.02em}
+  .report-head span{font-size:12px;font-weight:600;color:var(--muted);background:var(--chip);padding:6px 12px;border-radius:999px}
+  .report-row{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:15px 0;border-top:1px solid var(--line-2)}
+  .report-head + .report-row{border-top:0}
+  .report-row div{display:flex;flex-direction:column;gap:4px}
+  .report-row b{font-size:16px;font-weight:600;letter-spacing:-.01em}
+  .report-row span{font-size:13px;color:var(--muted)}
+  .tag{flex:none;font-style:normal;font-size:12px;font-weight:600;padding:7px 12px;border-radius:999px}
+  .tag-bad{background:var(--bad-bg);color:var(--bad-ink)}
+  .tag-warn{background:var(--warn-bg);color:var(--warn-ink)}
+  .tag-ok{background:var(--ok-bg);color:var(--ok-ink)}
+  @media (max-width:1024px){
+    .audit{grid-template-columns:1fr;grid-template-areas:"text" "report" "cta";row-gap:24px}
+    .text{align-self:auto}
+  }
+  @media (max-width:640px){
+    .audit{padding-left:14px;padding-right:14px;row-gap:18px}
+    .text{gap:12px;padding:0 6px}
+    .eyebrow{font-size:11px}
+    ul{display:none}
+    .report{padding:18px 20px 8px;border-radius:20px}
+    .report-head b{font-size:15px}
+    .report-head span{font-size:10px;padding:4px 9px}
+    .report-row{padding:12px 0;gap:10px}
+    .report-row b{font-size:14px}
+    .report-row span{display:none}
+    .tag{font-size:11px;padding:5px 10px}
+  }
+</style>

@@ -1,68 +1,192 @@
-seoTitle: SHYFT · Votre prochain client vous cherche déjà.
-seoDescription: 'SHYFT apporte aux PME bien implantées sur le terrain les demandes qui leur manquent en ligne : SEO, Google Ads, Meta Ads, IA et mesure. Audit offert.'
+seoTitle: shyft · Votre prochain client vous cherche déjà
+seoDescription: Référencement local, Google Ads, Meta Ads, site, tracking et automatisation pour les PME françaises qui veulent des conversions. Audit offert en 24 h.
 hero:
-  eyebrow: Audit offert · Paiement au résultat
-  title: Votre prochain client
-  title2: vous cherche déjà.
-  lead: SHYFT apporte aux PME bien implantées sur le terrain les demandes qui leur manquent en ligne. On repère celles de votre marché, on les capte, on mesure ce qu’elles rapportent.
-  ctaMethod: Voir notre méthode
-  ctaAudit: Recevoir mon audit offert
-  caption: Vos objectifs. Notre point de départ.
-why:
-  kicker: Pourquoi SHYFT
-  title: |-
-    Vous avez le savoir-faire.
-    On lui donne <span class="inline-spark">↗</span> de la visibilité.
-  sub: |-
-    Une équipe à vos côtés pour transformer les recherches en rencontres,
-    et les premiers contacts en nouvelles opportunités.
-  tiles:
-    sky:
-      eyebrow: Une ambition commune
-      big: Votre croissance.
-      text: Votre métier, votre territoire, vos objectifs. C’est de là que tout part.
-    grey:
-      eyebrow: Pour commencer
-      stat: '60'
-      statUnit: ' jours'
-      title: |-
-        On teste. On mesure.
-        On avance.
-      text: Un périmètre réduit pour identifier ce qui fonctionne avant d’aller plus loin.
-      link: Comprendre la méthode ↗
-    lime:
-      eyebrow: Nos intérêts sont alignés
-      stat: Au résultat
-      text: Des demandes, des rendez-vous, des candidats. Des critères définis ensemble.
-    dark:
-      text: |-
-        Vos outils. Vos comptes.
-        Vous gardez la main.
-sectors:
-  kicker: À chaque métier, sa vitesse
-  title: |-
-    Votre secteur.
-    Vos vrais enjeux.
-  sub: |-
-    On ne remplit pas un planning de location
-    comme on recrute un franchisé.
-    Découvrez une approche pensée pour vous.
-  tail: Votre métier n’est pas dans la liste ? Parlons-en.
-  tailLink: Échanger sur mon projet ↗
-expertises:
-  kicker: Nos expertises
-  title: |-
-    Le digital ne manque pas d’outils.
-    Il manque d’une stratégie commune.
-  sub: |-
-    De la première recherche au client signé, on connecte les bons leviers
-    autour d’un seul objectif : une acquisition mesurable.
-  tail: 'Sept expertises, une seule chaîne : être trouvé, générer, convertir, automatiser, mesurer.'
-  tailLink: Découvrir toutes nos expertises ↗
-audit:
-  kicker: Audit offert
-  title: On regarde votre entreprise comme vos futurs clients la voient
+  badge: NOUVEAU
+  badgeTexte: Audit offert en 24 h
+  titre: 'Votre prochain client
+
+    vous cherche *déjà*'
+  texte: Référencement local, Google Ads, Meta Ads, site, tracking et automatisation. L'acquisition installée et pilotée pour les PME françaises qui veulent des conversions, pas des impressions.
+  cta: Recevoir mon audit
+  ctaSecondaire: Parler à un expert
+  legende: Vos objectifs. Notre point de départ.
+eventail:
+- type: barres
+  ton: clair
+  mobile: false
+  pastille: false
+  surtitre: SEO · Recherches Google
+  titre: Être trouvé, ici.
+  pied: location matériel · Tours
+  valeurs: 30,38,46,62,80,100
+  lignes: []
+- type: lignes
+  ton: clair
+  mobile: true
+  pastille: true
+  surtitre: Google Ads · Nouvelle demande
+  titre: Nacelle 12 m
+  pied: ''
+  valeurs: ''
+  lignes:
+  - label: Ville
+    valeur: Poitiers
+  - label: Durée
+    valeur: 3 jours
+  - label: Réponse
+    valeur: en 2 min
+- type: lignes
+  ton: accent
+  mobile: false
+  pastille: false
+  surtitre: Meta Ads · Candidat franchisé
+  titre: Qualifié
+  pied: ''
+  valeurs: ''
+  lignes:
+  - label: Apport
+    valeur: 150 k€
+  - label: Zone
+    valeur: Lyon
+  - label: Ouverture
+    valeur: sous 6 mois
+- type: checklist
+  ton: sombre
+  mobile: true
+  pastille: false
+  surtitre: Audit en cours
+  titre: Votre entreprise
+  pied: ''
+  valeurs: ''
+  lignes:
+  - label: Référencement Google
+    valeur: ok
+  - label: Google Maps
+    valeur: ok
+  - label: Publicité Google et Meta
+    valeur: ok
+  - label: Site et mobile
+    valeur: ok
+  - label: Mesure des demandes
+    valeur: ok
+  - label: Visibilité dans les IA
+    valeur: attente
+- type: grille
+  ton: clair
+  mobile: false
+  pastille: false
+  surtitre: SEO local · Google Maps
+  titre: Top 3 autour de vous
+  pied: Horaires · Photos · Avis
+  valeurs: rooorovvvoovnvoovvvorooor
+  lignes: []
+- type: lignes
+  ton: clair
+  mobile: false
+  pastille: false
+  surtitre: Site · Demande de devis
+  titre: Paul Lebrun
+  pied: ''
+  valeurs: ''
+  lignes:
+  - label: Budget
+    valeur: 60 k€
+  - label: Visite
+    valeur: jeudi
+  - label: Source
+    valeur: Google
+- type: sources
+  ton: clair
+  mobile: false
+  pastille: false
+  surtitre: Data · Suivi par source
+  titre: Chaque demande, tracée
+  pied: ''
+  valeurs: ''
+  lignes:
+  - label: Google
+    valeur: '86'
+  - label: Maps
+    valeur: '64'
+  - label: Meta
+    valeur: '42'
+  - label: Site
+    valeur: '30'
+pourquoi:
+  titre: 'Pourquoi les entreprises
+
+    *nous choisissent*'
+  texte: Pas de promesse de première page en 30 jours. Des chiffres, une méthode, et quelqu'un qui décroche.
   items:
+  - titre: Des chiffres avant les promesses
+    texte: On mesure votre visibilité, vos concurrents et les recherches de votre zone avant même de vous appeler.
+  - titre: Nos propres outils
+    texte: On a construit nos outils d'analyse locale. Votre position ville par ville, point par point.
+  - titre: Un seul interlocuteur
+    texte: Vous parlez à celui qui travaille sur votre dossier. Pas à un commercial, puis à un stagiaire.
+  - titre: Vous voyez ce que vous payez
+    texte: Un point chaque mois avec les mêmes indicateurs qu'au départ. D'où vient chaque appel, chaque devis.
+services:
+  titre: Six leviers, *un seul* objectif
+  texte: On ne vend pas les six à tout le monde. Le diagnostic dit lesquels comptent chez vous, et dans quel ordre.
+methode:
+  titre: On mesure d'abord. *On promet après.*
+  etapes:
+  - titre: Le diagnostic
+    texte: Votre visibilité mesurée sur toute votre zone, vos concurrents, et les recherches que vous ne captez pas.
+  - titre: Le plan
+    texte: Les leviers retenus, l'ordre, le budget, et ce qu'on vise sur les 90 premiers jours. Sans jargon.
+  - titre: La mise en place
+    texte: Fiches, pages, campagnes, tracking. On exécute, vous validez. Vos équipes continuent leur travail.
+  - titre: Le pilotage
+    texte: Un point chaque mois, les mêmes indicateurs qu'au départ. Vous voyez ce que vous payez.
+resultats:
+  titre: Ce qu'on a changé *chez eux*
+  texte: Chiffres issus des tableaux de bord de nos clients. Noms retirés par confidentialité, détails présentés en rendez-vous.
+  grande:
+    surtitre: Budget publicitaire géré
+    chiffre: +4 M€
+    legende: investis pour nos clients sur Google et Meta
+    lignes:
+    - label: Google Ads
+      valeur: +3 M€
+    - label: Meta Ads, sur un an
+      valeur: +1 M€
+    - label: ROAS moyen e-commerce*
+      valeur: '3'
+    - label: Secteurs accompagnés
+      valeur: '+15'
+    cta: Voir les tableaux de bord
+  cartes:
+  - surtitre: SEO
+    lien: SEO
+    service: seo
+    chiffre: x3
+    legende: de demandes de devis via Google
+    texte: Pages métiers et fiches Google remises à plat.
+  - surtitre: Création de site
+    lien: Sites
+    service: creation-site
+    chiffre: '+35'
+    legende: sites sur mesure livrés
+    texte: 'Aucun modèle retouché : chaque site est construit pour son métier.'
+  - surtitre: SEO local
+    lien: SEO local
+    service: seo
+    chiffre: Top 1
+    legende: sur la recherche principale en 90 jours
+    texte: Première place sur les recherches clés du métier et de la ville.
+  - surtitre: IA et automatisation
+    lien: IA
+    service: agence-ia
+    chiffre: +15 h
+    legende: gagnées chaque semaine
+    texte: Relances, emails et tâches répétitives automatisés.
+  note: '* Moyenne calculée sur nos comptes e-commerce Google Ads.'
+audit:
+  surtitre: Audit offert
+  titre: On regarde votre entreprise comme vos *futurs clients* la voient
+  points:
   - Ce que les gens tapent sur Google dans votre zone, et qui sort devant vous
   - Vos publicités visibles sur Meta et Google
   - Vos fiches Google, vos avis et leur cohérence
@@ -70,70 +194,50 @@ audit:
   - Ce que ChatGPT, Gemini et Google IA répondent sur votre métier
   - 'Votre suivi : Analytics, Search Console et comptage des demandes'
   cta: Recevoir mon audit offert
-  reportTitle: Synthèse d'audit
-  reportLabel: Exemple illustratif
-  rows:
-  - label: Recherches hors marque
-    detail: Absent de la première page sur les recherches par ville
-    tag: À construire
-    state: bad
-  - label: Publicité Google
-    detail: Une opportunité de visibilité à étudier dans votre zone
-    tag: Absente
-    state: bad
-  - label: Fiches Google
-    detail: Deux agences, deux noms différents
-    tag: À unifier
-    state: warn
-  - label: Site
-    detail: Catalogue en PDF, aucune demande en ligne
-    tag: À adapter
-    state: warn
-  - label: Mesure
-    detail: Aucun suivi des demandes par source
-    tag: À installer
-    state: bad
-  - label: Avis clients
-    detail: Plus d'avis que les concurrents locaux
-    tag: Point fort
-    state: ok
-measure:
-  kicker: Mesure & suivi
-  title: |-
-    Ce qu’on installe
-    pour tout mesurer.
-  sub: |-
-    Payés au résultat, on a besoin de chiffres justes.
-    Chaque demande est comptée, chaque euro est suivi.
-  boardTitle: Tableau de bord partagé
-  boardLabel: Illustration, données fictives
-  tail: Tout est installé dans vos comptes Google, votre CRM et votre outil email. Si on arrête, vous gardez tout.
-  tailLink: Voir l’expertise Data & Tracking ↗
-method:
-  kicker: Méthode
-  title: De l'audit aux premières demandes, sans engagement long
-  payTitle: Vous payez ce qui arrive. Pas ce qu'on promet.
-  payText: Rémunération par demande, rendez vous ou candidat qualifié, définie avec vous au départ. Le budget publicitaire reste sur votre propre compte.
-  paySide:
-  - title: Tableau partagé
-    text: Chaque demande est comptée et visible par vous.
-  - title: Votre site et vos partenaires restent en place
-    text: On travaille en renfort, pas en remplacement.
-  - title: Pas d'engagement long
-    text: Un test court d'abord, la suite si les chiffres suivent.
+  syntheseTitre: Synthèse d'audit
+  syntheseEtiquette: Exemple illustratif
+  lignes:
+  - sujet: Recherches hors marque
+    constat: Absent de la première page sur les recherches par ville
+    etiquette: À construire
+    etat: bad
+  - sujet: Publicité Google
+    constat: Une opportunité de visibilité à étudier dans votre zone
+    etiquette: Absente
+    etat: bad
+  - sujet: Fiches Google
+    constat: Deux agences, deux noms différents
+    etiquette: À unifier
+    etat: warn
+  - sujet: Site
+    constat: Catalogue en PDF, aucune demande en ligne
+    etiquette: À adapter
+    etat: warn
+  - sujet: Mesure
+    constat: Aucun suivi des demandes par source
+    etiquette: À installer
+    etat: bad
+  - sujet: Avis clients
+    constat: Plus d'avis que les concurrents locaux
+    etiquette: Point fort
+    etat: ok
 faq:
-  kicker: Questions
-  title: Ce qu'on nous demande avant de commencer
-  items:
-  - question: Qu'est ce que contient l'audit offert ?
-    answer: Une analyse de vos recherches Google locales, de vos publicités visibles, de vos fiches Google, de votre site et de votre visibilité dans les IA. On vous présente les constats en visio, avec les chiffres de votre marché.
-  - question: On travaille déjà avec une agence. Vous la remplacez ?
-    answer: Non. On regarde d'abord ce qui fonctionne et on se place en renfort sur ce qui manque, souvent la génération et le suivi des demandes.
-  - question: Comment êtes vous rémunérés ?
-    answer: 'Principalement au résultat : par demande, rendez vous ou candidat qualifié, selon des critères définis ensemble. Certains volets, comme la mise en place technique, peuvent être facturés à part.'
-  - question: Vous utilisez l'IA ?
-    answer: Oui, pour analyser plus vite, produire des variantes de publicités et répondre aux demandes en quelques minutes. Chaque recommandation est vérifiée par un humain avant de vous être présentée.
-  - question: Comment suit-on les résultats ?
-    answer: Search Console, Google Analytics et votre CRM sont installés dans vos comptes. Un tableau de bord partagé compte chaque demande, sa source et son coût. Vous y accédez à tout moment.
-  - question: Avec quelles entreprises travaillez vous ?
-    answer: 'Des PME et des réseaux en France : loueurs de matériel, réseaux de franchise, entreprises de rénovation, agences immobilières et services à plusieurs adresses.'
+  surtitre: FAQ
+  titre: Questions *fréquentes*
+  texte: Une question qui n'est pas dans la liste ? On vous répond directement.
+  cta: Poser une question
+  questions:
+  - question: Le diagnostic est vraiment gratuit ?
+    answer: Oui. Vous donnez votre site et votre ville, on analyse votre visibilité, vos concurrents et les recherches de votre zone, et vous recevez le rapport par mail. Aucun engagement, aucun appel obligatoire.
+  - question: Combien coûte l'accompagnement ensuite ?
+    answer: Ça dépend des leviers retenus et de votre zone. Le budget est posé noir sur blanc dans le plan, avant tout démarrage. Pas de surprise en cours de route.
+  - question: Y a-t-il un engagement de durée ?
+    answer: '[À compléter avec Quentin : durée minimale, préavis, conditions de sortie.]'
+  - question: En combien de temps voit-on des résultats ?
+    answer: La publicité Google et Meta peut générer des demandes dès le lancement. Le référencement local prend plus de temps, selon la concurrence de votre secteur et de votre ville. On vous dit à quoi vous attendre dès le plan.
+  - question: Faut-il refaire mon site ?
+    answer: Pas forcément. Si votre site fait le travail, on part de l'existant. On ne propose une refonte que si le site vous fait perdre des demandes.
+  - question: Qui s'occupe de mon dossier ?
+    answer: Une seule personne, du diagnostic au pilotage mensuel. C'est elle que vous appelez, et elle connaît votre entreprise.
+  - question: Mes comptes restent à mon nom ?
+    answer: Oui. Vos comptes Google, Meta, votre fiche Google et votre site vous appartiennent. Si vous arrêtez, vous gardez tout.

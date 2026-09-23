@@ -1,0 +1,109 @@
+---
+// Éventail de cartes d'illustration sous l'en-tête. Ordinateur : sept cartes inclinées en arc.
+// Téléphone : les cartes cochées « téléphone » (trois), dans la disposition de la maquette mobile.
+import Icon from '../shyft/Icon.astro';
+import type { CollectionEntry } from 'astro:content';
+type Card = CollectionEntry<'accueil'>['data']['eventail'][number];
+interface Props { cards: Card[]; legende: string }
+const { cards, legende } = Astro.props;
+const mobileSlots = ['m-left', 'm-center', 'm-right'];
+let m = 0;
+const slotted = cards.map((c) => ({ ...c, slot: c.mobile && m < 3 ? mobileSlots[m++] : '' }));
+// Les trois cartes du téléphone : la sombre au centre, les autres de part et d'autre.
+const darkIndex = slotted.findIndex((c) => c.slot && c.ton === 'sombre');
+if (darkIndex >= 0) {
+  const center = slotted.find((c) => c.slot === 'm-center');
+  if (center && slotted[darkIndex] !== center) { center.slot = slotted[darkIndex].slot; slotted[darkIndex].slot = 'm-center'; }
+}
+const barColor = (i: number, n: number) => (i === n - 1 ? 'var(--accent)' : i >= n - 3 ? 'var(--ink)' : i === n - 4 ? '#d6d6d6' : '#e4e4e4');
+const sourceColor = ['var(--ink)', 'var(--ink)', 'var(--accent)', '#ccc'];
+const dotColor: Record<string, string> = { v: 'var(--map-top)', o: 'var(--map-mid)', r: 'var(--map-low)', n: 'var(--ink)' };
+---
+<section class="fan-section" aria-label="Exemples de demandes et de suivis, données d'illustration">
+  <div class="fan">
+    {slotted.map((c) => (
+      <div class:list={['card', `tone-${c.ton}`, c.slot || 'desk-only']}>
+        <span class="k">{c.pastille && <i class="live"></i>}{c.surtitre}</span>
+        <span class="t">{c.titre}</span>
+        {c.type === 'barres' && <div class="bars">{c.valeurs.split(',').map((v, i, a) => <span style={`height:${Number(v)}%;background:${barColor(i, a.length)}`}></span>)}</div>}
+        {c.type === 'lignes' && <div class="rows">{c.lignes.map((l) => <div class="row"><span>{l.label}</span><b>{l.valeur}</b></div>)}</div>}
+        {c.type === 'checklist' && <div class="checks">{c.lignes.map((l) => l.valeur === 'ok'
+          ? <div class="check"><span class="tick"><Icon name="check" size={13} stroke={3.2} /></span>{l.label}</div>
+          : <div class="check wait"><span class="tick"></span>{l.label}</div>)}</div>}
+        {c.type === 'grille' && <div class="grid">{c.valeurs.split('').map((d) => <span style={`background:${dotColor[d] ?? '#ccc'}`}></span>)}</div>}
+        {c.type === 'sources' && <div class="sources">{c.lignes.map((l, i) => <div class="src"><span>{l.label}</span><div class="track"><div style={`width:${Number(l.valeur)}%;background:${sourceColor[i % 4]}`}></div></div></div>)}</div>}
+        {c.pied && <span class="foot">{c.pied}</span>}
+      </div>
+    ))}
+  </div>
+  <p class="legende"><span></span>{legende}</p>
+</section>
+<style>
+  .fan-section{padding:60px 20px 90px;overflow:hidden;--s:.68}
+  .fan{display:flex;align-items:flex-start;justify-content:center;height:470px;padding-top:20px;transform:scale(var(--s));transform-origin:top center;margin-bottom:calc(470px * (var(--s) - 1))}
+  .card{flex:none;position:relative;display:flex;flex-direction:column;box-sizing:border-box;padding:26px;border-radius:24px;background:var(--card);color:var(--ink);border:1px solid #e6e6e6;box-shadow:var(--shadow-card)}
+  .card:nth-child(1){width:270px;height:330px;z-index:1;transform:translateY(78px) rotate(-11deg)}
+  .card:nth-child(2){width:280px;height:330px;z-index:2;margin-left:-46px;transform:translateY(34px) rotate(-7deg)}
+  .card:nth-child(3){width:290px;height:340px;z-index:3;margin-left:-46px;transform:translateY(8px) rotate(-3deg)}
+  .card:nth-child(4){width:330px;height:372px;z-index:7;margin-left:-46px;transform:translateY(-10px)}
+  .card:nth-child(5){width:290px;height:340px;z-index:3;margin-left:-46px;transform:translateY(8px) rotate(3deg)}
+  .card:nth-child(6){width:280px;height:330px;z-index:2;margin-left:-46px;transform:translateY(34px) rotate(7deg)}
+  .card:nth-child(7){width:270px;height:330px;z-index:1;margin-left:-46px;transform:translateY(78px) rotate(11deg)}
+  .tone-sombre{background:var(--dark);color:var(--on-dark);border-color:var(--dark)}
+  .tone-accent{background:var(--accent);border-color:var(--accent)}
+  .k{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--label)}
+  .tone-sombre .k{color:var(--on-dark-muted)}
+  .tone-accent .k{color:var(--accent-ink)}
+  .live{width:8px;height:8px;border-radius:50%;background:var(--map-top)}
+  .t{margin-top:10px;font-size:24px;font-weight:600;letter-spacing:-.03em}
+  .tone-sombre .t{font-size:28px}
+  .foot{margin-top:14px;font-size:13px;color:var(--label)}
+  .bars{margin-top:auto;height:120px;display:flex;align-items:flex-end;gap:7px}
+  .bars span{flex:1;border-radius:6px 6px 2px 2px}
+  .rows{margin-top:auto}
+  .row{display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid var(--line-2);font-size:14px}
+  .row span{color:var(--muted)}
+  .tone-accent .row{border-color:rgba(14,14,12,.14)}
+  .tone-accent .row span{color:var(--accent-ink)}
+  .checks{margin-top:auto;display:flex;flex-direction:column;gap:14px}
+  .check{display:flex;align-items:center;gap:12px;font-size:16px}
+  .tick{flex:none;width:24px;height:24px;border-radius:50%;display:inline-grid;place-items:center;background:var(--accent);color:var(--ink)}
+  .check.wait{color:var(--on-dark-muted)}
+  .check.wait .tick{background:none;border:2px dashed #6e6e68}
+  .grid{margin-top:auto;width:170px;align-self:center;display:grid;grid-template-columns:repeat(5, 1fr);gap:6px}
+  .grid span{aspect-ratio:1;border-radius:50%;border:2px solid #fff}
+  .sources{margin-top:auto;display:flex;flex-direction:column;gap:12px}
+  .src{display:grid;grid-template-columns:70px 1fr;align-items:center;gap:10px;font-size:13px}
+  .src span{color:var(--muted)}
+  .track{height:10px;border-radius:999px;background:var(--chip)}
+  .track div{height:10px;border-radius:999px}
+  .legende{display:none}
+  @media (max-width:1380px){ .fan-section{--s:.6} }
+  @media (max-width:1200px){ .fan-section{--s:.52} }
+  @media (max-width:1024px){ .fan-section{--s:.46} }
+  @media (max-width:900px){ .fan-section{--s:.4} }
+  /* Téléphone : trois cartes, la sombre au centre, comme la maquette mobile. */
+  @media (max-width:760px){
+    .fan-section{padding:50px 14px 0}
+    .fan{position:relative;display:block;height:290px;padding:0;transform:none;margin:0 auto;max-width:390px}
+    .desk-only{display:none}
+    .card,.card:nth-child(n){position:absolute;margin:0;padding:16px;border-radius:18px}
+    .m-left{left:4px;top:34px;width:168px;height:220px;transform:rotate(-9deg);z-index:1}
+    .m-right{right:4px;top:34px;width:168px;height:220px;transform:rotate(9deg);z-index:1}
+    .m-center{left:50%;top:0;width:196px;height:270px;transform:translateX(-50%);z-index:3;padding:18px}
+    .k{font-size:9px;gap:5px}
+    .live{width:6px;height:6px}
+    .t,.tone-sombre .t{margin-top:6px;font-size:17px}
+    .m-center .t{font-size:19px}
+    .row{padding:8px 0;font-size:12px}
+    .checks{gap:9px}
+    .check{font-size:13px;gap:9px}
+    .tick{width:18px;height:18px}
+    .tick :global(svg){width:10px;height:10px}
+    .grid{width:104px;gap:4px}
+    .grid span{border-width:1.5px}
+    .foot{display:none}
+    .legende{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:18px;font-size:14px;color:var(--ink-2)}
+    .legende span{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  }
+</style>

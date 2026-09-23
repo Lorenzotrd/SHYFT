@@ -63,7 +63,12 @@
   const button = event.target.closest('[data-consent]');
   if (button) return decide(button.dataset.consent);
   const reopen = event.target.closest('[data-cookies]');
-  if (reopen) { event.preventDefault(); show(); }
+  if (reopen) { event.preventDefault(); show(); return; }
+  // Clic vers la prise de rendez-vous : l'emplacement dit quel bouton a servi.
+  const booking = event.target.closest('a[href*="cal.com"]');
+  if (booking && choice.get() === 'granted') {
+   gtag('event', 'clic_rendez_vous', { page: location.pathname, emplacement: booking.dataset.emplacement || '' });
+  }
  });
 
  const current = choice.get();

@@ -3,6 +3,7 @@ import { getCollection, type CollectionEntry, type CollectionKey } from 'astro:c
 
 export type Sector = CollectionEntry<'secteurs'>;
 export type Expertise = CollectionEntry<'expertises'>;
+export type Service = CollectionEntry<'services'>;
 
 const byOrder = <T extends { data: { order: number } }>(a: T, b: T) => a.data.order - b.data.order;
 
@@ -12,6 +13,11 @@ export async function sectors(): Promise<Sector[]> {
 
 export async function expertises(): Promise<Expertise[]> {
   return (await getCollection('expertises')).sort(byOrder);
+}
+
+/** Les six services de la refonte, dans l'ordre choisi dans Keystatic. */
+export async function services(): Promise<Service[]> {
+  return (await getCollection('services')).sort((a, b) => a.data.ordre - b.data.ordre);
 }
 
 /** Réglage à entrée unique (accueil, navigation, formulaire…). */

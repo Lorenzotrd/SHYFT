@@ -10,6 +10,12 @@
  *        Qui a accès : tout le monde
  *   5. Copier l'adresse fournie et y ajouter ?k=VOTRE_CLE_SECRETE à la fin.
  *   6. Coller le tout dans Vercel, variable LEAD_WEBHOOK_URL, puis redéployer.
+ *
+ * Notification par email (une par demande, tant que les audits sont traités à la main) :
+ *   Paramètres du projet (roue dentée) puis Propriétés du script, ajouter
+ *   NOTIFY_EMAIL = l'adresse qui reçoit les alertes (plusieurs adresses : séparées par des virgules).
+ *   Au premier envoi, Google demande d'autoriser l'envoi d'emails : accepter.
+ *   Après toute modification de ce fichier : Déployer, Gérer les déploiements, nouvelle version.
  */
 
 const CLE_SECRETE = 'a-remplacer-par-une-phrase-a-vous';
@@ -22,6 +28,10 @@ const COLONNES = [
   ['tel', 'Téléphone'],
   ['secteur', 'Secteur'],
   ['site', 'Site'],
+  ['ville', 'Ville'],
+  ['agences', 'Agences ou points de vente'],
+  ['services', 'Leviers à auditer'],
+  ['message', 'Message'],
   ['page', 'Page d’origine'],
   ['utm_source', 'Source'],
   ['utm_medium', 'Support'],
@@ -47,9 +57,35 @@ function doPost(e) {
     }
 
     feuille.appendRow(COLONNES.map(function (c) { return cellule(demande[c[0]]); }));
+    notifier(demande);
     return reponse(200, 'ok');
   } catch (erreur) {
     return reponse(500, String(erreur));
+  }
+}
+
+/**
+ * Alerte immédiate par email. Une alerte qui échoue ne fait pas perdre la demande :
+ * elle est déjà dans la feuille, et l'erreur reste visible dans les journaux d'exécution.
+ */
+function notifier(demande) {
+  const destinataires = PropertiesService.getScriptProperties().getProperty('NOTIFY_EMAIL');
+  if (!destinataires) {
+    console.warn('NOTIFY_EMAIL absent : demande enregistrée sans notification.');
+    return;
+  }
+  try {
+    const lignes = COLONNES
+      .map(function (c) { return demande[c[0]] ? c[1] + ' : ' + demande[c[0]] : null; })
+      .filter(function (l) { return l; });
+    MailApp.sendEmail({
+      to: destinataires,
+      replyTo: demande.email || undefined,
+      subject: 'Nouvelle demande d’audit · ' + (demande.entreprise || 'sans nom'),
+      body: 'Une demande vient d’arriver sur le site. À traiter sous 24 h.\n\n' + lignes.join('\n'),
+    });
+  } catch (erreur) {
+    console.error('Notification non envoyée : ' + erreur);
   }
 }
 

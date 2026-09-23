@@ -1,0 +1,49 @@
+---
+// Pied de page : accroche et rendez-vous, services, agence, mentions, grande signature.
+import Bouton from './Bouton.astro';
+import { single, services as allServices } from '../../lib/content';
+import { GA_ID, YEAR, rich } from '../../lib/site';
+const [site, services] = await Promise.all([single('site'), allServices()]);
+---
+<footer class="footer">
+  <div class="top">
+    <div class="pitch">
+      <p set:html={rich(site.footer.accroche)}></p>
+      <Bouton href={site.calUrl} variant="dark" size="sm" emplacement="pied-de-page">{site.footer.cta}</Bouton>
+    </div>
+    <div class="cols">
+      <nav aria-label="Services"><span class="col-title">Services</span>{services.map((s) => <a href={`/expertises/${s.id}`}>{s.data.nom}</a>)}</nav>
+      <nav aria-label="Agence"><span class="col-title">Agence</span><a href="/#methode">{site.nav.methode}</a><a href="/#resultats">{site.nav.resultats}</a><a href="/audit-offert">Audit offert</a><a href={site.calUrl} data-emplacement="pied-de-page-lien">Prendre rendez-vous</a></nav>
+    </div>
+  </div>
+  <nav class="compact" aria-label="Services">{services.map((s) => <a href={`/expertises/${s.id}`}>{s.data.nomCourt}</a>)}</nav>
+  <div class="bottom">
+    <span>© {YEAR} shyft · édité par {site.footer.editeur}</span>
+    <div class="legal"><a href="/mentions-legales">Mentions légales</a><a href="/confidentialite">Confidentialité</a>{GA_ID && <a href="#" data-cookies>Gérer les cookies</a>}</div>
+  </div>
+  <div class="wordmark" aria-hidden="true">shyft<span>.</span></div>
+</footer>
+<style>
+  .footer{margin-top:auto;padding:80px var(--gutter) 0;display:flex;flex-direction:column;gap:40px}
+  .top{display:flex;justify-content:space-between;gap:clamp(32px, 6vw, 80px);flex-wrap:wrap}
+  .pitch{flex:0 1 380px;display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+  .pitch p{font-size:26px;line-height:1.25;letter-spacing:-.03em;font-weight:500}
+  .cols{display:flex;gap:clamp(40px, 7vw, 100px);flex-wrap:wrap}
+  .cols nav{display:flex;flex-direction:column;gap:13px}
+  .col-title{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--label)}
+  .cols a{font-size:15px;color:var(--ink-2)}
+  .cols a:hover,.legal a:hover{text-decoration:underline;text-underline-offset:4px}
+  .bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line-3);font-size:13px;color:var(--label)}
+  .legal{display:flex;gap:26px;flex-wrap:wrap}
+  .compact{display:none}
+  .wordmark{font-size:clamp(116px, 23vw, 330px);line-height:.74;font-weight:700;letter-spacing:-.07em;text-align:center;margin-bottom:-.06em}
+  .wordmark span{color:var(--accent)}
+  @media (max-width:640px){
+    .footer{padding:50px 20px 0;gap:20px}
+    .top{display:none}
+    .compact{display:flex;flex-wrap:wrap;gap:10px 18px}
+    .compact a{font-size:14px;color:var(--ink-2)}
+    .bottom{padding-top:16px;font-size:11px}
+    .legal{gap:14px}
+  }
+</style>

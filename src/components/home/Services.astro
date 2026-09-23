@@ -1,0 +1,64 @@
+---
+// Six leviers : une carte par service (noire, blanche ou jaune selon la fiche), vers sa page.
+import Icon from '../shyft/Icon.astro';
+import { rich } from '../../lib/site';
+import { services as allServices } from '../../lib/content';
+import type { CollectionEntry } from 'astro:content';
+interface Props { intro: CollectionEntry<'accueil'>['data']['services'] }
+const { intro } = Astro.props;
+const services = await allServices();
+---
+<section class="section services" id="services" aria-labelledby="services-titre">
+  <div class="section-head">
+    <h2 id="services-titre" class="h2" set:html={rich(intro.titre)}></h2>
+    <p>{intro.texte}</p>
+  </div>
+  <div class="grid">
+    {services.map((s) => (
+      <a class:list={['svc', `tone-${s.data.carte.ton}`]} href={`/expertises/${s.id}`}>
+        <div class="top">
+          <span class="ico"><Icon name={s.data.carte.icone} size={24} stroke={1.9} /></span>
+          <span class="go"><Icon name="arrow" size={15} stroke={2.2} /></span>
+        </div>
+        <h3>{s.data.nom}</h3>
+        <p><span class="long">{s.data.carte.texte}</span><span class="short">{s.data.carte.texteCourt}</span></p>
+      </a>
+    ))}
+  </div>
+</section>
+<style>
+  .services{padding-left:clamp(14px, 2.8vw, 40px);padding-right:clamp(14px, 2.8vw, 40px);display:flex;flex-direction:column;gap:48px}
+  .section-head{padding:0 clamp(6px, 3.5vw, 50px)}
+  .grid{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:16px}
+  .svc{display:flex;flex-direction:column;gap:14px;min-height:314px;padding:32px;border-radius:var(--r-card);background:var(--card);transition:transform .2s,box-shadow .2s}
+  .svc:hover{transform:translateY(-3px);box-shadow:0 24px 40px -28px rgba(0,0,0,.35)}
+  .top{display:flex;align-items:flex-start;justify-content:space-between}
+  .ico{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:var(--r-icon);background:var(--chip)}
+  .go{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--line)}
+  h3{margin-top:auto;font-size:26px;letter-spacing:-.03em}
+  p{font-size:15px;line-height:1.6;color:var(--muted)}
+  .short{display:none}
+  .tone-sombre{background:var(--dark);color:var(--on-dark)}
+  .tone-sombre .ico{background:var(--accent);color:var(--ink)}
+  .tone-sombre .go{border-color:var(--dark-line-2)}
+  .tone-sombre p{color:var(--on-dark-muted)}
+  .tone-sombre:focus-visible{outline-color:var(--accent)}
+  .tone-accent{background:var(--accent)}
+  .tone-accent .ico{background:var(--ink);color:var(--accent)}
+  .tone-accent .go{background:var(--ink);border-color:var(--ink);color:var(--accent)}
+  .tone-accent p{color:var(--accent-ink)}
+  @media (max-width:1024px){ .grid{grid-template-columns:repeat(2, minmax(0, 1fr))} }
+  @media (max-width:640px){
+    .services{gap:20px}
+    .grid{grid-template-columns:1fr;gap:10px}
+    .svc{flex-direction:row;flex-wrap:wrap;align-items:center;min-height:0;padding:20px;gap:5px 14px;border-radius:20px}
+    .top{display:contents}
+    .ico{display:none}
+    h3{order:1;flex:1 1 calc(100% - 50px);margin:0;font-size:18px}
+    .go{order:2;width:36px;height:36px;background:var(--chip);border:0}
+    .tone-sombre .go{background:var(--dark-2)}
+    p{order:3;flex-basis:calc(100% - 50px);font-size:13px;line-height:1.5}
+    .long{display:none}
+    .short{display:inline}
+  }
+</style>

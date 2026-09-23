@@ -12,11 +12,13 @@ interface Props {
   heroImage?: string;
   /** Panneau privé : exclu des robots, script propre, aucune mesure d'audience. */
   admin?: boolean;
+  /** Page laissée en ligne mais hors index (secteurs, en attente de décision). */
+  noindex?: boolean;
   /** Données structurées, ajoutées en fin de page. */
   jsonLd?: unknown[];
 }
 
-const { title, description, path, heroImage = '/assets/sky.webp', admin = false, jsonLd } = Astro.props;
+const { title, description, path, heroImage = '/assets/sky.webp', admin = false, noindex = false, jsonLd } = Astro.props;
 const canonical = `${SITE_URL}/${path}`;
 const fonts = {
   latin: 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD',
@@ -32,6 +34,7 @@ const fontCss =
 <html lang="fr" data-theme="light">
 <head>
 {admin && <meta name="robots" content="noindex, nofollow">}
+{!admin && noindex && <meta name="robots" content="noindex, follow">}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title>

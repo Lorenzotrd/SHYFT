@@ -1,0 +1,30 @@
+---
+// Questions en accordéon (details/summary, accessible au clavier). La première est ouverte.
+import Icon from './Icon.astro';
+interface Props { items: { question: string; answer: string }[] }
+const { items } = Astro.props;
+---
+<div class="faq">
+  {items.map((f, i) => (
+    <details open={i === 0}>
+      <summary>{f.question}<span class="faq-icon"><Icon name="plus" size={14} /></span></summary>
+      <p>{f.answer}</p>
+    </details>
+  ))}
+</div>
+<style>
+  .faq{display:flex;flex-direction:column;gap:12px;flex:1;min-width:0}
+  details{background:var(--card);border-radius:var(--r);padding:0 28px}
+  summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 0;font-size:19px;font-weight:600;letter-spacing:-.02em}
+  summary::-webkit-details-marker{display:none}
+  .faq-icon{flex:none;display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--chip);transition:transform .25s,background .25s}
+  details[open] .faq-icon{transform:rotate(45deg);background:var(--accent)}
+  p{padding:0 60px 26px 0;font-size:16px;line-height:1.65;color:var(--muted)}
+  @media (max-width:640px){
+    .faq{gap:8px}
+    details{border-radius:16px;padding:0 18px}
+    summary{padding:17px 0;font-size:15px;gap:14px}
+    .faq-icon{width:28px;height:28px}
+    p{padding:0 0 18px;font-size:14px}
+  }
+</style>

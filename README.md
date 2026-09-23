@@ -6,6 +6,17 @@ SHYFT construit le canal commercial digital des PME bien implantées sur le terr
 
 Site de l'agence : SEO, Google Ads, Meta Ads, IA et mesure pour les PME et réseaux français. Bleu ciel, photographies de nuages, accent citron, cartes en arc, six pages métier, sept pages expertise, section Mesure & suivi, pages légales et formulaire connecté à une API.
 
+## Refonte en cours (branche `redesign`)
+
+Nouvelle direction : fond gris, noir profond, jaune `#F9C940`, Instrument Sans et un mot en Instrument Serif italique dans chaque grand titre (noté `*mot*` dans le contenu). Maquettes de référence : `shyft-design-maquettes.zip`.
+
+- Gabarit `src/layouts/Site.astro` et tokens `src/styles/tokens.css` pour les pages refaites ; les pages pas encore migrées gardent `Base.astro` et l'ancien CSS.
+- Composants communs dans `src/components/shyft` (Nav, Footer, Bouton, Faq, Frise, RendezVous, Icon), sections de l'accueil dans `src/components/home`.
+- Contenus : `site/accueil.yaml`, `site/site.yaml` (lien Cal.com, menu, pied de page), `site/rendez-vous.yaml`, collection `services/*.yaml` (une fiche par page, le nom du fichier est l'adresse `/expertises/<fichier>`).
+- Secteurs : en ligne, en `noindex`, hors du sitemap et hors du menu des pages refaites.
+- Mesure : événement `clic_rendez_vous` sur tout lien Cal.com (avec son emplacement), en plus de `generate_lead`, toujours après consentement.
+- Chaque demande déclenche un email immédiat, envoyé par le script Google Sheets (`scripts/google-sheet.gs`, propriété `NOTIFY_EMAIL`).
+
 ## Technique
 
 [Astro](https://astro.build) 7, sans framework CSS : les feuilles `public/assets/base.css` et `design.css` sont écrites à la main. Les contenus sont des fichiers YAML dans `src/content`, modifiables dans le navigateur avec [Keystatic](https://keystatic.com) à l'adresse `/keystatic`. Node 22 ou plus récent (`.nvmrc`).
