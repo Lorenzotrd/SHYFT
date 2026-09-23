@@ -72,7 +72,7 @@ Les polices Geist et Geist Mono sont hébergées sur le site (`public/assets/fon
 
 ## Déployer
 
-Vercel importe le dépôt GitHub et détecte Astro (`vercel.json`). Les pages sont servies en statique ; `/api/lead`, `/api/admin` et les routes de Keystatic tournent en fonctions. Variables d'environnement : `LEAD_WEBHOOK_URL`, `ADMIN_PASSWORD`, `KV_REST_API_URL`, `KV_REST_API_TOKEN`, et pour Keystatic en ligne `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET` (créées par l'assistant de Keystatic à la première visite de `/keystatic` en production).
+Vercel importe le dépôt GitHub et détecte Astro (`vercel.json`). Les pages sont servies en statique ; `/api/lead`, `/api/admin` et les routes de Keystatic tournent en fonctions. Variables d'environnement : `RESEND_API_KEY` (alerte email à chaque demande, voir `lib/notify.mjs` ; destinataire `NOTIFY_EMAIL`, par défaut team@shyftgrowth.com ; expéditeur `MAIL_FROM`, par défaut demandes@shyftgrowth.com), `LEAD_WEBHOOK_URL`, `ADMIN_PASSWORD`, `KV_REST_API_URL`, `KV_REST_API_TOKEN`, et pour Keystatic en ligne `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET` (créées par l'assistant de Keystatic à la première visite de `/keystatic` en production).
 
 ## Contrôles
 

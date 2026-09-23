@@ -5,9 +5,10 @@ import {spawn} from 'node:child_process';
 import assert from 'node:assert/strict';
 
 const PORT = 4174;
-let received;
-const mock = http.createServer(async (req, res) => { let raw = ''; for await (const c of req) raw += c; received = JSON.parse(raw); res.end('ok'); }).listen(4175, '127.0.0.1');
-const env = {...process.env, LEAD_WEBHOOK_URL: 'http://127.0.0.1:4175', ADMIN_PASSWORD: 'test-admin'};
+let received, mailed, mailAuth;
+// Faux webhook sur /, faux Resend sur /emails.
+const mock = http.createServer(async (req, res) => { let raw = ''; for await (const c of req) raw += c; if (req.url === '/emails') { mailed = JSON.parse(raw); mailAuth = req.headers.authorization; } else received = JSON.parse(raw); res.end('{}'); }).listen(4175, '127.0.0.1');
+const env = {...process.env, LEAD_WEBHOOK_URL: 'http://127.0.0.1:4175', ADMIN_PASSWORD: 'test-admin', RESEND_API_KEY: 'test-resend', RESEND_API_URL: 'http://127.0.0.1:4175/emails', NOTIFY_EMAIL: ''};
 const child = spawn('npx', ['astro', 'dev', '--port', String(PORT), '--host', '127.0.0.1', '--ignore-lock'], {env, stdio: ['ignore', 'pipe', 'pipe']});
 const base = `http://127.0.0.1:${PORT}`;
 const ready = async () => { for (let i = 0; i < 60; i++) { try { if ((await fetch(base + '/robots.txt')).ok) return; } catch {} await new Promise(r => setTimeout(r, 500)); } throw Error('Serveur Astro injoignable'); };
@@ -23,6 +24,12 @@ try {
  const okAudit = await send({...audit, site: 'exemple.fr'}); assert.equal(okAudit.status, 200, 'demande d’audit acceptée');
  assert.equal(received.services, 'SEO, local et GEO, Google Ads', 'leviers traduits en noms');
  assert.equal(received.site, 'https://exemple.fr', 'adresse complétée en https');
+ assert.equal(mailAuth, 'Bearer test-resend', 'alerte envoyée avec la clé Resend');
+ assert.deepEqual(mailed.to, ['team@shyftgrowth.com'], 'alerte envoyée à l’équipe');
+ assert.equal(mailed.reply_to, data.email, 'répondre écrit au prospect');
+ assert.match(mailed.subject, /Nouvelle demande d’audit · Test/);
+ assert.match(mailed.text, /Leviers à auditer : SEO, local et GEO, Google Ads/);
+ const injected = await send({...audit, entreprise: '<b>x</b>'}); assert.equal(injected.status, 200); assert.doesNotMatch(mailed.html, /<b>x<\/b>/, 'HTML échappé dans l’alerte');
  assert.equal((await send({...audit, services: []})).status, 400, 'audit sans levier refusé');
  assert.equal((await send({...audit, services: ['inconnu']})).status, 400, 'levier inconnu refusé');
  assert.equal((await send({...audit, services: 'seo'})).status, 400, 'leviers hors liste refusés');
@@ -34,7 +41,7 @@ try {
  const list = await admin(); if (list.status !== 200) console.error('Panneau, réponse inattendue :', list.status, (await list.clone().text()).slice(0, 300)); assert.equal(list.status, 200); const body = await list.json(); assert.equal(body.ok, true); assert.ok(body.count >= 1, 'au moins une demande stockée');
  const csv = await admin({query: '?format=csv'}); assert.equal(csv.status, 200); assert.match(csv.headers.get('content-type'), /text\/csv/); assert.match(await csv.text(), /Test local/);
  const del = await admin({method: 'DELETE', query: '?id=' + body.leads[0].id}); assert.equal(del.status, 200);
- console.log(JSON.stringify({formulaire: 'ok', panneau: 'ok', demandes: body.count}));
+ console.log(JSON.stringify({formulaire: 'ok', alerte: 'ok', panneau: 'ok', demandes: body.count}));
 } finally {
  child.kill(); mock.close();
  // Astro 7 peut laisser tourner le serveur en arrière-plan : on l'arrête explicitement.
