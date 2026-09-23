@@ -3,6 +3,36 @@
   "framework": "astro",
   "redirects": [
     {
+      "source": "/index.html",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/admin.html",
+      "destination": "/admin",
+      "statusCode": 301
+    },
+    {
+      "source": "/:dir/index.html",
+      "destination": "/:dir",
+      "statusCode": 301
+    },
+    {
+      "source": "/expertises/geo.html",
+      "destination": "/expertises/seo",
+      "statusCode": 301
+    },
+    {
+      "source": "/expertises/landing-pages-cro.html",
+      "destination": "/expertises/creation-site",
+      "statusCode": 301
+    },
+    {
+      "source": "/(.*)\\.html",
+      "destination": "/$1",
+      "statusCode": 301
+    },
+    {
       "source": "/expertises",
       "destination": "/#services",
       "statusCode": 301
