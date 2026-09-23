@@ -1,0 +1,22 @@
+---
+// « Vous vous reconnaissez ? » : trois cartes blanches avec la pastille rouge « Le problème ».
+import { rich } from '../../lib/site';
+interface Props { titre: string; etiquette: string; items: { titre: string; texte: string }[] }
+const { titre, etiquette, items } = Astro.props;
+---
+<section class="section problems" aria-labelledby="pb-titre">
+  <h2 id="pb-titre" class="h2 h2-page" set:html={rich(titre)}></h2>
+  <div class="grid">
+    {items.map((it) => <article><span class="tag">{etiquette}</span><h3>{it.titre}</h3><p>{it.texte}</p></article>)}
+  </div>
+</section>
+<style>
+  .problems{display:flex;flex-direction:column;gap:44px}
+  .grid{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:16px}
+  article{display:flex;flex-direction:column;gap:14px;min-height:220px;padding:32px;border-radius:var(--r-md);background:var(--card)}
+  .tag{align-self:flex-start;padding:6px 12px;border-radius:999px;background:var(--bad-bg);color:var(--bad-ink);font-size:12px;font-weight:600}
+  h3{margin-top:12px;font-size:24px;letter-spacing:-.03em}
+  p{font-size:15px;line-height:1.6;color:var(--muted)}
+  @media (max-width:900px){ .grid{grid-template-columns:1fr} article{min-height:0} }
+  @media (max-width:640px){ .problems{gap:22px} .grid{gap:10px} article{padding:22px;border-radius:20px} h3{margin-top:4px;font-size:20px} }
+</style>

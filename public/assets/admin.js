@@ -55,7 +55,7 @@ function visible() {
   if (sector && l.secteur !== sector) return false;
   if (period && new Date(l.receivedAt) < daysAgo(period)) return false;
   if (!q) return true;
-  return ['nom', 'entreprise', 'email', 'tel', 'site', 'page', 'secteur'].some(k => String(l[k] || '').toLowerCase().includes(q));
+  return ['nom', 'entreprise', 'email', 'tel', 'site', 'page', 'secteur', 'services', 'ville', 'message'].some(k => String(l[k] || '').toLowerCase().includes(q));
  });
 }
 
@@ -73,7 +73,7 @@ function render() {
    <td class="col-date">${esc(when(l.receivedAt))}</td>
    <td><b>${esc(l.nom || '—')}</b><i>${esc(l.email || '')}</i>${l.tel ? `<i>${esc(l.tel)}</i>` : ''}</td>
    <td>${esc(l.entreprise || '—')}${l.site ? `<i><a href="${esc(l.site)}" target="_blank" rel="noopener noreferrer">${esc(l.site.replace(/^https?:\/\//, ''))}</a></i>` : ''}</td>
-   <td>${esc(l.secteur || '—')}</td>
+   <td>${esc(l.secteur || '—')}${l.services ? `<i>${esc(l.services)}</i>` : ''}${l.ville ? `<i>${esc(l.ville)}</i>` : ''}</td>
    <td class="col-page">${esc(l.page || '—')}</td>
    <td>${esc(origin(l))}${l.utm_campaign ? `<i>${esc(l.utm_campaign)}</i>` : ''}</td>
    <td class="col-act"><button class="admin-del" data-del="${esc(l.id)}" title="Effacer cette demande" aria-label="Effacer la demande de ${esc(l.nom || '')}">✕</button></td>

@@ -1,8 +1,90 @@
 nom: IA et automatisation
 nomCourt: IA
 ordre: 4
+seoTitle: IA et automatisation pour PME · shyft
+seoDescription: 'Devis, relances, appels d''offres, documents à réclamer : on automatise ce qui fait perdre des heures à vos équipes.'
 carte:
   texte: 'Devis, relances, appels d''offres, documents à réclamer : le répétitif en moins pour vos équipes.'
   texteCourt: 'Relances, appels d''offres, documents : le répétitif en moins.'
   icone: robot
   ton: clair
+audit:
+  tag: Productivité
+  description: Les tâches répétitives de vos équipes et ce qu’on pourrait automatiser en premier.
+hero:
+  titre: Le répétitif en moins, *le suivi* en plus
+  texte: Devis, relances, appels d'offres, documents à réclamer. On automatise ce qui fait perdre des heures à vos équipes et des clients à votre entreprise.
+suivi:
+- Délai de réponse aux demandes
+- Devis relancés automatiquement
+- Heures gagnées, mesurées
+- Taux de signature des devis
+problemes:
+- titre: Des demandes qui se perdent
+  texte: Elles arrivent par mail, téléphone et formulaire. Certaines restent sans réponse.
+- titre: Des relances oubliées
+  texte: Les devis ne sont relancés que quand quelqu'un y pense.
+- titre: Des appels d'offres chronophages
+  texte: Répondre à un dossier prend des jours, alors on en laisse passer.
+miseEnPlace:
+- titre: Demandes centralisées
+  texte: Tout arrive au même endroit, rien ne se perd.
+- titre: Relance des devis
+  texte: Des relances automatiques au bon moment, avec le bon ton.
+- titre: Aide aux appels d'offres
+  texte: Veille, lecture du cahier des charges et première rédaction.
+- titre: Collecte de documents
+  texte: Attestations et pièces réclamées et contrôlées automatiquement.
+- titre: Réponses aux questions courantes
+  texte: Les questions qui reviennent traitées sans mobiliser l'équipe.
+- titre: Tableau de suivi
+  texte: Une vue claire pour la direction, sans ressaisie.
+couverture:
+  discriminant: false
+etapes:
+- titre: La cartographie
+  texte: On regarde comment vos équipes travaillent vraiment.
+- titre: Les priorités
+  texte: Les tâches qui font gagner le plus, en premier.
+- titre: La mise en place
+  texte: Testée avec vos équipes, pas à côté.
+- titre: Les ajustements
+  texte: On corrige à l'usage.
+chiffres:
+  titre: Nos chiffres *IA et automatisation*
+  lien: Voir nos outils en rendez-vous
+  lienVers: rendez-vous
+  cartes:
+  - surtitre: Temps gagné
+    chiffre: +15 h
+    unite: ''
+    legende: gagnées chaque semaine par équipe
+    texte: 'Relances, emails, tâches répétitives : ce qui prenait des heures tourne tout seul. Vos équipes gardent le travail qui compte.'
+    exempleFictif: false
+    duree: ''
+  - surtitre: Appels d'offres
+    chiffre: x4
+    unite: ''
+    legende: d'appels d'offres traités
+    texte: Veille, lecture du cahier des charges et première rédaction automatisées. Plus de marchés, sans recruter.
+    exempleFictif: false
+    duree: ''
+  - surtitre: CRM sur mesure
+    chiffre: '+10'
+    unite: ''
+    legende: CRM centralisés, conçus pour leur secteur
+    texte: Toutes les demandes au même endroit, avec les étapes de vente propres à chaque métier. Plus rien ne se perd.
+    exempleFictif: false
+    duree: ''
+  note: Chiffres issus des outils déployés chez nos clients. Noms retirés par confidentialité, démonstrations présentées en rendez-vous.
+geogrid:
+  discriminant: false
+faq:
+- question: Faut-il changer nos outils ?
+  answer: Non. On part de ce que vous utilisez déjà, et on ne rajoute un outil que s'il est vraiment nécessaire.
+- question: Et si l'IA se trompe ?
+  answer: Au départ, rien ne part chez un client sans validation humaine. On automatise davantage une fois que c'est fiable.
+- question: Où vont nos données ?
+  answer: On vous dit précisément quels services sont utilisés et où vont vos données avant de brancher quoi que ce soit.
+- question: On est une petite équipe, ça vaut le coup ?
+  answer: 'C''est souvent là que ça rapporte le plus : chaque heure gagnée compte.'

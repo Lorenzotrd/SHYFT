@@ -1,6 +1,0 @@
----
-// Cadre commun des interfaces de démonstration : titre, mention, contenu.
-interface Props { title: string; label: string; cls?: string }
-const { title, label, cls = '' } = Astro.props;
----
-<figure class={cls ? `mock ${cls}` : 'mock'}><figcaption class="mock-head"><b>{title}</b><span>{label}</span></figcaption><slot /></figure>

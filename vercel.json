@@ -1,4 +1,21 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "astro"
+  "framework": "astro",
+  "redirects": [
+    {
+      "source": "/expertises",
+      "destination": "/#services",
+      "statusCode": 301
+    },
+    {
+      "source": "/expertises/geo",
+      "destination": "/expertises/seo",
+      "statusCode": 301
+    },
+    {
+      "source": "/expertises/landing-pages-cro",
+      "destination": "/expertises/creation-site",
+      "statusCode": 301
+    }
+  ]
 }

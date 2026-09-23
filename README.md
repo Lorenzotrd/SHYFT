@@ -6,16 +6,17 @@ SHYFT construit le canal commercial digital des PME bien implantées sur le terr
 
 Site de l'agence : SEO, Google Ads, Meta Ads, IA et mesure pour les PME et réseaux français. Bleu ciel, photographies de nuages, accent citron, cartes en arc, six pages métier, sept pages expertise, section Mesure & suivi, pages légales et formulaire connecté à une API.
 
-## Refonte en cours (branche `redesign`)
+## Direction « shyft » (branche `redesign`)
 
-Nouvelle direction : fond gris, noir profond, jaune `#F9C940`, Instrument Sans et un mot en Instrument Serif italique dans chaque grand titre (noté `*mot*` dans le contenu). Maquettes de référence : `shyft-design-maquettes.zip`.
+Fond gris, noir profond, jaune `#F9C940`, Instrument Sans et un mot en Instrument Serif italique dans chaque grand titre (noté `*mot*` dans le contenu). Maquettes de référence : `shyft-design-maquettes.zip`.
 
-- Gabarit `src/layouts/Site.astro` et tokens `src/styles/tokens.css` pour les pages refaites ; les pages pas encore migrées gardent `Base.astro` et l'ancien CSS.
-- Composants communs dans `src/components/shyft` (Nav, Footer, Bouton, Faq, Frise, RendezVous, Icon), sections de l'accueil dans `src/components/home`.
-- Contenus : `site/accueil.yaml`, `site/site.yaml` (lien Cal.com, menu, pied de page), `site/rendez-vous.yaml`, collection `services/*.yaml` (une fiche par page, le nom du fichier est l'adresse `/expertises/<fichier>`).
-- Secteurs : en ligne, en `noindex`, hors du sitemap et hors du menu des pages refaites.
-- Mesure : événement `clic_rendez_vous` sur tout lien Cal.com (avec son emplacement), en plus de `generate_lead`, toujours après consentement.
+- Gabarit `src/layouts/Site.astro` et tokens `src/styles/tokens.css`. Seules les pages secteurs (en `noindex`) et le panneau `/admin` gardent l'ancien gabarit `Base.astro` et l'ancien CSS.
+- Composants communs dans `src/components/shyft`, sections de l'accueil dans `src/components/home`, blocs des pages services dans `src/components/service`, demande d'audit dans `src/components/audit`.
+- Contenus (Keystatic) : `site/accueil.yaml`, `site/site.yaml` (lien Cal.com, menu, pied de page), `site/rendez-vous.yaml`, `site/service-commun.yaml`, `site/audit-offert.yaml`, et la collection `services/*.yaml` : une fiche par page service, le nom du fichier est l'adresse `/expertises/<fichier>`. Les blocs « couverture » et « GeoGrid » s'activent par une case à cocher ; la GeoGrid est calculée à partir d'un tableau de positions 7 × 7.
+- Redirections 301 dans `vercel.json` : `/expertises` vers `/#services`, `/expertises/geo` vers `/expertises/seo`, `/expertises/landing-pages-cro` vers `/expertises/creation-site`.
+- Mesure : `generate_lead` et `demande_audit` à l'envoi d'une demande, `clic_rendez_vous` sur tout lien Cal.com (avec son emplacement), toujours après consentement.
 - Chaque demande déclenche un email immédiat, envoyé par le script Google Sheets (`scripts/google-sheet.gs`, propriété `NOTIFY_EMAIL`).
+- Tests : `npm test` (API et panneau), `npm run test:audit` (parcours de la page audit dans Chrome).
 
 ## Technique
 
@@ -34,11 +35,10 @@ Adresses sans extension ni barre oblique finale.
 
 | Adresse | Contenu | Source |
 | --- | --- | --- |
-| `/` | Accueil : hero, secteurs, expertises en bento, audit, mesure & suivi, méthode, FAQ, formulaire | `src/pages/index.astro`, contenu `site/accueil.yaml` |
-| `/expertises` | Les cinq temps du système, les sept expertises, les six secteurs | `src/pages/expertises/index.astro`, contenu `site/listes.yaml` |
-| `/expertises/<slug>` | Une page par expertise : problème, approche, interface de démonstration, détail, parcours, mesure, FAQ | `src/pages/expertises/[slug].astro`, contenu `expertises/<slug>.yaml` |
-| `/secteurs` | Les six pages métier | `src/pages/secteurs/index.astro` |
-| `/secteurs/<slug>` | Marché, parcours, quatre leviers, mesure, simulateur, section propre au métier, FAQ | `src/pages/secteurs/[slug].astro`, contenu `secteurs/<slug>.yaml` |
+| `/` | Accueil : en-tête, éventail de cartes, pourquoi nous, six leviers, méthode, résultats, audit, rendez-vous, FAQ | `src/pages/index.astro`, contenu `site/accueil.yaml` |
+| `/expertises/<slug>` | Les six pages services : `seo`, `google-ads`, `meta-ads`, `agence-ia`, `creation-site`, `data-tracking` | `src/pages/expertises/[slug].astro`, contenu `services/<slug>.yaml` |
+| `/audit-offert` | Demande d'audit : leviers à auditer, entreprise, confirmation | `src/pages/audit-offert.astro`, contenu `site/audit-offert.yaml` |
+| `/secteurs`, `/secteurs/<slug>` | Pages métier, en ligne mais en `noindex`, hors sitemap et hors menu | `src/pages/secteurs/` |
 | `/mentions-legales`, `/confidentialite` | Pages légales | `src/pages/[page].astro`, contenu `pages/<slug>.yaml` |
 | `/admin` | Panneau privé des demandes, exclu des robots | `src/pages/admin.astro` |
 

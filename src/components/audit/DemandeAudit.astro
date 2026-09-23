@@ -1,0 +1,205 @@
+---
+// Demande d'audit : étape 1 (leviers à auditer), étape 2 (l'entreprise), barre d'envoi, puis confirmation.
+// Le script tient l'état de la sélection et envoie la demande à /api/lead avec la liste des leviers.
+import Bouton from '../shyft/Bouton.astro';
+import Icon from '../shyft/Icon.astro';
+import { rich } from '../../lib/site';
+import { services as allServices, single } from '../../lib/content';
+const [page, site, services] = await Promise.all([single('auditOffert'), single('site'), allServices()]);
+const { champs: f, envoi, etape1 } = page;
+const total = services.length;
+const labels = { aucun: envoi.aucun, un: envoi.un, plusieurs: envoi.plusieurs, tout: etape1.toutAuditer, rien: etape1.toutDeselectionner, compteur: etape1.compteur };
+---
+<div class="demande" data-audit data-labels={JSON.stringify(labels)} data-total={total}>
+  <div class="saisie" data-saisie>
+    <section class="section step" aria-labelledby="etape1-titre">
+      <div class="step-head">
+        <div><span class="step-k">{etape1.surtitre}</span><h2 id="etape1-titre" class="h2" set:html={rich(etape1.titre)}></h2></div>
+        <div class="step-tools">
+          <span data-count aria-live="polite">{etape1.compteur.replace('{n}', '1').replace('{total}', String(total))}</span>
+          <button type="button" class="tool" data-toggle-all>{etape1.toutAuditer}</button>
+        </div>
+      </div>
+      <div class="levers" role="group" aria-labelledby="etape1-titre">
+        {services.map((s, i) => (
+          <button type="button" class="lever" data-lever={s.id} aria-pressed={i === 0 ? 'true' : 'false'}>
+            <span class="lever-top"><span class="lever-tag">{s.data.audit.tag}</span><span class="box"><Icon name="check" size={16} stroke={3} /></span></span>
+            <span class="lever-name">{s.data.nom}</span>
+            <span class="lever-desc">{s.data.audit.description}</span>
+          </button>
+        ))}
+      </div>
+    </section>
+
+    <form class="section step" id="auditForm" aria-labelledby="etape2-titre" novalidate>
+      <div><span class="step-k">{page.etape2.surtitre}</span><h2 id="etape2-titre" class="h2" set:html={rich(page.etape2.titre)}></h2></div>
+      <div class="card">
+        <div class="fields">
+          <label>{f.entreprise.label}<input name="entreprise" autocomplete="organization" placeholder={f.entreprise.placeholder} required maxlength="200"></label>
+          <label>{f.site.label}<input name="site" inputmode="url" autocomplete="url" placeholder={f.site.placeholder} maxlength="300"></label>
+          <label>{f.ville.label}<input name="ville" autocomplete="address-level2" placeholder={f.ville.placeholder} maxlength="120"></label>
+          <label>{f.secteur.label}<select name="secteur" required><option value="">{f.secteur.placeholder}</option>{page.secteurs.map((s) => <option>{s}</option>)}</select></label>
+          <label>{f.nom.label}<input name="nom" autocomplete="name" placeholder={f.nom.placeholder} required maxlength="200"></label>
+          <label>{f.email.label}<input name="email" type="email" autocomplete="email" placeholder={f.email.placeholder} required maxlength="200"></label>
+          <label>{f.tel.label}<input name="tel" type="tel" autocomplete="tel" placeholder={f.tel.placeholder} maxlength="40"></label>
+          <label>{f.agences.label}<input name="agences" inputmode="numeric" placeholder={f.agences.placeholder} maxlength="20"></label>
+        </div>
+        <label class="full"><span>{f.message.label} <span class="opt">{f.facultatif}</span></span><textarea name="message" rows="3" placeholder={f.message.placeholder} maxlength="2000"></textarea></label>
+        <label class="honeypot" aria-hidden="true">Ne pas remplir<input name="website_check" tabindex="-1" autocomplete="off"></label>
+      </div>
+      <div class="send on-dark">
+        <div class="send-text"><span class="summary" data-summary aria-live="polite">{envoi.un}</span><span class="mention">{envoi.mention} <a href="/confidentialite">Politique de confidentialité</a>.</span></div>
+        <button type="submit" class="submit" data-submit><span data-submit-label>{envoi.bouton}</span><span class="dot"><Icon name="arrow" size={16} /></span></button>
+      </div>
+      <p class="error" data-error role="alert" hidden data-default={envoi.erreur}></p>
+      <noscript><p class="error">Le formulaire a besoin de JavaScript. Vous pouvez aussi <a href={site.calUrl}>prendre rendez-vous</a>.</p></noscript>
+    </form>
+  </div>
+
+  <section class="section done" data-done hidden aria-labelledby="done-titre">
+    <div class="done-card">
+      <span class="done-icon"><Icon name="check" size={32} stroke={2.6} /></span>
+      <h2 id="done-titre" class="h2" tabindex="-1" set:html={rich(page.confirmation.titre)}></h2>
+      <p>{page.confirmation.texte}</p>
+      <div class="done-ctas">
+        <Bouton href={site.calUrl} emplacement="audit-confirmation">Prendre rendez-vous</Bouton>
+        <button type="button" class="tool big" data-edit>{page.confirmation.modifier}</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-audit]');
+  if (root) {
+    const labels = JSON.parse(root.dataset.labels || '{}');
+    const total = Number(root.dataset.total);
+    const levers = [...root.querySelectorAll<HTMLButtonElement>('[data-lever]')];
+    const count = root.querySelector('[data-count]')!;
+    const toggleAll = root.querySelector<HTMLButtonElement>('[data-toggle-all]')!;
+    const summary = root.querySelector('[data-summary]')!;
+    const submit = root.querySelector<HTMLButtonElement>('[data-submit]')!;
+    const submitLabel = root.querySelector('[data-submit-label]')!;
+    const form = root.querySelector<HTMLFormElement>('#auditForm')!;
+    const error = root.querySelector<HTMLElement>('[data-error]')!;
+    const saisie = root.querySelector<HTMLElement>('[data-saisie]')!;
+    const done = root.querySelector<HTMLElement>('[data-done]')!;
+    const sendLabel = submitLabel.textContent || '';
+
+    const picked = () => levers.filter((b) => b.getAttribute('aria-pressed') === 'true').map((b) => b.dataset.lever!);
+    const refresh = () => {
+      const n = picked().length;
+      count.textContent = labels.compteur.replace('{n}', String(n)).replace('{total}', String(total));
+      toggleAll.textContent = n === total ? labels.rien : labels.tout;
+      summary.textContent = n === 0 ? labels.aucun : n === 1 ? labels.un : labels.plusieurs.replace('{n}', String(n));
+      submit.disabled = n === 0;
+    };
+    levers.forEach((b) => b.addEventListener('click', () => { b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); refresh(); }));
+    toggleAll.addEventListener('click', () => { const all = picked().length === total; levers.forEach((b) => b.setAttribute('aria-pressed', String(!all))); refresh(); });
+
+    const context = () => {
+      const read = (store: Storage, key: string) => { try { return store.getItem(key) || ''; } catch { return ''; } };
+      return {
+        page: location.pathname,
+        utm_source: read(sessionStorage, 'utm_source'), utm_medium: read(sessionStorage, 'utm_medium'),
+        utm_campaign: read(sessionStorage, 'utm_campaign'), gclid: read(sessionStorage, 'gclid'),
+        referrer: read(sessionStorage, 'referrer'), firstSeen: read(localStorage, 'shyft:first'),
+      };
+    };
+    const showError = (message: string) => { error.textContent = message; error.hidden = false; };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      error.hidden = true;
+      const services = picked();
+      if (!services.length || !form.checkValidity()) { form.reportValidity(); showError(error.dataset.default || ''); return; }
+      const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
+      submit.disabled = true;
+      submitLabel.textContent = 'Envoi en cours…';
+      try {
+        const response = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...data, ...context(), services, formulaire: 'audit' }) });
+        let result: { ok?: boolean; error?: string } = {};
+        try { result = await response.json(); } catch { /* réponse non JSON : message générique ci-dessous */ }
+        if (!response.ok || !result.ok) throw new Error(result.error || 'La demande n’a pas été envoyée. Réessayez dans un instant.');
+        saisie.hidden = true;
+        done.hidden = false;
+        done.scrollIntoView({ block: 'start' });
+        done.querySelector<HTMLElement>('h2')?.focus({ preventScroll: true });
+        document.dispatchEvent(new CustomEvent('shyft:lead', { detail: { secteur: data.secteur || '', formulaire: 'audit', services } }));
+      } catch (e) {
+        showError(e instanceof Error ? e.message : 'La demande n’a pas été envoyée. Réessayez dans un instant.');
+      } finally {
+        submitLabel.textContent = sendLabel;
+        submit.disabled = picked().length === 0;
+      }
+    });
+
+    root.querySelector('[data-edit]')?.addEventListener('click', () => {
+      done.hidden = true;
+      saisie.hidden = false;
+      form.scrollIntoView({ block: 'start' });
+      form.querySelector<HTMLInputElement>('input')?.focus({ preventScroll: true });
+    });
+    refresh();
+  }
+</script>
+<style>
+  .step{display:flex;flex-direction:column;gap:36px}
+  .step-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px 40px;flex-wrap:wrap}
+  .step-k{display:block;margin-bottom:14px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--label)}
+  .step h2{font-size:clamp(34px, 3.6vw, 52px)}
+  .step-tools{display:flex;align-items:center;gap:16px;font-size:15px;color:var(--muted)}
+  .tool{min-height:48px;padding:0 22px;border-radius:999px;border:1px solid var(--ink);background:transparent;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s,color .2s}
+  .tool:hover{background:var(--ink);color:var(--on-dark)}
+  .tool.big{min-height:62px;padding:0 28px;font-size:17px}
+  .levers{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:16px}
+  .lever{display:flex;flex-direction:column;gap:12px;min-height:196px;padding:28px;border-radius:var(--r-md);border:2px solid var(--card);background:var(--card);color:var(--ink);text-align:left;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+  .lever:hover{border-color:var(--ink)}
+  .lever-top{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .lever-tag{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .box{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;border:1.5px solid #ccc;background:var(--card);color:var(--card)}
+  .lever-name{font-size:24px;font-weight:600;letter-spacing:-.03em}
+  .lever-desc{font-size:15px;line-height:1.55;color:var(--muted)}
+  .lever[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--on-dark)}
+  .lever[aria-pressed="true"] .lever-tag,.lever[aria-pressed="true"] .lever-desc{color:var(--on-dark-muted)}
+  .lever[aria-pressed="true"] .box{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+  .lever[aria-pressed="true"]:focus-visible{outline-color:var(--accent)}
+  form.step{padding-top:clamp(56px, 5.6vw, 80px)}
+  .card{display:flex;flex-direction:column;gap:22px;padding:clamp(22px, 3vw, 44px);border-radius:28px;background:var(--card)}
+  .fields{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:22px}
+  label{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600}
+  .opt{font-weight:400;color:var(--label)}
+  input,select,textarea{width:100%;min-height:56px;padding:0 18px;border-radius:14px;border:1px solid var(--line);background:var(--frame);font:400 16px var(--sans);color:var(--ink)}
+  textarea{padding:16px 18px;resize:vertical;min-height:100px}
+  input::placeholder,textarea::placeholder{color:#8a8a8a}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--ink);outline-offset:1px;border-color:transparent}
+  .honeypot{position:absolute!important;left:-9999px!important}
+  .send{display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:4px;padding:30px 30px 30px 40px;border-radius:28px;background:var(--dark);color:var(--on-dark)}
+  .send-text{display:flex;flex-direction:column;gap:6px}
+  .summary{font-size:22px;font-weight:600;letter-spacing:-.02em}
+  .mention{font-size:14px;color:var(--on-dark-muted)}
+  .mention a{text-decoration:underline;text-underline-offset:3px}
+  .submit{flex:none;display:inline-flex;align-items:center;gap:14px;height:64px;padding:0 10px 0 30px;border:0;border-radius:999px;background:var(--accent);color:var(--ink);font-size:18px;font-weight:600;cursor:pointer}
+  .submit .dot{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--ink);color:var(--accent)}
+  .submit:disabled{background:var(--muted);cursor:not-allowed}
+  .error{padding:14px 18px;border-radius:14px;background:var(--bad-bg);color:var(--bad-ink);font-size:15px}
+  .error a{text-decoration:underline}
+  .done-card{display:flex;flex-direction:column;align-items:center;gap:22px;padding:clamp(40px, 6.25vw, 90px);border-radius:30px;background:var(--card);text-align:center}
+  .done-icon{display:inline-grid;place-items:center;width:72px;height:72px;border-radius:50%;background:var(--accent);color:var(--ink)}
+  .done-card h2{font-size:clamp(40px, 4.4vw, 64px);line-height:1;letter-spacing:-.05em;outline:none}
+  .done-card p{max-width:560px;font-size:18px;line-height:1.6;color:var(--muted)}
+  .done-ctas{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding-top:8px}
+  @media (max-width:1024px){ .levers{grid-template-columns:repeat(2, minmax(0, 1fr))} }
+  @media (max-width:760px){
+    .levers,.fields{grid-template-columns:1fr}
+    .send{flex-direction:column;align-items:stretch;padding:24px}
+    .submit{justify-content:space-between}
+  }
+  @media (max-width:640px){
+    .step{gap:22px}
+    .lever{min-height:0;padding:22px}
+    .lever-name{font-size:20px}
+    .summary{font-size:18px}
+    .done-ctas{flex-direction:column;align-items:stretch;width:100%}
+  }
+</style>

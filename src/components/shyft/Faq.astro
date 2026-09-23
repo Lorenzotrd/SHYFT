@@ -1,14 +1,15 @@
 ---
 // Questions en accordéon (details/summary, accessible au clavier). La première est ouverte.
 import Icon from './Icon.astro';
+import { nbsp } from '../../lib/site';
 interface Props { items: { question: string; answer: string }[] }
 const { items } = Astro.props;
 ---
 <div class="faq">
   {items.map((f, i) => (
     <details open={i === 0}>
-      <summary>{f.question}<span class="faq-icon"><Icon name="plus" size={14} /></span></summary>
-      <p>{f.answer}</p>
+      <summary>{nbsp(f.question)}<span class="faq-icon"><Icon name="plus" size={14} /></span></summary>
+      <p>{nbsp(f.answer)}</p>
     </details>
   ))}
 </div>

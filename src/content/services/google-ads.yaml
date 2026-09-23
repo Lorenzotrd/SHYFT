@@ -1,8 +1,90 @@
 nom: Google Ads
 nomCourt: Google Ads
 ordre: 2
+seoTitle: Agence Google Ads pour PME · shyft
+seoDescription: Des campagnes Google Ads locales, serrées sur votre zone et vos métiers rentables. Chaque euro suivi jusqu'à l'appel ou au devis.
 carte:
   texte: Capter les demandes urgentes au moment exact où elles se cherchent, sans brûler le budget.
   texteCourt: Capter les demandes urgentes, sans brûler le budget.
   icone: cible
   ton: clair
+audit:
+  tag: Publicité
+  description: Votre compte s’il existe, le coût des mots clés de votre métier et les annonces concurrentes.
+hero:
+  titre: Capter la demande *au moment* où elle se cherche
+  texte: Des campagnes locales, serrées sur votre zone et vos métiers rentables. Chaque euro suivi jusqu'à l'appel ou au devis.
+suivi:
+- Coût par appel ou par devis
+- Nombre de demandes reçues
+- Part de visibilité sur vos mots clés
+- Budget dépensé face au budget prévu
+problemes:
+- titre: Des clics inutiles
+  texte: Vous payez pour des recherches qui ne vous concernent pas, ou hors de votre zone.
+- titre: Un compte en roue libre
+  texte: Les campagnes tournent depuis des mois sans que personne ne les ajuste.
+- titre: Aucune idée du retour
+  texte: Personne ne sait combien de devis viennent réellement de la publicité.
+miseEnPlace:
+- titre: Campagnes par métier et zone
+  texte: Une structure claire, alignée sur ce que vous vendez et où.
+- titre: Mots clés exclus
+  texte: On coupe tout ce qui coûte sans jamais rapporter.
+- titre: Annonces et appels
+  texte: Des annonces locales avec votre numéro cliquable directement.
+- titre: Pages d'atterrissage
+  texte: Des pages dédiées qui transforment le clic en demande.
+- titre: Suivi des conversions
+  texte: Appels et formulaires comptés, campagne par campagne.
+- titre: Ajustements réguliers
+  texte: Enchères, horaires et zones revus en continu.
+couverture:
+  discriminant: false
+etapes:
+- titre: L'audit du compte
+  texte: Ce qui coûte, ce qui rapporte, ce qui manque.
+- titre: Le lancement
+  texte: Les requêtes rentables en premier.
+- titre: Le tri
+  texte: On coupe ce qui ne rapporte pas.
+- titre: Le pilotage
+  texte: Le coût par demande, chaque mois.
+chiffres:
+  titre: Nos chiffres *Google Ads*
+  lien: Voir les tableaux de bord en rendez-vous
+  lienVers: rendez-vous
+  cartes:
+  - surtitre: Budget géré
+    chiffre: +3 M€
+    unite: ''
+    legende: de dépenses publicitaires gérées pour nos clients
+    texte: Des comptes de toutes tailles, du loueur local au réseau national.
+    exempleFictif: false
+    duree: ''
+  - surtitre: E-commerce
+    chiffre: '3'
+    unite: ROAS*
+    legende: de ROAS moyen sur nos comptes e-commerce
+    texte: 3 € de chiffre d'affaires générés pour chaque euro investi en publicité.
+    exempleFictif: false
+    duree: ''
+  - surtitre: Génération de demandes
+    chiffre: x3
+    unite: ''
+    legende: demandes par mois
+    texte: Pour les entreprises qui vivent des appels, des devis et des réservations.
+    exempleFictif: false
+    duree: ''
+  note: '* Moyenne calculée sur nos comptes e-commerce. Tableaux de bord disponibles sur demande, noms des clients retirés par confidentialité.'
+geogrid:
+  discriminant: false
+faq:
+- question: Quel budget faut-il prévoir ?
+  answer: Ça dépend de votre zone et de la concurrence. On le fixe ensemble dans le plan, avant de lancer. Le budget publicitaire est réglé directement à Google, sur votre compte.
+- question: Le compte est à mon nom ?
+  answer: Oui. Le compte Google Ads vous appartient, avec tout son historique.
+- question: Et si ça ne marche pas ?
+  answer: On le voit vite, parce que chaque demande est comptée. On coupe ce qui ne rapporte pas et on vous le dit.
+- question: J'ai déjà un compte qui tourne
+  answer: Très bien, on commence par l'auditer. Souvent, il y a du budget à récupérer avant même d'en ajouter.

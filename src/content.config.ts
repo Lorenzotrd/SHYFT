@@ -130,6 +130,12 @@ const rendezVous = single('rendez-vous', z.object({
   garanties: z.array(z.string()),
 }));
 
+// Bloc facultatif Keystatic (case à cocher) : { discriminant: false } ou { discriminant: true, value: {...} }.
+const optional = <S extends z.ZodType>(schema: S) => z.union([
+  z.object({ discriminant: z.literal(false), value: z.any().optional() }),
+  z.object({ discriminant: z.literal(true), value: schema }),
+]);
+
 // Les six services : une fiche par page, le nom du fichier est l'adresse (/expertises/<fichier>).
 const services = defineCollection({
   loader: glob({ pattern: '*.yaml', base: './src/content/services' }),
@@ -137,9 +143,63 @@ const services = defineCollection({
     nom: z.string(),
     nomCourt: z.string(),
     ordre: z.number(),
+    seoTitle: z.string(),
+    seoDescription: z.string(),
     carte: z.object({ texte: z.string(), texteCourt: z.string(), icone: z.enum(['repere', 'cible', 'megaphone', 'robot', 'site', 'graphique']), ton: tone }),
+    audit: z.object({ tag: z.string(), description: z.string() }),
+    hero: z.object({ titre: lines, texte: z.string() }),
+    suivi: z.array(z.string()),
+    problemes: z.array(titled),
+    miseEnPlace: z.array(titled),
+    couverture: optional(z.object({
+      titre: lines, texte: z.string(),
+      cartes: z.array(z.object({ badge: z.string(), titre: z.string(), texte: z.string(), points: z.array(z.string()) })),
+    })),
+    etapes: z.array(titled),
+    chiffres: z.object({
+      titre: lines, lien: z.string(), lienVers: z.enum(['rendez-vous', 'resultats']),
+      cartes: z.array(z.object({
+        surtitre: z.string(), chiffre: z.string(), unite: z.string(), legende: z.string(), texte: z.string(),
+        exempleFictif: z.boolean(), duree: z.string(),
+      })),
+      note: z.string(),
+    }),
+    geogrid: optional(z.object({
+      surtitre: z.string(), titre: lines, points: z.array(z.string()),
+      motCle: z.string(), zone: z.string(),
+      concurrents: z.array(z.object({ nom: z.string(), position: z.string() })),
+      positions: z.array(z.string()),
+    })),
+    faq: z.array(faq),
   }),
 });
+
+// Libellés identiques sur les six pages services.
+const serviceCommun = single('service-commun', z.object({
+  filAccueil: z.string(), filServices: z.string(), ctaRdv: z.string(), ctaAudit: z.string(),
+  suiviSurtitre: z.string(), suiviTitre: lines,
+  problemesTitre: lines, problemeEtiquette: z.string(),
+  miseEnPlaceTitre: lines, miseEnPlaceTexte: z.string(),
+  friseTitre: lines, faqTitre: lines, faqTexte: z.string(),
+  autresLeviers: z.string(), exempleFictif: z.string(),
+}));
+
+// Page de demande d'audit offert.
+const champ = z.object({ label: z.string(), placeholder: z.string() });
+const auditOffert = single('audit-offert', z.object({
+  seoTitle: z.string(), seoDescription: z.string(),
+  fil: z.string(), titre: lines, texte: z.string(), garanties: z.array(z.string()),
+  recevez: z.object({ surtitre: z.string(), points: z.array(z.string()) }),
+  etape1: z.object({ surtitre: z.string(), titre: lines, toutAuditer: z.string(), toutDeselectionner: z.string(), compteur: z.string() }),
+  etape2: z.object({ surtitre: z.string(), titre: lines }),
+  champs: z.object({
+    entreprise: champ, site: champ, ville: champ, secteur: champ, nom: champ, email: champ, tel: champ, agences: champ, message: champ,
+    facultatif: z.string(),
+  }),
+  secteurs: z.array(z.string()),
+  envoi: z.object({ aucun: z.string(), un: z.string(), plusieurs: z.string(), mention: z.string(), bouton: z.string(), erreur: z.string() }),
+  confirmation: z.object({ titre: lines, texte: z.string(), modifier: z.string() }),
+}));
 
 const navigation = single('navigation', z.object({
   groups: z.array(z.object({ name: z.string(), expertises: z.array(z.string()) })),
@@ -183,4 +243,4 @@ const listes = single('listes', z.object({
   }),
 }));
 
-export const collections = { secteurs, expertises, services, pages, accueil, site, rendezVous, navigation, leviers, methode, mesure, formulaire, piedDePage, listes };
+export const collections = { secteurs, expertises, services, pages, accueil, site, rendezVous, serviceCommun, auditOffert, navigation, leviers, methode, mesure, formulaire, piedDePage, listes };

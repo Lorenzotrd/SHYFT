@@ -1,0 +1,124 @@
+---
+// GeoGrid : position sur Google Maps depuis chaque point de la zone, calculée à partir d'un tableau de positions.
+// Seuls les points à l'intérieur du cercle comptent ; moyenne, part en top 3 et nombre de points en découlent.
+import Icon from '../shyft/Icon.astro';
+import { rich } from '../../lib/site';
+interface Props {
+  surtitre: string; titre: string; points: string[]; motCle: string; zone: string;
+  concurrents: { nom: string; position: string }[]; positions: string[];
+}
+const { surtitre, titre, points, motCle, zone, concurrents, positions } = Astro.props;
+const grid = positions.map((row) => row.split(',').map((v) => Number(v.trim())).filter((v) => Number.isFinite(v)));
+const size = grid.length;
+const mid = (size - 1) / 2;
+const color = (rank: number) => (rank <= 3 ? 'var(--map-top)' : rank <= 10 ? 'var(--map-mid)' : 'var(--map-low)');
+let sum = 0, inside = 0, top = 0;
+const dots = grid.flatMap((row, r) => row.map((rank, c) => {
+  const isIn = Math.hypot(r - mid, c - mid) <= mid + 0.2;
+  if (isIn) { sum += rank; inside += 1; if (rank <= 3) top += 1; }
+  return { rank: rank > 20 ? '20+' : String(rank), isIn, center: r === mid && c === mid, bg: color(rank) };
+}));
+const moyenne = inside ? (sum / inside).toFixed(1).replace('.', ',') : '';
+const top3 = inside ? `${Math.round((top / inside) * 100)} %` : '';
+---
+<section class="section geo" aria-labelledby="geo-titre">
+  <div class="head">
+    <div class="intro">
+      <span class="eyebrow">{surtitre}</span>
+      <h2 id="geo-titre" class="h2 h2-page" set:html={rich(titre)}></h2>
+    </div>
+    <ul>{points.map((p) => <li><Icon name="check" size={18} />{p}</li>)}</ul>
+  </div>
+  <div class="app">
+    <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="body">
+      <div class="panel on-dark">
+        <span class="brand">shyft<b>.</b> <span>GeoGrid</span></span>
+        <div class="fields">
+          <div><span class="lbl">Mot clé</span><span class="val">{motCle}</span></div>
+          <div><span class="lbl">Zone</span><span class="val">{zone} · {inside} points</span></div>
+        </div>
+        <div class="tiles">
+          <div><span class="lbl">Position moyenne</span><strong>{moyenne}</strong></div>
+          <div><span class="lbl">Zone en top 3</span><strong class="accent">{top3}</strong></div>
+        </div>
+        <div class="rivals">
+          <span class="lbl">Face aux concurrents</span>
+          {concurrents.map((c) => <div><span>{c.nom}</span><b>{c.position}</b></div>)}
+          <div class="you"><span>Votre entreprise</span><b>{moyenne}</b></div>
+        </div>
+        <div class="legend"><span><i style="background:var(--map-top)"></i>Top 3</span><span><i style="background:var(--map-mid)"></i>4 à 10</span><span><i style="background:var(--map-low)"></i>Au delà</span></div>
+      </div>
+      <div class="map" role="img" aria-label={`Carte d'exemple : position moyenne ${moyenne}, ${top3} de la zone en top 3 sur ${inside} points.`}>
+        <svg viewBox="0 0 900 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="900" height="640" fill="#ECEAE3"></rect>
+          <path d="M0 470 C 180 430 300 520 470 470 S 760 360 900 400" fill="none" stroke="#BFD6E6" stroke-width="26"></path>
+          <path d="M120 0 L 260 640" fill="none" stroke="#FFFFFF" stroke-width="10"></path>
+          <path d="M0 210 L 900 250" fill="none" stroke="#FFFFFF" stroke-width="12"></path>
+          <path d="M620 0 C 580 200 660 420 560 640" fill="none" stroke="#FFFFFF" stroke-width="9"></path>
+          <path d="M0 90 L 420 330 L 900 560" fill="none" stroke="#F6E7B0" stroke-width="8"></path>
+          <path d="M360 0 L 420 640" fill="none" stroke="#FFFFFF" stroke-width="5"></path>
+          <path d="M0 340 L 900 300" fill="none" stroke="#FFFFFF" stroke-width="5"></path>
+          <path d="M760 0 L 820 640" fill="none" stroke="#FFFFFF" stroke-width="5"></path>
+          <rect x="470" y="90" width="90" height="70" rx="8" fill="#DCE8D2"></rect>
+          <rect x="180" y="520" width="120" height="80" rx="8" fill="#DCE8D2"></rect>
+          <rect x="700" y="130" width="110" height="60" rx="8" fill="#DCE8D2"></rect>
+        </svg>
+        <div class="dots" style={`grid-template-columns:repeat(${size}, minmax(0, 1fr))`} aria-hidden="true">
+          {dots.map((d) => <span class:list={['dot', { out: !d.isIn, center: d.center }]} style={d.isIn ? `background:${d.bg}` : undefined}>{d.isIn ? d.rank : ''}</span>)}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .geo{display:flex;flex-direction:column;gap:44px;--app:#16161a;--app-2:#202024;--app-line:#2e2e33}
+  .head{display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(24px, 4.9vw, 70px);flex-wrap:wrap}
+  .intro{flex:0 1 640px;display:flex;flex-direction:column;gap:18px}
+  ul{flex:0 1 460px;list-style:none;padding:0;display:flex;flex-direction:column;gap:12px}
+  li{display:flex;align-items:flex-start;gap:12px;font-size:16px;line-height:1.5;color:var(--ink-2)}
+  li :global(svg){flex:none;margin-top:2px}
+  .app{display:flex;flex-direction:column;gap:14px;padding:14px;border-radius:30px;background:var(--ink);box-shadow:0 40px 80px -40px rgba(0,0,0,.35)}
+  .bar{display:flex;gap:8px;padding:6px 12px 0}
+  .bar i{width:11px;height:11px;border-radius:50%;background:var(--dark-line-2)}
+  .body{display:flex;gap:14px;min-height:640px}
+  .panel{flex:0 0 340px;display:flex;flex-direction:column;gap:22px;padding:26px;border-radius:20px;background:var(--app);color:var(--on-dark)}
+  .brand{font-size:20px;font-weight:700;letter-spacing:-.03em}
+  .brand b{color:var(--accent)}
+  .brand span{font-weight:500;color:var(--on-dark-muted)}
+  .fields{display:flex;flex-direction:column;gap:10px}
+  .fields div{display:flex;flex-direction:column;gap:6px}
+  .lbl{font-size:12px;color:#8c8c8c}
+  .val{min-height:44px;display:flex;align-items:center;padding:0 14px;border-radius:12px;background:var(--app-2);border:1px solid var(--app-line);font-size:15px}
+  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .tiles div{display:flex;flex-direction:column;gap:4px;padding:16px;border-radius:14px;background:var(--app-2)}
+  .tiles strong{font-size:32px;font-weight:600;letter-spacing:-.04em}
+  .accent{color:var(--accent)}
+  .rivals{display:flex;flex-direction:column;gap:10px;padding-top:4px}
+  .rivals div{display:flex;justify-content:space-between;font-size:14px}
+  .rivals div span{color:var(--on-dark-soft)}
+  .rivals .you span,.rivals .you b{color:var(--accent);font-weight:600}
+  .legend{margin-top:auto;display:flex;gap:14px;font-size:12px;color:var(--on-dark-muted)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend i{width:9px;height:9px;border-radius:50%}
+  .map{position:relative;flex:1;border-radius:20px;overflow:hidden;background:#e8e6df}
+  .map svg{position:absolute;inset:0;width:100%;height:100%}
+  .dots{position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);width:min(520px, 86%);aspect-ratio:1;display:grid;gap:14px;place-items:center}
+  .dot{width:100%;max-width:50px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;border:3px solid #fff;box-shadow:0 6px 14px rgba(0,0,0,.18);color:var(--ink);font-size:15px;font-weight:700}
+  .dot.out{visibility:hidden}
+  .dot.center{border:4px solid var(--ink)}
+  @media (max-width:1024px){
+    .body{flex-direction:column;min-height:0}
+    .panel{flex-basis:auto}
+    .map{aspect-ratio:1;flex:none}
+  }
+  @media (max-width:640px){
+    .geo{gap:22px}
+    li{font-size:15px}
+    .app{padding:8px;border-radius:22px}
+    .panel{padding:20px}
+    .dots{gap:6px;width:92%}
+    .dot{font-size:11px;border-width:2px}
+    .dot.center{border-width:3px}
+  }
+</style>

@@ -1,8 +1,132 @@
 nom: SEO, local et GEO
 nomCourt: SEO
 ordre: 1
+seoTitle: SEO, référencement local et GEO · shyft
+seoDescription: 'Être trouvé sur Google avant vos concurrents : un site que Google comprend, des pages qui répondent à vos clients, Google Maps et les moteurs IA.'
 carte:
   texte: Le top 3 de Google Maps sur toute votre zone, et une place dans les réponses des moteurs IA.
   texteCourt: Top 3 sur Google Maps et place dans les réponses des moteurs IA.
   icone: repere
   ton: sombre
+audit:
+  tag: Recherche Google
+  description: Vos positions, Google Maps, votre site vu par Google et ce que répondent les moteurs IA.
+hero:
+  titre: Être trouvé sur Google *avant* vos concurrents
+  texte: Un site que Google comprend, des pages qui répondent à ce que tapent vos clients, et une autorité qui se construit dans la durée. Puis le local et les moteurs IA pour couvrir toute la recherche.
+suivi:
+- Visites depuis la recherche naturelle
+- Mots clés en première page
+- Demandes générées par le SEO
+- Position sur Google Maps et dans les IA
+problemes:
+- titre: Absent sur ce qui se cherche
+  texte: Vous sortez sur votre nom, mais pas sur votre métier ni sur vos services.
+- titre: Un site que Google comprend mal
+  texte: 'Pages lentes, contenus trop courts, structure confuse : Google ne sait pas quoi en faire.'
+- titre: Des concurrents qui prennent la place
+  texte: Ils publient, obtiennent des liens et captent les recherches que vous devriez avoir.
+miseEnPlace:
+- titre: Audit technique
+  texte: Vitesse, indexation, structure, erreurs. On remet les fondations d'aplomb.
+- titre: Stratégie de mots clés
+  texte: Les recherches qui amènent des clients, classées par potentiel et difficulté.
+- titre: Pages services et contenus
+  texte: Des pages qui répondent vraiment aux questions de vos clients.
+- titre: Optimisation des pages
+  texte: Titres, balises, maillage interne, données structurées.
+- titre: Netlinking
+  texte: Des liens depuis des sites sérieux de votre secteur et de votre région.
+- titre: Suivi des positions
+  texte: Vos mots clés suivis chaque semaine, face à vos concurrents.
+couverture:
+  discriminant: true
+  value:
+    titre: Et pour couvrir *toute* la recherche
+    texte: Le SEO fait le socle. Le local et le GEO vont chercher les clients là où le SEO classique ne va pas.
+    cartes:
+    - badge: Google Maps
+      titre: SEO local
+      texte: Pour les recherches avec une ville ou « près de moi ».
+      points:
+      - Fiches Google optimisées
+      - Une page par ville de votre zone
+      - Stratégie d'avis clients
+      - Suivi de position en grille
+    - badge: Moteurs IA
+      titre: GEO
+      texte: Pour être cité par ChatGPT, Gemini et Google IA.
+      points:
+      - Contenus clairs et sourcés
+      - Réponses aux questions du métier
+      - Cohérence de vos informations
+      - Suivi des citations IA
+etapes:
+- titre: L'audit
+  texte: Technique, contenus, concurrents et mots clés.
+- titre: Les fondations
+  texte: Corrections techniques et structure du site.
+- titre: Les contenus
+  texte: Pages services, villes et réponses aux questions.
+- titre: L'autorité
+  texte: Liens, avis et suivi mensuel des positions.
+chiffres:
+  titre: Nos chiffres *SEO*
+  lien: Voir les tableaux de bord en rendez-vous
+  lienVers: rendez-vous
+  cartes:
+  - surtitre: Demandes
+    chiffre: x3
+    unite: ''
+    legende: de demandes de devis via Google
+    texte: 'Pages métiers créées, fiches Google remises à plat : Google envoie enfin les bonnes recherches.'
+    exempleFictif: false
+    duree: ''
+  - surtitre: Trafic
+    chiffre: +140 %
+    unite: ''
+    legende: de trafic depuis Google
+    texte: Une page pour chaque service et chaque ville, et un site que Google comprend enfin.
+    exempleFictif: false
+    duree: ''
+  - surtitre: Position
+    chiffre: Top 1
+    unite: ''
+    legende: sur la recherche principale en 90 jours
+    texte: Première place sur les recherches clés du métier et de la ville, en trois mois.
+    exempleFictif: false
+    duree: ''
+  note: ''
+geogrid:
+  discriminant: true
+  value:
+    surtitre: Notre outil maison
+    titre: 'GeoGrid : votre position, *point par point*'
+    points:
+    - Une recherche Google Maps simulée depuis chaque point de votre zone
+    - Votre position face à vos concurrents, point par point
+    - La carte remesurée chaque mois pour voir votre zone passer au vert
+    motCle: ''
+    zone: Tours · rayon 20 km
+    concurrents:
+    - nom: Concurrent A
+      position: 1,9
+    - nom: Concurrent B
+      position: 3,6
+    positions:
+    - 15,12,9,7,9,13,16
+    - 12,9,6,4,7,10,13
+    - 10,6,3,2,3,7,11
+    - 8,4,2,1,2,5,9
+    - 10,6,3,2,4,8,12
+    - 13,9,6,5,8,11,14
+    - 16,14,11,9,12,15,18
+faq:
+- question: En combien de temps je vois des résultats ?
+  answer: Les corrections techniques jouent en quelques semaines. Les contenus et l'autorité prennent plusieurs mois, selon la concurrence. On vous donne un calendrier réaliste dès l'audit.
+- question: Quelle différence entre SEO, local et GEO ?
+  answer: Le SEO vous place dans les résultats classiques de Google. Le local vous place sur Google Maps. Le GEO vous fait citer par les moteurs IA. Les trois se renforcent.
+- question: Je dois écrire des articles ?
+  answer: Non. On rédige, vous relisez et vous validez. Votre connaissance du métier nous sert, pas votre temps.
+- question: Vous achetez des liens ?
+  answer: Non. On obtient des liens depuis des sites réels de votre secteur et de votre région, pas depuis des réseaux de sites artificiels.

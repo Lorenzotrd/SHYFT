@@ -1,8 +1,0 @@
----
-// Les expertises qui changent le plus les résultats de celle-ci.
-import { expertises, expertiseUrl, find, type Expertise } from '../../lib/content';
-interface Props { expertise: Expertise }
-const all = await expertises();
-const { complements } = Astro.props.expertise.data;
----
-<section class="block expertise-section"><div class="wrap"><div class="kicker">Ça marche mieux ensemble</div><h2 class="title">Cette expertise fonctionne <br>encore mieux avec.</h2><p class="sub">Aucun levier ne travaille seul. Voici ceux qui changent le plus les résultats de celui-ci.</p><div class="channel-grid">{complements.map((c) => { const e = find(all, c.expertise); return <a class="channel-card" href={expertiseUrl(c.expertise)}><span class="channel-number">{e.data.tag} ↗</span><h3>{e.data.name}</h3><p>{c.why}</p></a>; })}</div></div></section>

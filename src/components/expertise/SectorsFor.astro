@@ -1,9 +1,0 @@
----
-// Secteurs où cette expertise est particulièrement pertinente.
-import { sectors, single, sectorUrl, find, type Expertise } from '../../lib/content';
-interface Props { expertise: Expertise }
-const [all, nav] = await Promise.all([sectors(), single('navigation')]);
-const id = Astro.props.expertise.id;
-const slugs = nav.sectorExpertises.filter((x) => x.expertises.includes(id)).map((x) => x.sector);
----
-{slugs.length > 0 && <section class="block" style="padding-top:0"><div class="wrap"><div class="section-top"><div><div class="kicker">Où c’est particulièrement utile</div><h2 class="title">Les secteurs <br>concernés.</h2></div><p class="sub">Une indication, pas une règle. Le bon assemblage se décide pendant l’audit, à partir de votre marché.</p></div><div class="xp-chips">{slugs.map((s) => <a class="xp-chip" href={sectorUrl(s)}>{find(all, s).data.name} <span aria-hidden="true">↗</span></a>)}</div></div></section>}

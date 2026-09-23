@@ -21,6 +21,7 @@ const expertiseRefs = (label: string) => fields.array(expertiseRef(), { label, i
 
 const title = (label: string) => fields.text({ label, multiline: true, description: 'Un mot entre astérisques, *comme ceci*, s’affiche en serif italique. ' + BR });
 const titled = () => fields.object({ titre: text('Titre'), texte: paragraph('Texte') });
+const champ = (label: string) => fields.object({ label: text('Libellé'), placeholder: text('Exemple dans le champ') }, { label });
 const tone = () => fields.select({ label: 'Couleur', defaultValue: 'clair', options: [{ label: 'Blanche', value: 'clair' }, { label: 'Noire', value: 'sombre' }, { label: 'Jaune', value: 'accent' }] });
 
 const sectionHead = {
@@ -38,7 +39,7 @@ export default config({
     brand: { name: 'SHYFT' },
     navigation: {
       Pages: ['accueil', 'services', 'listes', 'secteurs', 'expertises', 'pages'],
-      'Blocs communs': ['site', 'rendezVous', 'methode', 'mesure', 'formulaire', 'piedDePage', 'navigation', 'leviers'],
+      'Blocs communs': ['site', 'rendezVous', 'serviceCommun', 'auditOffert', 'methode', 'mesure', 'formulaire', 'piedDePage', 'navigation', 'leviers'],
     },
   },
 
@@ -48,10 +49,13 @@ export default config({
       slugField: 'nom',
       path: 'src/content/services/*',
       format: { data: 'yaml' },
+      columns: ['nom'],
       schema: {
         nom: fields.slug({ name: { label: 'Nom' }, slug: { label: 'Adresse', description: 'Ne pas modifier : c’est l’adresse de la page (/expertises/…).' } }),
         nomCourt: text('Nom court', 'Pied de page sur téléphone : « SEO », « IA »…'),
         ordre: fields.integer({ label: 'Ordre d’affichage', defaultValue: 1 }),
+        seoTitle: text('Titre pour Google'),
+        seoDescription: paragraph('Description pour Google'),
         carte: fields.object({
           texte: paragraph('Texte de la carte'),
           texteCourt: paragraph('Texte de la carte sur téléphone'),
@@ -61,6 +65,38 @@ export default config({
           ] }),
           ton: tone(),
         }, { label: 'Carte sur l’accueil' }),
+        audit: fields.object({ tag: text('Étiquette'), description: paragraph('Ce qu’on regarde') }, { label: 'Carte sur la page audit offert' }),
+        hero: fields.object({ titre: title('Titre'), texte: paragraph('Texte') }, { label: 'En-tête' }),
+        suivi: list('Ce qu’on suit chaque mois', 'Indicateur'),
+        problemes: fields.array(titled(), { label: 'Vous vous reconnaissez ? (trois problèmes)', itemLabel: (p) => p.fields.titre.value }),
+        miseEnPlace: fields.array(titled(), { label: 'Ce qu’on met en place', itemLabel: (p) => p.fields.titre.value }),
+        couverture: fields.conditional(fields.checkbox({ label: 'Afficher le bloc « couvrir toute la recherche »' }), {
+          true: fields.object({
+            titre: title('Titre'), texte: paragraph('Texte'),
+            cartes: fields.array(fields.object({ badge: text('Pastille'), titre: text('Titre'), texte: paragraph('Texte'), points: list('Points', 'Point') }), { label: 'Cartes', itemLabel: (p) => p.fields.titre.value }),
+          }),
+          false: fields.empty(),
+        }),
+        etapes: fields.array(titled(), { label: 'Comment ça se passe', itemLabel: (p) => p.fields.titre.value }),
+        chiffres: fields.object({
+          titre: title('Titre'), lien: text('Lien à droite du titre'),
+          lienVers: fields.select({ label: 'Le lien mène à', defaultValue: 'rendez-vous', options: [{ label: 'La prise de rendez-vous', value: 'rendez-vous' }, { label: 'Les résultats de l’accueil', value: 'resultats' }] }),
+          cartes: fields.array(fields.object({
+            surtitre: text('Surtitre'), chiffre: text('Chiffre'), unite: text('Unité en petit (facultatif)'), legende: text('Légende'), texte: paragraph('Texte'),
+            exempleFictif: fields.checkbox({ label: 'Étiquette « Exemple fictif »' }), duree: text('Durée (facultatif)', 'Exemple : « En 3 mois ».'),
+          }), { label: 'Trois cartes', itemLabel: (p) => `${p.fields.chiffre.value} · ${p.fields.surtitre.value}` }),
+          note: paragraph('Note sous les cartes (facultatif)'),
+        }, { label: 'Chiffres' }),
+        geogrid: fields.conditional(fields.checkbox({ label: 'Afficher la GeoGrid' }), {
+          true: fields.object({
+            surtitre: text('Surtitre'), titre: title('Titre'), points: list('Points', 'Point'),
+            motCle: text('Mot clé affiché'), zone: text('Zone', 'Le nombre de points est calculé à partir de la grille.'),
+            concurrents: fields.array(fields.object({ nom: text('Nom'), position: text('Position moyenne') }), { label: 'Concurrents', itemLabel: (p) => p.fields.nom.value }),
+            positions: list('Positions (une ligne de 7 nombres par rangée, séparés par des virgules)', 'Rangée'),
+          }),
+          false: fields.empty(),
+        }),
+        faq: faqList('Questions'),
       },
     }),
     secteurs: collection({
@@ -265,6 +301,48 @@ export default config({
         pastille: text('Pastille'), titre: title('Titre'), texte: paragraph('Texte'),
         cta: text('Bouton principal (rendez-vous)'), ctaSecondaire: text('Bouton secondaire (audit)'),
         garanties: list('Garanties', 'Garantie'),
+      },
+    }),
+
+    serviceCommun: singleton({
+      label: 'Pages services : libellés communs',
+      path: 'src/content/site/service-commun',
+      format: { data: 'yaml' },
+      schema: {
+        filAccueil: text('Fil d’Ariane : accueil'), filServices: text('Fil d’Ariane : services'),
+        ctaRdv: text('Bouton rendez-vous'), ctaAudit: text('Bouton audit'),
+        suiviSurtitre: text('Carte de suivi : surtitre'), suiviTitre: title('Carte de suivi : titre'),
+        problemesTitre: title('Titre des problèmes'), problemeEtiquette: text('Pastille des problèmes'),
+        miseEnPlaceTitre: title('Titre « ce qu’on met en place »'), miseEnPlaceTexte: paragraph('Texte « ce qu’on met en place »'),
+        friseTitre: title('Titre des étapes'), faqTitre: title('Titre des questions'), faqTexte: paragraph('Texte des questions'),
+        autresLeviers: text('Titre « autres leviers »'), exempleFictif: text('Étiquette « exemple fictif »'),
+      },
+    }),
+
+    auditOffert: singleton({
+      label: 'Page audit offert',
+      path: 'src/content/site/audit-offert',
+      format: { data: 'yaml' },
+      schema: {
+        seoTitle: text('Titre pour Google'), seoDescription: paragraph('Description pour Google'),
+        fil: text('Fil d’Ariane'), titre: title('Titre'), texte: paragraph('Texte'), garanties: list('Garanties', 'Garantie'),
+        recevez: fields.object({ surtitre: text('Surtitre'), points: list('Ce que vous recevez', 'Point') }, { label: 'Carte « ce que vous recevez »' }),
+        etape1: fields.object({
+          surtitre: text('Surtitre'), titre: title('Titre'), toutAuditer: text('Bouton « tout sélectionner »'), toutDeselectionner: text('Bouton « tout désélectionner »'),
+          compteur: text('Compteur', '{n} et {total} sont remplacés par les nombres.'),
+        }, { label: 'Étape 1 : les leviers', description: 'Les cartes viennent de la collection Services.' }),
+        etape2: fields.object({ surtitre: text('Surtitre'), titre: title('Titre') }, { label: 'Étape 2 : l’entreprise' }),
+        champs: fields.object({
+          entreprise: champ('Entreprise'), site: champ('Site'), ville: champ('Ville'), secteur: champ('Secteur'), nom: champ('Nom'),
+          email: champ('Email'), tel: champ('Téléphone'), agences: champ('Agences'), message: champ('Message'),
+          facultatif: text('Mention « facultatif »'),
+        }, { label: 'Champs du formulaire' }),
+        secteurs: list('Secteurs proposés', 'Secteur'),
+        envoi: fields.object({
+          aucun: text('Aucun levier choisi'), un: text('Un levier choisi'), plusieurs: text('Plusieurs leviers', '{n} est remplacé par le nombre.'),
+          mention: paragraph('Mention sur les données'), bouton: text('Bouton d’envoi'), erreur: paragraph('Message d’erreur de saisie'),
+        }, { label: 'Barre d’envoi' }),
+        confirmation: fields.object({ titre: title('Titre'), texte: paragraph('Texte'), modifier: text('Bouton « modifier »') }, { label: 'Confirmation' }),
       },
     }),
 

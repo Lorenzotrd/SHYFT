@@ -1,8 +1,90 @@
 nom: Création de site
 nomCourt: Sites
 ordre: 5
+seoTitle: Création de site qui convertit · shyft
+seoDescription: Un site rapide, clair sur mobile et pensé pour Google, construit pour transformer vos visiteurs en clients. Et modifiable par vous.
 carte:
   texte: Un site rapide et clair, fait pour faire appeler et demander un devis. Pas une vitrine de plus.
   texteCourt: Un site rapide et clair, fait pour convertir.
   icone: site
   ton: clair
+audit:
+  tag: Conversion
+  description: Votre site sur mobile, sa vitesse et le chemin jusqu’au contact ou à l’achat.
+hero:
+  titre: Un site qui *convertit*, pas juste joli
+  texte: Rapide, clair sur mobile et pensé pour Google. Construit pour transformer vos visiteurs en clients, que ce soit un appel, une réservation, une demande ou un achat. Et modifiable par vous.
+suivi:
+- Demandes reçues par le site
+- Vitesse de chargement sur mobile
+- Visites sur les pages villes
+- Appels passés depuis le site
+problemes:
+- titre: On ne comprend pas ce que vous faites
+  texte: En trois secondes, le visiteur ne sait pas quoi, où, ni comment vous joindre.
+- titre: Un calvaire sur mobile
+  texte: Il faut chercher le numéro, zoomer, attendre que la page charge.
+- titre: Aucun résultat en ligne
+  texte: Le site existe, mais il ne vous apporte ni contacts ni clients.
+miseEnPlace:
+- titre: Structure qui convertit
+  texte: 'Chaque page mène vers une action : appeler, réserver, demander, acheter.'
+- titre: Pages métiers et villes
+  texte: Pour être trouvé sur chaque service et chaque ville.
+- titre: Contact en un geste
+  texte: Le bouton qui compte pour vous, visible sur chaque page.
+- titre: Vitesse et technique
+  texte: Un site rapide et propre pour Google.
+- titre: Mesure intégrée
+  texte: Chaque demande comptée dès la mise en ligne.
+- titre: Modifiable par vous
+  texte: Une interface simple pour changer vos textes.
+couverture:
+  discriminant: false
+etapes:
+- titre: Le cadrage
+  texte: Vos métiers, vos zones, vos clients.
+- titre: La maquette
+  texte: Validée avant la moindre ligne de code.
+- titre: Le développement
+  texte: Site et contenus construits ensemble.
+- titre: La mise en ligne
+  texte: Et le suivi des premières demandes.
+chiffres:
+  titre: Nos chiffres *création de site*
+  lien: Voir nos réalisations en rendez-vous
+  lienVers: rendez-vous
+  cartes:
+  - surtitre: Réalisations
+    chiffre: '+35'
+    unite: ''
+    legende: sites sur mesure livrés
+    texte: Pas de modèle acheté puis retouché. Chaque site est construit pour son métier et ses clients.
+    exempleFictif: false
+    duree: ''
+  - surtitre: Trafic
+    chiffre: x10
+    unite: ''
+    legende: de visiteurs en un an
+    texte: Des sites pensés pour Google dès la première ligne, avec des pages pour chaque service et chaque ville.
+    exempleFictif: false
+    duree: ''
+  - surtitre: Secteurs
+    chiffre: '+15'
+    unite: ''
+    legende: secteurs d'activité accompagnés
+    texte: Chaque site reprend les codes, les attentes et les recherches de son secteur. On ne repart jamais de zéro.
+    exempleFictif: false
+    duree: ''
+  note: ''
+geogrid:
+  discriminant: false
+faq:
+- question: Faut-il tout refaire ?
+  answer: Pas forcément. Si votre site fait le travail, on l'améliore. On ne propose une refonte que si elle vous fait gagner des demandes.
+- question: Je pourrai le modifier moi-même ?
+  answer: Oui, vos textes, vos photos et vos pages, depuis une interface simple.
+- question: Combien de temps ça prend ?
+  answer: Ça dépend de la taille du site. Le planning est posé au cadrage, avec les dates de validation.
+- question: Le site m'appartient ?
+  answer: Oui. Le nom de domaine, le contenu et le site sont à vous.

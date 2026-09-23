@@ -1,6 +1,0 @@
----
-// Bento des expertises : trois formats de tuile pour éviter sept cartes identiques.
-import { expertises, expertiseUrl } from '../lib/content';
-const all = await expertises();
----
-<div class="xp-grid">{all.map((e) => <a class={`xp-card xp-${e.data.size}`} href={expertiseUrl(e.id)}><span class="xp-tag">{e.data.tag}</span><h3>{e.data.name}</h3><p>{e.data.card}</p><span class="xp-go" aria-hidden="true">↗</span></a>)}</div>

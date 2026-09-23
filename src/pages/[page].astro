@@ -1,10 +1,10 @@
 ---
 // Pages légales : en-tête simple et contenu HTML issu de la collection « pages ».
+// Les passages <mark>À compléter</mark> restent visibles tant que les informations manquent.
 import { getCollection, type CollectionEntry } from 'astro:content';
-import Base from '../layouts/Base.astro';
-import ListingHero from '../components/ListingHero.astro';
-import LeadForm from '../components/LeadForm.astro';
-import Footer from '../components/Footer.astro';
+import Site from '../layouts/Site.astro';
+import Nav from '../components/shyft/Nav.astro';
+import Footer from '../components/shyft/Footer.astro';
 
 export async function getStaticPaths() {
   return (await getCollection('pages')).map((page) => ({ params: { page: page.id }, props: { page } }));
@@ -12,9 +12,27 @@ export async function getStaticPaths() {
 const { page } = Astro.props as { page: CollectionEntry<'pages'> };
 const p = page.data;
 ---
-<Base title={p.seoTitle} description={p.seoDescription} path={page.id}>
-<ListingHero eyebrow={p.eyebrow} title={p.h1} lead={p.lead} legal />
-<main id="main"><section class="block"><div class="wrap"><div class="legal-text" set:html={p.body}></div></div></section></main>
-<LeadForm />
-<Footer />
-</Base>
+<Site title={p.seoTitle} description={p.seoDescription} path={page.id}>
+  <Nav />
+  <main id="main" class="legal">
+    <header class="head">
+      <span class="eyebrow">{p.eyebrow}</span>
+      <h1 class="h2">{p.h1.replace(/\.$/, '')}</h1>
+      <p class="lead">{p.lead}</p>
+    </header>
+    <article class="body" set:html={p.body}></article>
+  </main>
+  <Footer />
+</Site>
+<style>
+  .legal{padding:60px var(--gutter) 0;display:flex;flex-direction:column;gap:40px}
+  .head{display:flex;flex-direction:column;gap:20px;max-width:780px}
+  .body{max-width:820px;padding:clamp(24px, 3.5vw, 48px);border-radius:var(--r-card);background:var(--card);font-size:16px;line-height:1.7;color:var(--ink-2)}
+  .body :global(h2){margin:34px 0 10px;font-size:22px;letter-spacing:-.02em;color:var(--ink)}
+  .body :global(h2:first-child){margin-top:0}
+  .body :global(p),.body :global(ul){margin:0 0 14px}
+  .body :global(ul){padding-left:20px}
+  .body :global(a){text-decoration:underline;text-underline-offset:3px}
+  .body :global(mark){background:var(--warn-bg);color:var(--warn-ink);padding:1px 4px;border-radius:4px}
+  @media (max-width:640px){ .legal{padding-top:34px;gap:24px} .body{font-size:15px} }
+</style>

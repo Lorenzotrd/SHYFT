@@ -82,5 +82,10 @@
    secteur: (event.detail && event.detail.secteur) || '',
    page: location.pathname,
   });
+  // Demande d'audit offert : combien de leviers, lesquels.
+  if (event.detail && event.detail.formulaire === 'audit') {
+   const levers = event.detail.services || [];
+   gtag('event', 'demande_audit', { leviers: levers.length, services: levers.join(',') });
+  }
  });
 })();

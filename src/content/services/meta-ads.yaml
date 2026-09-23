@@ -1,8 +1,90 @@
 nom: Meta Ads
 nomCourt: Meta Ads
 ordre: 3
+seoTitle: Publicité Meta Ads, Facebook et Instagram · shyft
+seoDescription: Facebook et Instagram ciblés sur votre rayon d'intervention, pour créer la demande avant qu'elle parte chez un concurrent.
 carte:
   texte: Aller chercher ceux qui ne vous cherchent pas encore, sur Facebook et Instagram, dans votre rayon.
   texteCourt: Toucher ceux qui ne vous cherchent pas encore, dans votre rayon.
   icone: megaphone
   ton: clair
+audit:
+  tag: Publicité
+  description: Vos publicités Facebook et Instagram, et celles que diffusent vos concurrents.
+hero:
+  titre: Toucher ceux qui ne vous cherchent *pas encore*
+  texte: Facebook et Instagram, ciblés sur votre rayon d'intervention. Pour créer la demande avant qu'elle parte chez un concurrent.
+suivi:
+- Coût par demande
+- Demandes qualifiées
+- Personnes touchées dans votre zone
+- Taux de réponse aux demandes
+problemes:
+- titre: On ne pense pas à vous
+  texte: Vos futurs clients ne savent pas encore qu'ils auront besoin de vous.
+- titre: Des posts qui tournent en rond
+  texte: Vos publications touchent surtout ceux qui vous connaissent déjà.
+- titre: Des boosts sans résultat
+  texte: Vous avez déjà boosté des posts sans savoir ce que ça a rapporté.
+miseEnPlace:
+- titre: Ciblage par rayon
+  texte: Autour de vos agences, pas dans toute la France.
+- titre: Visuels adaptés
+  texte: Photos et vidéos courtes montées à partir de vos chantiers et produits.
+- titre: Formulaires intégrés
+  texte: Une demande en deux clics, sans quitter Facebook ou Instagram.
+- titre: Relance des visiteurs
+  texte: On retouche ceux qui sont passés sur votre site sans demander.
+- titre: Tests de messages
+  texte: Plusieurs angles testés, on garde ce qui marche.
+- titre: Suivi par campagne
+  texte: Chaque demande rattachée à la publicité qui l'a créée.
+couverture:
+  discriminant: false
+etapes:
+- titre: Les offres et zones
+  texte: Ce qu'on met en avant, et où.
+- titre: Les visuels
+  texte: Montés à partir de vos images.
+- titre: Le lancement
+  texte: Tests et premiers ajustements.
+- titre: Le pilotage
+  texte: Coût par demande, chaque mois.
+chiffres:
+  titre: Nos chiffres *Meta Ads*
+  lien: Voir les tableaux de bord en rendez-vous
+  lienVers: rendez-vous
+  cartes:
+  - surtitre: Budget géré
+    chiffre: +1 M€
+    unite: ''
+    legende: dépensés pour nos clients en un an
+    texte: Sur Facebook et Instagram, pour des entreprises locales comme pour des marques en ligne.
+    exempleFictif: false
+    duree: ''
+  - surtitre: Rentabilité
+    chiffre: 2,5
+    unite: ROAS
+    legende: de retour sur dépense publicitaire
+    texte: 2,50 € de chiffre d'affaires générés pour chaque euro investi en publicité.
+    exempleFictif: false
+    duree: ''
+  - surtitre: Croissance
+    chiffre: +50 %
+    unite: ''
+    legende: de demandes par mois sur les 3 premiers mois
+    texte: 'Des campagnes qui apprennent vite : plus de demandes chaque mois, et un coût par prospect qui baisse.'
+    exempleFictif: false
+    duree: ''
+  note: Chiffres issus des tableaux de bord de nos clients. Noms retirés par confidentialité, détails présentés en rendez-vous.
+geogrid:
+  discriminant: false
+faq:
+- question: Mes clients sont des pros, ça marche ?
+  answer: Oui, à condition de cibler finement. Et pour certains métiers, on vous dira honnêtement que Google Ads passe avant.
+- question: Il faut que je fournisse des photos ?
+  answer: Les vôtres de préférence, même prises au téléphone. On s'occupe du montage.
+- question: Quel budget prévoir ?
+  answer: Il est fixé dans le plan, selon votre zone. Il est réglé directement à Meta, sur votre compte.
+- question: Je gère déjà ma page Facebook
+  answer: Parfait, on ne touche pas à votre communication. On s'occupe de la publicité qui génère des demandes.

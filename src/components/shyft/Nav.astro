@@ -4,17 +4,19 @@
 import Icon from './Icon.astro';
 import Bouton from './Bouton.astro';
 import { single } from '../../lib/content';
+interface Props { current?: 'services' }
+const { current } = Astro.props;
 const { nav } = await single('site');
 const links = [
-  { href: '/#services', label: nav.services },
-  { href: '/#methode', label: nav.methode },
-  { href: '/#resultats', label: nav.resultats },
+  { href: '/#services', label: nav.services, key: 'services' },
+  { href: '/#methode', label: nav.methode, key: 'methode' },
+  { href: '/#resultats', label: nav.resultats, key: 'resultats' },
 ];
 ---
 <header class="nav" data-nav>
   <a class="logo" href="/" aria-label="shyft, accueil">shyft<span>.</span></a>
   <nav class="links" id="menu-principal" aria-label="Navigation principale">
-    {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    {links.map((l) => <a href={l.href} class:list={{ active: l.key === current }}>{l.label}</a>)}
     <a class="menu-cta" href="/audit-offert">{nav.cta}</a>
   </nav>
   <Bouton href="/audit-offert" size="sm" class="nav-cta">{nav.cta}</Bouton>
@@ -42,7 +44,7 @@ const links = [
   .logo span{color:var(--accent)}
   .links{display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:var(--ink)}
   .links a{padding:11px 18px;border-radius:999px;font-size:14px;font-weight:500;color:var(--on-dark-2);transition:background .2s,color .2s}
-  .links a:hover{background:var(--dark-2);color:var(--on-dark)}
+  .links a:hover,.links a.active{background:var(--dark-2);color:var(--on-dark)}
   .links a:focus-visible{outline-color:var(--accent)}
   .menu-cta,.menu-btn{display:none}
   @media (max-width:760px){

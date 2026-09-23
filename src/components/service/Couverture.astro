@@ -1,0 +1,35 @@
+---
+// « Et pour couvrir toute la recherche » : deux cartes (local, GEO) avec leurs points.
+import Icon from '../shyft/Icon.astro';
+import { rich } from '../../lib/site';
+interface Props { titre: string; texte: string; cartes: { badge: string; titre: string; texte: string; points: string[] }[] }
+const { titre, texte, cartes } = Astro.props;
+---
+<section class="section cover" aria-labelledby="cover-titre">
+  <div class="section-head">
+    <h2 id="cover-titre" class="h2 h2-page" set:html={rich(titre)}></h2>
+    <p>{texte}</p>
+  </div>
+  <div class="grid">
+    {cartes.map((c) => (
+      <article>
+        <span class="badge">{c.badge}</span>
+        <h3>{c.titre}</h3>
+        <p>{c.texte}</p>
+        <ul>{c.points.map((pt) => <li><Icon name="check" size={16} />{pt}</li>)}</ul>
+      </article>
+    ))}
+  </div>
+</section>
+<style>
+  .cover{display:flex;flex-direction:column;gap:44px}
+  .grid{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:16px}
+  article{display:flex;flex-direction:column;gap:16px;padding:36px;border-radius:var(--r-card);background:var(--card)}
+  .badge{align-self:flex-start;padding:6px 12px;border-radius:999px;background:var(--accent);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+  h3{margin-top:6px;font-size:34px;letter-spacing:-.04em}
+  p{font-size:16px;line-height:1.6;color:var(--muted)}
+  ul{list-style:none;margin-top:8px;padding:18px 0 0;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line-2)}
+  li{display:flex;align-items:center;gap:12px;font-size:16px;color:var(--ink-2)}
+  @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+  @media (max-width:640px){ .cover{gap:22px} article{padding:24px;border-radius:20px} h3{font-size:26px} li,p{font-size:15px} }
+</style>

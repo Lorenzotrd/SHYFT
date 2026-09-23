@@ -2,30 +2,30 @@ title: Politique de confidentialité
 eyebrow: Vos données
 h1: Politique de confidentialité.
 lead: Ce qu’on fait de vos informations, et ce qu’on ne fait pas.
-seoTitle: Politique de confidentialité · SHYFT
-seoDescription: Comment SHYFT utilise les informations du formulaire d’audit et quels sont vos droits.
+seoTitle: Politique de confidentialité · shyft
+seoDescription: Comment shyft utilise les informations de la demande d’audit et quels sont vos droits.
 body: |
   <h2>Responsable du traitement</h2>
 
-  <p>SHYFT, <mark>À compléter : identité complète et adresse email de contact</mark>.</p>
+  <p>KENDLE LLC, éditeur du site shyft, <mark>À compléter : adresse et adresse email de contact</mark>.</p>
 
   <h2>Données collectées</h2>
 
-  <p>Le formulaire d’audit recueille : prénom et nom, entreprise, site internet, secteur, téléphone et email professionnel. Nous enregistrons également la page depuis laquelle la demande a été envoyée, les paramètres de campagne éventuellement présents dans l’adresse et le site qui vous a orienté vers le nôtre. Ces informations nous servent à savoir quels contenus répondent à vos questions. Aucun profilage publicitaire n’est réalisé.</p>
+  <p>La demande d’audit recueille : nom de l’entreprise, site internet, ville principale, secteur, prénom et nom, email professionnel, téléphone, nombre d’agences ou de points de vente, un message facultatif et les leviers que vous souhaitez faire auditer. Nous enregistrons également la page depuis laquelle la demande a été envoyée, les paramètres de campagne éventuellement présents dans l’adresse et le site qui vous a orienté vers le nôtre. Ces informations nous servent à savoir quels contenus répondent à vos questions. Aucun profilage publicitaire n’est réalisé.</p>
 
   <h2>Où elles sont conservées</h2>
 
-  <p>Les demandes sont enregistrées dans un espace privé, accessible uniquement par l’équipe SHYFT après authentification, et transmises à notre outil de suivi des demandes, <mark>À compléter : nom du CRM ou de l’outil email</mark>. Elles ne sont ni revendues, ni partagées avec des tiers à des fins commerciales.</p>
+  <p>Les demandes sont enregistrées dans un espace privé, accessible uniquement par l’équipe shyft après authentification, et transmises à une feuille Google Sheets de suivi des demandes, avec une notification par email à l’équipe. Elles ne sont ni revendues, ni partagées avec des tiers à des fins commerciales.</p>
 
   <h2>Pourquoi ces données</h2>
 
-  <ul><li>Préparer l’audit offert que vous demandez et vous recontacter pour le présenter (mesures précontractuelles prises à votre demande).</li><li>Poursuivre l’échange commercial si vous le souhaitez (intérêt légitime).</li></ul>
+  <ul><li>Préparer l’audit offert que vous demandez et vous l’envoyer par email (mesures précontractuelles prises à votre demande).</li><li>Poursuivre l’échange commercial si vous le souhaitez (intérêt légitime).</li></ul>
 
   <p>Aucune prospection sans lien avec votre demande, aucune revente de données.</p>
 
   <h2>Destinataires</h2>
 
-  <p>L’équipe SHYFT et les prestataires techniques qui hébergent nos outils : <mark>À compléter : liste des prestataires et localisation des données</mark>.</p>
+  <p>L’équipe shyft et les prestataires techniques qui hébergent nos outils : <mark>À compléter : liste des prestataires et localisation des données</mark>.</p>
 
   <h2>Durée de conservation</h2>
 
@@ -47,4 +47,4 @@ body: |
 
   <p>Les données du formulaire sont vérifiées côté serveur, protégées par un champ anti-robot et transmises de façon chiffrée lorsque le site est servi en HTTPS.</p>
 
-  <p>Dernière mise à jour : 17 septembre 2026.</p>
+  <p>Dernière mise à jour : 23 septembre 2026.</p>

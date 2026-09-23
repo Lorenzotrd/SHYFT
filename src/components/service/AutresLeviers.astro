@@ -1,0 +1,21 @@
+---
+// Les autres leviers : une pastille par service, sauf celui de la page.
+import Icon from '../shyft/Icon.astro';
+import { services as allServices } from '../../lib/content';
+interface Props { current: string; titre: string }
+const { current, titre } = Astro.props;
+const others = (await allServices()).filter((s) => s.id !== current);
+---
+<nav class="section others" aria-label={titre}>
+  <span class="k">{titre}</span>
+  <div>{others.map((s) => <a href={`/expertises/${s.id}`}>{s.data.nom}<span><Icon name="arrow" size={12} /></span></a>)}</div>
+</nav>
+<style>
+  .others{display:flex;flex-direction:column;gap:22px}
+  .k{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--label)}
+  div{display:flex;flex-wrap:wrap;gap:10px}
+  a{display:inline-flex;align-items:center;gap:10px;padding:14px 16px 14px 22px;border-radius:999px;background:var(--card);font-size:16px;font-weight:500;transition:background .2s}
+  a:hover{background:var(--accent)}
+  a span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--chip)}
+  @media (max-width:640px){ a{font-size:14px;padding:11px 12px 11px 16px} }
+</style>

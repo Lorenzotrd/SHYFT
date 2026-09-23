@@ -11,7 +11,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "node scripts/api-test.mjs"
+    "test": "node scripts/api-test.mjs",
+    "test:audit": "node scripts/audit-e2e.cjs"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.6",

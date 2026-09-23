@@ -54,6 +54,16 @@ const fontCss =
 <a class="skip-link" href="#main">Aller au contenu</a>
 <div class="page"><div class="frame"><slot /></div></div>
 {jsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>}
+<script>
+  // Provenance de la visite (campagne, gclid, site d'origine, première visite), gardée pour la demande d'audit.
+  const KEEP = ['utm_source', 'utm_medium', 'utm_campaign', 'gclid'];
+  try {
+    const params = new URLSearchParams(location.search);
+    KEEP.forEach((k) => { const v = params.get(k); if (v) sessionStorage.setItem(k, v.slice(0, 200)); });
+    if (document.referrer && !document.referrer.includes(location.host) && !sessionStorage.getItem('referrer')) sessionStorage.setItem('referrer', document.referrer.slice(0, 300));
+    if (!localStorage.getItem('shyft:first')) localStorage.setItem('shyft:first', new Date().toISOString());
+  } catch { /* stockage bloqué (navigation privée) : la demande part sans provenance */ }
+</script>
 {GA_ID && <script is:inline src="/assets/analytics.js" data-ga={GA_ID} defer></script>}
 </body>
 </html>

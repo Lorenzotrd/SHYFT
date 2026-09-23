@@ -2,12 +2,12 @@ title: Mentions légales
 eyebrow: Informations légales
 h1: Mentions légales.
 lead: Qui édite ce site et comment nous contacter.
-seoTitle: Mentions légales · SHYFT
-seoDescription: Informations légales sur l’éditeur et l’hébergeur du site SHYFT.
+seoTitle: Mentions légales · shyft
+seoDescription: Informations légales sur l’éditeur et l’hébergeur du site shyft.
 body: |
   <h2>Éditeur du site</h2>
 
-  <p>SHYFT, <mark>À compléter : forme juridique, capital social, adresse du siège, numéro SIREN ou RCS, numéro de TVA</mark>.</p>
+  <p>Le site shyftgrowth.com est édité par KENDLE LLC, <mark>À compléter : forme juridique, adresse du siège, numéro d’immatriculation, numéro de TVA</mark>.</p>
 
   <p>Directeur de la publication : <mark>À compléter</mark>. Contact : <mark>À compléter : adresse email</mark>.</p>
 
@@ -17,11 +17,11 @@ body: |
 
   <h2>Propriété intellectuelle</h2>
 
-  <p>Les textes, la marque SHYFT et la mise en page de ce site appartiennent à SHYFT. Toute reproduction sans autorisation écrite est interdite.</p>
+  <p>Les textes, la marque shyft et la mise en page de ce site appartiennent à KENDLE LLC. Toute reproduction sans autorisation écrite est interdite.</p>
 
   <h2>Crédits</h2>
 
-  <p>Les photographies d’illustration proviennent d’Unsplash et ne représentent ni l’équipe ni des clients. Les chiffres affichés dans les illustrations et les simulateurs sont fictifs. Polices Geist et Geist Mono (Vercel, licence SIL Open Font License), hébergées sur ce site.</p>
+  <p>Les photographies d’illustration des pages secteurs proviennent d’Unsplash et ne représentent ni l’équipe ni des clients. Les éléments marqués « Exemple illustratif » ou « Exemple fictif » ne sont pas des données réelles. Polices Instrument Sans et Instrument Serif (licence SIL Open Font License), hébergées sur ce site.</p>
 
   <h2>Données personnelles</h2>
 

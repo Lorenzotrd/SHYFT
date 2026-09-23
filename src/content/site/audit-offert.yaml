@@ -1,0 +1,73 @@
+seoTitle: Audit offert en 24 h · shyft
+seoDescription: Choisissez les leviers à auditer, donnez-nous quelques infos sur votre entreprise, et recevez une synthèse claire par mail sous 24 h. Sans appel à passer.
+fil: Audit offert
+titre: Recevez votre audit *offert* en 24 h
+texte: Choisissez ce que vous voulez qu'on regarde, donnez-nous quelques infos sur votre entreprise, et recevez une synthèse claire par mail sous 24 h. Sans appel à passer.
+garanties:
+- Gratuit
+- Sous 24 h
+- Sans engagement
+recevez:
+  surtitre: Ce que vous recevez
+  points:
+  - Une synthèse levier par levier
+  - Votre position face à vos concurrents
+  - Ce que vous perdez aujourd'hui
+  - Les trois actions à faire en premier
+etape1:
+  surtitre: Étape 1
+  titre: Qu'est-ce qu'on *regarde* ?
+  toutAuditer: Tout auditer
+  toutDeselectionner: Tout désélectionner
+  compteur: '{n} sur {total}'
+etape2:
+  surtitre: Étape 2
+  titre: Votre *entreprise*
+champs:
+  entreprise:
+    label: Nom de l'entreprise
+    placeholder: Maigret Location
+  site:
+    label: Site internet
+    placeholder: exemple.fr
+  ville:
+    label: Ville principale
+    placeholder: Tours
+  secteur:
+    label: Secteur
+    placeholder: Choisir votre secteur
+  nom:
+    label: Prénom et nom
+    placeholder: Patrick Martin
+  email:
+    label: Email professionnel
+    placeholder: vous@entreprise.fr
+  tel:
+    label: Téléphone
+    placeholder: 06 12 34 56 78
+  agences:
+    label: Nombre d'agences ou de points de vente
+    placeholder: '1'
+  message:
+    label: Un point précis à regarder ?
+    placeholder: 'Ex : on n''apparaît pas sur Google Maps à Joué-lès-Tours'
+  facultatif: (facultatif)
+secteurs:
+- Location de matériel
+- Réseau de franchise
+- Rénovation et bâtiment
+- Artisan et installateur
+- Immobilier
+- Services multi sites
+- Autre
+envoi:
+  aucun: Choisissez au moins un levier
+  un: 1 levier sélectionné pour votre audit
+  plusieurs: '{n} leviers sélectionnés pour votre audit'
+  mention: Vos données servent uniquement à produire l'audit. Pas de revente, pas de newsletter automatique.
+  bouton: Recevoir mon audit
+  erreur: Renseignez le nom de votre entreprise, votre secteur, votre nom et un email valide, et choisissez au moins un levier.
+confirmation:
+  titre: C'est *noté*
+  texte: Votre audit arrive par mail sous 24 h. En attendant, si vous préférez en parler de vive voix, on peut regarder votre situation ensemble.
+  modifier: Modifier ma demande

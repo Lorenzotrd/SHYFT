@@ -19,9 +19,12 @@ export const CAL_URL = 'https://cal.com/shyftgrowth/30min';
 const escapeHtml = (text: string) =>
   text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+/** Espaces insécables de la typographie française : avant ? ! : ; » et après «, pour qu'un signe ne passe jamais seul à la ligne. */
+export const nbsp = (text: string) => text.replace(/ ([?!:;»])/g, '\u00a0$1').replace(/« /g, '«\u00a0');
+
 /** Texte éditorial → HTML sûr : *mot* devient le mot en serif italique, un retour à la ligne devient <br>. */
 export const rich = (text: string) =>
-  escapeHtml(text).replace(/\*([^*\n]+)\*/g, '<em class="serif">$1</em>').replace(/\s*\n/g, ' <br>');
+  nbsp(escapeHtml(text)).replace(/\*([^*\n]+)\*/g, '<em class="serif">$1</em>').replace(/\s*\n/g, ' <br>');
 
 /** Deux chiffres : 1 → "01". */
 export const pad = (i: number) => String(i).padStart(2, '0');

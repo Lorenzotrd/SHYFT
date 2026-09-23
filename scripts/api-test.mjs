@@ -19,6 +19,13 @@ try {
  const good = await send(data); if (good.status !== 200) console.error('Réponse inattendue :', good.status, await good.text()); assert.equal(good.status, 200); assert.equal((await good.json()).ok, true); assert.equal(received.email, data.email);
  assert.equal((await send({...data, site: 'javascript:alert(1)'})).status, 400, 'adresse de site invalide refusée');
  assert.equal((await send({website_check: 'bot', ...data})).status, 400, 'robot refusé');
+ const audit = {...data, formulaire: 'audit', ville: 'Tours', agences: '2', message: 'Test', services: ['seo', 'google-ads']};
+ const okAudit = await send({...audit, site: 'exemple.fr'}); assert.equal(okAudit.status, 200, 'demande d’audit acceptée');
+ assert.equal(received.services, 'SEO, local et GEO, Google Ads', 'leviers traduits en noms');
+ assert.equal(received.site, 'https://exemple.fr', 'adresse complétée en https');
+ assert.equal((await send({...audit, services: []})).status, 400, 'audit sans levier refusé');
+ assert.equal((await send({...audit, services: ['inconnu']})).status, 400, 'levier inconnu refusé');
+ assert.equal((await send({...audit, services: 'seo'})).status, 400, 'leviers hors liste refusés');
  assert.equal((await fetch(base + '/api/lead')).status, 405, 'GET refusé');
  assert.equal((await fetch(base + '/api/lead', {method: 'POST', headers: {'Content-Type': 'application/json', Origin: 'https://ailleurs.example'}, body: '{}'})).status, 403, 'origine étrangère refusée');
  // Panneau : l'en-tête Origin est exigé par la protection CSRF d'Astro sur DELETE, comme le fait un navigateur.

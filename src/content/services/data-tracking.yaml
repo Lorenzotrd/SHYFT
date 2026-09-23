@@ -1,8 +1,90 @@
 nom: Data et tracking
 nomCourt: Data
 ordre: 6
+seoTitle: 'Data et tracking : savoir d''où vient chaque client · shyft'
+seoDescription: 'Appels, formulaires, devis signés : on mesure tout, source par source, pour garder ce qui rapporte et couper le reste.'
 carte:
   texte: Savoir d'où vient chaque appel et chaque devis signé, pour arrêter de payer ce qui ne rapporte rien.
   texteCourt: Savoir d'où vient chaque demande.
   icone: graphique
   ton: accent
+audit:
+  tag: Mesure
+  description: Ce que vous mesurez aujourd’hui, ce qui manque, et d’où viennent vos clients.
+hero:
+  titre: Savoir *d’où* vient chaque client
+  texte: 'Appels, formulaires, devis signés : on mesure tout, source par source. Pour garder ce qui rapporte et couper le reste.'
+suivi:
+- Demandes par canal
+- Coût par demande, canal par canal
+- Évolution mois après mois
+- Devis signés par source
+problemes:
+- titre: Aucune idée de la source
+  texte: Google, la pub, le bouche à oreille ? Personne ne sait vraiment.
+- titre: Des outils que personne ne lit
+  texte: Analytics est installé, mais il ne mesure pas ce qui compte.
+- titre: Des budgets au feeling
+  texte: Les décisions se prennent à l'intuition, faute de chiffres fiables.
+miseEnPlace:
+- titre: Analytics et Search Console
+  texte: Installés et configurés sur ce qui compte vraiment.
+- titre: Suivi des appels
+  texte: Chaque appel rattaché à sa source.
+- titre: Suivi des devis
+  texte: Formulaires et demandes comptés de bout en bout.
+- titre: Lien avec vos outils
+  texte: Votre CRM ou votre tableur relié à la mesure.
+- titre: Tableau de bord
+  texte: Une seule page, lisible en deux minutes.
+- titre: Lecture mensuelle
+  texte: On vous explique ce qui bouge et quoi en faire.
+couverture:
+  discriminant: false
+etapes:
+- titre: L'audit
+  texte: Ce qui est mesuré aujourd'hui, et ce qui ne l'est pas.
+- titre: L'installation
+  texte: Mesure posée et testée.
+- titre: Le tableau de bord
+  texte: Vos chiffres clés sur une page.
+- titre: La lecture
+  texte: Un point chaque mois.
+chiffres:
+  titre: Ce qu'on a fait *chez eux*
+  lien: Tous les cas clients
+  lienVers: resultats
+  cartes:
+  - surtitre: Réseau multi sites
+    chiffre: 100 %
+    unite: ''
+    legende: des appels attribués à leur source
+    texte: Aucun suivi. Numéros de suivi par canal et par agence.
+    exempleFictif: true
+    duree: En 1 mois
+  - surtitre: Loueur de matériel BTP
+    chiffre: -22 %
+    unite: ''
+    legende: de budget coupé sans perte de demandes
+    texte: Budgets répartis au feeling. Mesure du coût par demande par canal.
+    exempleFictif: true
+    duree: En 3 mois
+  - surtitre: Réseau de franchise
+    chiffre: 1 page
+    unite: ''
+    legende: pour piloter tout le réseau
+    texte: Chaque agence avec ses outils. Tableau de bord commun, lu chaque mois.
+    exempleFictif: true
+    duree: En 2 mois
+  note: ''
+geogrid:
+  discriminant: false
+faq:
+- question: C'est conforme au RGPD ?
+  answer: On installe la mesure avec un bandeau de consentement conforme, et on n'utilise que ce qui est nécessaire.
+- question: J'ai déjà Google Analytics
+  answer: On vérifie qu'il mesure les bonnes choses. C'est rarement le cas par défaut.
+- question: Je vais devoir lire des rapports compliqués ?
+  answer: Non. Une page, vos chiffres clés, et une explication en langage clair.
+- question: Ça marche avec mon CRM ?
+  answer: Dans la plupart des cas, oui. On regarde vos outils au moment de l'audit.
