@@ -8,8 +8,9 @@
  const ID = data.ga || '';
  if (!ID) return;
  const ADS = data.ads || '';
+ const ADS_RDV = data.adsRdv || '';
  const META = data.meta || '';
- const ADVERTISING = Boolean(ADS || META);
+ const ADVERTISING = Boolean(ADS || ADS_RDV || META);
  const KEY = 'shyft:consent';
 
  window.dataLayer = window.dataLayer || [];
@@ -35,7 +36,8 @@
   document.head.appendChild(script);
   gtag('js', new Date());
   gtag('config', ID, {anonymize_ip: true});
-  if (ADS) gtag('config', ADS.split('/')[0]);
+  const account = (ADS || ADS_RDV).split('/')[0];
+  if (account) gtag('config', account);
   if (META) loadMeta();
  }
 
@@ -79,8 +81,8 @@
  function decide(value) {
   choice.set(value);
   gtag('consent', 'update', consentFor(value));
-  if (value === 'granted') { loadGoogle(); pending.splice(0).forEach(track); }
-  else pending.length = 0;
+  if (value === 'granted') { loadGoogle(); pending.splice(0).forEach(track); pendingRdv.splice(0).forEach(trackRdv); }
+  else { pending.length = 0; pendingRdv.length = 0; }
   hide();
  }
 
@@ -118,6 +120,7 @@
  };
 
  const pending = [];
+ const pendingRdv = [];
  const current = choice.get();
  if (current === 'granted') { gtag('consent', 'update', consentFor('granted')); loadGoogle(); }
  else if (current !== 'denied') show();
@@ -137,5 +140,16 @@
   const state = choice.get();
   if (state === 'granted') track(event.detail);
   else if (state !== 'denied') pending.push(event.detail);
+ });
+ // Rendez-vous réservé : page /rendez-vous/merci. Pas d'événement GA4 ici (book_call part du serveur),
+ // seulement les conversions publicitaires configurées. Même règle de consentement que pour les demandes.
+ function trackRdv() {
+  if (ADS_RDV) gtag('event', 'conversion', { send_to: ADS_RDV });
+  if (META && window.fbq) window.fbq('track', 'Schedule');
+ }
+ document.addEventListener('shyft:rdv', event => {
+  const state = choice.get();
+  if (state === 'granted') trackRdv(event.detail);
+  else if (state !== 'denied') pendingRdv.push(event.detail);
  });
 })();

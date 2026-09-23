@@ -2,7 +2,7 @@
 // Gabarit des pages refaites : polices Instrument auto-hébergées, tokens, cadre arrondi,
 // bandeau de consentement et mesure d'audience existants, données structurées.
 import '../styles/tokens.css';
-import { BRAND, SITE_URL, GA_ID, ADS_CONVERSION, META_PIXEL_ID } from '../lib/site';
+import { BRAND, SITE_URL, GA_ID, ADS_CONVERSION, ADS_CONVERSION_RDV, META_PIXEL_ID } from '../lib/site';
 
 interface Props {
   title: string;
@@ -66,7 +66,7 @@ const fontCss =
     if (!localStorage.getItem('shyft:first')) localStorage.setItem('shyft:first', new Date().toISOString());
   } catch { /* stockage bloqué (navigation privée) : la demande part sans provenance */ }
 </script>
-{GA_ID && <script is:inline src="/assets/analytics.js" data-ga={GA_ID} data-ads={ADS_CONVERSION || undefined} data-meta={META_PIXEL_ID || undefined} defer></script>}
+{GA_ID && <script is:inline src="/assets/analytics.js" data-ga={GA_ID} data-ads={ADS_CONVERSION || undefined} data-ads-rdv={ADS_CONVERSION_RDV || undefined} data-meta={META_PIXEL_ID || undefined} defer></script>}
 <script is:inline src="/assets/booking.js" defer></script>
 </body>
 </html>

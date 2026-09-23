@@ -40,6 +40,11 @@
   return loading;
  }
 
+ // Note lue par /rendez-vous/merci : la conversion publicitaire n'y est comptée que si la réservation vient du site.
+ function remember(link) {
+  try { sessionStorage.setItem('shyft:booking', JSON.stringify({emplacement: link.dataset.emplacement || 'lien', page: location.pathname})); } catch {}
+ }
+
  function stored(key) { try { return sessionStorage.getItem(key) || ''; } catch { return ''; } }
 
  // Identifiants GA4, fournis par analytics.js uniquement après accord. Sinon : rien.
@@ -75,6 +80,7 @@
   // Nouvel onglet, clic du milieu : comportement normal du navigateur.
   if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   event.preventDefault();
+  remember(link);
   const href = link.href;
   const calLink = new URL(href).pathname.replace(/^\//, '');
   const config = await metadata(link);

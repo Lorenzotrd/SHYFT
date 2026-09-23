@@ -217,6 +217,17 @@ const merci = single('merci', z.object({
   leviersTitre: z.string(),
 }));
 
+// Page de remerciement après une réservation Cal.com (noindex) : ce qu'on regarde pendant l'appel, l'audit, la confirmation.
+const rdvMerci = single('rendez-vous-merci', z.object({
+  seoTitle: z.string(), seoDescription: z.string(),
+  titre: lines, texte: z.string(),
+  appelTitre: z.string(),
+  points: z.array(z.object({ titre: z.string(), texte: z.string() })),
+  audit: z.object({ surtitre: z.string(), titre: lines, texte: z.string(), cta: z.string() }),
+  email: z.object({ titre: z.string(), texte: z.string(), adresse: z.string() }),
+  leviersTitre: z.string(),
+}));
+
 const navigation = single('navigation', z.object({
   groups: z.array(z.object({ name: z.string(), expertises: z.array(z.string()) })),
   system: z.array(z.object({ stage: z.string(), line: z.string(), expertises: z.array(z.string()) })),
@@ -259,4 +270,4 @@ const listes = single('listes', z.object({
   }),
 }));
 
-export const collections = { secteurs, expertises, services, pages, accueil, site, rendezVous, serviceCommun, auditOffert, merci, navigation, leviers, methode, mesure, formulaire, piedDePage, listes };
+export const collections = { secteurs, expertises, services, pages, accueil, site, rendezVous, serviceCommun, auditOffert, merci, rdvMerci, navigation, leviers, methode, mesure, formulaire, piedDePage, listes };

@@ -39,7 +39,7 @@ export default config({
     brand: { name: 'SHYFT' },
     navigation: {
       Pages: ['accueil', 'services', 'listes', 'secteurs', 'expertises', 'pages'],
-      'Blocs communs': ['site', 'rendezVous', 'serviceCommun', 'auditOffert', 'merci', 'methode', 'mesure', 'formulaire', 'piedDePage', 'navigation', 'leviers'],
+      'Blocs communs': ['site', 'rendezVous', 'serviceCommun', 'auditOffert', 'merci', 'rdvMerci', 'methode', 'mesure', 'formulaire', 'piedDePage', 'navigation', 'leviers'],
     },
   },
 
@@ -370,6 +370,21 @@ export default config({
         }), { label: 'La suite', itemLabel: (p) => p.fields.titre.value }),
         attente: fields.object({ surtitre: text('Surtitre'), titre: title('Titre'), texte: paragraph('Texte'), cta: text('Bouton (rendez-vous)') }, { label: 'Carte « pas envie d’attendre »' }),
         email: fields.object({ titre: text('Titre'), texte: paragraph('Texte', '{adresse} est remplacé par l’adresse, en gras.'), adresse: text('Adresse d’envoi') }, { label: 'Carte « pour ne pas le rater »' }),
+        leviersTitre: text('Titre des leviers'),
+      },
+    }),
+
+    rdvMerci: singleton({
+      label: 'Page merci (après une prise de rendez-vous)',
+      path: 'src/content/site/rendez-vous-merci',
+      format: { data: 'yaml' },
+      schema: {
+        seoTitle: text('Titre de l’onglet'), seoDescription: paragraph('Description', 'Page non indexée par Google.'),
+        titre: title('Titre'), texte: paragraph('Texte'),
+        appelTitre: text('Titre de la liste'),
+        points: fields.array(fields.object({ titre: text('Point'), texte: paragraph('Précision') }), { label: 'Ce qu’on regarde pendant l’appel', itemLabel: (p) => p.fields.titre.value }),
+        audit: fields.object({ surtitre: text('Surtitre'), titre: title('Titre'), texte: paragraph('Texte'), cta: text('Bouton (audit offert)') }, { label: 'Carte audit offert' }),
+        email: fields.object({ titre: text('Titre'), texte: paragraph('Texte', '{adresse} est remplacé par l’adresse, en gras.'), adresse: text('Adresse de contact') }, { label: 'Carte confirmation' }),
         leviersTitre: text('Titre des leviers'),
       },
     }),

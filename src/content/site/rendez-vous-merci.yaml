@@ -1,0 +1,24 @@
+seoTitle: C'est réservé, votre rendez-vous est confirmé · shyft
+seoDescription: Votre rendez-vous est réservé. La confirmation, avec la date et le lien de la visio, arrive par mail.
+titre: C'est *réservé*
+texte: La confirmation arrive par mail, avec la date, l'heure et le lien de la visio. Pensez à l'ajouter à votre agenda.
+appelTitre: Pendant l'appel, on regarde
+points:
+- titre: Votre situation aujourd'hui
+  texte: Ce que vos futurs clients voient quand ils vous cherchent. Google, Maps, publicité, site.
+- titre: Vos concurrents
+  texte: Qui prend les demandes dans votre zone, et pourquoi eux.
+- titre: Ce qu'on ferait à votre place
+  texte: Les actions prioritaires, dans l'ordre. Vous repartez avec des pistes, que vous travailliez avec nous ou pas.
+- titre: Vos questions
+  texte: Fonctionnement, budget, suivi. On répond franchement.
+audit:
+  surtitre: Pour aller plus loin
+  titre: Arrivez avec votre *audit*
+  texte: Demandez l'audit offert avant l'appel. On le passe en revue ensemble, levier par levier.
+  cta: Recevoir mon audit offert
+email:
+  titre: Pas de mail de confirmation ?
+  texte: Il est envoyé par Cal.com, notre outil de rendez-vous, avec les liens pour déplacer ou annuler. Jetez un œil aux indésirables, ou écrivez-nous à {adresse}.
+  adresse: team@shyftgrowth.com
+leviersTitre: En attendant, découvrez nos leviers
