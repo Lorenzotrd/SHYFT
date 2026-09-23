@@ -4,7 +4,7 @@
    Transmis à Cal.com en métadonnées de la réservation : page d'origine, emplacement du bouton, UTM,
    et l'identifiant GA4 du visiteur seulement s'il a accepté la mesure d'audience.
    La réservation elle-même est comptée côté serveur (webhook), jamais ici : le navigateur ne signale
-   que l'ouverture de la fenêtre. */
+   que l'ouverture de la fenêtre, puis emmène la page sur /rendez-vous/merci une fois la réservation acceptée. */
 (function () {
  const PREFIX = 'https://cal.com/shyftgrowth/';
  const ORIGIN = 'https://app.cal.com';
@@ -13,8 +13,12 @@
  const LOAD_TIMEOUT = 6000;
  const IDS_TIMEOUT = 800;
  const STORED = ['utm_source', 'utm_medium', 'utm_campaign', 'gclid', 'referrer'];
+ // Page de remerciement, sur l'origine du site (https://www.shyftgrowth.com/rendez-vous/merci en production),
+ // pour que la note de conversion laissée dans sessionStorage y soit lisible.
+ const THANKS = '/rendez-vous/merci';
  let loading = null;
  let fallback = '';
+ let redirecting = false;
 
  // Chargeur officiel de Cal.com (extrait du générateur d'intégration), sans modification.
  function installCal() {
@@ -28,6 +32,15 @@
    window.Cal('init', NS, {origin: ORIGIN});
    // Lien introuvable ou erreur de Cal.com dans la fenêtre : on bascule sur la page de réservation.
    window.Cal.ns[NS]('on', {action: 'linkFailed', callback: () => { if (fallback) location.href = fallback; }});
+   // Réservation réussie dans la fenêtre : Cal.com reste sur son écran de confirmation, on emmène toute la page
+   // sur /rendez-vous/merci. Seulement pour une réservation acceptée : ni demande en attente de validation,
+   // ni paiement à faire, ni réservation de test (dryRun, événement distinct qu'on n'écoute pas).
+   window.Cal.ns[NS]('on', {action: 'bookingSuccessfulV2', callback: event => {
+    const booking = (event && event.detail && event.detail.data) || {};
+    if (!confirmed(booking) || redirecting) return;
+    redirecting = true;
+    location.assign(THANKS);
+   }});
    window.Cal.ns[NS]('ui', {theme: 'light', layout: 'month_view', hideEventTypeDetails: false, cssVarsPerTheme: {light: {'cal-brand': '#0e0e0c'}}});
    const script = document.querySelector('script[src="' + EMBED + '"]');
    const timer = setTimeout(() => reject(new Error('délai dépassé')), LOAD_TIMEOUT);
@@ -43,6 +56,12 @@
  // Note lue par /rendez-vous/merci : la conversion publicitaire n'y est comptée que si la réservation vient du site.
  function remember(link) {
   try { sessionStorage.setItem('shyft:booking', JSON.stringify({emplacement: link.dataset.emplacement || 'lien', page: location.pathname})); } catch {}
+ }
+
+ function confirmed(booking) {
+  return typeof booking.uid === 'string' && booking.uid !== ''
+   && String(booking.status || '').toUpperCase() === 'ACCEPTED'
+   && !booking.paymentRequired;
  }
 
  function stored(key) { try { return sessionStorage.getItem(key) || ''; } catch { return ''; } }
