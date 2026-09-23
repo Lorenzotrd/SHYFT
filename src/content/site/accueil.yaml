@@ -60,20 +60,24 @@ eventail:
   valeurs: ''
   lignes:
   - label: Référencement Google
+    court: Référencement
     valeur: ok
   - label: Google Maps
     valeur: ok
   - label: Publicité Google et Meta
+    court: Publicité
     valeur: ok
   - label: Site et mobile
     valeur: ok
   - label: Mesure des demandes
+    court: Mesure
     valeur: ok
   - label: Visibilité dans les IA
+    court: Visibilité IA
     valeur: attente
 - type: grille
   ton: clair
-  mobile: false
+  mobile: true
   pastille: false
   surtitre: SEO local · Google Maps
   titre: Top 3 autour de vous

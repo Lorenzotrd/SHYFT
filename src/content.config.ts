@@ -99,7 +99,7 @@ const accueil = single('accueil', z.object({
     type: z.enum(['barres', 'lignes', 'checklist', 'grille', 'sources']),
     ton: tone, mobile: z.boolean(), pastille: z.boolean(),
     surtitre: z.string(), titre: z.string(), pied: z.string(), valeurs: z.string(),
-    lignes: z.array(pair),
+    lignes: z.array(pair.extend({ court: z.string().optional() })),
   })),
   pourquoi: z.object({ titre: lines, texte: z.string(), items: z.array(titled) }),
   services: z.object({ titre: lines, texte: z.string() }),

@@ -28,8 +28,8 @@ const dotColor: Record<string, string> = { v: 'var(--map-top)', o: 'var(--map-mi
         {c.type === 'barres' && <div class="bars">{c.valeurs.split(',').map((v, i, a) => <span style={`height:${Number(v)}%;background:${barColor(i, a.length)}`}></span>)}</div>}
         {c.type === 'lignes' && <div class="rows">{c.lignes.map((l) => <div class="row"><span>{l.label}</span><b>{l.valeur}</b></div>)}</div>}
         {c.type === 'checklist' && <div class="checks">{c.lignes.map((l) => l.valeur === 'ok'
-          ? <div class="check"><span class="tick"><Icon name="check" size={13} stroke={3.2} /></span>{l.label}</div>
-          : <div class="check wait"><span class="tick"></span>{l.label}</div>)}</div>}
+          ? <div class="check"><span class="tick"><Icon name="check" size={13} stroke={3.2} /></span>{l.court ? <><span class="lg">{l.label}</span><span class="ct">{l.court}</span></> : l.label}</div>
+          : <div class="check wait"><span class="tick"></span>{l.court ? <><span class="lg">{l.label}</span><span class="ct">{l.court}</span></> : l.label}</div>)}</div>}
         {c.type === 'grille' && <div class="grid">{c.valeurs.split('').map((d) => <span style={`background:${dotColor[d] ?? '#ccc'}`}></span>)}</div>}
         {c.type === 'sources' && <div class="sources">{c.lignes.map((l, i) => <div class="src"><span>{l.label}</span><div class="track"><div style={`width:${Number(l.valeur)}%;background:${sourceColor[i % 4]}`}></div></div></div>)}</div>}
         {c.pied && <span class="foot">{c.pied}</span>}
@@ -78,6 +78,7 @@ const dotColor: Record<string, string> = { v: 'var(--map-top)', o: 'var(--map-mi
   .track{height:10px;border-radius:999px;background:var(--chip)}
   .track div{height:10px;border-radius:999px}
   .legende{display:none}
+  .ct{display:none}
   @media (max-width:1380px){ .fan-section{--s:.6} }
   @media (max-width:1200px){ .fan-section{--s:.52} }
   @media (max-width:1024px){ .fan-section{--s:.46} }
@@ -87,10 +88,11 @@ const dotColor: Record<string, string> = { v: 'var(--map-top)', o: 'var(--map-mi
     .fan-section{padding:50px 14px 0}
     .fan{position:relative;display:block;height:290px;padding:0;transform:none;margin:0 auto;max-width:390px}
     .desk-only{display:none}
+    /* Sélecteurs renforcés : ils doivent l'emporter sur le placement ordinateur (.card:nth-child). */
     .card,.card:nth-child(n){position:absolute;margin:0;padding:16px;border-radius:18px}
-    .m-left{left:4px;top:34px;width:168px;height:220px;transform:rotate(-9deg);z-index:1}
-    .m-right{right:4px;top:34px;width:168px;height:220px;transform:rotate(9deg);z-index:1}
-    .m-center{left:50%;top:0;width:196px;height:270px;transform:translateX(-50%);z-index:3;padding:18px}
+    .fan .card.m-left{left:4px;top:34px;width:168px;height:220px;transform:rotate(-9deg);z-index:1}
+    .fan .card.m-right{right:4px;left:auto;top:34px;width:168px;height:220px;transform:rotate(9deg);z-index:1}
+    .fan .card.m-center{left:50%;top:0;width:196px;height:270px;transform:translateX(-50%);z-index:3;padding:18px}
     .k{font-size:9px;gap:5px}
     .live{width:6px;height:6px}
     .t,.tone-sombre .t{margin-top:6px;font-size:17px}
@@ -103,6 +105,8 @@ const dotColor: Record<string, string> = { v: 'var(--map-top)', o: 'var(--map-mi
     .grid{width:104px;gap:4px}
     .grid span{border-width:1.5px}
     .foot{display:none}
+    .lg{display:none}
+    .ct{display:inline}
     .legende{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:18px;font-size:14px;color:var(--ink-2)}
     .legende span{width:7px;height:7px;border-radius:50%;background:var(--accent)}
   }

@@ -252,7 +252,7 @@ export default config({
           pastille: fields.checkbox({ label: 'Point vert devant le surtitre' }),
           surtitre: text('Surtitre'), titre: text('Titre'), pied: text('Ligne du bas (facultatif)'),
           valeurs: text('Valeurs', 'Barres : hauteurs en % séparées par des virgules. Grille : 25 lettres v, o, r ou n (vert, orange, rouge, noir).'),
-          lignes: fields.array(fields.object({ label: text('Libellé'), valeur: text('Valeur') }), { label: 'Lignes', itemLabel: (p) => p.fields.label.value }),
+          lignes: fields.array(fields.object({ label: text('Libellé'), court: text('Libellé court (téléphone)', 'Facultatif : remplace le libellé sur téléphone.'), valeur: text('Valeur') }), { label: 'Lignes', itemLabel: (p) => p.fields.label.value }),
         }), { label: 'Éventail de cartes sous l’en-tête', description: 'Sept cartes sur ordinateur, dans l’ordre de gauche à droite.', itemLabel: (p) => p.fields.titre.value }),
         pourquoi: fields.object({
           titre: title('Titre'), texte: paragraph('Texte'),
