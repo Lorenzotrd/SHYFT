@@ -1,5 +1,5 @@
 // Parcours de la page audit offert dans un vrai navigateur : sélection des leviers, validation, envoi,
-// confirmation, modification. Le webhook est factice : rien ne part vers la vraie feuille.
+// redirection vers la page merci et conversion comptée une seule fois. Le webhook est factice : rien ne part vers la vraie feuille.
 // Usage : npm run test:audit (Playwright et Google Chrome requis, comme scripts/capture.cjs).
 const {chromium}=require('/Users/lorenzotrichard/.cache/uv/archive-v0/S2ghcOWcglW9BUt0RjW_E/playwright/driver/package');
 const http=require('http');const {spawn}=require('child_process');const assert=require('assert/strict');
@@ -13,6 +13,8 @@ const base='http://127.0.0.1:4184';
  for(let i=0;i<80;i++){try{if((await fetch(base+'/robots.txt')).ok)break}catch{}await new Promise(r=>setTimeout(r,500))}
  b=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
  const p=await b.newPage({viewport:{width:1280,height:900}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
+ // Chaque événement de conversion est noté dans la page, pour vérifier qu'il part une fois et une seule.
+ await p.addInitScript(()=>{window.__leads=[];document.addEventListener('shyft:lead',e=>window.__leads.push(e.detail))});
  await p.goto(base+'/audit-offert?utm_source=test&utm_campaign=essai',{waitUntil:'networkidle'});
  await p.evaluate(()=>document.querySelector('.consent')?.remove());
  const count=()=>p.locator('[data-count]').textContent();
@@ -31,13 +33,18 @@ const base='http://127.0.0.1:4184';
  await p.getByLabel('Prénom et nom').fill('Test E2E');await p.getByLabel('Email professionnel').fill('test@example.com');
  await p.getByLabel(/point précis/).fill('Test automatique');
  await p.locator('[data-submit]').click();
- await p.locator('[data-done]').waitFor({state:'visible',timeout:10000});
- assert.equal(await p.locator('[data-saisie]').isVisible(),false);
+ await p.waitForURL('**/audit-offert/merci',{timeout:10000});
+ await p.waitForFunction(()=>window.__leads.length>0,null,{timeout:5000});
+ const leads=await p.evaluate(()=>window.__leads);
+ assert.equal(leads.length,1,'une conversion sur la page merci');assert.equal(leads[0].formulaire,'audit');assert.deepEqual(leads[0].services,['seo','data-tracking']);
+ assert.match(await p.locator('main h1').textContent(),/Merci/);
+ assert.equal(await p.locator('meta[name="robots"]').getAttribute('content'),'noindex, follow','page merci en noindex');
  assert.equal(received.services,'SEO, local et GEO, Data et tracking');assert.equal(received.site,'https://maigret-location.fr');
  assert.equal(received.utm_source,'test');assert.equal(received.formulaire,'audit');assert.equal(received.ville,'Tours');
-  await p.getByRole('button',{name:'Modifier ma demande'}).click();
- assert.equal(await p.locator('[data-saisie]').isVisible(),true);assert.equal(await p.getByLabel('Ville principale').inputValue(),'Tours','valeurs conservées');
+  await p.reload({waitUntil:'networkidle'});await p.waitForTimeout(500);
+ assert.equal((await p.evaluate(()=>window.__leads)).length,0,'pas de conversion au rechargement');
  // Clavier : un levier se sélectionne à l'espace
- await p.getByRole('button',{name:/Meta Ads/}).focus();await p.keyboard.press('Space');assert.equal(await count(),'3 sur 6');
- console.log(JSON.stringify({parcours_audit:'ok',recu:{services:received.services,site:received.site,utm:received.utm_source},erreurs:errs}));
+ await p.goto(base+'/audit-offert',{waitUntil:'networkidle'});await p.evaluate(()=>document.querySelector('.consent')?.remove());
+ await p.getByRole('button',{name:/Meta Ads/}).focus();await p.keyboard.press('Space');assert.equal(await count(),'2 sur 6');
+ console.log(JSON.stringify({parcours_audit:'ok',merci:'ok',recu:{services:received.services,site:received.site,utm:received.utm_source},erreurs:errs}));
 }catch(e){console.error('ÉCHEC',e.message);process.exitCode=1}finally{await b?.close();dev.kill();mock.close();spawn('npx',['astro','dev','stop'],{cwd:ROOT,stdio:'ignore'})}})();

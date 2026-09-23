@@ -1,0 +1,32 @@
+seoTitle: Merci, votre demande d'audit est bien reçue · shyft
+seoDescription: 'Votre demande d''audit offert est bien reçue : la synthèse arrive par mail sous 24 h.'
+titre: Merci, c'est *noté*
+texte: Votre audit arrive dans votre boîte mail sous 24 h. On s'y met tout de suite.
+suiteTitre: La suite
+etapes:
+- titre: Demande reçue
+  texte: On a bien votre site, votre ville et les leviers à regarder.
+  statut: À l'instant
+  etat: fait
+- titre: Analyse en cours
+  texte: Votre visibilité point par point, vos concurrents, les recherches de votre zone.
+  statut: En cours
+  etat: en-cours
+- titre: Audit dans votre boîte mail
+  texte: Une synthèse claire, levier par levier, avec les trois actions à faire en premier.
+  statut: Sous 24 h
+  etat: a-venir
+- titre: On en parle, si vous voulez
+  texte: 30 minutes en visio pour passer l'audit en revue ensemble. Jamais obligatoire.
+  statut: Quand vous voulez
+  etat: a-venir
+attente:
+  surtitre: Pas envie d'attendre ?
+  titre: On le regarde *ensemble*
+  texte: 'Réservez 30 minutes en visio : on vous présente l''audit en direct et on répond à vos questions.'
+  cta: Parlons de votre projet
+email:
+  titre: Pour ne pas le rater
+  texte: L'audit part de {adresse}. Ajoutez cette adresse à vos contacts, et jetez un œil aux indésirables si rien n'arrive.
+  adresse: team@shyftgrowth.com
+leviersTitre: En attendant, découvrez nos leviers

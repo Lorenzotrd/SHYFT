@@ -3,6 +3,10 @@ export const BRAND = 'SHYFT';
 export const YEAR = 2026;
 export const SITE_URL = 'https://www.shyftgrowth.com';
 export const GA_ID = 'G-XC6CD5J71S';
+/** Conversion Google Ads de la demande d'audit, au format « AW-123456789/AbCdEfGh ». Vide : rien n'est envoyé à Google Ads. */
+export const ADS_CONVERSION = '';
+/** Identifiant du pixel Meta. Vide : le pixel n'est jamais chargé. */
+export const META_PIXEL_ID = '';
 
 /** Retours à la ligne du contenu → <br>, avec une espace devant pour que les mots ne se collent pas sur mobile. */
 export const br = (text: string) => text.replace(/\s*\n/g, ' <br>');

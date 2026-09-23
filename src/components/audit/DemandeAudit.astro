@@ -1,7 +1,7 @@
 ---
-// Demande d'audit : étape 1 (leviers à auditer), étape 2 (l'entreprise), barre d'envoi, puis confirmation.
-// Le script tient l'état de la sélection et envoie la demande à /api/lead avec la liste des leviers.
-import Bouton from '../shyft/Bouton.astro';
+// Demande d'audit : étape 1 (leviers à auditer), étape 2 (l'entreprise), barre d'envoi.
+// Le script tient l'état de la sélection, envoie la demande à /api/lead avec la liste des leviers,
+// puis redirige vers /audit-offert/merci, où se déclenche la conversion.
 import Icon from '../shyft/Icon.astro';
 import { rich } from '../../lib/site';
 import { services as allServices, single } from '../../lib/content';
@@ -55,18 +55,6 @@ const labels = { aucun: envoi.aucun, un: envoi.un, plusieurs: envoi.plusieurs, t
       <noscript><p class="error">Le formulaire a besoin de JavaScript. Vous pouvez aussi <a href={site.calUrl}>prendre rendez-vous</a>.</p></noscript>
     </form>
   </div>
-
-  <section class="section done" data-done hidden aria-labelledby="done-titre">
-    <div class="done-card">
-      <span class="done-icon"><Icon name="check" size={32} stroke={2.6} /></span>
-      <h2 id="done-titre" class="h2" tabindex="-1" set:html={rich(page.confirmation.titre)}></h2>
-      <p>{page.confirmation.texte}</p>
-      <div class="done-ctas">
-        <Bouton href={site.calUrl} emplacement="audit-confirmation">Prendre rendez-vous</Bouton>
-        <button type="button" class="tool big" data-edit>{page.confirmation.modifier}</button>
-      </div>
-    </div>
-  </section>
 </div>
 
 <script>
@@ -82,8 +70,6 @@ const labels = { aucun: envoi.aucun, un: envoi.un, plusieurs: envoi.plusieurs, t
     const submitLabel = root.querySelector('[data-submit-label]')!;
     const form = root.querySelector<HTMLFormElement>('#auditForm')!;
     const error = root.querySelector<HTMLElement>('[data-error]')!;
-    const saisie = root.querySelector<HTMLElement>('[data-saisie]')!;
-    const done = root.querySelector<HTMLElement>('[data-done]')!;
     const sendLabel = submitLabel.textContent || '';
 
     const picked = () => levers.filter((b) => b.getAttribute('aria-pressed') === 'true').map((b) => b.dataset.lever!);
@@ -121,24 +107,16 @@ const labels = { aucun: envoi.aucun, un: envoi.un, plusieurs: envoi.plusieurs, t
         let result: { ok?: boolean; error?: string } = {};
         try { result = await response.json(); } catch { /* réponse non JSON : message générique ci-dessous */ }
         if (!response.ok || !result.ok) throw new Error(result.error || 'La demande n’a pas été envoyée. Réessayez dans un instant.');
-        saisie.hidden = true;
-        done.hidden = false;
-        done.scrollIntoView({ block: 'start' });
-        done.querySelector<HTMLElement>('h2')?.focus({ preventScroll: true });
-        document.dispatchEvent(new CustomEvent('shyft:lead', { detail: { secteur: data.secteur || '', formulaire: 'audit', services } }));
+        // La page merci lit cette note une seule fois pour compter la conversion (ni rechargement ni visite directe).
+        try { sessionStorage.setItem('shyft:audit', JSON.stringify({ secteur: data.secteur || '', formulaire: 'audit', services })); } catch { /* stockage bloqué : redirection sans conversion */ }
+        location.assign('/audit-offert/merci');
+        return;
       } catch (e) {
         showError(e instanceof Error ? e.message : 'La demande n’a pas été envoyée. Réessayez dans un instant.');
       } finally {
         submitLabel.textContent = sendLabel;
         submit.disabled = picked().length === 0;
       }
-    });
-
-    root.querySelector('[data-edit]')?.addEventListener('click', () => {
-      done.hidden = true;
-      saisie.hidden = false;
-      form.scrollIntoView({ block: 'start' });
-      form.querySelector<HTMLInputElement>('input')?.focus({ preventScroll: true });
     });
     refresh();
   }
@@ -151,7 +129,6 @@ const labels = { aucun: envoi.aucun, un: envoi.un, plusieurs: envoi.plusieurs, t
   .step-tools{display:flex;align-items:center;gap:16px;font-size:15px;color:var(--muted)}
   .tool{min-height:48px;padding:0 22px;border-radius:999px;border:1px solid var(--ink);background:transparent;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s,color .2s}
   .tool:hover{background:var(--ink);color:var(--on-dark)}
-  .tool.big{min-height:62px;padding:0 28px;font-size:17px}
   .levers{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:16px}
   .lever{display:flex;flex-direction:column;gap:12px;min-height:196px;padding:28px;border-radius:var(--r-md);border:2px solid var(--card);background:var(--card);color:var(--ink);text-align:left;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
   .lever:hover{border-color:var(--ink)}
@@ -184,11 +161,6 @@ const labels = { aucun: envoi.aucun, un: envoi.un, plusieurs: envoi.plusieurs, t
   .submit:disabled{background:var(--muted);cursor:not-allowed}
   .error{padding:14px 18px;border-radius:14px;background:var(--bad-bg);color:var(--bad-ink);font-size:15px}
   .error a{text-decoration:underline}
-  .done-card{display:flex;flex-direction:column;align-items:center;gap:22px;padding:clamp(40px, 6.25vw, 90px);border-radius:30px;background:var(--card);text-align:center}
-  .done-icon{display:inline-grid;place-items:center;width:72px;height:72px;border-radius:50%;background:var(--accent);color:var(--ink)}
-  .done-card h2{font-size:clamp(40px, 4.4vw, 64px);line-height:1;letter-spacing:-.05em;outline:none}
-  .done-card p{max-width:560px;font-size:18px;line-height:1.6;color:var(--muted)}
-  .done-ctas{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding-top:8px}
   @media (max-width:1024px){ .levers{grid-template-columns:repeat(2, minmax(0, 1fr))} }
   @media (max-width:760px){
     .levers,.fields{grid-template-columns:1fr}
@@ -200,6 +172,5 @@ const labels = { aucun: envoi.aucun, un: envoi.un, plusieurs: envoi.plusieurs, t
     .lever{min-height:0;padding:22px}
     .lever-name{font-size:20px}
     .summary{font-size:18px}
-    .done-ctas{flex-direction:column;align-items:stretch;width:100%}
-  }
+    }
 </style>

@@ -67,7 +67,3 @@ envoi:
   mention: Vos données servent uniquement à produire l'audit. Pas de revente, pas de newsletter automatique.
   bouton: Recevoir mon audit
   erreur: Renseignez le nom de votre entreprise, votre secteur, votre nom et un email valide, et choisissez au moins un levier.
-confirmation:
-  titre: C'est *noté*
-  texte: Votre audit arrive par mail sous 24 h. En attendant, si vous préférez en parler de vive voix, on peut regarder votre situation ensemble.
-  modifier: Modifier ma demande

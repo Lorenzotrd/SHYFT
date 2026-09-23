@@ -39,7 +39,7 @@ export default config({
     brand: { name: 'SHYFT' },
     navigation: {
       Pages: ['accueil', 'services', 'listes', 'secteurs', 'expertises', 'pages'],
-      'Blocs communs': ['site', 'rendezVous', 'serviceCommun', 'auditOffert', 'methode', 'mesure', 'formulaire', 'piedDePage', 'navigation', 'leviers'],
+      'Blocs communs': ['site', 'rendezVous', 'serviceCommun', 'auditOffert', 'merci', 'methode', 'mesure', 'formulaire', 'piedDePage', 'navigation', 'leviers'],
     },
   },
 
@@ -353,7 +353,24 @@ export default config({
           aucun: text('Aucun levier choisi'), un: text('Un levier choisi'), plusieurs: text('Plusieurs leviers', '{n} est remplacé par le nombre.'),
           mention: paragraph('Mention sur les données'), bouton: text('Bouton d’envoi'), erreur: paragraph('Message d’erreur de saisie'),
         }, { label: 'Barre d’envoi' }),
-        confirmation: fields.object({ titre: title('Titre'), texte: paragraph('Texte'), modifier: text('Bouton « modifier »') }, { label: 'Confirmation' }),
+      },
+    }),
+
+    merci: singleton({
+      label: 'Page merci (après une demande d’audit)',
+      path: 'src/content/site/merci',
+      format: { data: 'yaml' },
+      schema: {
+        seoTitle: text('Titre de l’onglet'), seoDescription: paragraph('Description', 'Page non indexée par Google.'),
+        titre: title('Titre'), texte: paragraph('Texte'),
+        suiteTitre: text('Titre de la frise'),
+        etapes: fields.array(fields.object({
+          titre: text('Étape'), texte: paragraph('Précision'), statut: text('Pastille (« À l’instant », « Sous 24 h »…)'),
+          etat: fields.select({ label: 'État', defaultValue: 'a-venir', options: [{ label: 'Fait (coche jaune)', value: 'fait' }, { label: 'En cours (cercle pointillé)', value: 'en-cours' }, { label: 'À venir (numéro gris)', value: 'a-venir' }] }),
+        }), { label: 'La suite', itemLabel: (p) => p.fields.titre.value }),
+        attente: fields.object({ surtitre: text('Surtitre'), titre: title('Titre'), texte: paragraph('Texte'), cta: text('Bouton (rendez-vous)') }, { label: 'Carte « pas envie d’attendre »' }),
+        email: fields.object({ titre: text('Titre'), texte: paragraph('Texte', '{adresse} est remplacé par l’adresse, en gras.'), adresse: text('Adresse d’envoi') }, { label: 'Carte « pour ne pas le rater »' }),
+        leviersTitre: text('Titre des leviers'),
       },
     }),
 

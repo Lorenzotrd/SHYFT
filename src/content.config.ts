@@ -204,7 +204,17 @@ const auditOffert = single('audit-offert', z.object({
   }),
   secteurs: z.array(z.string()),
   envoi: z.object({ aucun: z.string(), un: z.string(), plusieurs: z.string(), mention: z.string(), bouton: z.string(), erreur: z.string() }),
-  confirmation: z.object({ titre: lines, texte: z.string(), modifier: z.string() }),
+}));
+
+// Page de remerciement après une demande d'audit (noindex) : la suite, le rendez-vous, l'adresse d'envoi.
+const merci = single('merci', z.object({
+  seoTitle: z.string(), seoDescription: z.string(),
+  titre: lines, texte: z.string(),
+  suiteTitre: z.string(),
+  etapes: z.array(z.object({ titre: z.string(), texte: z.string(), statut: z.string(), etat: z.enum(['fait', 'en-cours', 'a-venir']) })),
+  attente: z.object({ surtitre: z.string(), titre: lines, texte: z.string(), cta: z.string() }),
+  email: z.object({ titre: z.string(), texte: z.string(), adresse: z.string() }),
+  leviersTitre: z.string(),
 }));
 
 const navigation = single('navigation', z.object({
@@ -249,4 +259,4 @@ const listes = single('listes', z.object({
   }),
 }));
 
-export const collections = { secteurs, expertises, services, pages, accueil, site, rendezVous, serviceCommun, auditOffert, navigation, leviers, methode, mesure, formulaire, piedDePage, listes };
+export const collections = { secteurs, expertises, services, pages, accueil, site, rendezVous, serviceCommun, auditOffert, merci, navigation, leviers, methode, mesure, formulaire, piedDePage, listes };

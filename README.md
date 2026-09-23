@@ -14,7 +14,7 @@ Fond gris, noir profond, jaune `#F9C940`, Instrument Sans et un mot en Instrumen
 - Composants communs dans `src/components/shyft`, sections de l'accueil dans `src/components/home`, blocs des pages services dans `src/components/service`, demande d'audit dans `src/components/audit`.
 - Contenus (Keystatic) : `site/accueil.yaml`, `site/site.yaml` (lien Cal.com, menu, pied de page), `site/rendez-vous.yaml`, `site/service-commun.yaml`, `site/audit-offert.yaml`, et la collection `services/*.yaml` : une fiche par page service, le nom du fichier est l'adresse `/expertises/<fichier>`. Les blocs « couverture » et « GeoGrid » s'activent par une case à cocher ; la GeoGrid est calculée à partir d'un tableau de positions 7 × 7.
 - Redirections 301 dans `vercel.json` : `/expertises` vers `/#services`, `/expertises/geo` vers `/expertises/seo`, `/expertises/landing-pages-cro` vers `/expertises/creation-site`.
-- Mesure : `generate_lead` et `demande_audit` à l'envoi d'une demande, `clic_rendez_vous` sur tout lien Cal.com (avec son emplacement), toujours après consentement.
+- Mesure : `generate_lead` et `demande_audit` sur la page merci, une seule fois par demande (ni rechargement ni visite directe), `clic_rendez_vous` sur tout lien Cal.com (avec son emplacement), toujours après consentement. Une conversion arrivée avant la réponse au bandeau attend la décision. Conversion Google Ads et pixel Meta prêts : renseigner `ADS_CONVERSION` et `META_PIXEL_ID` dans `src/lib/site.ts` (vides, rien n'est envoyé ; renseignés, le bandeau mentionne la mesure publicitaire, et la politique de confidentialité doit être mise à jour).
 - Chaque demande déclenche un email immédiat, envoyé par le script Google Sheets (`scripts/google-sheet.gs`, propriété `NOTIFY_EMAIL`).
 - Tests : `npm test` (API et panneau), `npm run test:audit` (parcours de la page audit dans Chrome).
 
@@ -37,7 +37,8 @@ Adresses sans extension ni barre oblique finale.
 | --- | --- | --- |
 | `/` | Accueil : en-tête, éventail de cartes, pourquoi nous, six leviers, méthode, résultats, audit, rendez-vous, FAQ | `src/pages/index.astro`, contenu `site/accueil.yaml` |
 | `/expertises/<slug>` | Les six pages services : `seo`, `google-ads`, `meta-ads`, `agence-ia`, `creation-site`, `data-tracking` | `src/pages/expertises/[slug].astro`, contenu `services/<slug>.yaml` |
-| `/audit-offert` | Demande d'audit : leviers à auditer, entreprise, confirmation | `src/pages/audit-offert.astro`, contenu `site/audit-offert.yaml` |
+| `/audit-offert` | Demande d'audit : leviers à auditer, entreprise | `src/pages/audit-offert.astro`, contenu `site/audit-offert.yaml` |
+| `/audit-offert/merci` | Remerciement après une demande réussie (noindex, hors sitemap) ; la conversion y est comptée | `src/pages/audit-offert/merci.astro`, contenu `site/merci.yaml` |
 | `/secteurs`, `/secteurs/<slug>` | Pages métier, en ligne mais en `noindex`, hors sitemap et hors menu | `src/pages/secteurs/` |
 | `/mentions-legales`, `/confidentialite` | Pages légales | `src/pages/[page].astro`, contenu `pages/<slug>.yaml` |
 | `/admin` | Panneau privé des demandes, exclu des robots | `src/pages/admin.astro` |
