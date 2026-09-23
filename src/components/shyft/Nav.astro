@@ -28,15 +28,15 @@ const colonnes = groupes
               <span class="col-title">{c.titre}</span>
               <ul>
                 {c.items.map((s) => (
-                  <li><a class="entry" href={`/expertises/${s.id}`}><span class="entry-text"><b>{s.data.nom}</b><span>{s.data.phraseMenu}</span></span><Icon name="arrow" size={14} class="entry-arrow" /></a></li>
+                  <li><a class="entry" href={`/expertises/${s.id}`}><span class="entry-text"><b>{s.data.nom}</b><span>{s.data.phraseMenu}</span></span><Icon name="arrow" size={12} class="entry-arrow" /></a></li>
                 ))}
               </ul>
             </div>
           ))}
         </div>
         <div class="cards">
-          <a class="card card-audit" href="/audit-offert"><span><b>{nav.menu.auditTitre}</b><span>{nav.menu.auditTexte}</span></span><span class="card-dot"><Icon name="arrow" size={15} /></span></a>
-          <a class="card card-rdv" href={calUrl} data-emplacement="menu-services"><span><b>{nav.menu.rdvTitre}</b><span>{nav.menu.rdvTexte}</span></span><span class="card-dot"><Icon name="arrow" size={15} /></span></a>
+          <a class="card card-audit" href="/audit-offert"><span><b>{nav.menu.auditTitre}</b><span>{nav.menu.auditTexte}</span></span><span class="card-dot"><Icon name="arrow" size={13} /></span></a>
+          <a class="card card-rdv" href={calUrl} data-emplacement="menu-services"><span><b>{nav.menu.rdvTitre}</b><span>{nav.menu.rdvTexte}</span></span><span class="card-dot"><Icon name="arrow" size={13} /></span></a>
         </div>
       </div>
     </div>
@@ -128,25 +128,25 @@ const colonnes = groupes
 
   /* Menu déroulant Services : sous le header, centré sur la page */
   .drop{position:static}
-  .panel{position:absolute;top:calc(100% - 8px);left:50%;transform:translateX(-50%);width:min(1350px, calc(100% - 80px));padding:44px 24px 24px;border-radius:28px;background:var(--card);color:var(--ink);box-shadow:0 40px 80px -30px rgba(0,0,0,.28)}
+  .panel{position:absolute;top:calc(100% - 8px);left:50%;transform:translateX(-50%);width:min(980px, calc(100% - 80px));padding:30px 18px 18px;border-radius:24px;background:var(--card);color:var(--ink);box-shadow:0 40px 80px -30px rgba(0,0,0,.28)}
   .panel::before{content:"";position:absolute;left:0;right:0;top:-24px;height:24px}
-  .cols{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:20px;padding:0 22px}
-  .col-title{display:block;margin-bottom:14px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--label)}
-  .col ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px}
-  .entry{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin:0 -14px;padding:14px;border-radius:16px;transition:background .2s}
+  .cols{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:16px;padding:0 16px}
+  .col-title{display:block;margin-bottom:8px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--label)}
+  .col ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:2px}
+  .entry{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin:0 -12px;padding:11px 12px;border-radius:14px;transition:background .2s}
   .entry:hover,.entry:focus-visible{background:var(--frame)}
-  .entry-text{display:flex;flex-direction:column;gap:6px}
-  .entry-text b{font-size:19px;font-weight:600;letter-spacing:-.02em}
-  .entry-text span{font-size:15px;color:var(--muted)}
-  .entry :global(.entry-arrow){flex:none;margin-top:4px;color:var(--label);transition:transform .2s,color .2s}
+  .entry-text{display:flex;flex-direction:column;gap:3px}
+  .entry-text b{font-size:16px;font-weight:600;letter-spacing:-.02em}
+  .entry-text span{font-size:13.5px;line-height:1.4;color:var(--muted)}
+  .entry :global(.entry-arrow){flex:none;margin-top:2px;color:var(--label);transition:transform .2s,color .2s}
   .entry:hover :global(.entry-arrow){color:var(--ink);transform:translate(2px, -2px)}
-  .cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px;padding-top:22px;border-top:1px solid var(--line-2)}
-  .card{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;border-radius:20px;transition:transform .2s}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line-2)}
+  .card{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 18px;border-radius:16px;transition:transform .2s}
   .card:hover{transform:translateY(-2px)}
-  .card > span:first-child{display:flex;flex-direction:column;gap:4px}
-  .card b{font-size:19px;font-weight:600;letter-spacing:-.02em}
-  .card > span:first-child > span{font-size:14px}
-  .card-dot{flex:none;display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%}
+  .card > span:first-child{display:flex;flex-direction:column;gap:2px}
+  .card b{font-size:16px;font-weight:600;letter-spacing:-.02em}
+  .card > span:first-child > span{font-size:13px}
+  .card-dot{flex:none;display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%}
   .card-audit{background:var(--accent);color:var(--ink)}
   .card-audit > span:first-child > span{color:var(--accent-ink)}
   .card-audit .card-dot{background:var(--ink);color:var(--accent)}
