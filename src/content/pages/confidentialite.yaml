@@ -13,9 +13,11 @@ body: |
 
   <p>La demande d’audit recueille : nom de l’entreprise, site internet, ville principale, secteur, prénom et nom, email professionnel, téléphone, nombre d’agences ou de points de vente, un message facultatif et les leviers que vous souhaitez faire auditer. Nous enregistrons également la page depuis laquelle la demande a été envoyée, les paramètres de campagne éventuellement présents dans l’adresse et le site qui vous a orienté vers le nôtre. Ces informations nous servent à savoir quels contenus répondent à vos questions. Aucun profilage publicitaire n’est réalisé.</p>
 
+  <p>La prise de rendez-vous se fait dans une fenêtre fournie par Cal.com, qui recueille votre nom, votre email et le créneau choisi. Nous y joignons la page et le bouton depuis lesquels vous l’avez ouverte, les paramètres de campagne éventuels et, seulement si vous avez accepté la mesure d’audience, l’identifiant Google Analytics de votre visite. Le rendez-vous est ensuite enregistré dans notre espace de suivi.</p>
+
   <h2>Où elles sont conservées</h2>
 
-  <p>Les demandes sont enregistrées dans un espace privé, accessible uniquement par l’équipe shyft après authentification, et transmises à une feuille Google Sheets de suivi des demandes, avec une notification par email à l’équipe. Elles ne sont ni revendues, ni partagées avec des tiers à des fins commerciales.</p>
+  <p>Les demandes sont enregistrées dans un espace privé, accessible uniquement par l’équipe shyft après authentification, avec une notification par email à l’équipe envoyée par notre prestataire d’emails. Elles ne sont ni revendues, ni partagées avec des tiers à des fins commerciales.</p>
 
   <h2>Pourquoi ces données</h2>
 
@@ -38,6 +40,8 @@ body: |
   <h2>Cookies et mesure d’audience</h2>
 
   <p>Ce site utilise Google Analytics pour mesurer son audience : pages consultées, provenance des visites et demandes envoyées. Aucune publicité ciblée n’est activée, aucune donnée n’est revendue.</p>
+
+  <p>Les rendez-vous pris sont comptés par notre serveur, qui le signale à Google Analytics sans votre nom ni votre email. Si vous avez accepté la mesure d’audience, ce signal est rattaché à votre visite. Sinon, il est envoyé avec un identifiant aléatoire à usage unique, sans rien lire ni déposer sur votre appareil : il sert seulement à compter le nombre total de rendez-vous.</p>
 
   <p>Rien n’est déposé ni transmis à Google avant votre accord. Au premier passage, un bandeau vous laisse accepter ou refuser. Si vous refusez, le script de mesure n’est pas chargé du tout et le site fonctionne à l’identique. Vous pouvez revenir sur votre choix à tout moment avec le lien <a href="#" data-cookies>Gérer les cookies</a>, en bas de chaque page.</p>
 

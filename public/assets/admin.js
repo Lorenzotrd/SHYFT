@@ -24,17 +24,21 @@ function origin(lead) {
  return 'Direct';
 }
 
+const isCall = l => l.type === 'rdv';
+
 function stats() {
  const week = leads.filter(l => new Date(l.receivedAt) >= daysAgo(7)).length;
  const month = leads.filter(l => new Date(l.receivedAt) >= daysAgo(30)).length;
  const bySector = {};
  leads.forEach(l => { if (l.secteur) bySector[l.secteur] = (bySector[l.secteur] || 0) + 1; });
  const top = Object.entries(bySector).sort((a, b) => b[1] - a[1])[0];
+ const calls = leads.filter(l => isCall(l) && l.statut !== 'annulé' && new Date(l.rdvAt) >= Date.now()).length;
  const tiles = [
   ['Total', leads.length, 'depuis le début'],
   ['30 derniers jours', month, month === 1 ? 'demande' : 'demandes'],
   ['7 derniers jours', week, week === 1 ? 'demande' : 'demandes'],
   ['Secteur principal', top ? top[0] : '—', top ? `${top[1]} sur ${leads.length}` : 'aucune donnée'],
+  ['Rendez-vous à venir', calls, calls === 1 ? 'confirmé' : 'confirmés'],
  ];
  $('#stats').innerHTML = tiles.map(([label, value, note]) =>
   `<article class="admin-stat"><span>${esc(label)}</span><strong>${esc(value)}</strong><i>${esc(note)}</i></article>`).join('');
@@ -51,18 +55,21 @@ function visible() {
  const q = $('#search').value.trim().toLowerCase();
  const sector = $('#sector').value;
  const period = Number($('#period').value);
+ const type = $('#type').value;
  return leads.filter(l => {
+  if (type === 'rdv' && !isCall(l)) return false;
+  if (type === 'demande' && isCall(l)) return false;
   if (sector && l.secteur !== sector) return false;
   if (period && new Date(l.receivedAt) < daysAgo(period)) return false;
   if (!q) return true;
-  return ['nom', 'entreprise', 'email', 'tel', 'site', 'page', 'secteur', 'services', 'ville', 'message'].some(k => String(l[k] || '').toLowerCase().includes(q));
+  return ['nom', 'entreprise', 'email', 'tel', 'site', 'page', 'secteur', 'services', 'ville', 'message', 'statut', 'emplacement'].some(k => String(l[k] || '').toLowerCase().includes(q));
  });
 }
 
 function render() {
  const rows = visible();
  $('#count').textContent = rows.length === leads.length
-  ? `${leads.length} demande${leads.length > 1 ? 's' : ''}`
+  ? `${leads.length} ligne${leads.length > 1 ? 's' : ''}`
   : `${rows.length} sur ${leads.length}`;
  $('#empty').hidden = rows.length > 0;
  $('#empty').textContent = leads.length === 0
@@ -72,12 +79,22 @@ function render() {
   <tr data-id="${esc(l.id)}">
    <td class="col-date">${esc(when(l.receivedAt))}</td>
    <td><b>${esc(l.nom || '—')}</b><i>${esc(l.email || '')}</i>${l.tel ? `<i>${esc(l.tel)}</i>` : ''}</td>
-   <td>${esc(l.entreprise || '—')}${l.site ? `<i><a href="${esc(l.site)}" target="_blank" rel="noopener noreferrer">${esc(l.site.replace(/^https?:\/\//, ''))}</a></i>` : ''}</td>
-   <td>${esc(l.secteur || '—')}${l.services ? `<i>${esc(l.services)}</i>` : ''}${l.ville ? `<i>${esc(l.ville)}</i>` : ''}</td>
-   <td class="col-page">${esc(l.page || '—')}</td>
+   ${isCall(l) ? callCells(l) : leadCells(l)}
+   <td class="col-page">${esc(l.page || '—')}${l.emplacement ? `<i>${esc(l.emplacement)}</i>` : ''}</td>
    <td>${esc(origin(l))}${l.utm_campaign ? `<i>${esc(l.utm_campaign)}</i>` : ''}</td>
    <td class="col-act"><button class="admin-del" data-del="${esc(l.id)}" title="Effacer cette demande" aria-label="Effacer la demande de ${esc(l.nom || '')}">✕</button></td>
   </tr>`).join('');
+}
+
+function leadCells(l) {
+ return `<td>${esc(l.entreprise || '—')}${l.site ? `<i><a href="${esc(l.site)}" target="_blank" rel="noopener noreferrer">${esc(l.site.replace(/^https?:\/\//, ''))}</a></i>` : ''}</td>
+   <td>${esc(l.secteur || '—')}${l.services ? `<i>${esc(l.services)}</i>` : ''}${l.ville ? `<i>${esc(l.ville)}</i>` : ''}</td>`;
+}
+
+// Rendez-vous Cal.com : date du créneau, statut, report éventuel, mesure GA4 avec ou sans consentement.
+function callCells(l) {
+ return `<td><b>Rendez-vous</b><i>${esc(when(l.rdvAt))}</i>${l.reporteDe ? `<i>reporté, initialement le ${esc(when(l.reporteDe))}</i>` : ''}</td>
+   <td>${esc(l.statut || 'confirmé')}${l.motif ? `<i>${esc(l.motif)}</i>` : ''}${l.mesure ? `<i>mesure ${esc(l.mesure)}</i>` : ''}</td>`;
 }
 
 // Le panneau ne s'ouvre qu'après une réponse acceptée : un mot de passe refusé
@@ -131,7 +148,7 @@ $('#loginForm').addEventListener('submit', async event => {
 
 $('#logout').addEventListener('click', () => { token.set(''); leads = []; show(false); });
 $('#refresh').addEventListener('click', load);
-['#search', '#sector', '#period'].forEach(s => $(s).addEventListener('input', render));
+['#search', '#type', '#sector', '#period'].forEach(s => $(s).addEventListener('input', render));
 
 $('#export').addEventListener('click', async event => {
  const button = event.currentTarget;

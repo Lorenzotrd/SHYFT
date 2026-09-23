@@ -67,5 +67,6 @@ const fontCss =
   } catch { /* stockage bloqué (navigation privée) : la demande part sans provenance */ }
 </script>
 {GA_ID && <script is:inline src="/assets/analytics.js" data-ga={GA_ID} data-ads={ADS_CONVERSION || undefined} data-meta={META_PIXEL_ID || undefined} defer></script>}
+<script is:inline src="/assets/booking.js" defer></script>
 </body>
 </html>

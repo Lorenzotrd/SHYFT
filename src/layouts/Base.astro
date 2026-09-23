@@ -67,5 +67,6 @@ const fontCss =
   ? <script is:inline src="/assets/admin.js" defer></script>
   : <script is:inline src="/assets/site.js" defer></script>}
 {!admin && GA_ID && <script is:inline src="/assets/analytics.js" data-ga={GA_ID} defer></script>}
+{!admin && <script is:inline src="/assets/booking.js" defer></script>}
 </body>
 </html>

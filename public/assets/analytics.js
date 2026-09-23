@@ -96,12 +96,26 @@
   if (button) return decide(button.dataset.consent);
   const reopen = event.target.closest('[data-cookies]');
   if (reopen) { event.preventDefault(); show(); return; }
-  // Clic vers la prise de rendez-vous : l'emplacement dit quel bouton a servi.
-  const booking = event.target.closest('a[href*="cal.com"]');
-  if (booking && choice.get() === 'granted') {
-   gtag('event', 'clic_rendez_vous', { page: location.pathname, emplacement: booking.dataset.emplacement || '' });
-  }
  });
+
+ // Ouverture de la fenêtre de rendez-vous (booking.js). La réservation, elle, est comptée par le serveur (book_call).
+ document.addEventListener('shyft:booking', event => {
+  if (choice.get() !== 'granted') return;
+  const detail = event.detail || {};
+  gtag('event', 'open_booking', { emplacement: detail.emplacement || '', page_origine: detail.page || location.pathname });
+ });
+
+ // Identifiants GA4 du visiteur, pour rattacher la réservation à sa visite. Uniquement après accord.
+ function readField(field) {
+  return new Promise(resolve => gtag('get', ID, field, value => resolve(value ? String(value) : '')));
+ }
+ window.shyftAnalytics = {
+  ids() {
+   if (choice.get() !== 'granted' || !loaded) return Promise.resolve(null);
+   return Promise.all([readField('client_id'), readField('session_id')])
+    .then(([client_id, session_id]) => (client_id ? { client_id, session_id, ads: ADVERTISING } : null));
+  },
+ };
 
  const pending = [];
  const current = choice.get();
