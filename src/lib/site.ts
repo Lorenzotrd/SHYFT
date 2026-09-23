@@ -30,5 +30,9 @@ export const nbsp = (text: string) => text.replace(/ ([?!:;»])/g, '\u00a0$1').r
 export const rich = (text: string) =>
   nbsp(escapeHtml(text)).replace(/\*([^*\n]+)\*/g, '<em class="serif">$1</em>').replace(/\s*\n/g, ' <br>');
 
+/** Étiquette courte → HTML sûr : *mot* devient le mot en couleur d'accent. */
+export const highlight = (text: string) =>
+  escapeHtml(text).replace(/\*([^*\n]+)\*/g, '<span class="hl">$1</span>');
+
 /** Deux chiffres : 1 → "01". */
 export const pad = (i: number) => String(i).padStart(2, '0');

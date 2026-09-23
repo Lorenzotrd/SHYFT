@@ -5,6 +5,7 @@
 import Icon from './Icon.astro';
 import Bouton from './Bouton.astro';
 import { single, services as allServices } from '../../lib/content';
+import { highlight } from '../../lib/site';
 interface Props { current?: 'services' | 'audit' }
 const { current } = Astro.props;
 const [{ nav, calUrl }, services] = await Promise.all([single('site'), allServices()]);
@@ -42,7 +43,7 @@ const colonnes = groupes
     </div>
     <a href="/#methode">{nav.methode}</a>
     <a href="/#resultats">{nav.resultats}</a>
-    <a href="/audit-offert" class:list={{ active: current === 'audit' }} aria-current={current === 'audit' ? 'page' : undefined}>{nav.audit}</a>
+    <a href="/audit-offert" class:list={{ active: current === 'audit' }} aria-current={current === 'audit' ? 'page' : undefined}><span set:html={highlight(nav.audit)} /></a>
     <a class="menu-cta" href={calUrl} data-emplacement="menu-mobile">{nav.cta}</a>
   </nav>
 
@@ -122,6 +123,7 @@ const colonnes = groupes
   .links > a,.drop-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border:0;border-radius:999px;background:none;font:500 14px/1 var(--sans);color:var(--on-dark-2);cursor:pointer;transition:background .2s,color .2s}
   .links > a:hover,.drop-btn:hover,.links > a.active,.drop-btn.active,.drop.open .drop-btn{background:var(--dark-2);color:var(--on-dark)}
   .links :focus-visible{outline-color:var(--accent)}
+  .links :global(.hl){color:var(--accent)}
   .drop-btn :global(.chev){transition:transform .2s}
   .drop.open .drop-btn :global(.chev){transform:rotate(180deg)}
   .links > .menu-cta,.menu-btn{display:none}

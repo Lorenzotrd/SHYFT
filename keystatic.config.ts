@@ -293,7 +293,7 @@ export default config({
       schema: {
         calUrl: fields.url({ label: 'Lien de prise de rendez-vous', validation: { isRequired: true } }),
         nav: fields.object({
-          services: text('Menu : Services'), methode: text('Menu : Méthode'), resultats: text('Menu : Résultats'), audit: text('Menu : Audit'),
+          services: text('Menu : Services'), methode: text('Menu : Méthode'), resultats: text('Menu : Résultats'), audit: text('Menu : Audit', 'Un mot entre astérisques passe en jaune : Audit *offert*'),
           cta: text('Bouton à droite (rendez-vous)'),
           menu: fields.object({
             auditTitre: text('Carte jaune : titre'), auditTexte: text('Carte jaune : texte'),
