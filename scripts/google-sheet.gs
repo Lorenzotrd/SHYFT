@@ -12,6 +12,7 @@
  *   6. Coller le tout dans Vercel, variable LEAD_WEBHOOK_URL, puis redéployer.
  *
  * Notification par email (une par demande, tant que les audits sont traités à la main) :
+ *   envoyée à EMAIL_EQUIPE ci-dessous. Pour changer d'adresse sans toucher au code :
  *   Paramètres du projet (roue dentée) puis Propriétés du script, ajouter
  *   NOTIFY_EMAIL = l'adresse qui reçoit les alertes (plusieurs adresses : séparées par des virgules).
  *   Au premier envoi, Google demande d'autoriser l'envoi d'emails : accepter.
@@ -19,6 +20,7 @@
  */
 
 const CLE_SECRETE = 'a-remplacer-par-une-phrase-a-vous';
+const EMAIL_EQUIPE = 'team@shyftgrowth.com';
 
 const COLONNES = [
   ['receivedAt', 'Reçue le'],
@@ -69,7 +71,7 @@ function doPost(e) {
  * elle est déjà dans la feuille, et l'erreur reste visible dans les journaux d'exécution.
  */
 function notifier(demande) {
-  const destinataires = PropertiesService.getScriptProperties().getProperty('NOTIFY_EMAIL');
+  const destinataires = PropertiesService.getScriptProperties().getProperty('NOTIFY_EMAIL') || EMAIL_EQUIPE;
   if (!destinataires) {
     console.warn('NOTIFY_EMAIL absent : demande enregistrée sans notification.');
     return;
