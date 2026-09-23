@@ -41,7 +41,7 @@ body: |
 
   <p>Ce site utilise Google Analytics pour mesurer son audience : pages consultées, provenance des visites et demandes envoyées. Aucune publicité ciblée n’est activée, aucune donnée n’est revendue.</p>
 
-  <p>Les rendez-vous pris sont comptés par notre serveur, qui le signale à Google Analytics sans votre nom ni votre email. Si vous avez accepté la mesure d’audience, ce signal est rattaché à votre visite. Sinon, il est envoyé avec un identifiant aléatoire à usage unique, sans rien lire ni déposer sur votre appareil : il sert seulement à compter le nombre total de rendez-vous.</p>
+  <p>Si vous avez accepté la mesure d’audience, la prise ou l’annulation d’un rendez-vous est signalée à Google Analytics par notre serveur, rattachée à votre visite, sans votre nom ni votre email. Si vous l’avez refusée, ou n’avez pas répondu, rien n’est transmis à Google, pas même de façon anonyme : votre rendez-vous est seulement enregistré dans notre espace de suivi.</p>
 
   <p>Rien n’est déposé ni transmis à Google avant votre accord. Au premier passage, un bandeau vous laisse accepter ou refuser. Si vous refusez, le script de mesure n’est pas chargé du tout et le site fonctionne à l’identique. Vous pouvez revenir sur votre choix à tout moment avec le lien <a href="#" data-cookies>Gérer les cookies</a>, en bas de chaque page.</p>
 
