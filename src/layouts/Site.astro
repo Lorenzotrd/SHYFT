@@ -44,7 +44,7 @@ const fontCss =
 <meta property="og:url" content={canonical}>
 <meta property="og:image" content={`${SITE_URL}/assets/og.png`}>
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#e9e9e9">
+<meta name="theme-color" content="#f3f3f3">
 <link rel="icon" href="/favicon.ico?v=2" sizes="48x48">
 <link rel="icon" href="/assets/favicon.svg?v=2" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
@@ -54,7 +54,7 @@ const fontCss =
 </head>
 <body>
 <a class="skip-link" href="#main">Aller au contenu</a>
-<div class="page"><div class="frame"><slot /></div></div>
+<div class="frame"><slot /></div>
 {jsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>}
 <script>
   // Provenance de la visite (campagne, gclid, site d'origine, première visite), gardée pour la demande d'audit.
