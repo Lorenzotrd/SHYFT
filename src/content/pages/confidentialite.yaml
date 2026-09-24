@@ -7,7 +7,7 @@ seoDescription: Comment shyft utilise les informations de la demande d’audit e
 body: |
   <h2>Responsable du traitement</h2>
 
-  <p>KENDLE LLC, éditeur du site shyft, <mark>À compléter : adresse et adresse email de contact</mark>.</p>
+  <p>KENDLE LLC, éditeur du site shyft, 1480 Euclid Ave, Miami Beach, FL 33139, États-Unis. Contact : <a href="mailto:team@shyftgrowth.com">team@shyftgrowth.com</a>.</p>
 
   <h2>Données collectées</h2>
 
@@ -27,15 +27,15 @@ body: |
 
   <h2>Destinataires</h2>
 
-  <p>L’équipe shyft et les prestataires techniques qui hébergent nos outils : <mark>À compléter : liste des prestataires et localisation des données</mark>.</p>
+  <p>L’équipe shyft et nos prestataires techniques, uniquement pour faire fonctionner nos services. Certains sont situés hors de l’Union européenne ; ces transferts sont encadrés par les garanties prévues par le RGPD.</p>
 
   <h2>Durée de conservation</h2>
 
-  <p><mark>À compléter, par exemple : trois ans après le dernier contact</mark>. Passé ce délai, ou à votre demande, la fiche est effacée définitivement de notre espace de suivi.</p>
+  <p>Trois ans après le dernier contact. Passé ce délai, ou à votre demande, vos données sont effacées définitivement.</p>
 
   <h2>Vos droits</h2>
 
-  <p>Vous pouvez accéder à vos données, les rectifier, demander leur effacement, limiter ou refuser leur traitement et demander leur portabilité. Écrivez à <mark>À compléter : adresse email</mark>. Vous pouvez aussi adresser une réclamation à la CNIL (<a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>).</p>
+  <p>Vous pouvez accéder à vos données, les rectifier, demander leur effacement, limiter ou refuser leur traitement et demander leur portabilité. Écrivez à <a href="mailto:team@shyftgrowth.com">team@shyftgrowth.com</a>. Vous pouvez aussi adresser une réclamation à la CNIL (<a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>).</p>
 
   <h2>Cookies et mesure d’audience</h2>
 
@@ -51,4 +51,4 @@ body: |
 
   <p>Les données du formulaire sont vérifiées côté serveur, protégées par un champ anti-robot et transmises de façon chiffrée lorsque le site est servi en HTTPS.</p>
 
-  <p>Dernière mise à jour : 23 septembre 2026.</p>
+  <p>Dernière mise à jour : 24 septembre 2026.</p>

@@ -18,7 +18,7 @@ const [site, services] = await Promise.all([single('site'), allServices()]);
   </div>
   <nav class="compact" aria-label="Services">{services.map((s) => <a href={`/expertises/${s.id}`}>{s.data.nomCourt}</a>)}</nav>
   <div class="bottom">
-    <span>© {YEAR} shyft · édité par {site.footer.editeur}</span>
+    <span>© {YEAR} shyft</span>
     <div class="legal"><a href="/mentions-legales">Mentions légales</a><a href="/confidentialite">Confidentialité</a>{GA_ID && <a href="#" data-cookies>Gérer les cookies</a>}</div>
   </div>
   <div class="wordmark" aria-hidden="true">shyft<span>.</span></div>

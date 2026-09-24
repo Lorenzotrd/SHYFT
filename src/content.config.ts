@@ -125,7 +125,7 @@ const site = single('site', z.object({
     services: z.string(), methode: z.string(), resultats: z.string(), audit: z.string(), cta: z.string(),
     menu: z.object({ auditTitre: z.string(), auditTexte: z.string(), rdvTitre: z.string(), rdvTexte: z.string() }),
   }),
-  footer: z.object({ accroche: lines, cta: z.string(), editeur: z.string() }),
+  footer: z.object({ accroche: lines, cta: z.string() }),
 }));
 
 const rendezVous = single('rendez-vous', z.object({

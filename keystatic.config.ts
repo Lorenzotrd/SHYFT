@@ -300,7 +300,7 @@ export default config({
             rdvTitre: text('Carte noire : titre'), rdvTexte: text('Carte noire : texte'),
           }, { label: 'Cartes en bas du menu Services' }),
         }, { label: 'Navigation' }),
-        footer: fields.object({ accroche: title('Accroche'), cta: text('Bouton'), editeur: text('Éditeur du site') }, { label: 'Pied de page' }),
+        footer: fields.object({ accroche: title('Accroche'), cta: text('Bouton') }, { label: 'Pied de page' }),
       },
     }),
 
