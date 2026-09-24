@@ -35,7 +35,7 @@ const top3 = inside ? `${Math.round((top / inside) * 100)} %` : '';
       <div class="panel on-dark">
         <span class="brand">shyft<b>.</b> <span>GeoGrid</span></span>
         <div class="fields">
-          <div><span class="lbl">Mot clé</span><span class="val">{motCle}</span></div>
+          {motCle && <div><span class="lbl">Mot clé</span><span class="val">{motCle}</span></div>}
           <div><span class="lbl">Zone</span><span class="val">{zone} · {inside} points</span></div>
         </div>
         <div class="tiles">

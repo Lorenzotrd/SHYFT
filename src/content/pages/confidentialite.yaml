@@ -13,11 +13,11 @@ body: |
 
   <p>La demande d’audit recueille : nom de l’entreprise, site internet, ville principale, secteur, prénom et nom, email professionnel, téléphone, nombre d’agences ou de points de vente, un message facultatif et les leviers que vous souhaitez faire auditer. Nous enregistrons également la page depuis laquelle la demande a été envoyée, les paramètres de campagne éventuellement présents dans l’adresse et le site qui vous a orienté vers le nôtre. Ces informations nous servent à savoir quels contenus répondent à vos questions. Aucun profilage publicitaire n’est réalisé.</p>
 
-  <p>La prise de rendez-vous se fait dans une fenêtre fournie par Cal.com, qui recueille votre nom, votre email et le créneau choisi. Nous y joignons la page et le bouton depuis lesquels vous l’avez ouverte, les paramètres de campagne éventuels et, seulement si vous avez accepté la mesure d’audience, l’identifiant Google Analytics de votre visite. Le rendez-vous est ensuite enregistré dans notre espace de suivi.</p>
+  <p>La prise de rendez-vous se fait dans une fenêtre fournie par notre outil de réservation, qui recueille votre nom, votre email et le créneau choisi. Nous y joignons la page et le bouton depuis lesquels vous l’avez ouverte, les paramètres de campagne éventuels et, seulement si vous avez accepté la mesure d’audience, l’identifiant de mesure d’audience de votre visite. Le rendez-vous est ensuite enregistré dans notre espace de suivi.</p>
 
   <h2>Où elles sont conservées</h2>
 
-  <p>Les demandes sont enregistrées dans un espace privé, accessible uniquement par l’équipe shyft après authentification, avec une notification par email à l’équipe envoyée par notre prestataire d’emails. Elles ne sont ni revendues, ni partagées avec des tiers à des fins commerciales.</p>
+  <p>Les demandes sont enregistrées dans un espace privé, accessible uniquement par l’équipe shyft après authentification, avec une notification par email à l’équipe. Elles ne sont ni revendues, ni partagées avec des tiers à des fins commerciales.</p>
 
   <h2>Pourquoi ces données</h2>
 
@@ -39,13 +39,13 @@ body: |
 
   <h2>Cookies et mesure d’audience</h2>
 
-  <p>Ce site utilise Google Analytics pour mesurer son audience : pages consultées, provenance des visites et demandes envoyées. Aucune publicité ciblée n’est activée, aucune donnée n’est revendue.</p>
+  <p>Ce site utilise un outil de mesure d’audience : pages consultées, provenance des visites et demandes envoyées. Aucune publicité ciblée n’est activée, aucune donnée n’est revendue.</p>
 
-  <p>Si vous avez accepté la mesure d’audience, la prise ou l’annulation d’un rendez-vous est signalée à Google Analytics par notre serveur, rattachée à votre visite, sans votre nom ni votre email. Si vous l’avez refusée, ou n’avez pas répondu, rien n’est transmis à Google, pas même de façon anonyme : votre rendez-vous est seulement enregistré dans notre espace de suivi.</p>
+  <p>Si vous avez accepté la mesure d’audience, la prise ou l’annulation d’un rendez-vous est signalée à l’outil de mesure d’audience par notre serveur, rattachée à votre visite, sans votre nom ni votre email. Si vous l’avez refusée, ou n’avez pas répondu, rien ne lui est transmis, pas même de façon anonyme : votre rendez-vous est seulement enregistré dans notre espace de suivi.</p>
 
-  <p>Rien n’est déposé ni transmis à Google avant votre accord. Au premier passage, un bandeau vous laisse accepter ou refuser. Si vous refusez, le script de mesure n’est pas chargé du tout et le site fonctionne à l’identique. Vous pouvez revenir sur votre choix à tout moment avec le lien <a href="#" data-cookies>Gérer les cookies</a>, en bas de chaque page.</p>
+  <p>Rien n’est déposé sur votre appareil ni transmis à l’outil de mesure avant votre accord. Au premier passage, un bandeau vous laisse accepter ou refuser. Si vous refusez, le script de mesure n’est pas chargé du tout et le site fonctionne à l’identique. Vous pouvez revenir sur votre choix à tout moment avec le lien <a href="#" data-cookies>Gérer les cookies</a>, en bas de chaque page.</p>
 
-  <p>La mesure d’audience est assurée par Google Ireland Limited. Votre adresse IP est anonymisée. Les polices de caractères sont hébergées sur ce site : leur chargement ne transmet rien à un tiers.</p>
+  <p>Votre adresse IP est anonymisée. Les polices de caractères sont hébergées sur ce site : leur chargement ne transmet rien à un tiers.</p>
 
   <h2>Sécurité</h2>
 

@@ -7,17 +7,21 @@ seoDescription: Informations légales sur l’éditeur et l’hébergeur du site
 body: |
   <h2>Éditeur du site</h2>
 
-  <p>Le site shyftgrowth.com est édité par KENDLE LLC, 1480 Euclid Ave, Miami Beach, FL 33139, États-Unis. <mark>À compléter : forme juridique, numéro d’immatriculation, numéro de TVA</mark>.</p>
+  <p>Le site shyftgrowth.com est édité par KENDLE LLC, société à responsabilité limitée (Limited Liability Company) enregistrée dans l’État de Floride, États-Unis, sous le numéro L25000504881.</p>
 
-  <p>Directeur de la publication : <mark>À compléter</mark>. Contact : <a href="mailto:team@shyftgrowth.com">team@shyftgrowth.com</a>.</p>
+  <p>Adresse : 1480 Euclid Ave, Miami Beach, FL 33139, États-Unis<br>Email : <a href="mailto:team@shyftgrowth.com">team@shyftgrowth.com</a></p>
+
+  <h2>Directeur de la publication</h2>
+
+  <p>Lorenzo Trichard</p>
 
   <h2>Hébergement</h2>
 
-  <p><mark>À compléter : nom de l’hébergeur, adresse et téléphone</mark>.</p>
+  <p>Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis.</p>
 
   <h2>Propriété intellectuelle</h2>
 
-  <p>Les textes, la marque shyft et la mise en page de ce site appartiennent à KENDLE LLC. Toute reproduction sans autorisation écrite est interdite.</p>
+  <p>Les textes, visuels et éléments graphiques de ce site sont la propriété de KENDLE LLC, sauf mention contraire. Toute reproduction sans autorisation est interdite.</p>
 
   <h2>Crédits</h2>
 
@@ -25,4 +29,4 @@ body: |
 
   <h2>Données personnelles</h2>
 
-  <p>Le traitement des informations du formulaire est décrit dans la <a href="/confidentialite">politique de confidentialité</a>.</p>
+  <p>Le traitement de vos données est décrit dans notre <a href="/confidentialite">politique de confidentialité</a>.</p>
