@@ -14,7 +14,7 @@ import Couverture from '../../components/service/Couverture.astro';
 import Chiffres from '../../components/service/Chiffres.astro';
 import GeoGrid from '../../components/service/GeoGrid.astro';
 import AutresLeviers from '../../components/service/AutresLeviers.astro';
-import { SITE_URL, rich } from '../../lib/site';
+import { SITE_URL, rich, texteSeul } from '../../lib/site';
 import { services, single, type Service } from '../../lib/content';
 
 export async function getStaticPaths() {
@@ -28,7 +28,7 @@ const chiffresHref = s.chiffres.lienVers === 'rendez-vous' ? site.calUrl : '/#re
 
 const jsonLd = [
   {
-    '@context': 'https://schema.org', '@type': 'Service', name: s.nom, description: s.hero.texte, url,
+    '@context': 'https://schema.org', '@type': 'Service', name: s.nom, description: texteSeul(s.hero.texte), url,
     serviceType: s.nom, areaServed: { '@type': 'Country', name: 'France' },
     provider: { '@type': 'Organization', '@id': `${SITE_URL}/#organisation`, name: 'shyft', url: `${SITE_URL}/` },
   },

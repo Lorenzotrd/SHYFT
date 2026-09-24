@@ -80,3 +80,7 @@ Vercel importe le dépôt GitHub et détecte Astro (`vercel.json`). Les pages so
 - `node scripts/verify.cjs` : les dix-huit pages, la navigation, le consentement, le parcours du formulaire, sans lien `.html` ni débordement mobile (serveur `npm run dev` lancé, `ADMIN_PASSWORD` défini pour vérifier l'enregistrement).
 - `node scripts/growth-test.cjs` : le simulateur des six pages métier.
 - `python3 scripts/diff-html.py <référence> dist/client` : comparaison structurelle page à page avec un ancien build.
+
+## Maillage interne
+
+Dans les textes courants (texte d'en-tête de l'accueil et des services, problèmes, mise en place), `[ancre](/chemin)` devient un lien interne souligné discrètement (`liens()` dans `src/lib/site.ts`). Seuls les chemins du site sont acceptés. La syntaxe est retirée des données structurées (`texteSeul()`). Sur les cartes services de l'accueil et dans le menu Services, le lien ne porte que le nom du service ; toute la carte reste cliquable.

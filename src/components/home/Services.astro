@@ -15,14 +15,14 @@ const services = await allServices();
   </div>
   <div class="grid">
     {services.map((s) => (
-      <a class:list={['svc', `tone-${s.data.carte.ton}`]} href={`/expertises/${s.id}`}>
+      <article class:list={['svc', `tone-${s.data.carte.ton}`]}>
         <div class="top">
           <span class="ico"><Icon name={s.data.carte.icone} size={24} stroke={1.9} /></span>
           <span class="go"><Icon name="arrow" size={15} stroke={2.2} /></span>
         </div>
-        <h3>{s.data.nom}</h3>
+        <h3><a class="svc-link" href={`/expertises/${s.id}`}>{s.data.nom}</a></h3>
         <p><span class="long">{s.data.carte.texte}</span><span class="short">{s.data.carte.texteCourt}</span></p>
-      </a>
+      </article>
     ))}
   </div>
 </section>
@@ -30,8 +30,12 @@ const services = await allServices();
   .services{padding-left:clamp(14px, 2.8vw, 40px);padding-right:clamp(14px, 2.8vw, 40px);display:flex;flex-direction:column;gap:48px}
   .section-head{padding:0 clamp(6px, 3.5vw, 50px)}
   .grid{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:16px}
-  .svc{display:flex;flex-direction:column;gap:14px;min-height:314px;padding:32px;border-radius:var(--r-card);background:var(--card);transition:transform .2s,box-shadow .2s}
-  .svc:hover{transform:translateY(-3px);box-shadow:0 24px 40px -28px rgba(0,0,0,.35)}
+  /* Le lien ne porte que le nom du service (ancre courte) ; son ::after rend toute la carte cliquable. */
+  .svc{position:relative;display:flex;flex-direction:column;gap:14px;min-height:314px;padding:32px;border-radius:var(--r-card);background:var(--card);transition:transform .2s,box-shadow .2s}
+  .svc:hover,.svc:focus-within{transform:translateY(-3px);box-shadow:0 24px 40px -28px rgba(0,0,0,.35)}
+  .svc-link::after{content:"";position:absolute;inset:0;border-radius:inherit}
+  .svc-link:focus-visible{outline:none}
+  .svc:has(.svc-link:focus-visible){outline:2px solid var(--ink);outline-offset:3px}
   .top{display:flex;align-items:flex-start;justify-content:space-between}
   .ico{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:var(--r-icon);background:var(--chip)}
   .go{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--line)}

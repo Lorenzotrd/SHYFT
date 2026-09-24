@@ -1,7 +1,7 @@
 ---
 // En-tête d'une page service : fil d'Ariane, promesse, rendez-vous et audit, carte « ce qu'on suit chaque mois ».
 import Bouton from '../shyft/Bouton.astro';
-import { rich, pad } from '../../lib/site';
+import { rich, pad, liens } from '../../lib/site';
 interface Props {
   nom: string; titre: string; texte: string; suivi: string[]; calUrl: string;
   commun: { filAccueil: string; filServices: string; ctaRdv: string; ctaAudit: string; suiviSurtitre: string; suiviTitre: string };
@@ -14,7 +14,7 @@ const { nom, titre, texte, suivi, calUrl, commun } = Astro.props;
       <ol><li><a href="/">{commun.filAccueil}</a></li><li><a href="/#services">{commun.filServices}</a></li><li aria-current="page">{nom}</li></ol>
     </nav>
     <h1 class="title" set:html={rich(titre)}></h1>
-    <p class="lead">{texte}</p>
+    <p class="lead" set:html={liens(texte)}></p>
     <div class="ctas">
       <Bouton href={calUrl} emplacement="service-en-tete" block>{commun.ctaRdv}</Bouton>
       <Bouton href="/audit-offert" variant="outline" block>{commun.ctaAudit}</Bouton>

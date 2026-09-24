@@ -1,13 +1,13 @@
 ---
 // « Vous vous reconnaissez ? » : trois cartes blanches avec la pastille rouge « Le problème ».
-import { rich } from '../../lib/site';
+import { rich, liens } from '../../lib/site';
 interface Props { titre: string; etiquette: string; items: { titre: string; texte: string }[] }
 const { titre, etiquette, items } = Astro.props;
 ---
 <section class="section problems" aria-labelledby="pb-titre">
   <h2 id="pb-titre" class="h2 h2-page" set:html={rich(titre)}></h2>
   <div class="grid">
-    {items.map((it) => <article><span class="tag">{etiquette}</span><h3>{it.titre}</h3><p>{it.texte}</p></article>)}
+    {items.map((it) => <article><span class="tag">{etiquette}</span><h3>{it.titre}</h3><p set:html={liens(it.texte)}></p></article>)}
   </div>
 </section>
 <style>

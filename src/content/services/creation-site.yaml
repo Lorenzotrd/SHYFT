@@ -15,7 +15,7 @@ audit:
   description: Votre site sur mobile, sa vitesse et le chemin jusqu’au contact ou à l’achat.
 hero:
   titre: Un site qui *convertit*, pas juste joli
-  texte: Rapide, clair sur mobile et pensé pour Google. Construit pour transformer vos visiteurs en clients, que ce soit un appel, une réservation, une demande ou un achat. Et modifiable par vous.
+  texte: Rapide, clair sur mobile et [pensé pour Google](/expertises/seo). Construit pour transformer vos visiteurs en clients, que ce soit un appel, une réservation, une demande ou un achat. Et modifiable par vous.
 suivi:
 - Demandes reçues par le site
 - Vitesse de chargement sur mobile
@@ -38,7 +38,7 @@ miseEnPlace:
 - titre: Vitesse et technique
   texte: Un site rapide et propre pour Google.
 - titre: Mesure intégrée
-  texte: Chaque demande comptée dès la mise en ligne.
+  texte: '[Chaque demande comptée](/expertises/data-tracking) dès la mise en ligne.'
 - titre: Modifiable par vous
   texte: Une interface simple pour changer vos textes.
 couverture:

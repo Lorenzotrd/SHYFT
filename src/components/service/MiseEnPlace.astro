@@ -1,16 +1,16 @@
 ---
 // « Ce qu'on met en place » : bande noire, six éléments numérotés sur trois colonnes.
-import { rich, pad } from '../../lib/site';
+import { rich, pad, liens } from '../../lib/site';
 interface Props { titre: string; texte: string; items: { titre: string; texte: string }[] }
 const { titre, texte, items } = Astro.props;
 ---
 <section class="setup on-dark" aria-labelledby="mep-titre">
   <div class="section-head">
     <h2 id="mep-titre" class="h2 h2-page" set:html={rich(titre)}></h2>
-    <p>{texte}</p>
+    <p set:html={liens(texte)}></p>
   </div>
   <div class="grid">
-    {items.map((it, i) => <div class="item"><span class="n">{pad(i + 1)}</span><h3>{it.titre}</h3><p>{it.texte}</p></div>)}
+    {items.map((it, i) => <div class="item"><span class="n">{pad(i + 1)}</span><h3>{it.titre}</h3><p set:html={liens(it.texte)}></p></div>)}
   </div>
 </section>
 <style>

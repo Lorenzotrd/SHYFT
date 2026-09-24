@@ -29,7 +29,7 @@ const colonnes = groupes
               <span class="col-title">{c.titre}</span>
               <ul>
                 {c.items.map((s) => (
-                  <li><a class="entry" href={`/expertises/${s.id}`}><span class="entry-text"><b>{s.data.nom}</b><span>{s.data.phraseMenu}</span></span><Icon name="arrow" size={12} class="entry-arrow" /></a></li>
+                  <li class="entry"><span class="entry-text"><a class="entry-link" href={`/expertises/${s.id}`}><b>{s.data.nom}</b></a><span>{s.data.phraseMenu}</span></span><Icon name="arrow" size={12} class="entry-arrow" /></li>
                 ))}
               </ul>
             </div>
@@ -135,8 +135,10 @@ const colonnes = groupes
   .cols{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:16px;padding:0 16px}
   .col-title{display:block;margin-bottom:8px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--label)}
   .col ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:2px}
-  .entry{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin:0 -12px;padding:11px 12px;border-radius:14px;transition:background .2s}
-  .entry:hover,.entry:focus-visible{background:var(--frame)}
+  /* Lien sur le seul nom du service ; son ::after couvre toute la ligne. */
+  .entry{position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin:0 -12px;padding:11px 12px;border-radius:14px;transition:background .2s}
+  .entry:hover,.entry:focus-within{background:var(--frame)}
+  .entry-link::after{content:"";position:absolute;inset:0;border-radius:inherit}
   .entry-text{display:flex;flex-direction:column;gap:3px}
   .entry-text b{font-size:16px;font-weight:600;letter-spacing:-.02em}
   .entry-text span{font-size:13.5px;line-height:1.4;color:var(--muted)}
@@ -183,7 +185,7 @@ const colonnes = groupes
     .col-title,.entry-text span,.cards{display:none}
     .col ul{gap:0}
     .entry{margin:0;padding:10px 12px;border-radius:10px}
-    .entry:hover,.entry:focus-visible{background:var(--dark-2)}
+    .entry:hover,.entry:focus-within{background:var(--dark-2)}
     .entry-text b{font-size:17px;font-weight:500}
     .entry :global(.entry-arrow){color:var(--on-dark-muted)}
     .links > .menu-cta{display:flex;justify-content:center;margin-top:10px;padding:16px;border-radius:999px;background:var(--accent);color:var(--ink);font-weight:600;font-size:17px}

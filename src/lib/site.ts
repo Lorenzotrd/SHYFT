@@ -36,5 +36,13 @@ export const rich = (text: string) =>
 export const highlight = (text: string) =>
   escapeHtml(text).replace(/\*([^*\n]+)\*/g, '<span class="hl">$1</span>');
 
+/** Texte courant → HTML sûr avec liens internes : [ancre](/chemin) devient un lien. Seuls les chemins du site
+ *  (commençant par /) sont acceptés ; le reste du texte est échappé. Sert au maillage interne dans les paragraphes. */
+export const liens = (text: string) =>
+  escapeHtml(text).replace(/\[([^\]\n]+)\]\((\/[a-z0-9\-/#]*)\)/g, '<a class="lien" href="$2">$1</a>');
+
+/** Même texte sans la syntaxe des liens ni l'italique : pour les données structurées et les métadonnées. */
+export const texteSeul = (text: string) => text.replace(/\[([^\]\n]+)\]\((\/[a-z0-9\-/#]*)\)/g, '$1').replace(/\*/g, '');
+
 /** Deux chiffres : 1 → "01". */
 export const pad = (i: number) => String(i).padStart(2, '0');
