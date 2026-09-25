@@ -1,0 +1,12 @@
+---
+// Pages services en anglais : /en/services/<adresse anglaise>. Gabarit partagé : src/views/Service.astro.
+import View from '../../../views/Service.astro';
+import { services, type Service } from '../../../lib/content';
+import { serviceSlug } from '../../../lib/i18n';
+
+export async function getStaticPaths() {
+  return (await services('en')).map((service) => ({ params: { slug: serviceSlug(service.id, 'en') }, props: { service } }));
+}
+const { service } = Astro.props as { service: Service };
+---
+<View service={service} />

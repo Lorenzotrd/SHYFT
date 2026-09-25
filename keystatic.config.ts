@@ -30,17 +30,13 @@ const sectionHead = {
   sub: lines('Texte d’accompagnement'),
 };
 
-export default config({
+const base = {
   storage: import.meta.env.PROD
-    ? { kind: 'github', repo: { owner: 'Lorenzotrd', name: 'SHYFT' } }
-    : { kind: 'local' },
-  locale: 'fr-FR',
+    ? { kind: 'github' as const, repo: { owner: 'Lorenzotrd', name: 'SHYFT' } }
+    : { kind: 'local' as const },
+  locale: 'fr-FR' as const,
   ui: {
     brand: { name: 'SHYFT' },
-    navigation: {
-      Pages: ['accueil', 'services', 'listes', 'secteurs', 'expertises', 'pages'],
-      'Blocs communs': ['site', 'rendezVous', 'serviceCommun', 'auditOffert', 'merci', 'rdvMerci', 'methode', 'mesure', 'formulaire', 'piedDePage', 'navigation', 'leviers'],
-    },
   },
 
   collections: {
@@ -473,5 +469,37 @@ export default config({
         }), { label: 'Les quatre leviers', itemLabel: (p) => p.fields.name.value }),
       },
     }),
+  },
+};
+
+// Version anglaise : mêmes champs que le français, fichiers sous src/content/en (mêmes noms de fichiers).
+// Seuls les contenus des pages refaites sont traduits.
+const en = <T extends { label: string; path?: string }>(entry: T): T =>
+  ({ ...entry, label: `${entry.label} (EN)`, path: entry.path?.replace('src/content/', 'src/content/en/') });
+
+export default config({
+  ...base,
+  ui: {
+    ...base.ui,
+    navigation: {
+      Pages: ['accueil', 'services', 'listes', 'secteurs', 'expertises', 'pages'],
+      'Blocs communs': ['site', 'rendezVous', 'serviceCommun', 'auditOffert', 'merci', 'rdvMerci', 'methode', 'mesure', 'formulaire', 'piedDePage', 'navigation', 'leviers'],
+      English: ['accueilEn', 'servicesEn', 'pagesEn', 'siteEn', 'rendezVousEn', 'serviceCommunEn', 'auditOffertEn', 'merciEn', 'rdvMerciEn'],
+    },
+  },
+  collections: {
+    ...base.collections,
+    servicesEn: en(base.collections.services),
+    pagesEn: en(base.collections.pages),
+  },
+  singletons: {
+    ...base.singletons,
+    accueilEn: en(base.singletons.accueil),
+    siteEn: en(base.singletons.site),
+    rendezVousEn: en(base.singletons.rendezVous),
+    serviceCommunEn: en(base.singletons.serviceCommun),
+    auditOffertEn: en(base.singletons.auditOffert),
+    merciEn: en(base.singletons.merci),
+    rdvMerciEn: en(base.singletons.rdvMerci),
   },
 });

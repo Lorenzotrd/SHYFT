@@ -1,0 +1,92 @@
+nom: Meta Ads
+nomCourt: Meta Ads
+ordre: 3
+groupeMenu: Acquisition et visibilité
+phraseMenu: Create demand on Facebook and Instagram
+seoTitle: 'Meta Ads Agency for Small Businesses | Facebook & Instagram'
+seoDescription: 'Facebook and Instagram ads for small businesses: targeting, creatives, testing and qualified lead forms that bring in more sales inquiries.'
+carte:
+  texte: Reach people who aren't looking for you yet, on Facebook and Instagram, within your service radius.
+  texteCourt: Reach people who aren't looking for you yet, near you.
+  icone: megaphone
+  ton: clair
+audit:
+  tag: Paid ads
+  description: Your Facebook and Instagram ads, and the ones your competitors are running.
+hero:
+  titre: Reach people who aren't looking for you *yet*
+  texte: Facebook and Instagram, targeted to the area you serve. Create demand before it goes to a competitor.
+suivi:
+- Cost per lead
+- Qualified leads
+- People reached in your area
+- Lead response rate
+problemes:
+- titre: Nobody thinks of you
+  texte: Your future customers don't know yet that they'll need you.
+- titre: Posts that go nowhere
+  texte: Your posts mostly reach people who already know you.
+- titre: Boosts with no results
+  texte: You've boosted posts before without knowing what they brought in.
+miseEnPlace:
+- titre: Radius targeting
+  texte: Around your locations, not across the whole country.
+- titre: Tailored creatives
+  texte: Photos and short videos edited from your jobs and products.
+- titre: Built-in lead forms
+  texte: A request in two taps, without leaving Facebook or Instagram.
+- titre: Retargeting
+  texte: We reach people who visited [your website](/en/services/website-design) without reaching out.
+- titre: Message testing
+  texte: Several angles tested, we keep what works.
+- titre: Tracking by campaign
+  texte: "[Every lead tied to the ad](/en/services/data-tracking) that generated it."
+couverture:
+  discriminant: false
+etapes:
+- titre: Offers and areas
+  texte: What we promote, and where.
+- titre: The creatives
+  texte: Built from your own images.
+- titre: The launch
+  texte: Testing and first adjustments.
+- titre: The management
+  texte: Cost per lead, every month.
+chiffres:
+  titre: Our *Meta Ads* results
+  lien: See the dashboards on a call
+  lienVers: rendez-vous
+  cartes:
+  - surtitre: Ad spend managed
+    chiffre: €1M+
+    unite: ''
+    legende: spent for our clients in one year
+    texte: On Facebook and Instagram, for local businesses and online brands alike.
+    exempleFictif: false
+    duree: ''
+  - surtitre: Profitability
+    chiffre: '2.5'
+    unite: ROAS
+    legende: return on ad spend
+    texte: $2.50 in revenue for every $1 spent on ads.
+    exempleFictif: false
+    duree: ''
+  - surtitre: Growth
+    chiffre: +50%
+    unite: ''
+    legende: more leads per month over the first 3 months
+    texte: 'Campaigns that learn fast: more leads every month, and a cost per lead that keeps dropping.'
+    exempleFictif: false
+    duree: ''
+  note: Figures from our clients' dashboards. Names removed for confidentiality, details shared on a call.
+geogrid:
+  discriminant: false
+faq:
+- question: My customers are businesses. Will it work?
+  answer: Yes, as long as the targeting is precise. And for some industries, we'll tell you honestly that Google Ads should come first.
+- question: Do I need to provide photos?
+  answer: Your own are best, even if they're shot on your phone. We handle the editing.
+- question: How much budget should I plan for?
+  answer: It's set in the plan, based on your area. Ad spend is paid directly to Meta, on your own account.
+- question: I already manage my Facebook page
+  answer: Perfect, we won't touch your posts. We handle the ads that bring in leads.

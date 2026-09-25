@@ -1,0 +1,13 @@
+---
+// Pages légales en anglais : /en/legal-notice, /en/privacy-policy. Gabarit partagé : src/views/Legal.astro.
+import type { CollectionEntry } from 'astro:content';
+import View from '../../views/Legal.astro';
+import { legalPages } from '../../lib/content';
+import { pageSlug } from '../../lib/i18n';
+
+export async function getStaticPaths() {
+  return (await legalPages('en')).map((page) => ({ params: { page: pageSlug(page.id, 'en') }, props: { page } }));
+}
+const { page } = Astro.props as { page: CollectionEntry<'pages'> };
+---
+<View page={page} />

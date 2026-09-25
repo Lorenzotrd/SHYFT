@@ -2,22 +2,25 @@
 // En-tête d'une page service : fil d'Ariane, promesse, rendez-vous et audit, carte « ce qu'on suit chaque mois ».
 import Bouton from '../shyft/Bouton.astro';
 import { rich, pad, liens } from '../../lib/site';
+import { langOf, route, ui } from '../../lib/i18n';
 interface Props {
   nom: string; titre: string; texte: string; suivi: string[]; calUrl: string;
   commun: { filAccueil: string; filServices: string; ctaRdv: string; ctaAudit: string; suiviSurtitre: string; suiviTitre: string };
 }
 const { nom, titre, texte, suivi, calUrl, commun } = Astro.props;
+const lang = langOf(Astro.url);
+const r = route[lang];
 ---
 <section class="hero">
   <div class="copy">
-    <nav class="crumbs" aria-label="Fil d’Ariane">
-      <ol><li><a href="/">{commun.filAccueil}</a></li><li><a href="/#services">{commun.filServices}</a></li><li aria-current="page">{nom}</li></ol>
+    <nav class="crumbs" aria-label={ui[lang].crumbs}>
+      <ol><li><a href={r.home}>{commun.filAccueil}</a></li><li><a href={r.anchor('services')}>{commun.filServices}</a></li><li aria-current="page">{nom}</li></ol>
     </nav>
     <h1 class="title" set:html={rich(titre)}></h1>
     <p class="lead" set:html={liens(texte)}></p>
     <div class="ctas">
       <Bouton href={calUrl} emplacement="service-en-tete" block>{commun.ctaRdv}</Bouton>
-      <Bouton href="/audit-offert" variant="outline" block>{commun.ctaAudit}</Bouton>
+      <Bouton href={r.audit} variant="outline" block>{commun.ctaAudit}</Bouton>
     </div>
   </div>
   <aside class="track on-dark" aria-labelledby="suivi-titre">

@@ -1,0 +1,54 @@
+title: Privacy policy
+eyebrow: Your data
+h1: Privacy policy.
+lead: What we do with your information, and what we don’t.
+seoTitle: 'Privacy policy | SHYFT Growth'
+seoDescription: 'Learn how SHYFT Growth collects, uses and protects your personal data, and what your rights are.'
+body: |
+  <h2>Data controller</h2>
+
+  <p>KENDLE LLC, publisher of the shyft website, 1480 Euclid Ave, Miami Beach, FL 33139, United States. Contact: <a href="mailto:team@shyftgrowth.com">team@shyftgrowth.com</a>.</p>
+
+  <h2>Data collected</h2>
+
+  <p>The audit request collects: company name, website, main city, industry, first and last name, business email, phone number, number of branches or locations, an optional message and the channels you would like audited. We also record the page from which the request was sent, any campaign parameters present in the URL and the site that referred you to ours. This information helps us understand which content answers your questions. No advertising profiling is carried out.</p>
+
+  <p>Appointments are booked in a window provided by our booking tool, which collects your name, your email and the time slot you choose. We add the page and the button from which you opened it, any campaign parameters and, only if you have accepted audience measurement, the audience measurement identifier of your visit. The appointment is then recorded in our tracking workspace.</p>
+
+  <h2>Where it is stored</h2>
+
+  <p>Requests are stored in a private workspace, accessible only to the shyft team after authentication, with an email notification sent to the team. They are neither sold nor shared with third parties for commercial purposes.</p>
+
+  <h2>Why we use this data</h2>
+
+  <ul><li>To prepare the free audit you request and send it to you by email (pre-contractual measures taken at your request).</li><li>To continue the business conversation if you wish (legitimate interest).</li></ul>
+
+  <p>No marketing unrelated to your request, no sale of data.</p>
+
+  <h2>Recipients</h2>
+
+  <p>The shyft team and our technical service providers, solely to operate our services. Some are located outside the European Union; these transfers are covered by the safeguards provided for by the GDPR (EU General Data Protection Regulation).</p>
+
+  <h2>Retention period</h2>
+
+  <p>Three years after the last contact. After this period, or at your request, your data is permanently deleted.</p>
+
+  <h2>Your rights</h2>
+
+  <p>You can access your data, correct it, request its deletion, restrict or object to its processing and request its portability. Write to <a href="mailto:team@shyftgrowth.com">team@shyftgrowth.com</a>. You can also lodge a complaint with the CNIL, the French data protection authority (<a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>).</p>
+
+  <h2>Cookies and audience measurement</h2>
+
+  <p>This site uses an audience measurement tool: pages viewed, where visits come from and requests sent. No targeted advertising is enabled, and no data is sold.</p>
+
+  <p>If you have accepted audience measurement, booking or cancelling an appointment is reported to the audience measurement tool by our server, linked to your visit, without your name or email. If you have declined it, or have not responded, nothing is sent to it, not even anonymously: your appointment is only recorded in our tracking workspace.</p>
+
+  <p>Nothing is stored on your device or sent to the measurement tool before you consent. On your first visit, a banner lets you accept or decline. If you decline, the measurement script is not loaded at all and the site works exactly the same. You can change your choice at any time using the <a href="#" data-cookies>Cookie settings</a> link at the bottom of every page.</p>
+
+  <p>Your IP address is anonymized. Fonts are hosted on this site: loading them sends nothing to any third party.</p>
+
+  <h2>Security</h2>
+
+  <p>Form data is verified server-side, protected by an anti-bot field and transmitted in encrypted form when the site is served over HTTPS.</p>
+
+  <p>Last updated: September 24, 2026.</p>

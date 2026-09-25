@@ -3,9 +3,11 @@
 // Téléphone : les cartes cochées « téléphone » (trois), dans la disposition de la maquette mobile.
 import Icon from '../shyft/Icon.astro';
 import type { CollectionEntry } from 'astro:content';
+import { langOf, ui } from '../../lib/i18n';
 type Card = CollectionEntry<'accueil'>['data']['eventail'][number];
 interface Props { cards: Card[]; legende: string }
 const { cards, legende } = Astro.props;
+const t = ui[langOf(Astro.url)];
 const mobileSlots = ['m-left', 'm-center', 'm-right'];
 let m = 0;
 const slotted = cards.map((c) => ({ ...c, slot: c.mobile && m < 3 ? mobileSlots[m++] : '' }));
@@ -19,7 +21,7 @@ const barColor = (i: number, n: number) => (i === n - 1 ? 'var(--accent)' : i >=
 const sourceColor = ['var(--ink)', 'var(--ink)', 'var(--accent)', '#ccc'];
 const dotColor: Record<string, string> = { v: 'var(--map-top)', o: 'var(--map-mid)', r: 'var(--map-low)', n: 'var(--ink)' };
 ---
-<section class="fan-section" aria-label="Exemples de demandes et de suivis, données d'illustration">
+<section class="fan-section" aria-label={t.eventail}>
   <div class="fan">
     {slotted.map((c) => (
       <div class:list={['card', `tone-${c.ton}`, c.slot || 'desk-only']}>

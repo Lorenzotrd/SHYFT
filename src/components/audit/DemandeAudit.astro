@@ -1,16 +1,23 @@
 ---
 // Demande d'audit : étape 1 (leviers à auditer), étape 2 (l'entreprise), barre d'envoi.
 // Le script tient l'état de la sélection, envoie la demande à /api/lead avec la liste des leviers,
-// puis redirige vers /audit-offert/merci, où se déclenche la conversion.
+// puis redirige vers la page merci de la langue (/audit-offert/merci, /en/free-audit/thank-you), où se déclenche la conversion.
 import Icon from '../shyft/Icon.astro';
 import { rich } from '../../lib/site';
 import { services as allServices, single } from '../../lib/content';
-const [page, site, services] = await Promise.all([single('auditOffert'), single('site'), allServices()]);
+import { langOf, route, ui } from '../../lib/i18n';
+const lang = langOf(Astro.url);
+const r = route[lang];
+const t = ui[lang].form;
+const [page, site, services] = await Promise.all([single('auditOffert', lang), single('site', lang), allServices(lang)]);
 const { champs: f, envoi, etape1 } = page;
 const total = services.length;
-const labels = { aucun: envoi.aucun, un: envoi.un, plusieurs: envoi.plusieurs, tout: etape1.toutAuditer, rien: etape1.toutDeselectionner, compteur: etape1.compteur };
+const labels = {
+  aucun: envoi.aucun, un: envoi.un, plusieurs: envoi.plusieurs, tout: etape1.toutAuditer, rien: etape1.toutDeselectionner, compteur: etape1.compteur,
+  envoi: t.sending, echec: t.failed,
+};
 ---
-<div class="demande" data-audit data-labels={JSON.stringify(labels)} data-total={total}>
+<div class="demande" data-audit data-labels={JSON.stringify(labels)} data-total={total} data-lang={lang} data-merci={r.auditMerci}>
   <div class="saisie" data-saisie>
     <section class="section step" aria-labelledby="etape1-titre">
       <div class="step-head">
@@ -45,14 +52,14 @@ const labels = { aucun: envoi.aucun, un: envoi.un, plusieurs: envoi.plusieurs, t
           <label>{f.agences.label}<input name="agences" inputmode="numeric" placeholder={f.agences.placeholder} maxlength="20"></label>
         </div>
         <label class="full"><span>{f.message.label} <span class="opt">{f.facultatif}</span></span><textarea name="message" rows="3" placeholder={f.message.placeholder} maxlength="2000"></textarea></label>
-        <label class="honeypot" aria-hidden="true">Ne pas remplir<input name="website_check" tabindex="-1" autocomplete="off"></label>
+        <label class="honeypot" aria-hidden="true">{t.honeypot}<input name="website_check" tabindex="-1" autocomplete="off"></label>
       </div>
       <div class="send on-dark">
-        <div class="send-text"><span class="summary" data-summary aria-live="polite">{envoi.un}</span><span class="mention">{envoi.mention} <a href="/confidentialite">Politique de confidentialité</a>.</span></div>
+        <div class="send-text"><span class="summary" data-summary aria-live="polite">{envoi.un}</span><span class="mention">{envoi.mention} <a href={r.page('confidentialite')}>{t.privacy}</a>.</span></div>
         <button type="submit" class="submit" data-submit><span data-submit-label>{envoi.bouton}</span><span class="dot"><Icon name="arrow" size={16} /></span></button>
       </div>
       <p class="error" data-error role="alert" hidden data-default={envoi.erreur}></p>
-      <noscript><p class="error">Le formulaire a besoin de JavaScript. Vous pouvez aussi <a href={site.calUrl}>prendre rendez-vous</a>.</p></noscript>
+      <noscript><p class="error">{t.noscript} <a href={site.calUrl}>{t.noscriptLink}</a>.</p></noscript>
     </form>
   </div>
 </div>
@@ -101,18 +108,18 @@ const labels = { aucun: envoi.aucun, un: envoi.un, plusieurs: envoi.plusieurs, t
       if (!services.length || !form.checkValidity()) { form.reportValidity(); showError(error.dataset.default || ''); return; }
       const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
       submit.disabled = true;
-      submitLabel.textContent = 'Envoi en cours…';
+      submitLabel.textContent = labels.envoi;
       try {
-        const response = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...data, ...context(), services, formulaire: 'audit' }) });
+        const response = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...data, ...context(), services, formulaire: 'audit', langue: root.dataset.lang || 'fr' }) });
         let result: { ok?: boolean; error?: string } = {};
         try { result = await response.json(); } catch { /* réponse non JSON : message générique ci-dessous */ }
-        if (!response.ok || !result.ok) throw new Error(result.error || 'La demande n’a pas été envoyée. Réessayez dans un instant.');
+        if (!response.ok || !result.ok) throw new Error(result.error || labels.echec);
         // La page merci lit cette note une seule fois pour compter la conversion (ni rechargement ni visite directe).
         try { sessionStorage.setItem('shyft:audit', JSON.stringify({ secteur: data.secteur || '', formulaire: 'audit', services })); } catch { /* stockage bloqué : redirection sans conversion */ }
-        location.assign('/audit-offert/merci');
+        location.assign(root.dataset.merci || '/audit-offert/merci');
         return;
       } catch (e) {
-        showError(e instanceof Error ? e.message : 'La demande n’a pas été envoyée. Réessayez dans un instant.');
+        showError(e instanceof Error ? e.message : labels.echec);
       } finally {
         submitLabel.textContent = sendLabel;
         submit.disabled = picked().length === 0;

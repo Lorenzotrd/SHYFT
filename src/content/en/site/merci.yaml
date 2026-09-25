@@ -1,0 +1,32 @@
+seoTitle: Thank you, we received your audit request · shyft
+seoDescription: 'We received your free audit request. Your summary will arrive by email within 24 hours.'
+titre: Thanks, you're *all set*
+texte: Your audit will land in your inbox within 24 hours. We're getting started right away.
+suiteTitre: What happens next
+etapes:
+- titre: Request received
+  texte: We have your website, your city and the channels to review.
+  statut: Just now
+  etat: fait
+- titre: Analysis underway
+  texte: Your visibility point by point, your competitors, and what people search for in your area.
+  statut: In progress
+  etat: en-cours
+- titre: Audit in your inbox
+  texte: A clear summary, channel by channel, with the first three things to fix.
+  statut: Within 24 h
+  etat: a-venir
+- titre: We talk it over, if you like
+  texte: A 30-minute video call to go through the audit together. Never required.
+  statut: Whenever you want
+  etat: a-venir
+attente:
+  surtitre: Don't want to wait?
+  titre: Let's go over it *together*
+  texte: 'Book a 30-minute video call: we walk you through the audit live and answer your questions.'
+  cta: Let's talk
+email:
+  titre: So you don't miss it
+  texte: The audit comes from {adresse}. Add this address to your contacts, and check your spam folder if nothing arrives.
+  adresse: team@shyftgrowth.com
+leviersTitre: In the meantime, explore our services

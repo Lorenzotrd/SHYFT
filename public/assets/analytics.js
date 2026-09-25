@@ -58,22 +58,38 @@
  let banner = null;
  function hide() { if (banner) { banner.remove(); banner = null; } }
 
+ // Textes du bandeau, dans la langue de la page (<html lang>).
+ const TEXTS = {
+  fr: {
+   title: 'Mesure d’audience',
+   ads: 'On utilise Google Analytics pour savoir quelles pages répondent à vos questions, et des outils de mesure publicitaire (Google Ads, Meta) pour savoir quelles publicités amènent des demandes. ',
+   noAds: 'On utilise Google Analytics pour savoir quelles pages répondent à vos questions. Rien de plus, aucune publicité ciblée. ',
+   same: 'Le site fonctionne exactement pareil si vous refusez. ',
+   more: 'En savoir plus', privacy: '/confidentialite', deny: 'Refuser', accept: 'Accepter',
+  },
+  en: {
+   title: 'Analytics',
+   ads: 'We use Google Analytics to see which pages answer your questions, and ad measurement tools (Google Ads, Meta) to see which ads bring in requests. ',
+   noAds: 'We use Google Analytics to see which pages answer your questions. Nothing more, no targeted ads. ',
+   same: 'The site works exactly the same if you decline. ',
+   more: 'Learn more', privacy: '/en/privacy-policy', deny: 'Decline', accept: 'Accept',
+  },
+ };
+
  function show() {
   if (banner) return;
+  const t = TEXTS[document.documentElement.lang === 'en' ? 'en' : 'fr'];
   banner = document.createElement('div');
   banner.className = 'consent';
   banner.setAttribute('role', 'dialog');
   banner.setAttribute('aria-labelledby', 'consentTitle');
   banner.innerHTML =
-   '<div class="consent-text"><b id="consentTitle">Mesure d’audience</b>' +
-   (ADVERTISING
-    ? '<p>On utilise Google Analytics pour savoir quelles pages répondent à vos questions, et des outils de mesure publicitaire (Google Ads, Meta) pour savoir quelles publicités amènent des demandes. '
-    : '<p>On utilise Google Analytics pour savoir quelles pages répondent à vos questions. Rien de plus, aucune publicité ciblée. ') +
-   'Le site fonctionne exactement pareil si vous refusez. ' +
-   '<a href="/confidentialite">En savoir plus</a></p></div>' +
+   '<div class="consent-text"><b id="consentTitle">' + t.title + '</b>' +
+   '<p>' + (ADVERTISING ? t.ads : t.noAds) + t.same +
+   '<a href="' + t.privacy + '">' + t.more + '</a></p></div>' +
    '<div class="consent-actions">' +
-   '<button type="button" class="btn btn-ghost" data-consent="denied">Refuser</button>' +
-   '<button type="button" class="btn btn-lime" data-consent="granted">Accepter</button></div>';
+   '<button type="button" class="btn btn-ghost" data-consent="denied">' + t.deny + '</button>' +
+   '<button type="button" class="btn btn-lime" data-consent="granted">' + t.accept + '</button></div>';
   document.body.appendChild(banner);
   banner.querySelector('[data-consent="granted"]').focus();
  }

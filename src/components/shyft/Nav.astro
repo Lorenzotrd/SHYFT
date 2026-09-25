@@ -2,22 +2,28 @@
 // Navigation : grille à trois colonnes (logo, pilule au centre exact, bouton rendez-vous).
 // Pilule : Services (menu déroulant en trois colonnes), Méthode, Résultats, Audit. La page en cours est surlignée.
 // Téléphone : pilule noire avec bouton jaune ; le menu s'ouvre en dessous, Services devient un accordéon.
+// À droite, le lien vers la même page dans l'autre langue (FR ↔ EN).
 import Icon from './Icon.astro';
 import Bouton from './Bouton.astro';
 import { single, services as allServices } from '../../lib/content';
 import { highlight } from '../../lib/site';
-interface Props { current?: 'services' | 'audit' }
-const { current } = Astro.props;
-const [{ nav, calUrl }, services] = await Promise.all([single('site'), allServices()]);
+import { langOf, route, ui, type Paths } from '../../lib/i18n';
+interface Props { current?: 'services' | 'audit'; paths: Paths }
+const { current, paths } = Astro.props;
+const lang = langOf(Astro.url);
+const other = lang === 'en' ? 'fr' : 'en';
+const r = route[lang];
+const t = ui[lang].nav;
+const [{ nav, calUrl }, services] = await Promise.all([single('site', lang), allServices(lang)]);
 const groupes = ['Acquisition et visibilité', 'Conversion et mesure', 'IA et automatisation'] as const;
 const colonnes = groupes
-  .map((g) => ({ titre: g, items: services.filter((s) => s.data.groupeMenu === g) }))
+  .map((g) => ({ titre: t.groupes[g], items: services.filter((s) => s.data.groupeMenu === g) }))
   .filter((c) => c.items.length);
 ---
 <header class="nav" data-nav>
-  <a class="logo" href="/" aria-label="shyft, accueil">shyft<span>.</span></a>
+  <a class="logo" href={r.home} aria-label={t.home}>shyft<span>.</span></a>
 
-  <nav class="links" id="menu-principal" aria-label="Navigation principale">
+  <nav class="links" id="menu-principal" aria-label={t.main}>
     <div class="drop" data-drop>
       <button type="button" class:list={['drop-btn', { active: current === 'services' }]} aria-expanded="false" aria-controls="menu-services" data-drop-btn>
         {nav.services}<Icon name="chevron" size={12} stroke={2.4} class="chev" />
@@ -29,27 +35,28 @@ const colonnes = groupes
               <span class="col-title">{c.titre}</span>
               <ul>
                 {c.items.map((s) => (
-                  <li class="entry"><span class="entry-text"><a class="entry-link" href={`/expertises/${s.id}`}><b>{s.data.nom}</b></a><span>{s.data.phraseMenu}</span></span><Icon name="arrow" size={12} class="entry-arrow" /></li>
+                  <li class="entry"><span class="entry-text"><a class="entry-link" href={r.service(s.id)}><b>{s.data.nom}</b></a><span>{s.data.phraseMenu}</span></span><Icon name="arrow" size={12} class="entry-arrow" /></li>
                 ))}
               </ul>
             </div>
           ))}
         </div>
         <div class="cards">
-          <a class="card card-audit" href="/audit-offert"><span><b>{nav.menu.auditTitre}</b><span>{nav.menu.auditTexte}</span></span><span class="card-dot"><Icon name="arrow" size={13} /></span></a>
+          <a class="card card-audit" href={r.audit}><span><b>{nav.menu.auditTitre}</b><span>{nav.menu.auditTexte}</span></span><span class="card-dot"><Icon name="arrow" size={13} /></span></a>
           <a class="card card-rdv" href={calUrl} data-emplacement="menu-services"><span><b>{nav.menu.rdvTitre}</b><span>{nav.menu.rdvTexte}</span></span><span class="card-dot"><Icon name="arrow" size={13} /></span></a>
         </div>
       </div>
     </div>
-    <a href="/#methode">{nav.methode}</a>
-    <a href="/#resultats">{nav.resultats}</a>
-    <a href="/audit-offert" class:list={{ active: current === 'audit' }} aria-current={current === 'audit' ? 'page' : undefined}><span set:html={highlight(nav.audit)} /></a>
+    <a href={r.anchor('methode')}>{nav.methode}</a>
+    <a href={r.anchor('resultats')}>{nav.resultats}</a>
+    <a href={r.audit} class:list={{ active: current === 'audit' }} aria-current={current === 'audit' ? 'page' : undefined}><span set:html={highlight(nav.audit)} /></a>
     <a class="menu-cta" href={calUrl} data-emplacement="menu-mobile">{nav.cta}</a>
   </nav>
 
   <div class="end">
+    <a class="lang" href={paths[other]} hreflang={ui[other].htmlLang} lang={ui[other].htmlLang} aria-label={t.switchLabel} title={t.switchLabel}>{t.switchText}</a>
     <Bouton href={calUrl} size="sm" emplacement="menu" class="nav-cta">{nav.cta}</Bouton>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu" data-menu>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label={t.open} data-label-open={t.open} data-label-close={t.close} data-menu>
       <Icon name="menu" size={18} stroke={2.2} class="i-open" /><Icon name="close" size={18} stroke={2.2} class="i-close" />
     </button>
   </div>
@@ -97,7 +104,7 @@ const colonnes = groupes
   const setBurger = (open: boolean) => {
     nav?.classList.toggle('open', open);
     burger?.setAttribute('aria-expanded', String(open));
-    burger?.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    burger?.setAttribute('aria-label', (open ? burger.dataset.labelClose : burger.dataset.labelOpen) || '');
     if (!open) setDrop(false);
   };
   burger?.addEventListener('click', () => setBurger(!nav?.classList.contains('open')));
@@ -117,6 +124,8 @@ const colonnes = groupes
   .logo{justify-self:start;font-size:26px;font-weight:700;letter-spacing:-.04em;line-height:1}
   .logo span{color:var(--accent)}
   .end{justify-self:end;display:flex;align-items:center;gap:10px}
+  .lang{display:inline-grid;place-items:center;min-width:44px;height:44px;padding:0 12px;border:1px solid var(--line-3);border-radius:999px;font:600 13px/1 var(--sans);letter-spacing:.04em;transition:background .2s,border-color .2s}
+  .lang:hover{background:var(--card);border-color:var(--ink)}
 
   /* Pilule */
   .links{display:flex;align-items:center;gap:2px;padding:5px;border-radius:999px;background:var(--ink)}
@@ -170,6 +179,9 @@ const colonnes = groupes
     .nav{grid-template-columns:1fr auto;margin:14px 14px 0;padding:7px 7px 7px 20px;border-radius:999px;background:var(--ink)}
     .logo{font-size:19px;color:var(--on-dark)}
     :global(.nav-cta){display:none!important}
+    .lang{border-color:var(--dark-line-2);color:var(--on-dark)}
+    .lang:hover{background:var(--dark-2);border-color:var(--on-dark-muted)}
+    .lang:focus-visible{outline-color:var(--accent)}
     .menu-btn{display:inline-grid;place-items:center;width:44px;height:44px;border:0;border-radius:999px;background:var(--accent);color:var(--ink);cursor:pointer}
     .menu-btn :global(.i-close){display:none}
     .nav.open{border-radius:26px;padding-bottom:14px}
