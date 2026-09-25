@@ -1,5 +1,0 @@
----
-// Grille matériel × ville : chaque case est une page qui répond à une recherche précise.
-const rows: [string, number[]][] = [['Nacelle 12 m', [1, 1, 0]], ['Mini-pelle 1,5 t', [1, 0, 1]], ['Échafaudage roulant', [1, 1, 1]], ['Compacteur', [0, 1, 0]]];
----
-<figure class="mock"><figcaption class="mock-head"><b>Une page par croisement</b><span>Démonstration</span></figcaption><div class="table-scroll"><table class="data-table grid-table"><thead><tr><th>Matériel</th><th>Tours</th><th>Poitiers</th><th>Angers</th></tr></thead><tbody>{rows.map(([name, cells]) => <tr><td>{name}</td>{cells.map((c) => <td><span class={`cell ${c ? 'on' : 'off'}`}>{c ? 'Page en ligne' : 'À créer'}</span></td>)}</tr>)}</tbody></table></div><p class="mock-note">Chaque case est une page qui répond à une recherche précise. C’est long à construire, et c’est exactement ce que les grands réseaux ont fait avant vous.</p></figure>

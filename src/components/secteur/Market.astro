@@ -1,7 +1,0 @@
----
-// Le marché vu par les futurs clients : exemples de recherches et constats du moment.
-import type { Sector } from '../../lib/content';
-interface Props { sector: Sector }
-const { data: s } = Astro.props.sector;
----
-<section class="block" id="marche"><div class="wrap audit"><div><div class="kicker">Votre marché</div><h2 class="title">{s.who} <br>cherchent déjà.</h2><p class="sub">Des exemples de recherches dans votre métier. Et ce qui se passe aujourd’hui quand elles arrivent :</p><ul class="plain">{s.pain.map((p) => <li>{p}</li>)}</ul><a class="btn btn-lime" href="#contact">Recevoir mon audit offert</a></div><div class="report" aria-label="Exemples de recherches de vos futurs clients"><div class="report-head"><b>Ce qu’ils tapent</b><span>Exemples, sans volume</span></div>{s.searches.map((r) => <div class="rrow"><div><div class="t">« {r.query} »</div><div class="d">{r.meaning}</div></div><span class="tag info">{r.channel}</span></div>)}</div></div></section>

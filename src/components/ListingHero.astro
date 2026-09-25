@@ -1,7 +1,0 @@
----
-// En-tête des pages de liste et des pages légales : surtitre, titre en deux lignes, introduction, boutons éventuels.
-import Nav from './Nav.astro';
-interface Props { eyebrow: string; title: string; title2?: string; lead: string; legal?: boolean }
-const { eyebrow, title, title2, lead, legal = false } = Astro.props;
----
-<div class="hero-shell"><header class={legal ? 'hero listing-hero legal-hero' : 'hero listing-hero'}><Nav /><div class="hero-copy"><div class="hero-eyebrow">{eyebrow}</div><h1>{title}{title2 && <Fragment> <br><span class="l2">{title2}</span></Fragment>}</h1><p class="lead">{lead}</p><slot /></div></header></div>

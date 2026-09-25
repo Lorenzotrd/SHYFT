@@ -1,5 +1,0 @@
----
-// Vue du siège et vue d'une adresse.
-const rows: [string, string, string, string][] = [['Tours centre', '41', '12', '7'], ['Blois', '28', '9', '5'], ['Amboise', '17', '4', '2']];
----
-<div class="views"><figure class="mock"><figcaption class="mock-head"><b>Vue du siège</b><span>Démonstration</span></figcaption><div class="table-scroll"><table class="data-table"><thead><tr><th>Établissement</th><th>Contacts</th><th>Réservations</th><th>Achats</th></tr></thead><tbody>{rows.map(([a, c, r, v]) => <tr><td>{a}</td><td>{c}</td><td>{r}</td><td><b>{v}</b></td></tr>)}</tbody></table></div></figure><figure class="mock"><figcaption class="mock-head"><b>Vue d’une adresse</b><span>Démonstration</span></figcaption><div class="addr"><span class="addr-label">Tours centre</span><b>Votre enseigne · Tours</b><div class="addr-line"><span>Fiche Google</span><i>À jour · 4,6 ★</i></div><div class="addr-line"><span>Page locale</span><i>En ligne</i></div><div class="addr-line"><span>Contacts ce mois</span><i>41</i></div><div class="addr-line"><span>Campagne locale</span><i>Active</i></div></div></figure></div>
