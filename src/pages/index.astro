@@ -22,14 +22,14 @@ const [home, site, allServices] = await Promise.all([single('accueil'), single('
 const jsonLd = [
   {
     '@context': 'https://schema.org', '@type': 'Organization', '@id': `${SITE_URL}/#organisation`,
-    name: 'shyft', url: `${SITE_URL}/`, logo: `${SITE_URL}/assets/og.png`,
+    name: 'SHYFT Growth', alternateName: 'SHYFT', url: `${SITE_URL}/`, logo: `${SITE_URL}/assets/icon-512.png`, image: `${SITE_URL}/assets/og.png?v=2`,
     description: texteSeul(home.hero.texte), areaServed: { '@type': 'Country', name: 'France' },
     hasOfferCatalog: {
       '@type': 'OfferCatalog', name: 'Services',
       itemListElement: allServices.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.data.nom, description: s.data.carte.texte, url: `${SITE_URL}/expertises/${s.id}`, provider: { '@id': `${SITE_URL}/#organisation` } } })),
     },
   },
-  { '@context': 'https://schema.org', '@type': 'WebSite', name: 'shyft', inLanguage: 'fr-FR', url: `${SITE_URL}/` },
+  { '@context': 'https://schema.org', '@type': 'WebSite', name: 'SHYFT Growth', alternateName: 'SHYFT', inLanguage: 'fr-FR', url: `${SITE_URL}/` },
   { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: home.faq.questions.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })) },
 ];
 ---

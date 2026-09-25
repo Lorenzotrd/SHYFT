@@ -9,7 +9,7 @@ import { SITE_URL, rich, pad } from '../lib/site';
 import { single } from '../lib/content';
 const [page, commun] = await Promise.all([single('auditOffert'), single('serviceCommun')]);
 const jsonLd = [
-  { '@context': 'https://schema.org', '@type': 'WebPage', name: page.seoTitle, description: page.seoDescription, url: `${SITE_URL}/audit-offert`, isPartOf: { '@type': 'WebSite', name: 'shyft', url: `${SITE_URL}/` } },
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: page.seoTitle, description: page.seoDescription, url: `${SITE_URL}/audit-offert`, isPartOf: { '@type': 'WebSite', name: 'SHYFT Growth', url: `${SITE_URL}/` } },
   { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
     { '@type': 'ListItem', position: 1, name: commun.filAccueil, item: `${SITE_URL}/` },
     { '@type': 'ListItem', position: 2, name: page.fil, item: `${SITE_URL}/audit-offert` },
