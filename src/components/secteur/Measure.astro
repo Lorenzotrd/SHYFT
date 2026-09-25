@@ -1,9 +1,0 @@
----
-// Mesure & suivi : trois indicateurs, les outils installés, le modèle de rémunération.
-import { br } from '../../lib/site';
-import { single, type Sector } from '../../lib/content';
-interface Props { sector: Sector }
-const { data: s } = Astro.props.sector;
-const { tools } = await single('mesure');
----
-<section class="block" id="mesure"><div class="wrap"><div class="section-top"><div><div class="kicker">Mesure &amp; suivi</div><h2 class="title" set:html={br(s.titles.measure)}></h2></div><p class="sub">Trois indicateurs suivis avec vos outils, <br>du premier contact au chiffre d’affaires.</p></div><div class="metric-grid">{s.measure.map((m) => <article><span>◎</span><h3>{m.name}</h3><p>{m.how}</p></article>)}</div><div class="measure-stack"><span class="kicker">Installé dans vos comptes</span><ul>{tools.map((t) => <li>{t.short}</li>)}</ul><p>Vous gardez tout, même si on arrête.</p></div><div class="sector-pay"><div><div class="kicker">Un modèle aligné</div><h2>Une rémunération par <br>{s.pay}.</h2></div><p>On fixe ensemble les critères et les conditions avant le lancement. Le budget publicitaire reste sur votre compte. On commence par un test de 60 jours sur un périmètre réduit.</p></div></div></section>

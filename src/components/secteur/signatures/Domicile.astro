@@ -1,9 +1,0 @@
----
-// Capacité par agence et campagnes ajustées.
-const rows: [string, number, string, string, string][] = [
-  ['Agence de Tours', 88, 'Presque pleine', 'warn', 'Campagne ralentie'],
-  ['Agence de Blois', 100, 'Complète', 'bad', 'Campagne en pause'],
-  ['Agence d’Amboise', 42, 'De la place', 'ok', 'Campagne renforcée'],
-];
----
-<figure class="mock"><figcaption class="mock-head"><b>Capacité et campagnes</b><span>Démonstration</span></figcaption><div class="capacity">{rows.map(([n, f, s, c, a]) => <div class="cap-row"><b>{n}</b><div class="cap-bar"><i style={`--f:${f}%`}></i></div><span class="cap-state">{s}</span><span class={`tag ${c}`}>{a}</span></div>)}</div><p class="mock-note">Une campagne qui tourne alors que l’agence est pleine coûte de l’argent et déçoit des familles. Le budget suit vos disponibilités, agence par agence.</p></figure>

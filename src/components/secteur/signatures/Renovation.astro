@@ -1,9 +1,0 @@
----
-// Critères de chantier ciblés et écartés.
-const items: [boolean, string, string][] = [
-  [true, 'Rénovation complète', 'Le cœur de votre savoir-faire'], [true, 'Budget à partir de 8 000 €', 'En dessous, le devis coûte plus qu’il ne rapporte'],
-  [true, '30 km autour de votre atelier', 'Au-delà, les trajets mangent la marge'], [false, 'Dépannage en urgence', 'Casse le planning des chantiers en cours'],
-  [false, 'Projets sans budget arrêté', 'Beaucoup de devis, peu de signatures'],
-];
----
-<figure class="mock"><figcaption class="mock-head"><b>Vos critères de chantier</b><span>Exemple à définir ensemble</span></figcaption><ul class="criteria">{items.map(([ok, name, why]) => <li class={ok ? 'yes' : 'no'}><span class="crit-mark" aria-hidden="true">{ok ? '✓' : '✕'}</span><div><b>{name}</b><i>{why}</i></div><span class={`tag ${ok ? 'ok' : 'bad'}`}>{ok ? 'Ciblé' : 'Écarté'}</span></li>)}</ul><p class="mock-note">Ces critères pilotent les mots-clés, les zones et les questions du formulaire. Ce qu’on écarte compte autant que ce qu’on cible.</p></figure>
