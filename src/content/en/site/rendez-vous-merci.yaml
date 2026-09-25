@@ -1,0 +1,24 @@
+seoTitle: You're booked, your call is confirmed · shyft
+seoDescription: Your call is booked. The confirmation, with the date and video call link, is on its way by email.
+titre: You're *booked*
+texte: The confirmation is on its way by email, with the date, time and video call link. Remember to add it to your calendar.
+appelTitre: What we cover on the call
+points:
+- titre: Where you stand today
+  texte: What future customers see when they look you up. Google, Maps, ads, website.
+- titre: Your competitors
+  texte: Who is getting the leads in your area, and why them.
+- titre: What we would do in your place
+  texte: The priority actions, in order. You leave with clear next steps, whether you work with us or not.
+- titre: Your questions
+  texte: How it works, budget, reporting. We give you straight answers.
+audit:
+  surtitre: Want to go further?
+  titre: Come with your *audit*
+  texte: Request the free audit before the call. We'll go through it together, channel by channel.
+  cta: Get my free audit
+email:
+  titre: No confirmation email?
+  texte: It's sent by Cal.com, our booking tool, with links to reschedule or cancel. Check your spam folder, or email us at {adresse}.
+  adresse: team@shyftgrowth.com
+leviersTitre: In the meantime, explore our services

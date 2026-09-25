@@ -2,9 +2,11 @@
 // Audit offert : ce qu'on regarde, et un exemple de synthèse avec des pastilles d'état.
 import Bouton from '../shyft/Bouton.astro';
 import { rich } from '../../lib/site';
+import { langOf, route } from '../../lib/i18n';
 import type { CollectionEntry } from 'astro:content';
 interface Props { audit: CollectionEntry<'accueil'>['data']['audit'] }
 const { audit } = Astro.props;
+const r = route[langOf(Astro.url)];
 ---
 <section class="section audit" id="audit" aria-labelledby="audit-titre">
   <div class="text">
@@ -21,7 +23,7 @@ const { audit } = Astro.props;
       </div>
     ))}
   </div>
-  <div class="cta"><Bouton href="/audit-offert" block>{audit.cta}</Bouton></div>
+  <div class="cta"><Bouton href={r.audit} block>{audit.cta}</Bouton></div>
 </section>
 <style>
   .audit{display:grid;grid-template-columns:minmax(0, 520px) minmax(0, 600px);grid-template-areas:"report text" "report cta";justify-content:space-between;align-items:center;column-gap:70px;row-gap:30px}

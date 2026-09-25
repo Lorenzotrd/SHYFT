@@ -3,7 +3,11 @@
 import Bouton from './Bouton.astro';
 import { single, services as allServices } from '../../lib/content';
 import { GA_ID, YEAR, rich } from '../../lib/site';
-const [site, services] = await Promise.all([single('site'), allServices()]);
+import { langOf, route, ui } from '../../lib/i18n';
+const lang = langOf(Astro.url);
+const r = route[lang];
+const t = ui[lang].footer;
+const [site, services] = await Promise.all([single('site', lang), allServices(lang)]);
 ---
 <footer class="footer">
   <div class="top">
@@ -12,14 +16,14 @@ const [site, services] = await Promise.all([single('site'), allServices()]);
       <Bouton href={site.calUrl} variant="dark" size="sm" emplacement="pied-de-page">{site.footer.cta}</Bouton>
     </div>
     <div class="cols">
-      <nav aria-label="Services"><span class="col-title">Services</span>{services.map((s) => <a href={`/expertises/${s.id}`}>{s.data.nom}</a>)}</nav>
-      <nav aria-label="Agence"><span class="col-title">Agence</span><a href="/#methode">{site.nav.methode}</a><a href="/#resultats">{site.nav.resultats}</a><a href="/audit-offert">Audit offert</a><a href={site.calUrl} data-emplacement="pied-de-page-lien">Prendre rendez-vous</a></nav>
+      <nav aria-label={t.services}><span class="col-title">{t.services}</span>{services.map((s) => <a href={r.service(s.id)}>{s.data.nom}</a>)}</nav>
+      <nav aria-label={t.agence}><span class="col-title">{t.agence}</span><a href={r.anchor('methode')}>{site.nav.methode}</a><a href={r.anchor('resultats')}>{site.nav.resultats}</a><a href={r.audit}>{t.audit}</a><a href={site.calUrl} data-emplacement="pied-de-page-lien">{t.rdv}</a></nav>
     </div>
   </div>
-  <nav class="compact" aria-label="Services">{services.map((s) => <a href={`/expertises/${s.id}`}>{s.data.nomCourt}</a>)}</nav>
+  <nav class="compact" aria-label={t.services}>{services.map((s) => <a href={r.service(s.id)}>{s.data.nomCourt}</a>)}</nav>
   <div class="bottom">
     <span>© {YEAR} shyft</span>
-    <div class="legal"><a href="/mentions-legales">Mentions légales</a><a href="/confidentialite">Confidentialité</a>{GA_ID && <a href="#" data-cookies>Gérer les cookies</a>}</div>
+    <div class="legal"><a href={r.page('mentions-legales')}>{t.legal}</a><a href={r.page('confidentialite')}>{t.privacy}</a>{GA_ID && <a href="#" data-cookies>{t.cookies}</a>}</div>
   </div>
   <div class="wordmark" aria-hidden="true">shyft<span>.</span></div>
 </footer>

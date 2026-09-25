@@ -1,0 +1,134 @@
+nom: Local SEO & GEO
+nomCourt: SEO
+ordre: 1
+groupeMenu: Acquisition et visibilité
+phraseMenu: Google, Maps and AI answers
+seoTitle: 'Local SEO Agency for Small Businesses | SHYFT Growth'
+seoDescription: 'SHYFT grows small businesses on Google, Google Maps and AI search with local SEO, service pages and high-intent content that brings in leads.'
+carte:
+  texte: Top 3 in the Google Maps local pack across your whole service area, and a spot in AI search answers.
+  texteCourt: Top 3 on Google Maps and a spot in AI search answers.
+  icone: repere
+  ton: sombre
+audit:
+  tag: Google Search
+  description: Your rankings, Google Maps, how Google sees your site, and what AI search engines say about you.
+hero:
+  titre: Get found on Google *before* your competitors
+  texte: "[A site Google understands](/en/services/website-design), pages that answer what your customers search for, and authority that builds over time. Then local and AI search to cover every kind of search."
+suivi:
+- Organic search visits
+- Keywords on page one
+- Leads from SEO
+- Rankings on Google Maps and AI search
+problemes:
+- titre: Missing from the searches that matter
+  texte: You show up for your business name, but not for your trade or your services.
+- titre: A site Google struggles to read
+  texte: 'Slow pages, thin content, messy structure: Google doesn''t know what to do with it.'
+- titre: Competitors taking your spot
+  texte: They publish, earn links and win the searches that should be yours.
+miseEnPlace:
+- titre: Technical audit
+  texte: Speed, indexing, structure, errors. We fix the foundations first.
+- titre: Keyword strategy
+  texte: The searches that bring in customers, ranked by potential and difficulty.
+- titre: Service pages and content
+  texte: Pages that actually answer your customers' questions.
+- titre: On-page optimization
+  texte: Titles, meta tags, internal linking, structured data.
+- titre: Link building
+  texte: Links from credible sites in your industry and your region.
+- titre: Rank tracking
+  texte: Your keywords tracked every week, side by side with your competitors.
+couverture:
+  discriminant: true
+  value:
+    titre: And to cover *every* search
+    texte: SEO is the foundation. Local SEO and GEO reach customers where classic SEO doesn't.
+    cartes:
+    - badge: Google Maps
+      titre: Local SEO
+      texte: For searches with a city name or "near me".
+      points:
+      - Optimized Google Business Profiles
+      - One page per city you serve
+      - Review generation strategy
+      - Grid-based rank tracking
+    - badge: AI search
+      titre: GEO
+      texte: To get cited by ChatGPT, Gemini and Google AI Overviews.
+      points:
+      - Clear, well-sourced content
+      - Answers to industry questions
+      - Consistent business info
+      - AI citation tracking
+etapes:
+- titre: The audit
+  texte: Technical, content, competitors and keywords.
+- titre: The foundations
+  texte: Technical fixes and site structure.
+- titre: The content
+  texte: Service pages, city pages and answers to questions.
+- titre: The authority
+  texte: Links, reviews and monthly rank reporting.
+chiffres:
+  titre: Our *SEO* results
+  lien: See the dashboards on a call
+  lienVers: rendez-vous
+  cartes:
+  - surtitre: Leads
+    chiffre: x3
+    unite: ''
+    legende: more quote requests from Google
+    texte: 'New service pages and cleaned-up Google Business Profiles: Google finally sends the right searches.'
+    exempleFictif: false
+    duree: ''
+  - surtitre: Traffic
+    chiffre: +140%
+    unite: ''
+    legende: more traffic from Google
+    texte: A page for every service and every city, and a site Google finally understands.
+    exempleFictif: false
+    duree: ''
+  - surtitre: Ranking
+    chiffre: Top 1
+    unite: ''
+    legende: for the main search term in 90 days
+    texte: Number one for the key trade and city searches, in three months.
+    exempleFictif: false
+    duree: ''
+  note: ''
+geogrid:
+  discriminant: true
+  value:
+    surtitre: Our in-house tool
+    titre: 'GeoGrid: your ranking, *point by point*'
+    points:
+    - A simulated Google Maps search from every point in your service area
+    - Your ranking against your competitors, point by point
+    - The map re-measured every month so you can watch your area turn green
+    motCle: ''
+    zone: Austin · 12-mile radius
+    concurrents:
+    - nom: Competitor A
+      position: '1.9'
+    - nom: Competitor B
+      position: '3.6'
+    positions:
+    - 15,12,9,7,9,13,16
+    - 12,9,6,4,7,10,13
+    - 10,6,3,2,3,7,11
+    - 8,4,2,1,2,5,9
+    - 10,6,3,2,4,8,12
+    - 13,9,6,5,8,11,14
+    - 16,14,11,9,12,15,18
+faq:
+- question: How soon will I see results?
+  answer: Technical fixes pay off within a few weeks. Content and authority take several months, depending on your competition. We give you a realistic timeline right after the audit.
+- question: What's the difference between SEO, local SEO and GEO?
+  answer: SEO puts you in Google's regular results. Local SEO puts you on Google Maps. GEO gets you cited by AI search engines. All three reinforce each other.
+- question: Do I have to write blog posts?
+  answer: No. We write, you review and approve. We use your industry knowledge, not your time.
+- question: Do you buy links?
+  answer: No. We earn links from real sites in your industry and your region, not from networks of fake sites.

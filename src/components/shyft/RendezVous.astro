@@ -4,7 +4,9 @@ import Bouton from './Bouton.astro';
 import Icon from './Icon.astro';
 import { single } from '../../lib/content';
 import { rich } from '../../lib/site';
-const [rdv, site] = await Promise.all([single('rendezVous'), single('site')]);
+import { langOf, route } from '../../lib/i18n';
+const lang = langOf(Astro.url);
+const [rdv, site] = await Promise.all([single('rendezVous', lang), single('site', lang)]);
 ---
 <section class="rdv on-dark" id="rendez-vous" aria-labelledby="rdv-titre">
   <span class="pill"><span class="dot"></span>{rdv.pastille}</span>
@@ -12,7 +14,7 @@ const [rdv, site] = await Promise.all([single('rendezVous'), single('site')]);
   <p>{rdv.texte}</p>
   <div class="ctas">
     <Bouton href={site.calUrl} size="lg" emplacement="bloc-rendez-vous" block>{rdv.cta}</Bouton>
-    <Bouton href="/audit-offert" variant="outline-light" size="lg" class="secondary">{rdv.ctaSecondaire}</Bouton>
+    <Bouton href={route[lang].audit} variant="outline-light" size="lg" class="secondary">{rdv.ctaSecondaire}</Bouton>
   </div>
   <ul class="garanties">{rdv.garanties.map((g) => <li><Icon name="check" size={16} />{g}</li>)}</ul>
 </section>

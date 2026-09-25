@@ -2,13 +2,16 @@
 // Les autres leviers : une pastille par service, sauf celui de la page.
 import Icon from '../shyft/Icon.astro';
 import { services as allServices } from '../../lib/content';
+import { langOf, route } from '../../lib/i18n';
 interface Props { current: string; titre: string }
 const { current, titre } = Astro.props;
-const others = (await allServices()).filter((s) => s.id !== current);
+const lang = langOf(Astro.url);
+const r = route[lang];
+const others = (await allServices(lang)).filter((s) => s.id !== current);
 ---
 <nav class="section others" aria-label={titre}>
   <span class="k">{titre}</span>
-  <div>{others.map((s) => <a href={`/expertises/${s.id}`}>{s.data.nom}<span><Icon name="arrow" size={12} /></span></a>)}</div>
+  <div>{others.map((s) => <a href={r.service(s.id)}>{s.data.nom}<span><Icon name="arrow" size={12} /></span></a>)}</div>
 </nav>
 <style>
   .others{display:flex;flex-direction:column;gap:22px}

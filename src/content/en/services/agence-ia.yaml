@@ -1,0 +1,92 @@
+nom: AI & Automation
+nomCourt: AI
+ordre: 4
+groupeMenu: IA et automatisation
+phraseMenu: Follow-ups, bids, custom CRM
+seoTitle: 'AI Automation Agency for Small Businesses | SHYFT Growth'
+seoDescription: 'Automate lead qualification, follow-ups, CRM, email, SMS and internal tasks with AI workflows built around your business.'
+carte:
+  texte: 'Quotes, follow-ups, bids, chasing documents: less busywork for your team.'
+  texteCourt: 'Follow-ups, bids, documents: less busywork.'
+  icone: robot
+  ton: clair
+audit:
+  tag: Productivity
+  description: Your team's repetitive tasks and what we could automate first.
+hero:
+  titre: Less busywork, *better follow-up*
+  texte: Quotes, follow-ups, bids and RFPs, documents to chase. We automate what costs your team hours and costs your business customers.
+suivi:
+- Lead response time
+- Quotes followed up automatically
+- Hours saved, measured
+- Quote close rate
+problemes:
+- titre: Leads slip through the cracks
+  texte: They come in by email, phone and web form. Some never get a reply.
+- titre: Forgotten follow-ups
+  texte: Quotes only get followed up when someone remembers.
+- titre: Bids that eat up days
+  texte: Answering one RFP takes days, so you let some go.
+miseEnPlace:
+- titre: All leads in one place
+  texte: Everything lands in one place. Nothing gets lost.
+- titre: Quote follow-up
+  texte: Automatic follow-ups at the right time, in the right tone.
+- titre: Bid and RFP support
+  texte: Monitoring, reading the specs and a first draft.
+- titre: Document collection
+  texte: Certificates and paperwork requested and checked automatically.
+- titre: Answers to common questions
+  texte: Recurring questions handled without tying up your team.
+- titre: Tracking dashboard
+  texte: A clear view for management, no double entry.
+couverture:
+  discriminant: false
+etapes:
+- titre: Mapping
+  texte: We look at how your team actually works.
+- titre: Priorities
+  texte: The tasks with the biggest payoff come first.
+- titre: Rollout
+  texte: Tested with your team, not on the side.
+- titre: Fine-tuning
+  texte: We adjust as you use it.
+chiffres:
+  titre: Our *AI & automation* numbers
+  lien: See our tools on a call
+  lienVers: rendez-vous
+  cartes:
+  - surtitre: Time saved
+    chiffre: +15 hrs
+    unite: ''
+    legende: saved every week, per team
+    texte: 'Follow-ups, emails, repetitive tasks: what used to take hours now runs on its own. Your team keeps the work that matters.'
+    exempleFictif: false
+    duree: ''
+  - surtitre: Bids and RFPs
+    chiffre: 4x
+    unite: ''
+    legende: more bids handled
+    texte: Monitoring, reading the specs and first drafts, automated. Bid on more contracts without hiring.
+    exempleFictif: false
+    duree: ''
+  - surtitre: Custom CRM
+    chiffre: '10+'
+    unite: ''
+    legende: centralized CRMs, built for their industry
+    texte: Every lead in one place, with sales stages that fit each trade. Nothing slips through anymore.
+    exempleFictif: false
+    duree: ''
+  note: Figures from tools deployed at our clients. Names withheld for confidentiality; demos shown on a call.
+geogrid:
+  discriminant: false
+faq:
+- question: Do we have to change our tools?
+  answer: No. We start from what you already use, and only add a tool if it's truly needed.
+- question: What if the AI gets it wrong?
+  answer: At first, nothing goes out to a customer without human review. We automate more once it's reliable.
+- question: Where does our data go?
+  answer: We tell you exactly which services are used and where your data goes before we connect anything.
+- question: We're a small team. Is it worth it?
+  answer: 'That''s often where it pays off most: every hour saved counts.'

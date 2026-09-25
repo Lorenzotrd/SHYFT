@@ -1,0 +1,80 @@
+---
+// Page service (une par fiche de la collection « services », /expertises/… et /en/services/…) : en-tête, problèmes, mise en place,
+// couverture et GeoGrid si la fiche les active, étapes, chiffres, questions, autres leviers, rendez-vous.
+import Site from '../layouts/Site.astro';
+import Nav from '../components/shyft/Nav.astro';
+import Footer from '../components/shyft/Footer.astro';
+import Frise from '../components/shyft/Frise.astro';
+import Faq from '../components/shyft/Faq.astro';
+import RendezVous from '../components/shyft/RendezVous.astro';
+import HeroService from '../components/service/HeroService.astro';
+import Problemes from '../components/service/Problemes.astro';
+import MiseEnPlace from '../components/service/MiseEnPlace.astro';
+import Couverture from '../components/service/Couverture.astro';
+import Chiffres from '../components/service/Chiffres.astro';
+import GeoGrid from '../components/service/GeoGrid.astro';
+import AutresLeviers from '../components/service/AutresLeviers.astro';
+import { SITE_URL, rich, texteSeul } from '../lib/site';
+import { single, type Service } from '../lib/content';
+import { langOf, route, pathsFor, ui } from '../lib/i18n';
+
+interface Props { service: Service }
+const { service } = Astro.props;
+const s = service.data;
+const lang = langOf(Astro.url);
+const r = route[lang];
+const t = ui[lang];
+const [commun, site] = await Promise.all([single('serviceCommun', lang), single('site', lang)]);
+const paths = pathsFor((x) => x.service(service.id));
+const url = `${SITE_URL}${r.service(service.id)}`;
+const chiffresHref = s.chiffres.lienVers === 'rendez-vous' ? site.calUrl : r.anchor('resultats');
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org', '@type': 'Service', name: s.nom, description: texteSeul(s.hero.texte), url,
+    serviceType: s.nom, areaServed: t.areaServed,
+    provider: { '@type': 'Organization', '@id': `${SITE_URL}/#organisation`, name: 'shyft', url: `${SITE_URL}/` }, inLanguage: t.inLanguage,
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: commun.filAccueil, item: `${SITE_URL}${r.home}` },
+      { '@type': 'ListItem', position: 2, name: commun.filServices, item: `${SITE_URL}${r.anchor('services')}` },
+      { '@type': 'ListItem', position: 3, name: s.nom, item: url },
+    ],
+  },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: s.faq.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })) },
+];
+---
+<Site title={s.seoTitle} description={s.seoDescription} paths={paths} jsonLd={jsonLd}>
+  <Nav current="services" paths={paths} />
+  <main id="main">
+    <HeroService nom={s.nom} titre={s.hero.titre} texte={s.hero.texte} suivi={s.suivi} calUrl={site.calUrl} commun={commun} />
+    <Problemes titre={commun.problemesTitre} etiquette={commun.problemeEtiquette} items={s.problemes} />
+    <MiseEnPlace titre={commun.miseEnPlaceTitre} texte={commun.miseEnPlaceTexte} items={s.miseEnPlace} />
+    {s.couverture.discriminant && <Couverture {...s.couverture.value} />}
+    <section class="section steps" aria-labelledby="steps-titre">
+      <h2 id="steps-titre" class="h2 h2-page" set:html={rich(commun.friseTitre)}></h2>
+      <Frise steps={s.etapes} />
+    </section>
+    <Chiffres {...s.chiffres} href={chiffresHref} external={s.chiffres.lienVers === 'rendez-vous'} etiquetteFictif={commun.exempleFictif} />
+    {s.geogrid.discriminant && <GeoGrid {...s.geogrid.value} />}
+    <section class="section faq-section" aria-labelledby="faq-titre">
+      <div class="faq-aside">
+        <h2 id="faq-titre" class="h2 h2-page" set:html={rich(commun.faqTitre)}></h2>
+        <p>{commun.faqTexte}</p>
+      </div>
+      <Faq items={s.faq} />
+    </section>
+    <AutresLeviers current={service.id} titre={commun.autresLeviers} />
+    <RendezVous />
+  </main>
+  <Footer />
+</Site>
+<style>
+  .steps{display:flex;flex-direction:column;gap:50px}
+  .faq-section{display:flex;gap:clamp(24px, 5.5vw, 80px);align-items:flex-start}
+  .faq-aside{flex:0 0 360px;display:flex;flex-direction:column;gap:20px}
+  .faq-aside p{font-size:16px;line-height:1.6;color:var(--muted)}
+  @media (max-width:900px){ .faq-section{flex-direction:column} .faq-aside{flex-basis:auto} }
+  @media (max-width:640px){ .steps{gap:24px} .faq-section{gap:18px} }
+</style>

@@ -1,0 +1,92 @@
+nom: Data & Tracking
+nomCourt: Data
+ordre: 6
+groupeMenu: Conversion et mesure
+phraseMenu: Track every lead, from click to customer
+seoTitle: 'Conversion Tracking for Small Businesses | SHYFT Growth'
+seoDescription: 'GA4, Google Tag Manager, call tracking and form tracking: see which channels bring in your leads and put your budget where it pays.'
+carte:
+  texte: Know where every call and every signed quote comes from, so you stop paying for what doesn't work.
+  texteCourt: Know where every lead comes from.
+  icone: graphique
+  ton: accent
+audit:
+  tag: Tracking
+  description: What you track today, what's missing, and where your customers come from.
+hero:
+  titre: Know *where* every customer comes from
+  texte: 'Calls, forms, signed quotes: we track it all, source by source. So you keep what pays and cut the rest.'
+suivi:
+- Leads by channel
+- Cost per lead, by channel
+- Month-over-month trends
+- Signed quotes by source
+problemes:
+- titre: No idea where leads come from
+  texte: Google, ads, word of mouth? Nobody really knows.
+- titre: Tools nobody reads
+  texte: Analytics is installed, but it doesn't track what matters.
+- titre: Budgets set by gut feel
+  texte: Decisions get made on instinct because there are no reliable numbers.
+miseEnPlace:
+- titre: GA4 and Search Console
+  texte: Set up and configured around what really matters.
+- titre: Call tracking
+  texte: Every call tied to its source.
+- titre: Lead tracking
+  texte: Forms and quote requests tracked end to end.
+- titre: Connected to your tools
+  texte: '[Your CRM](/en/services/ai-automation) or spreadsheet linked to your tracking.'
+- titre: Dashboard
+  texte: One page you can read in two minutes.
+- titre: Monthly review
+  texte: We explain what changed and what to do about it.
+couverture:
+  discriminant: false
+etapes:
+- titre: Audit
+  texte: What's tracked today, and what isn't.
+- titre: Setup
+  texte: Tracking installed and tested.
+- titre: Dashboard
+  texte: Your key numbers on one page.
+- titre: Review
+  texte: A check-in every month.
+chiffres:
+  titre: What we did *for them*
+  lien: All case studies
+  lienVers: resultats
+  cartes:
+  - surtitre: Multi-location business
+    chiffre: 100%
+    unite: ''
+    legende: of calls attributed to their source
+    texte: No tracking at all. Tracking numbers by channel and by location.
+    exempleFictif: true
+    duree: In 1 month
+  - surtitre: Construction equipment rental
+    chiffre: -22%
+    unite: ''
+    legende: budget cut with no drop in leads
+    texte: Budgets split by gut feel. Cost per lead tracked by channel.
+    exempleFictif: true
+    duree: In 3 months
+  - surtitre: Franchise network
+    chiffre: 1 page
+    unite: ''
+    legende: to run the whole network
+    texte: Every location had its own tools. One shared dashboard, reviewed monthly.
+    exempleFictif: true
+    duree: In 2 months
+  note: ''
+geogrid:
+  discriminant: false
+faq:
+- question: Is it privacy-compliant?
+  answer: We set up tracking with a GDPR-compliant consent banner, and we only collect what's needed.
+- question: I already have Google Analytics
+  answer: We check that it tracks the right things. Out of the box, it rarely does.
+- question: Will I have to read complicated reports?
+  answer: No. One page, your key numbers, and a plain-English explanation.
+- question: Does it work with my CRM?
+  answer: In most cases, yes. We look at your tools during the audit.

@@ -1,0 +1,69 @@
+seoTitle: 'Free Marketing Audit for Small Businesses | SHYFT Growth'
+seoDescription: 'Get a free audit of your SEO, Google Ads, Meta Ads, Google Maps and tracking, with the top-priority opportunities for your business.'
+fil: Free audit
+titre: Get your *free* audit in 24 h
+texte: Choose what you want us to review, tell us a bit about your business, and get a clear summary by email within 24 hours. No call required.
+garanties:
+- Free
+- Within 24 h
+- No commitment
+recevez:
+  surtitre: What you get
+  points:
+  - A channel-by-channel summary
+  - How you stack up against competitors
+  - What you're losing today
+  - The first three things to fix
+etape1:
+  surtitre: Step 1
+  titre: What should we *review*?
+  toutAuditer: Audit everything
+  toutDeselectionner: Clear all
+  compteur: '{n} of {total}'
+etape2:
+  surtitre: Step 2
+  titre: Your *business*
+champs:
+  entreprise:
+    label: Company name
+    placeholder: ''
+  site:
+    label: Website
+    placeholder: example.com
+  ville:
+    label: Main city
+    placeholder: Austin
+  secteur:
+    label: Industry
+    placeholder: Choose your industry
+  nom:
+    label: Full name
+    placeholder: John Miller
+  email:
+    label: Work email
+    placeholder: you@company.com
+  tel:
+    label: Phone
+    placeholder: (555) 123-4567
+  agences:
+    label: Number of locations
+    placeholder: '1'
+  message:
+    label: Anything specific to look at?
+    placeholder: 'e.g. we don''t show up on Google Maps in Austin'
+  facultatif: (optional)
+secteurs:
+- Equipment rental
+- Franchise
+- Remodeling and construction
+- Home services and trades
+- Real estate
+- Multi-location services
+- Other
+envoi:
+  aucun: Choose at least one channel
+  un: 1 channel selected for your audit
+  plusieurs: '{n} channels selected for your audit'
+  mention: Your data is used only to prepare the audit. We don't sell it or add you to a newsletter.
+  bouton: Get my audit
+  erreur: Enter your company name, industry, your name and a valid email, and choose at least one channel.

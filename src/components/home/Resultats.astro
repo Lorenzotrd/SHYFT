@@ -3,9 +3,11 @@
 import Bouton from '../shyft/Bouton.astro';
 import Icon from '../shyft/Icon.astro';
 import { rich } from '../../lib/site';
+import { langOf, route } from '../../lib/i18n';
 import type { CollectionEntry } from 'astro:content';
-interface Props { resultats: CollectionEntry<'accueil'>['data']['resultats']; calUrl: string }
-const { resultats: r, calUrl } = Astro.props;
+interface Props { resultats: CollectionEntry<'accueil'>['data']['resultats'] }
+const { resultats: r } = Astro.props;
+const to = route[langOf(Astro.url)];
 ---
 <section class="section results" id="resultats" aria-labelledby="results-titre">
   <div class="section-head">
@@ -18,11 +20,11 @@ const { resultats: r, calUrl } = Astro.props;
       <span class="fig">{r.grande.chiffre}</span>
       <span class="cap">{r.grande.legende}</span>
       <div class="lines">{r.grande.lignes.map((l) => <div class="line"><span>{l.label}</span><b>{l.valeur}</b></div>)}</div>
-      <Bouton href="/audit-offert" size="sm" emplacement="accueil-resultats" class="big-cta">{r.grande.cta}</Bouton>
+      <Bouton href={to.audit} size="sm" emplacement="accueil-resultats" class="big-cta">{r.grande.cta}</Bouton>
     </div>
     {r.cartes.map((c) => (
       <div class="stat">
-        <div class="head"><span class="k">{c.surtitre}</span><a href={`/expertises/${c.service}`}>{c.lien}<Icon name="arrow" size={12} stroke={2.6} /></a></div>
+        <div class="head"><span class="k">{c.surtitre}</span><a href={to.service(c.service)}>{c.lien}<Icon name="arrow" size={12} stroke={2.6} /></a></div>
         <span class="fig">{c.chiffre}</span>
         <span class="cap">{c.legende}</span>
         <p>{c.texte}</p>

@@ -70,17 +70,19 @@ const expertises = defineCollection({
   }),
 });
 
-const pages = defineCollection({
-  loader: glob({ pattern: '*.yaml', base: './src/content/pages' }),
-  schema: z.object({
-    title: z.string(), eyebrow: z.string(), h1: z.string(), lead: z.string(),
-    seoTitle: z.string(), seoDescription: z.string(), body: z.string(),
-  }),
+const pageSchema = z.object({
+  title: z.string(), eyebrow: z.string(), h1: z.string(), lead: z.string(),
+  seoTitle: z.string(), seoDescription: z.string(), body: z.string(),
 });
+const pages = defineCollection({ loader: glob({ pattern: '*.yaml', base: './src/content/pages' }), schema: pageSchema });
+const pagesEn = defineCollection({ loader: glob({ pattern: '*.yaml', base: './src/content/en/pages' }), schema: pageSchema });
 
 // Réglages du site : un fichier par sujet, chacun sa propre collection à entrée unique.
-const single = <S extends z.ZodType>(file: string, schema: S) =>
-  defineCollection({ loader: glob({ pattern: `${file}.yaml`, base: './src/content/site' }), schema });
+const single = <S extends z.ZodType>(file: string, schema: S, base = './src/content/site') =>
+  defineCollection({ loader: glob({ pattern: `${file}.yaml`, base }), schema });
+// Réglage traduit : la version française dans src/content/site, l'anglaise dans src/content/en/site, même schéma.
+const bilingual = <S extends z.ZodType>(file: string, schema: S) =>
+  [single(file, schema), single(file, schema, './src/content/en/site')] as const;
 
 
 // Accueil refait : chaque bloc de la maquette, dans l'ordre de la page.
@@ -88,7 +90,7 @@ const tone = z.enum(['clair', 'sombre', 'accent']);
 const pair = z.object({ label: z.string(), valeur: z.string() });
 const titled = z.object({ titre: z.string(), texte: z.string() });
 
-const accueil = single('accueil', z.object({
+const [accueil, accueilEn] = bilingual('accueil', z.object({
   seoTitle: z.string(),
   seoDescription: z.string(),
   hero: z.object({
@@ -119,7 +121,7 @@ const accueil = single('accueil', z.object({
 }));
 
 // Réglages communs aux pages refaites : navigation, rendez-vous, pied de page.
-const site = single('site', z.object({
+const [site, siteEn] = bilingual('site', z.object({
   calUrl: z.url(),
   nav: z.object({
     services: z.string(), methode: z.string(), resultats: z.string(), audit: z.string(), cta: z.string(),
@@ -128,7 +130,7 @@ const site = single('site', z.object({
   footer: z.object({ accroche: lines, cta: z.string() }),
 }));
 
-const rendezVous = single('rendez-vous', z.object({
+const [rendezVous, rendezVousEn] = bilingual('rendez-vous', z.object({
   pastille: z.string(), titre: lines, texte: z.string(), cta: z.string(), ctaSecondaire: z.string(),
   garanties: z.array(z.string()),
 }));
@@ -139,49 +141,48 @@ const optional = <S extends z.ZodType>(schema: S) => z.union([
   z.object({ discriminant: z.literal(true), value: schema }),
 ]);
 
-// Les six services : une fiche par page, le nom du fichier est l'adresse (/expertises/<fichier>).
-const services = defineCollection({
-  loader: glob({ pattern: '*.yaml', base: './src/content/services' }),
-  schema: z.object({
-    nom: z.string(),
-    nomCourt: z.string(),
-    ordre: z.number(),
-    // Menu déroulant Services : la colonne (dans l'ordre des options) et la phrase sous le nom.
-    groupeMenu: z.enum(['Acquisition et visibilité', 'Conversion et mesure', 'IA et automatisation']),
-    phraseMenu: z.string(),
-    seoTitle: z.string(),
-    seoDescription: z.string(),
-    carte: z.object({ texte: z.string(), texteCourt: z.string(), icone: z.enum(['repere', 'cible', 'megaphone', 'robot', 'site', 'graphique']), ton: tone }),
-    audit: z.object({ tag: z.string(), description: z.string() }),
-    hero: z.object({ titre: lines, texte: z.string() }),
-    suivi: z.array(z.string()),
-    problemes: z.array(titled),
-    miseEnPlace: z.array(titled),
-    couverture: optional(z.object({
-      titre: lines, texte: z.string(),
-      cartes: z.array(z.object({ badge: z.string(), titre: z.string(), texte: z.string(), points: z.array(z.string()) })),
+// Les six services : une fiche par page, le nom du fichier est l'identifiant (/expertises/<fichier>, /en/services/<adresse anglaise>).
+const serviceSchema = z.object({
+  nom: z.string(),
+  nomCourt: z.string(),
+  ordre: z.number(),
+  // Menu déroulant Services : la colonne (dans l'ordre des options) et la phrase sous le nom.
+  groupeMenu: z.enum(['Acquisition et visibilité', 'Conversion et mesure', 'IA et automatisation']),
+  phraseMenu: z.string(),
+  seoTitle: z.string(),
+  seoDescription: z.string(),
+  carte: z.object({ texte: z.string(), texteCourt: z.string(), icone: z.enum(['repere', 'cible', 'megaphone', 'robot', 'site', 'graphique']), ton: tone }),
+  audit: z.object({ tag: z.string(), description: z.string() }),
+  hero: z.object({ titre: lines, texte: z.string() }),
+  suivi: z.array(z.string()),
+  problemes: z.array(titled),
+  miseEnPlace: z.array(titled),
+  couverture: optional(z.object({
+    titre: lines, texte: z.string(),
+    cartes: z.array(z.object({ badge: z.string(), titre: z.string(), texte: z.string(), points: z.array(z.string()) })),
+  })),
+  etapes: z.array(titled),
+  chiffres: z.object({
+    titre: lines, lien: z.string(), lienVers: z.enum(['rendez-vous', 'resultats']),
+    cartes: z.array(z.object({
+      surtitre: z.string(), chiffre: z.string(), unite: z.string(), legende: z.string(), texte: z.string(),
+      exempleFictif: z.boolean(), duree: z.string(),
     })),
-    etapes: z.array(titled),
-    chiffres: z.object({
-      titre: lines, lien: z.string(), lienVers: z.enum(['rendez-vous', 'resultats']),
-      cartes: z.array(z.object({
-        surtitre: z.string(), chiffre: z.string(), unite: z.string(), legende: z.string(), texte: z.string(),
-        exempleFictif: z.boolean(), duree: z.string(),
-      })),
-      note: z.string(),
-    }),
-    geogrid: optional(z.object({
-      surtitre: z.string(), titre: lines, points: z.array(z.string()),
-      motCle: z.string(), zone: z.string(),
-      concurrents: z.array(z.object({ nom: z.string(), position: z.string() })),
-      positions: z.array(z.string()),
-    })),
-    faq: z.array(faq),
+    note: z.string(),
   }),
+  geogrid: optional(z.object({
+    surtitre: z.string(), titre: lines, points: z.array(z.string()),
+    motCle: z.string(), zone: z.string(),
+    concurrents: z.array(z.object({ nom: z.string(), position: z.string() })),
+    positions: z.array(z.string()),
+  })),
+  faq: z.array(faq),
 });
+const services = defineCollection({ loader: glob({ pattern: '*.yaml', base: './src/content/services' }), schema: serviceSchema });
+const servicesEn = defineCollection({ loader: glob({ pattern: '*.yaml', base: './src/content/en/services' }), schema: serviceSchema });
 
 // Libellés identiques sur les six pages services.
-const serviceCommun = single('service-commun', z.object({
+const [serviceCommun, serviceCommunEn] = bilingual('service-commun', z.object({
   filAccueil: z.string(), filServices: z.string(), ctaRdv: z.string(), ctaAudit: z.string(),
   suiviSurtitre: z.string(), suiviTitre: lines,
   problemesTitre: lines, problemeEtiquette: z.string(),
@@ -192,7 +193,7 @@ const serviceCommun = single('service-commun', z.object({
 
 // Page de demande d'audit offert.
 const champ = z.object({ label: z.string(), placeholder: z.string() });
-const auditOffert = single('audit-offert', z.object({
+const [auditOffert, auditOffertEn] = bilingual('audit-offert', z.object({
   seoTitle: z.string(), seoDescription: z.string(),
   fil: z.string(), titre: lines, texte: z.string(), garanties: z.array(z.string()),
   recevez: z.object({ surtitre: z.string(), points: z.array(z.string()) }),
@@ -207,7 +208,7 @@ const auditOffert = single('audit-offert', z.object({
 }));
 
 // Page de remerciement après une demande d'audit (noindex) : la suite, le rendez-vous, l'adresse d'envoi.
-const merci = single('merci', z.object({
+const [merci, merciEn] = bilingual('merci', z.object({
   seoTitle: z.string(), seoDescription: z.string(),
   titre: lines, texte: z.string(),
   suiteTitre: z.string(),
@@ -218,7 +219,7 @@ const merci = single('merci', z.object({
 }));
 
 // Page de remerciement après une réservation Cal.com (noindex) : ce qu'on regarde pendant l'appel, l'audit, la confirmation.
-const rdvMerci = single('rendez-vous-merci', z.object({
+const [rdvMerci, rdvMerciEn] = bilingual('rendez-vous-merci', z.object({
   seoTitle: z.string(), seoDescription: z.string(),
   titre: lines, texte: z.string(),
   appelTitre: z.string(),
@@ -270,4 +271,8 @@ const listes = single('listes', z.object({
   }),
 }));
 
-export const collections = { secteurs, expertises, services, pages, accueil, site, rendezVous, serviceCommun, auditOffert, merci, rdvMerci, navigation, leviers, methode, mesure, formulaire, piedDePage, listes };
+export const collections = {
+  secteurs, expertises, services, pages, accueil, site, rendezVous, serviceCommun, auditOffert, merci, rdvMerci, navigation, leviers, methode, mesure, formulaire, piedDePage, listes,
+  // Version anglaise
+  servicesEn, pagesEn, accueilEn, siteEn, rendezVousEn, serviceCommunEn, auditOffertEn, merciEn, rdvMerciEn,
+};

@@ -3,11 +3,13 @@
 // Seuls les points à l'intérieur du cercle comptent ; moyenne, part en top 3 et nombre de points en découlent.
 import Icon from '../shyft/Icon.astro';
 import { rich } from '../../lib/site';
+import { langOf, ui } from '../../lib/i18n';
 interface Props {
   surtitre: string; titre: string; points: string[]; motCle: string; zone: string;
   concurrents: { nom: string; position: string }[]; positions: string[];
 }
 const { surtitre, titre, points, motCle, zone, concurrents, positions } = Astro.props;
+const t = ui[langOf(Astro.url)].geo;
 const grid = positions.map((row) => row.split(',').map((v) => Number(v.trim())).filter((v) => Number.isFinite(v)));
 const size = grid.length;
 const mid = (size - 1) / 2;
@@ -18,8 +20,8 @@ const dots = grid.flatMap((row, r) => row.map((rank, c) => {
   if (isIn) { sum += rank; inside += 1; if (rank <= 3) top += 1; }
   return { rank: rank > 20 ? '20+' : String(rank), isIn, center: r === mid && c === mid, bg: color(rank) };
 }));
-const moyenne = inside ? (sum / inside).toFixed(1).replace('.', ',') : '';
-const top3 = inside ? `${Math.round((top / inside) * 100)} %` : '';
+const moyenne = inside ? (sum / inside).toFixed(1).replace('.', t.decimal) : '';
+const top3 = inside ? t.percent(Math.round((top / inside) * 100)) : '';
 ---
 <section class="section geo" aria-labelledby="geo-titre">
   <div class="head">
@@ -35,21 +37,21 @@ const top3 = inside ? `${Math.round((top / inside) * 100)} %` : '';
       <div class="panel on-dark">
         <span class="brand">shyft<b>.</b> <span>GeoGrid</span></span>
         <div class="fields">
-          {motCle && <div><span class="lbl">Mot clé</span><span class="val">{motCle}</span></div>}
-          <div><span class="lbl">Zone</span><span class="val">{zone} · {inside} points</span></div>
+          {motCle && <div><span class="lbl">{t.keyword}</span><span class="val">{motCle}</span></div>}
+          <div><span class="lbl">{t.zone}</span><span class="val">{zone} · {inside} {t.points}</span></div>
         </div>
         <div class="tiles">
-          <div><span class="lbl">Position moyenne</span><strong>{moyenne}</strong></div>
-          <div><span class="lbl">Zone en top 3</span><strong class="accent">{top3}</strong></div>
+          <div><span class="lbl">{t.average}</span><strong>{moyenne}</strong></div>
+          <div><span class="lbl">{t.top3}</span><strong class="accent">{top3}</strong></div>
         </div>
         <div class="rivals">
-          <span class="lbl">Face aux concurrents</span>
+          <span class="lbl">{t.rivals}</span>
           {concurrents.map((c) => <div><span>{c.nom}</span><b>{c.position}</b></div>)}
-          <div class="you"><span>Votre entreprise</span><b>{moyenne}</b></div>
+          <div class="you"><span>{t.you}</span><b>{moyenne}</b></div>
         </div>
-        <div class="legend"><span><i style="background:var(--map-top)"></i>Top 3</span><span><i style="background:var(--map-mid)"></i>4 à 10</span><span><i style="background:var(--map-low)"></i>Au delà</span></div>
+        <div class="legend"><span><i style="background:var(--map-top)"></i>Top 3</span><span><i style="background:var(--map-mid)"></i>{t.mid}</span><span><i style="background:var(--map-low)"></i>{t.beyond}</span></div>
       </div>
-      <div class="map" role="img" aria-label={`Carte d'exemple : position moyenne ${moyenne}, ${top3} de la zone en top 3 sur ${inside} points.`}>
+      <div class="map" role="img" aria-label={t.map(moyenne, top3, inside)}>
         <svg viewBox="0 0 900 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <rect width="900" height="640" fill="#ECEAE3"></rect>
           <path d="M0 470 C 180 430 300 520 470 470 S 760 360 900 400" fill="none" stroke="#BFD6E6" stroke-width="26"></path>

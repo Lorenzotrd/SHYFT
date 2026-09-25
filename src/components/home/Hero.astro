@@ -3,16 +3,18 @@
 import Bouton from '../shyft/Bouton.astro';
 import Icon from '../shyft/Icon.astro';
 import { rich, liens } from '../../lib/site';
+import { langOf, route } from '../../lib/i18n';
 import type { CollectionEntry } from 'astro:content';
 interface Props { hero: CollectionEntry<'accueil'>['data']['hero']; calUrl: string }
 const { hero, calUrl } = Astro.props;
+const r = route[langOf(Astro.url)];
 ---
 <section class="hero" id="top">
   <span class="badge"><b>{hero.badge}</b>{hero.badgeTexte}</span>
   <h1 class="h1"><Fragment set:html={rich(hero.titre)} /><Icon name="trend" size={34} stroke={1.7} class="trend" /></h1>
   <p class="lead" set:html={liens(hero.texte)}></p>
   <div class="ctas">
-    <Bouton href="/audit-offert" block>{hero.cta}</Bouton>
+    <Bouton href={r.audit} block>{hero.cta}</Bouton>
     <Bouton href={calUrl} variant="outline" emplacement="accueil-en-tete" block>{hero.ctaSecondaire}</Bouton>
   </div>
 </section>

@@ -14,8 +14,8 @@
  const IDS_TIMEOUT = 800;
  const STORED = ['utm_source', 'utm_medium', 'utm_campaign', 'gclid', 'referrer'];
  // Page de remerciement, sur l'origine du site (https://www.shyftgrowth.com/rendez-vous/merci en production),
- // pour que la note de conversion laissée dans sessionStorage y soit lisible.
- const THANKS = '/rendez-vous/merci';
+ // pour que la note de conversion laissée dans sessionStorage y soit lisible. Version anglaise depuis les pages /en.
+ const THANKS = document.documentElement.lang === 'en' ? '/en/booking/thank-you' : '/rendez-vous/merci';
  let loading = null;
  let fallback = '';
  let redirecting = false;

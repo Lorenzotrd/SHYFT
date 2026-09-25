@@ -1,0 +1,92 @@
+nom: Google Ads
+nomCourt: Google Ads
+ordre: 2
+groupeMenu: Acquisition et visibilité
+phraseMenu: Capture demand, right now
+seoTitle: 'Google Ads Management for Small Businesses | SHYFT'
+seoDescription: 'SHYFT builds and manages Google Ads campaigns that drive profitable calls and quote requests, with every conversion tracked accurately.'
+carte:
+  texte: Capture urgent requests the moment people search for them, without burning your budget.
+  texteCourt: Capture urgent requests without burning your budget.
+  icone: cible
+  ton: clair
+audit:
+  tag: Paid ads
+  description: Your account if you have one, what your industry's keywords cost, and your competitors' ads.
+hero:
+  titre: Capture demand *the moment* people search
+  texte: Local campaigns, tightly focused on your service area and your most profitable services. Every dollar tracked all the way to the call or quote request.
+suivi:
+- Cost per call or quote request
+- Number of leads received
+- Impression share on your keywords
+- Actual spend vs. planned budget
+problemes:
+- titre: Wasted clicks
+  texte: You pay for searches that have nothing to do with you, or come from outside your area.
+- titre: An account on autopilot
+  texte: Campaigns have been running for months and nobody is adjusting them.
+- titre: No idea what you get back
+  texte: Nobody knows how many quote requests actually come from your ads.
+miseEnPlace:
+- titre: Campaigns by service and area
+  texte: A clear structure that matches what you sell and where.
+- titre: Negative keywords
+  texte: We cut everything that costs money and never pays off.
+- titre: Ads and call extensions
+  texte: Local ads with your phone number, one tap to call.
+- titre: Landing pages
+  texte: '[Dedicated pages](/en/services/website-design) that turn the click into a lead.'
+- titre: Conversion tracking
+  texte: '[Calls and forms tracked](/en/services/data-tracking), campaign by campaign.'
+- titre: Ongoing optimization
+  texte: Bids, ad schedules and locations reviewed continuously.
+couverture:
+  discriminant: false
+etapes:
+- titre: The account audit
+  texte: What costs, what pays off, what's missing.
+- titre: The launch
+  texte: Profitable search terms first.
+- titre: The cleanup
+  texte: We cut what doesn't pay off.
+- titre: The management
+  texte: Cost per lead, every month.
+chiffres:
+  titre: Our *Google Ads* results
+  lien: See the dashboards on a call
+  lienVers: rendez-vous
+  cartes:
+  - surtitre: Ad spend managed
+    chiffre: €3M+
+    unite: ''
+    legende: in ad spend managed for our clients
+    texte: Accounts of every size, from a local rental business to a national network.
+    exempleFictif: false
+    duree: ''
+  - surtitre: E-commerce
+    chiffre: '3'
+    unite: ROAS*
+    legende: average ROAS across our e-commerce accounts
+    texte: $3 in revenue for every $1 spent on ads.
+    exempleFictif: false
+    duree: ''
+  - surtitre: Lead generation
+    chiffre: x3
+    unite: ''
+    legende: leads per month
+    texte: For businesses that run on calls, quote requests and bookings.
+    exempleFictif: false
+    duree: ''
+  note: '* Average across our e-commerce accounts. Dashboards available on request, client names removed for confidentiality.'
+geogrid:
+  discriminant: false
+faq:
+- question: How much budget do I need?
+  answer: It depends on your area and your competition. We set it together in the plan, before launch. Ad spend is paid directly to Google, on your own account.
+- question: Is the account in my name?
+  answer: Yes. The Google Ads account belongs to you, with its full history.
+- question: What if it doesn't work?
+  answer: We'll know fast, because every lead is tracked. We cut what doesn't pay off and we tell you.
+- question: I already have an account running
+  answer: Great, we start by auditing it. There's often budget to recover before adding any more.

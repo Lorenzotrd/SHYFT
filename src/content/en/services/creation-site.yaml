@@ -1,0 +1,92 @@
+nom: Websites & Landing Pages
+nomCourt: Websites
+ordre: 5
+groupeMenu: Conversion et mesure
+phraseMenu: A site that converts, not just looks good
+seoTitle: 'Website Design for Small Businesses | SHYFT Growth'
+seoDescription: 'Fast, modern websites built to rank on Google and turn visits into calls, quote requests and new customers.'
+carte:
+  texte: A fast, clear website built to get you calls and quote requests. Not just another online brochure.
+  texteCourt: A fast, clear site built to convert.
+  icone: site
+  ton: clair
+audit:
+  tag: Conversion
+  description: Your site on mobile, its speed, and the path to a call, a form or a sale.
+hero:
+  titre: A website that *converts*, not just looks good
+  texte: Fast, clear on mobile and [built for Google](/en/services/seo). Designed to turn visitors into customers, whether that's a call, a booking, a request or a purchase. And easy for you to update.
+suivi:
+- Leads from the website
+- Mobile page speed
+- Visits to city pages
+- Calls from the website
+problemes:
+- titre: Nobody gets what you do
+  texte: In three seconds, visitors can't tell what you do, where, or how to reach you.
+- titre: A pain on mobile
+  texte: Hunting for the phone number, pinching to zoom, waiting for pages to load.
+- titre: No results online
+  texte: The site is live, but it brings you no leads and no customers.
+miseEnPlace:
+- titre: Built to convert
+  texte: 'Every page leads to an action: call, book, request, buy.'
+- titre: Service and city pages
+  texte: So you get found for every service in every city.
+- titre: One-tap contact
+  texte: The button that matters to you, on every page.
+- titre: Speed and technical SEO
+  texte: A fast, clean site that Google likes.
+- titre: Tracking built in
+  texte: '[Every lead counted](/en/services/data-tracking) from launch day.'
+- titre: Easy to update
+  texte: A simple editor to change your copy yourself.
+couverture:
+  discriminant: false
+etapes:
+- titre: Discovery
+  texte: Your services, your areas, your customers.
+- titre: Design mockup
+  texte: Approved before a single line of code.
+- titre: Build
+  texte: Site and content built together.
+- titre: Launch
+  texte: Plus tracking of your first leads.
+chiffres:
+  titre: Our *website* numbers
+  lien: See our work on a call
+  lienVers: rendez-vous
+  cartes:
+  - surtitre: Projects
+    chiffre: '35+'
+    unite: ''
+    legende: custom websites delivered
+    texte: No store-bought template with a fresh coat of paint. Every site is built for its trade and its customers.
+    exempleFictif: false
+    duree: ''
+  - surtitre: Traffic
+    chiffre: 10x
+    unite: ''
+    legende: more visitors in one year
+    texte: Sites built for Google from day one, with a page for every service and every city.
+    exempleFictif: false
+    duree: ''
+  - surtitre: Industries
+    chiffre: '15+'
+    unite: ''
+    legende: industries served
+    texte: Every site follows the conventions, expectations and searches of its industry. We never start from scratch.
+    exempleFictif: false
+    duree: ''
+  note: ''
+geogrid:
+  discriminant: false
+faq:
+- question: Do I need to start over?
+  answer: Not necessarily. If your site is doing its job, we improve it. We only recommend a redesign if it will get you more leads.
+- question: Can I update it myself?
+  answer: Yes. Your copy, photos and pages, from a simple editor.
+- question: How long does it take?
+  answer: It depends on the size of the site. We set the timeline during discovery, with review dates.
+- question: Do I own the website?
+  answer: Yes. The domain, the content and the site are all yours.

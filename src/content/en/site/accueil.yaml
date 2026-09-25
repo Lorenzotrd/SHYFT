@@ -1,0 +1,247 @@
+seoTitle: 'Digital Marketing Agency for Small Businesses | SHYFT Growth'
+seoDescription: SHYFT helps small businesses get more calls, leads and customers with local SEO, Google Ads, Meta Ads, Google Business Profile and AI automation.
+hero:
+  badge: NEW
+  badgeTexte: Free audit in 24 hours
+  titre: 'Your next customer
+
+    is *already* looking for you'
+  texte: "Local SEO, Google Ads, Meta Ads, websites, tracking and automation. Customer acquisition set up and managed for small businesses that want conversions, not impressions."
+  cta: Get my audit
+  ctaSecondaire: Talk to an expert
+  legende: Your goals. Our starting point.
+eventail:
+- type: barres
+  ton: clair
+  mobile: false
+  pastille: false
+  surtitre: SEO · Google searches
+  titre: Get found, right here.
+  pied: equipment rental · Austin
+  valeurs: 30,38,46,62,80,100
+  lignes: []
+- type: lignes
+  ton: clair
+  mobile: true
+  pastille: true
+  surtitre: Google Ads · New request
+  titre: 40 ft boom lift
+  pied: ''
+  valeurs: ''
+  lignes:
+  - label: City
+    valeur: Round Rock
+  - label: Rental
+    valeur: 3 days
+  - label: Reply
+    valeur: in 2 min
+- type: lignes
+  ton: accent
+  mobile: false
+  pastille: false
+  surtitre: Meta Ads · Franchise candidate
+  titre: Qualified
+  pied: ''
+  valeurs: ''
+  lignes:
+  - label: Capital
+    valeur: €150k
+  - label: Area
+    valeur: Denver
+  - label: Opening
+    valeur: within 6 months
+- type: checklist
+  ton: sombre
+  mobile: true
+  pastille: false
+  surtitre: Audit in progress
+  titre: Your business
+  pied: ''
+  valeurs: ''
+  lignes:
+  - label: Google rankings
+    court: Rankings
+    valeur: ok
+  - label: Google Business Profile
+    valeur: ok
+  - label: Google and Meta ads
+    court: Ads
+    valeur: ok
+  - label: Website and mobile
+    valeur: ok
+  - label: Lead tracking
+    court: Tracking
+    valeur: ok
+  - label: Visibility in AI tools
+    court: AI visibility
+    valeur: attente
+- type: grille
+  ton: clair
+  mobile: true
+  pastille: false
+  surtitre: Local SEO · Google Maps
+  titre: Top 3 near you
+  pied: Hours · Photos · Reviews
+  valeurs: rooorovvvoovnvoovvvorooor
+  lignes: []
+- type: lignes
+  ton: clair
+  mobile: false
+  pastille: false
+  surtitre: Website · Quote request
+  titre: Mike Sullivan
+  pied: ''
+  valeurs: ''
+  lignes:
+  - label: Budget
+    valeur: €60k
+  - label: Site visit
+    valeur: Thursday
+  - label: Source
+    valeur: Google
+- type: sources
+  ton: clair
+  mobile: false
+  pastille: false
+  surtitre: Data · Tracking by source
+  titre: Every lead, tracked
+  pied: ''
+  valeurs: ''
+  lignes:
+  - label: Google
+    valeur: '86'
+  - label: Maps
+    valeur: '64'
+  - label: Meta
+    valeur: '42'
+  - label: Website
+    valeur: '30'
+pourquoi:
+  titre: 'Why businesses
+
+    *choose us*'
+  texte: No promise of page one in 30 days. Real numbers, a clear method, and someone who picks up the phone.
+  items:
+  - titre: Numbers before promises
+    texte: We measure your visibility, your competitors and the searches in your area before we even call you.
+  - titre: Our own tools
+    texte: We built our own local analysis tools. Your ranking city by city, point by point.
+  - titre: One point of contact
+    texte: You talk to the person doing the work on your account. Not a salesperson, then an intern.
+  - titre: You see what you pay for
+    texte: A monthly review with the same metrics we started with. Where every call and every quote request comes from.
+services:
+  titre: Six channels, *one* goal
+  texte: We don't sell all six to everyone. The audit shows which ones matter for you, and in what order.
+methode:
+  titre: We measure first. *We promise later.*
+  etapes:
+  - titre: The audit
+    texte: Your visibility measured across your whole service area, your competitors, and the searches you're missing.
+  - titre: The plan
+    texte: The channels we pick, the order, the budget, and what we're aiming for in the first 90 days. No jargon.
+  - titre: The setup
+    texte: Profiles, pages, campaigns, tracking. We do the work, you approve it. Your team keeps doing theirs.
+  - titre: Ongoing management
+    texte: A monthly review with the same metrics we started with. You see what you pay for.
+resultats:
+  titre: What we changed *for them*
+  texte: Figures taken from our clients' dashboards. Names removed for confidentiality, details shared on a call.
+  grande:
+    surtitre: Ad spend managed
+    chiffre: €4M+
+    legende: invested for our clients on Google and Meta
+    lignes:
+    - label: Google Ads
+      valeur: €3M+
+    - label: Meta Ads, over one year
+      valeur: €1M+
+    - label: Average e-commerce ROAS*
+      valeur: '3'
+    - label: Industries served
+      valeur: '15+'
+    cta: Free audit
+  cartes:
+  - surtitre: SEO
+    lien: SEO
+    service: seo
+    chiffre: 3x
+    legende: more quote requests from Google
+    texte: Service pages and Google profiles rebuilt from scratch.
+  - surtitre: Website design
+    lien: Websites
+    service: creation-site
+    chiffre: '35+'
+    legende: custom websites delivered
+    texte: 'No tweaked templates: every site is built for its trade.'
+  - surtitre: Local SEO
+    lien: Local SEO
+    service: seo
+    chiffre: Top 1
+    legende: for the main search term within 90 days
+    texte: First place on the key searches for the trade and the city.
+  - surtitre: AI and automation
+    lien: AI
+    service: agence-ia
+    chiffre: 15 hrs+
+    legende: saved every week
+    texte: Follow-ups, emails and repetitive tasks, automated.
+  note: '* Average across our Google Ads e-commerce accounts.'
+audit:
+  surtitre: Free audit
+  titre: We look at your business the way your *future customers* see it
+  points:
+  - What people in your area search for on Google, and who shows up ahead of you
+  - Your live ads on Meta and Google
+  - Your Google Business Profiles, your reviews and whether they match
+  - 'Your website: online requests, mobile, technical issues'
+  - What ChatGPT, Gemini and Google AI say about your line of work
+  - 'Your tracking: Analytics, Search Console and lead counting'
+  cta: Get my free audit
+  syntheseTitre: Audit summary
+  syntheseEtiquette: Illustrative example
+  lignes:
+  - sujet: Non-branded searches
+    constat: Not on page one for city-based searches
+    etiquette: To build
+    etat: bad
+  - sujet: Google Ads
+    constat: A visibility opportunity worth exploring in your area
+    etiquette: Missing
+    etat: bad
+  - sujet: Google profiles
+    constat: Two locations, two different names
+    etiquette: To unify
+    etat: warn
+  - sujet: Website
+    constat: PDF catalog, no online request form
+    etiquette: To adapt
+    etat: warn
+  - sujet: Tracking
+    constat: No lead tracking by source
+    etiquette: To set up
+    etat: bad
+  - sujet: Customer reviews
+    constat: More reviews than local competitors
+    etiquette: Strength
+    etat: ok
+faq:
+  surtitre: FAQ
+  titre: Frequently asked *questions*
+  texte: Have a question that isn't listed? We'll answer you directly.
+  cta: Ask a question
+  questions:
+  - question: Is the audit really free?
+    answer: Yes. You give us your website and your city, we analyze your visibility, your competitors and the searches in your area, and you get the report by email. No commitment, no call required.
+  - question: How much does it cost after that?
+    answer: It depends on the channels we pick and your market. The budget is spelled out in the plan before anything starts. No surprises along the way.
+  - question: Is there a minimum contract length?
+    answer: "No, none. We shape the work around what you need: a one-off project, a few months to launch a channel, or ongoing management. You stay because it works, not because a contract says so."
+  - question: How soon will I see results?
+    answer: Google and Meta ads can bring in leads from launch day. Local SEO takes longer, depending on the competition in your industry and your city. We tell you what to expect in the plan.
+  - question: Do I need a new website?
+    answer: Not necessarily. If your site does the job, we work with what you have. We only suggest a redesign if your site is costing you leads.
+  - question: Who handles my account?
+    answer: One person, from the audit to the monthly review. That's who you call, and they know your business.
+  - question: Do my accounts stay in my name?
+    answer: Yes. Your Google and Meta accounts, your Google Business Profile and your website belong to you. If you stop working with us, you keep everything.
