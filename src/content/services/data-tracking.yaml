@@ -85,11 +85,15 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: C'est conforme au RGPD ?
-  answer: On installe la mesure avec un bandeau de consentement conforme, et on n'utilise que ce qui est nécessaire.
-- question: J'ai déjà Google Analytics
-  answer: On vérifie qu'il mesure les bonnes choses. C'est rarement le cas par défaut.
-- question: Je vais devoir lire des rapports compliqués ?
-  answer: Non. Une page, vos chiffres clés, et une explication en langage clair.
-- question: Ça marche avec mon CRM ?
-  answer: Dans la plupart des cas, oui. On regarde vos outils au moment de l'audit.
+- question: "Pourquoi installer Google Tag Manager en plus de GA4 ?"
+  answer: "Parce que Google Tag Manager mesure les appels, les formulaires et les clics sans retoucher le code du site à chaque fois. GA4, Google Ads et Meta reçoivent les mêmes conversions depuis un seul endroit."
+- question: "Le tracking des conversions est-il conforme au RGPD ?"
+  answer: "Oui, s'il respecte le consentement. On installe un bandeau conforme et le Consent Mode v2 de Google : rien n'est déposé sans accord, et on ne mesure que ce qui est utile."
+- question: "Peut-on suivre les appels téléphoniques ?"
+  answer: "Oui. Chaque clic sur votre numéro est compté, et les appels venant de Google Ads peuvent être rattachés à la campagne qui les a générés."
+- question: "J'ai déjà Google Analytics, faut-il tout refaire ?"
+  answer: "Non, on part de l'existant. On vérifie surtout qu'il mesure vos demandes, ce qui est rarement le cas avec la configuration par défaut."
+- question: "Combien de temps faut-il pour mettre en place le tracking ?"
+  answer: "En général une à deux semaines, tests compris. Le délai dépend du nombre de formulaires, d'outils et de sites à relier."
+- question: "Le suivi fonctionne-t-il avec mon CRM ?"
+  answer: "Dans la plupart des cas, oui. On regarde vos outils pendant l'audit et on relie les devis signés à leur source quand c'est possible."

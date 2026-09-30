@@ -85,11 +85,15 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: Do I need to start over?
-  answer: Not necessarily. If your site is doing its job, we improve it. We only recommend a redesign if it will get you more leads.
-- question: Can I update it myself?
-  answer: Yes. Your copy, photos and pages, from a simple editor.
-- question: How long does it take?
-  answer: It depends on the size of the site. We set the timeline during discovery, with review dates.
-- question: Do I own the website?
-  answer: Yes. The domain, the content and the site are all yours.
+- question: "How much does a website cost for a small business?"
+  answer: "It depends on the number of pages, the features and the content to produce. The price is set during scoping, before any development, along with the schedule and review dates."
+- question: "How long does it take to build a website?"
+  answer: "Usually four to eight weeks for a small business site, from mockup to launch. The exact schedule is set during scoping."
+- question: "Should I rebuild my website or improve it?"
+  answer: "Not necessarily rebuild it. If your site does its job, we improve it. We only suggest a redesign when it will win you more leads."
+- question: "Will my new website rank on Google?"
+  answer: "Yes, it's built for that. Speed, structure, tags and pages for each service and city are planned from the mockup, not bolted on later."
+- question: "Can I update my website myself?"
+  answer: "Yes. Your text, photos and pages can be edited from a simple interface, without going through us."
+- question: "Do I own the website?"
+  answer: "Yes. The domain name, the content and the site are yours."

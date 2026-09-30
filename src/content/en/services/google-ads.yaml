@@ -85,11 +85,15 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: How much budget do I need?
-  answer: It depends on your area and your competition. We set it together in the plan, before launch. Ad spend is paid directly to Google, on your own account.
-- question: Is the account in my name?
-  answer: Yes. The Google Ads account belongs to you, with its full history.
-- question: What if it doesn't work?
-  answer: We'll know fast, because every lead is tracked. We cut what doesn't pay off and we tell you.
-- question: I already have an account running
-  answer: Great, we start by auditing it. There's often budget to recover before adding any more.
+- question: "How much does a Google Ads campaign cost for a small business?"
+  answer: "For a local small business, ad spend often ranges from $500 to $3,000 a month, depending on the area, the trade and the competition. That budget is paid directly to Google, on your own account. We set it together in the plan, before launch."
+- question: "How fast does Google Ads bring in leads?"
+  answer: "Within the first days of running. It then takes four to eight weeks of adjustments to bring the cost per lead down, while we cut the searches that don't pay off."
+- question: "How do I know if my Google Ads are paying off?"
+  answer: "By tracking every call and every form, campaign by campaign. We set up tracking before launch and you see your cost per lead every month. A campaign that doesn't pay off gets cut, and we tell you."
+- question: "Do I need a landing page for Google Ads?"
+  answer: "Yes, in most cases. A page built for one service and one area turns far more clicks into leads than your homepage. We build it if your site doesn't have one."
+- question: "Is the Google Ads account in my name?"
+  answer: "Yes. The account belongs to you, with its full history. If you stop working with us, you keep everything."
+- question: "I already run Google Ads. Can you take over my account?"
+  answer: "Yes, and we start by auditing it. There is often budget to recover from wasted searches before adding any more."

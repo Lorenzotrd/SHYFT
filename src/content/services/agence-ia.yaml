@@ -85,11 +85,15 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: Faut-il changer nos outils ?
-  answer: Non. On part de ce que vous utilisez déjà, et on ne rajoute un outil que s'il est vraiment nécessaire.
-- question: Et si l'IA se trompe ?
-  answer: Au départ, rien ne part chez un client sans validation humaine. On automatise davantage une fois que c'est fiable.
-- question: Où vont nos données ?
-  answer: On vous dit précisément quels services sont utilisés et où vont vos données avant de brancher quoi que ce soit.
-- question: On est une petite équipe, ça vaut le coup ?
-  answer: 'C''est souvent là que ça rapporte le plus : chaque heure gagnée compte.'
+- question: "Quelles tâches peut-on automatiser avec l'IA dans une PME ?"
+  answer: "Surtout les tâches répétitives : relance des devis, tri des demandes entrantes, collecte de documents, réponses aux questions courantes et première lecture des appels d'offres. On commence par celles qui font gagner le plus d'heures."
+- question: "Combien coûte l'automatisation IA pour une PME ?"
+  answer: "Le coût dépend du nombre de tâches et des outils à relier. Chaque automatisation est chiffrée dans le plan, avec les heures qu'elle doit faire gagner, pour que vous jugiez la rentabilité avant de lancer."
+- question: "Faut-il changer nos outils pour automatiser ?"
+  answer: "Non. On part de ce que vous utilisez déjà, et on n'ajoute un outil que s'il est vraiment nécessaire."
+- question: "Que se passe-t-il si l'IA se trompe ?"
+  answer: "Au départ, rien ne part chez un client sans validation humaine. On automatise davantage une fois que le résultat est fiable."
+- question: "Où vont nos données avec l'IA ?"
+  answer: "On vous dit précisément quels services sont utilisés et où vont vos données avant de brancher quoi que ce soit."
+- question: "L'automatisation vaut-elle le coup pour une petite équipe ?"
+  answer: "Oui, c'est souvent là qu'elle rapporte le plus : chaque heure gagnée compte quand l'équipe est réduite."

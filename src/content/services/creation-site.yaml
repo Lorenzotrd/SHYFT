@@ -85,11 +85,15 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: Faut-il tout refaire ?
-  answer: Pas forcément. Si votre site fait le travail, on l'améliore. On ne propose une refonte que si elle vous fait gagner des demandes.
-- question: Je pourrai le modifier moi-même ?
-  answer: Oui, vos textes, vos photos et vos pages, depuis une interface simple.
-- question: Combien de temps ça prend ?
-  answer: Ça dépend de la taille du site. Le planning est posé au cadrage, avec les dates de validation.
-- question: Le site m'appartient ?
-  answer: Oui. Le nom de domaine, le contenu et le site sont à vous.
+- question: "Combien coûte la création d'un site internet pour une PME ?"
+  answer: "Le prix dépend du nombre de pages, des fonctionnalités et des contenus à produire. Il est fixé au cadrage, avant tout développement, avec le planning et les dates de validation."
+- question: "Combien de temps faut-il pour créer un site internet ?"
+  answer: "Comptez en général quatre à huit semaines pour le site d'une PME, de la maquette à la mise en ligne. Le planning exact est posé au cadrage."
+- question: "Faut-il refaire mon site ou l'améliorer ?"
+  answer: "Pas forcément le refaire. Si votre site fait le travail, on l'améliore. On ne propose une refonte que si elle vous fait gagner des demandes."
+- question: "Mon nouveau site sera-t-il bien référencé sur Google ?"
+  answer: "Oui, il est construit pour. Vitesse, structure, balises et pages par métier et par ville sont prévues dès la maquette, pas ajoutées après coup."
+- question: "Pourrai-je modifier mon site moi-même ?"
+  answer: "Oui. Vos textes, vos photos et vos pages se modifient depuis une interface simple, sans passer par nous."
+- question: "Le site m'appartient-il ?"
+  answer: "Oui. Le nom de domaine, le contenu et le site sont à vous."

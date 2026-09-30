@@ -85,11 +85,15 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: Mes clients sont des pros, ça marche ?
-  answer: Oui, à condition de cibler finement. Et pour certains métiers, on vous dira honnêtement que Google Ads passe avant.
-- question: Il faut que je fournisse des photos ?
-  answer: Les vôtres de préférence, même prises au téléphone. On s'occupe du montage.
-- question: Quel budget prévoir ?
-  answer: Il est fixé dans le plan, selon votre zone. Il est réglé directement à Meta, sur votre compte.
-- question: Je gère déjà ma page Facebook
-  answer: Parfait, on ne touche pas à votre communication. On s'occupe de la publicité qui génère des demandes.
+- question: "Combien coûte une campagne Facebook et Instagram pour une PME ?"
+  answer: "Un test sérieux démarre souvent entre 500 et 1 500 € de budget par mois sur une zone locale. Ce budget est payé directement à Meta, sur votre compte, et fixé dans le plan selon votre rayon et vos objectifs."
+- question: "Quelle différence entre Meta Ads et Google Ads ?"
+  answer: "Google Ads capte les personnes qui cherchent déjà votre service. Meta Ads va chercher celles qui en auront besoin mais ne cherchent pas encore. Les deux se complètent souvent."
+- question: "Facebook Ads fonctionne-t-il si mes clients sont des professionnels ?"
+  answer: "Oui, à condition de cibler finement par zone, métier et centres d'intérêt. Pour certains métiers, on vous dira honnêtement que Google Ads passe avant."
+- question: "En combien de temps voit-on des demandes avec Meta Ads ?"
+  answer: "Les premières demandes arrivent en général dans les deux premières semaines. Il faut ensuite un à deux mois de tests pour trouver les messages et les visuels qui font baisser le coût par demande."
+- question: "Faut-il fournir des photos et des vidéos ?"
+  answer: "Les vôtres de préférence, même prises au téléphone. Des images de vos chantiers et de vos produits rapportent plus que des photos de banque d'images. On s'occupe du montage."
+- question: "Je gère déjà ma page Facebook, qu'est-ce qui change ?"
+  answer: "Rien pour votre communication. On s'occupe uniquement de la publicité qui génère des demandes, avec un suivi du coût de chacune."

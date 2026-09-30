@@ -85,11 +85,15 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: Quel budget faut-il prévoir ?
-  answer: Ça dépend de votre zone et de la concurrence. On le fixe ensemble dans le plan, avant de lancer. Le budget publicitaire est réglé directement à Google, sur votre compte.
-- question: Le compte est à mon nom ?
-  answer: Oui. Le compte Google Ads vous appartient, avec tout son historique.
-- question: Et si ça ne marche pas ?
-  answer: On le voit vite, parce que chaque demande est comptée. On coupe ce qui ne rapporte pas et on vous le dit.
-- question: J'ai déjà un compte qui tourne
-  answer: Très bien, on commence par l'auditer. Souvent, il y a du budget à récupérer avant même d'en ajouter.
+- question: "Combien coûte une campagne Google Ads pour une PME ?"
+  answer: "Pour une PME locale, le budget publicitaire se situe souvent entre 500 et 3 000 € par mois, selon la zone, le métier et la concurrence. Ce budget est payé directement à Google, sur votre compte. On le fixe ensemble dans le plan, avant de lancer."
+- question: "En combien de temps Google Ads génère-t-il des demandes ?"
+  answer: "Dès les premiers jours de diffusion. Il faut ensuite quatre à huit semaines d'ajustements pour faire baisser le coût par demande, le temps de couper les recherches qui ne rapportent pas."
+- question: "Comment savoir si mes publicités Google Ads rapportent ?"
+  answer: "En comptant chaque appel et chaque formulaire, campagne par campagne. On installe ce suivi avant le lancement et vous voyez chaque mois votre coût par demande. Une campagne qui ne rapporte pas est coupée, et on vous le dit."
+- question: "Faut-il une page d'atterrissage pour Google Ads ?"
+  answer: "Oui, dans la plupart des cas. Une page dédiée au service et à la zone transforme bien plus de clics en demandes que la page d'accueil. On la crée si votre site n'en a pas."
+- question: "Le compte Google Ads est-il à mon nom ?"
+  answer: "Oui. Le compte vous appartient, avec tout son historique. Si vous arrêtez, vous gardez tout."
+- question: "J'ai déjà un compte Google Ads, pouvez-vous le reprendre ?"
+  answer: "Oui, et on commence par l'auditer. Souvent, il y a du budget à récupérer sur des recherches inutiles avant même d'en ajouter."

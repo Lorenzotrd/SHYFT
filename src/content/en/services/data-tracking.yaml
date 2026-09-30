@@ -85,11 +85,15 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: Is it privacy-compliant?
-  answer: We set up tracking with a GDPR-compliant consent banner, and we only collect what's needed.
-- question: I already have Google Analytics
-  answer: We check that it tracks the right things. Out of the box, it rarely does.
-- question: Will I have to read complicated reports?
-  answer: No. One page, your key numbers, and a plain-English explanation.
-- question: Does it work with my CRM?
-  answer: In most cases, yes. We look at your tools during the audit.
+- question: "Why use Google Tag Manager on top of GA4?"
+  answer: "Because Google Tag Manager tracks calls, forms and clicks without editing your site's code every time. GA4, Google Ads and Meta then receive the same conversions from one place."
+- question: "Is conversion tracking privacy compliant?"
+  answer: "Yes, as long as it respects consent. We set up a compliant cookie banner and Google Consent Mode v2: nothing is stored without permission, and we only measure what's useful."
+- question: "Can you track phone calls?"
+  answer: "Yes. Every tap on your phone number is counted, and calls from Google Ads can be tied to the campaign that generated them."
+- question: "I already have Google Analytics. Do we start from scratch?"
+  answer: "No, we build on what you have. We mainly check that it tracks your leads, which the default setup rarely does."
+- question: "How long does it take to set up tracking?"
+  answer: "Usually one to two weeks, testing included. It depends on how many forms, tools and sites need to be connected."
+- question: "Does tracking work with my CRM?"
+  answer: "In most cases, yes. We review your tools during the audit and tie closed deals back to their source when possible."

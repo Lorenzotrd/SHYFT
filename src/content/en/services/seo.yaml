@@ -127,11 +127,15 @@ geogrid:
     - 13,9,6,5,8,11,14
     - 16,14,11,9,12,15,18
 faq:
-- question: How soon will I see results?
-  answer: Technical fixes pay off within a few weeks. Content and authority take several months, depending on your competition. We give you a realistic timeline right after the audit.
-- question: What's the difference between SEO, local SEO and GEO?
-  answer: SEO puts you in Google's regular results. Local SEO puts you on Google Maps. GEO gets you cited by AI search engines. All three reinforce each other.
-- question: Do I have to write blog posts?
-  answer: No. We write, you review and approve. We use your industry knowledge, not your time.
-- question: Do you buy links?
-  answer: No. We earn links from real sites in your industry and your region, not from networks of fake sites.
+- question: "How long does local SEO take to show results?"
+  answer: "Usually two to three months for the first gains on Google Maps, and four to six months for solid rankings on competitive searches. Technical fixes pay off within weeks. We give you a realistic timeline in the audit, based on your city and your competitors."
+- question: "What is the difference between SEO, local SEO and GEO?"
+  answer: "SEO ranks you in Google's regular results, local SEO on Google Maps, and GEO in the answers of AI engines like ChatGPT or Perplexity. All three reinforce each other: a clear site and strong reviews help everywhere."
+- question: "How much does SEO cost for a small business?"
+  answer: "It depends on how many pages need to be built, your service area and your competition. The price is set in writing in the plan, after the free audit and before any work starts. There is no long-term contract."
+- question: "How do I get into the Google Maps top 3?"
+  answer: "By working on three things: a complete and consistent Google Business Profile, a steady flow of reviews, and pages on your site about your service in each city. Distance matters too, which is why we measure your rank point by point across your whole area."
+- question: "How do I get mentioned by ChatGPT or Perplexity?"
+  answer: "By being present where these tools source their answers: a well-structured site, pages that answer your customers' exact questions, and reviews and mentions on reference sites in your industry. The free audit shows what they say about your business today."
+- question: "Do you buy backlinks?"
+  answer: "No. We earn links from real sites in your industry and region, not from networks of artificial sites that Google ends up penalizing."

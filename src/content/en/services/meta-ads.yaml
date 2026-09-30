@@ -85,11 +85,15 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: My customers are businesses. Will it work?
-  answer: Yes, as long as the targeting is precise. And for some industries, we'll tell you honestly that Google Ads should come first.
-- question: Do I need to provide photos?
-  answer: Your own are best, even if they're shot on your phone. We handle the editing.
-- question: How much budget should I plan for?
-  answer: It's set in the plan, based on your area. Ad spend is paid directly to Meta, on your own account.
-- question: I already manage my Facebook page
-  answer: Perfect, we won't touch your posts. We handle the ads that bring in leads.
+- question: "How much do Facebook and Instagram ads cost for a small business?"
+  answer: "A meaningful test often starts at $500 to $1,500 a month in ad spend for a local area. That budget is paid directly to Meta, on your own account, and set in the plan based on your service radius and goals."
+- question: "What is the difference between Meta Ads and Google Ads?"
+  answer: "Google Ads captures people already searching for your service. Meta Ads reaches people who will need it but aren't searching yet. The two often work best together."
+- question: "Do Facebook ads work if my customers are businesses?"
+  answer: "Yes, as long as targeting is tight by area, trade and interests. For some trades, we'll tell you honestly that Google Ads should come first."
+- question: "How fast do Meta Ads bring in leads?"
+  answer: "The first leads usually come in within the first two weeks. It then takes one to two months of testing to find the messages and visuals that bring the cost per lead down."
+- question: "Do I need to provide photos and videos?"
+  answer: "Yours, ideally, even shot on a phone. Real photos of your jobs and products outperform stock images. We handle the editing."
+- question: "I already manage my Facebook page. What changes?"
+  answer: "Nothing for your regular posts. We only handle the advertising that brings in leads, with the cost of each one tracked."
