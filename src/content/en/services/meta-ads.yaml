@@ -14,6 +14,7 @@ audit:
   tag: Paid ads
   description: Your Facebook and Instagram ads, and the ones your competitors are running.
 hero:
+  h1: "Facebook and Instagram ads agency for small businesses"
   titre: Reach people who aren't looking for you *yet*
   texte: Facebook and Instagram, targeted to the area you serve. Create demand before it goes to a competitor.
 suivi:
@@ -21,6 +22,7 @@ suivi:
 - Qualified leads
 - People reached in your area
 - Lead response rate
+problemesTitre: "Why your Facebook and Instagram ads *don't pay off*"
 problemes:
 - titre: Nobody thinks of you
   texte: Your future customers don't know yet that they'll need you.
@@ -28,6 +30,7 @@ problemes:
   texte: Your posts mostly reach people who already know you.
 - titre: Boosts with no results
   texte: You've boosted posts before without knowing what they brought in.
+miseEnPlaceTitre: "What we set up in *your Meta Ads campaigns*"
 miseEnPlace:
 - titre: Radius targeting
   texte: Around your locations, not across the whole country.

@@ -14,6 +14,7 @@ audit:
   tag: Conversion
   description: Votre site sur mobile, sa vitesse et le chemin jusqu’au contact ou à l’achat.
 hero:
+  h1: "Création de site internet pour PME"
   titre: Un site qui *convertit*, pas juste joli
   texte: Rapide, clair sur mobile et [pensé pour Google](/expertises/seo). Construit pour transformer vos visiteurs en clients, que ce soit un appel, une réservation, une demande ou un achat. Et modifiable par vous.
 suivi:
@@ -21,6 +22,7 @@ suivi:
 - Vitesse de chargement sur mobile
 - Visites sur les pages villes
 - Appels passés depuis le site
+problemesTitre: "Pourquoi votre site internet *ne génère pas* de demandes"
 problemes:
 - titre: On ne comprend pas ce que vous faites
   texte: En trois secondes, le visiteur ne sait pas quoi, où, ni comment vous joindre.
@@ -28,6 +30,7 @@ problemes:
   texte: Il faut chercher le numéro, zoomer, attendre que la page charge.
 - titre: Aucun résultat en ligne
   texte: Le site existe, mais il ne vous apporte ni contacts ni clients.
+miseEnPlaceTitre: "Ce qu'on met en place sur *votre site internet*"
 miseEnPlace:
 - titre: Structure qui convertit
   texte: 'Chaque page mène vers une action : appeler, réserver, demander, acheter.'

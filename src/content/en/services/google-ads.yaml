@@ -14,6 +14,7 @@ audit:
   tag: Paid ads
   description: Your account if you have one, what your industry's keywords cost, and your competitors' ads.
 hero:
+  h1: "Google Ads agency for small businesses"
   titre: Capture demand *the moment* people search
   texte: Local campaigns, tightly focused on your service area and your most profitable services. Every dollar tracked all the way to the call or quote request.
 suivi:
@@ -21,6 +22,7 @@ suivi:
 - Number of leads received
 - Impression share on your keywords
 - Actual spend vs. planned budget
+problemesTitre: "Why your Google Ads campaigns *cost too much*"
 problemes:
 - titre: Wasted clicks
   texte: You pay for searches that have nothing to do with you, or come from outside your area.
@@ -28,6 +30,7 @@ problemes:
   texte: Campaigns have been running for months and nobody is adjusting them.
 - titre: No idea what you get back
   texte: Nobody knows how many quote requests actually come from your ads.
+miseEnPlaceTitre: "What we set up in *your Google Ads account*"
 miseEnPlace:
 - titre: Campaigns by service and area
   texte: A clear structure that matches what you sell and where.

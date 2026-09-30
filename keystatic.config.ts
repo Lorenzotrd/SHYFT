@@ -66,9 +66,14 @@ const base = {
           ton: tone(),
         }, { label: 'Carte sur l’accueil' }),
         audit: fields.object({ tag: text('Étiquette'), description: paragraph('Ce qu’on regarde') }, { label: 'Carte sur la page audit offert' }),
-        hero: fields.object({ titre: title('Titre'), texte: paragraph('Texte') }, { label: 'En-tête' }),
+        hero: fields.object({
+          h1: text('Titre H1 (mot clé)', 'Balise H1 de la page, avec le mot clé visé. Affiché en petit au-dessus du titre.'),
+          titre: title('Titre (accroche)'), texte: paragraph('Texte'),
+        }, { label: 'En-tête' }),
         suivi: list('Ce qu’on suit chaque mois', 'Indicateur'),
-        problemes: fields.array(titled(), { label: 'Vous vous reconnaissez ? (trois problèmes)', itemLabel: (p) => p.fields.titre.value }),
+        problemesTitre: title('Titre des problèmes (H2, avec le mot clé)'),
+        problemes: fields.array(titled(), { label: 'Problèmes (trois cartes)', itemLabel: (p) => p.fields.titre.value }),
+        miseEnPlaceTitre: title('Titre « ce qu’on met en place » (H2, avec le mot clé)'),
         miseEnPlace: fields.array(titled(), { label: 'Ce qu’on met en place', itemLabel: (p) => p.fields.titre.value }),
         couverture: fields.conditional(fields.checkbox({ label: 'Afficher le bloc « couvrir toute la recherche »' }), {
           true: fields.object({
@@ -231,7 +236,8 @@ const base = {
         seoDescription: paragraph('Description pour Google'),
         hero: fields.object({
           badge: text('Pastille noire'), badgeTexte: text('Texte de la pastille'),
-          titre: title('Titre'), texte: paragraph('Texte d’introduction'),
+          h1: text('Titre H1 (mot clé)', 'Balise H1 de la page, avec le mot clé visé. Affiché en petit au-dessus du titre.'),
+          titre: title('Titre (accroche)'), texte: paragraph('Texte d’introduction'),
           cta: text('Bouton principal (audit)'), ctaSecondaire: text('Bouton secondaire (rendez-vous)'),
           legende: text('Légende sous les cartes (téléphone)'),
         }, { label: 'En-tête' }),
@@ -319,8 +325,7 @@ const base = {
         filAccueil: text('Fil d’Ariane : accueil'), filServices: text('Fil d’Ariane : services'),
         ctaRdv: text('Bouton rendez-vous'), ctaAudit: text('Bouton audit'),
         suiviSurtitre: text('Carte de suivi : surtitre'), suiviTitre: title('Carte de suivi : titre'),
-        problemesTitre: title('Titre des problèmes'), problemeEtiquette: text('Pastille des problèmes'),
-        miseEnPlaceTitre: title('Titre « ce qu’on met en place »'), miseEnPlaceTexte: paragraph('Texte « ce qu’on met en place »'),
+        problemeEtiquette: text('Pastille des problèmes'), miseEnPlaceTexte: paragraph('Texte « ce qu’on met en place »'),
         friseTitre: title('Titre des étapes'), faqTitre: title('Titre des questions'), faqTexte: paragraph('Texte des questions'),
         autresLeviers: text('Titre « autres leviers »'), exempleFictif: text('Étiquette « exemple fictif »'),
       },

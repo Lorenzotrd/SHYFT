@@ -14,6 +14,7 @@ audit:
   tag: Conversion
   description: Your site on mobile, its speed, and the path to a call, a form or a sale.
 hero:
+  h1: "Website design for small businesses"
   titre: A website that *converts*, not just looks good
   texte: Fast, clear on mobile and [built for Google](/en/services/seo). Designed to turn visitors into customers, whether that's a call, a booking, a request or a purchase. And easy for you to update.
 suivi:
@@ -21,6 +22,7 @@ suivi:
 - Mobile page speed
 - Visits to city pages
 - Calls from the website
+problemesTitre: "Why your website *doesn't bring in* leads"
 problemes:
 - titre: Nobody gets what you do
   texte: In three seconds, visitors can't tell what you do, where, or how to reach you.
@@ -28,6 +30,7 @@ problemes:
   texte: Hunting for the phone number, pinching to zoom, waiting for pages to load.
 - titre: No results online
   texte: The site is live, but it brings you no leads and no customers.
+miseEnPlaceTitre: "What we build into *your website*"
 miseEnPlace:
 - titre: Built to convert
   texte: 'Every page leads to an action: call, book, request, buy.'

@@ -14,6 +14,7 @@ audit:
   tag: Productivity
   description: Your team's repetitive tasks and what we could automate first.
 hero:
+  h1: "AI automation for small businesses"
   titre: Less busywork, *better follow-up*
   texte: Quotes, follow-ups, bids and RFPs, documents to chase. We automate what costs your team hours and costs your business customers.
 suivi:
@@ -21,6 +22,7 @@ suivi:
 - Quotes followed up automatically
 - Hours saved, measured
 - Quote close rate
+problemesTitre: "Why your business needs *AI automation*"
 problemes:
 - titre: Leads slip through the cracks
   texte: They come in by email, phone and web form. Some never get a reply.
@@ -28,6 +30,7 @@ problemes:
   texte: Quotes only get followed up when someone remembers.
 - titre: Bids that eat up days
   texte: Answering one RFP takes days, so you let some go.
+miseEnPlaceTitre: "What we *automate with AI* for you"
 miseEnPlace:
 - titre: All leads in one place
   texte: Everything lands in one place. Nothing gets lost.

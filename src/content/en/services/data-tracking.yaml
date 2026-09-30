@@ -14,6 +14,7 @@ audit:
   tag: Tracking
   description: What you track today, what's missing, and where your customers come from.
 hero:
+  h1: "GA4 and GTM conversion tracking for small businesses"
   titre: Know *where* every customer comes from
   texte: 'Calls, forms, signed quotes: we track it all, source by source. So you keep what pays and cut the rest.'
 suivi:
@@ -21,6 +22,7 @@ suivi:
 - Cost per lead, by channel
 - Month-over-month trends
 - Signed quotes by source
+problemesTitre: "Why your conversion tracking *tells you nothing*"
 problemes:
 - titre: No idea where leads come from
   texte: Google, ads, word of mouth? Nobody really knows.
@@ -28,6 +30,7 @@ problemes:
   texte: Analytics is installed, but it doesn't track what matters.
 - titre: Budgets set by gut feel
   texte: Decisions get made on instinct because there are no reliable numbers.
+miseEnPlaceTitre: "What we set up in *GA4 and GTM*"
 miseEnPlace:
 - titre: GA4 and Search Console
   texte: Set up and configured around what really matters.

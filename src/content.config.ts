@@ -94,7 +94,8 @@ const [accueil, accueilEn] = bilingual('accueil', z.object({
   seoTitle: z.string(),
   seoDescription: z.string(),
   hero: z.object({
-    badge: z.string(), badgeTexte: z.string(), titre: lines, texte: z.string(),
+    // h1 : mot clé de la page (balise H1) ; titre : l'accroche, affichée en grand juste en dessous.
+    badge: z.string(), badgeTexte: z.string(), h1: z.string(), titre: lines, texte: z.string(),
     cta: z.string(), ctaSecondaire: z.string(), legende: z.string(),
   }),
   eventail: z.array(z.object({
@@ -153,9 +154,13 @@ const serviceSchema = z.object({
   seoDescription: z.string(),
   carte: z.object({ texte: z.string(), texteCourt: z.string(), icone: z.enum(['repere', 'cible', 'megaphone', 'robot', 'site', 'graphique']), ton: tone }),
   audit: z.object({ tag: z.string(), description: z.string() }),
-  hero: z.object({ titre: lines, texte: z.string() }),
+  // h1 : mot clé de la page (balise H1) ; titre : l'accroche, affichée en grand juste en dessous.
+  hero: z.object({ h1: z.string(), titre: lines, texte: z.string() }),
   suivi: z.array(z.string()),
+  // Titres H2 propres à chaque service, avec le mot clé ou une variante.
+  problemesTitre: lines,
   problemes: z.array(titled),
+  miseEnPlaceTitre: lines,
   miseEnPlace: z.array(titled),
   couverture: optional(z.object({
     titre: lines, texte: z.string(),
@@ -185,8 +190,7 @@ const servicesEn = defineCollection({ loader: glob({ pattern: '*.yaml', base: '.
 const [serviceCommun, serviceCommunEn] = bilingual('service-commun', z.object({
   filAccueil: z.string(), filServices: z.string(), ctaRdv: z.string(), ctaAudit: z.string(),
   suiviSurtitre: z.string(), suiviTitre: lines,
-  problemesTitre: lines, problemeEtiquette: z.string(),
-  miseEnPlaceTitre: lines, miseEnPlaceTexte: z.string(),
+  problemeEtiquette: z.string(), miseEnPlaceTexte: z.string(),
   friseTitre: lines, faqTitre: lines, faqTexte: z.string(),
   autresLeviers: z.string(), exempleFictif: z.string(),
 }));

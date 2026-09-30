@@ -14,6 +14,7 @@ audit:
   tag: Recherche Google
   description: Vos positions, Google Maps, votre site vu par Google et ce que répondent les moteurs IA.
 hero:
+  h1: "Agence SEO et SEO local pour PME"
   titre: Être trouvé sur Google *avant* vos concurrents
   texte: "[Un site que Google comprend](/expertises/creation-site), des pages qui répondent à ce que tapent vos clients, et une autorité qui se construit dans la durée. Puis le local et les moteurs IA pour couvrir toute la recherche."
 suivi:
@@ -21,6 +22,7 @@ suivi:
 - Mots clés en première page
 - Demandes générées par le SEO
 - Position sur Google Maps et dans les IA
+problemesTitre: "Pourquoi votre entreprise est *invisible* sur Google"
 problemes:
 - titre: Absent sur ce qui se cherche
   texte: Vous sortez sur votre nom, mais pas sur votre métier ni sur vos services.
@@ -28,6 +30,7 @@ problemes:
   texte: 'Pages lentes, contenus trop courts, structure confuse : Google ne sait pas quoi en faire.'
 - titre: Des concurrents qui prennent la place
   texte: Ils publient, obtiennent des liens et captent les recherches que vous devriez avoir.
+miseEnPlaceTitre: "Ce qu'on met en place pour *votre SEO local*"
 miseEnPlace:
 - titre: Audit technique
   texte: Vitesse, indexation, structure, erreurs. On remet les fondations d'aplomb.

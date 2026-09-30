@@ -14,6 +14,7 @@ audit:
   tag: Publicité
   description: Votre compte s’il existe, le coût des mots clés de votre métier et les annonces concurrentes.
 hero:
+  h1: "Agence Google Ads pour PME"
   titre: Capter la demande *au moment* où elle se cherche
   texte: Des campagnes locales, serrées sur votre zone et vos métiers rentables. Chaque euro suivi jusqu'à l'appel ou au devis.
 suivi:
@@ -21,6 +22,7 @@ suivi:
 - Nombre de demandes reçues
 - Part de visibilité sur vos mots clés
 - Budget dépensé face au budget prévu
+problemesTitre: "Pourquoi vos campagnes Google Ads *coûtent trop cher*"
 problemes:
 - titre: Des clics inutiles
   texte: Vous payez pour des recherches qui ne vous concernent pas, ou hors de votre zone.
@@ -28,6 +30,7 @@ problemes:
   texte: Les campagnes tournent depuis des mois sans que personne ne les ajuste.
 - titre: Aucune idée du retour
   texte: Personne ne sait combien de devis viennent réellement de la publicité.
+miseEnPlaceTitre: "Ce qu'on met en place sur *votre compte Google Ads*"
 miseEnPlace:
 - titre: Campagnes par métier et zone
   texte: Une structure claire, alignée sur ce que vous vendez et où.

@@ -14,6 +14,7 @@ audit:
   tag: Google Search
   description: Your rankings, Google Maps, how Google sees your site, and what AI search engines say about you.
 hero:
+  h1: "SEO and local SEO agency for small businesses"
   titre: Get found on Google *before* your competitors
   texte: "[A site Google understands](/en/services/website-design), pages that answer what your customers search for, and authority that builds over time. Then local and AI search to cover every kind of search."
 suivi:
@@ -21,6 +22,7 @@ suivi:
 - Keywords on page one
 - Leads from SEO
 - Rankings on Google Maps and AI search
+problemesTitre: "Why your business is *invisible* on Google"
 problemes:
 - titre: Missing from the searches that matter
   texte: You show up for your business name, but not for your trade or your services.
@@ -28,6 +30,7 @@ problemes:
   texte: 'Slow pages, thin content, messy structure: Google doesn''t know what to do with it.'
 - titre: Competitors taking your spot
   texte: They publish, earn links and win the searches that should be yours.
+miseEnPlaceTitre: "What we set up for *your local SEO*"
 miseEnPlace:
 - titre: Technical audit
   texte: Speed, indexing, structure, errors. We fix the foundations first.

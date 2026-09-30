@@ -14,6 +14,7 @@ audit:
   tag: Productivité
   description: Les tâches répétitives de vos équipes et ce qu’on pourrait automatiser en premier.
 hero:
+  h1: "Automatisation IA pour PME"
   titre: Le répétitif en moins, *le suivi* en plus
   texte: Devis, relances, appels d'offres, documents à réclamer. On automatise ce qui fait perdre des heures à vos équipes et des clients à votre entreprise.
 suivi:
@@ -21,6 +22,7 @@ suivi:
 - Devis relancés automatiquement
 - Heures gagnées, mesurées
 - Taux de signature des devis
+problemesTitre: "Pourquoi votre PME a besoin d'*automatisation IA*"
 problemes:
 - titre: Des demandes qui se perdent
   texte: Elles arrivent par mail, téléphone et formulaire. Certaines restent sans réponse.
@@ -28,6 +30,7 @@ problemes:
   texte: Les devis ne sont relancés que quand quelqu'un y pense.
 - titre: Des appels d'offres chronophages
   texte: Répondre à un dossier prend des jours, alors on en laisse passer.
+miseEnPlaceTitre: "Ce qu'on *automatise avec l'IA* chez vous"
 miseEnPlace:
 - titre: Demandes centralisées
   texte: Tout arrive au même endroit, rien ne se perd.

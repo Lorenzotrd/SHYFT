@@ -48,9 +48,9 @@ const jsonLd = [
 <Site title={s.seoTitle} description={s.seoDescription} paths={paths} jsonLd={jsonLd}>
   <Nav current="services" paths={paths} />
   <main id="main">
-    <HeroService nom={s.nom} titre={s.hero.titre} texte={s.hero.texte} suivi={s.suivi} calUrl={site.calUrl} commun={commun} />
-    <Problemes titre={commun.problemesTitre} etiquette={commun.problemeEtiquette} items={s.problemes} />
-    <MiseEnPlace titre={commun.miseEnPlaceTitre} texte={commun.miseEnPlaceTexte} items={s.miseEnPlace} />
+    <HeroService nom={s.nom} h1={s.hero.h1} titre={s.hero.titre} texte={s.hero.texte} suivi={s.suivi} calUrl={site.calUrl} commun={commun} />
+    <Problemes titre={s.problemesTitre} etiquette={commun.problemeEtiquette} items={s.problemes} />
+    <MiseEnPlace titre={s.miseEnPlaceTitre} texte={commun.miseEnPlaceTexte} items={s.miseEnPlace} />
     {s.couverture.discriminant && <Couverture {...s.couverture.value} />}
     <section class="section steps" aria-labelledby="steps-titre">
       <h2 id="steps-titre" class="h2 h2-page" set:html={rich(commun.friseTitre)}></h2>

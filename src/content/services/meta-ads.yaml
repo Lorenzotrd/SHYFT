@@ -14,6 +14,7 @@ audit:
   tag: Publicité
   description: Vos publicités Facebook et Instagram, et celles que diffusent vos concurrents.
 hero:
+  h1: "Agence Facebook et Instagram Ads pour PME"
   titre: Toucher ceux qui ne vous cherchent *pas encore*
   texte: Facebook et Instagram, ciblés sur votre rayon d'intervention. Pour créer la demande avant qu'elle parte chez un concurrent.
 suivi:
@@ -21,6 +22,7 @@ suivi:
 - Demandes qualifiées
 - Personnes touchées dans votre zone
 - Taux de réponse aux demandes
+problemesTitre: "Pourquoi vos publicités Facebook et Instagram *ne rapportent pas*"
 problemes:
 - titre: On ne pense pas à vous
   texte: Vos futurs clients ne savent pas encore qu'ils auront besoin de vous.
@@ -28,6 +30,7 @@ problemes:
   texte: Vos publications touchent surtout ceux qui vous connaissent déjà.
 - titre: Des boosts sans résultat
   texte: Vous avez déjà boosté des posts sans savoir ce que ça a rapporté.
+miseEnPlaceTitre: "Ce qu'on met en place sur *vos campagnes Meta Ads*"
 miseEnPlace:
 - titre: Ciblage par rayon
   texte: Autour de vos agences, pas dans toute la France.

@@ -14,6 +14,7 @@ audit:
   tag: Mesure
   description: Ce que vous mesurez aujourd’hui, ce qui manque, et d’où viennent vos clients.
 hero:
+  h1: "Tracking des conversions GA4 et GTM pour PME"
   titre: Savoir *d’où* vient chaque client
   texte: 'Appels, formulaires, devis signés : on mesure tout, source par source. Pour garder ce qui rapporte et couper le reste.'
 suivi:
@@ -21,6 +22,7 @@ suivi:
 - Coût par demande, canal par canal
 - Évolution mois après mois
 - Devis signés par source
+problemesTitre: "Pourquoi votre tracking des conversions *ne vous dit rien*"
 problemes:
 - titre: Aucune idée de la source
   texte: Google, la pub, le bouche à oreille ? Personne ne sait vraiment.
@@ -28,6 +30,7 @@ problemes:
   texte: Analytics est installé, mais il ne mesure pas ce qui compte.
 - titre: Des budgets au feeling
   texte: Les décisions se prennent à l'intuition, faute de chiffres fiables.
+miseEnPlaceTitre: "Ce qu'on met en place dans *GA4 et GTM*"
 miseEnPlace:
 - titre: Analytics et Search Console
   texte: Installés et configurés sur ce qui compte vraiment.
