@@ -1,13 +1,18 @@
-// Constantes du site. L'identifiant GTM vide désactive toute mesure d'audience (voir README).
+// Constantes du site. L'identifiant GA4 vide désactive toute mesure d'audience (voir README).
 export const BRAND = 'SHYFT';
 export const YEAR = 2026;
 export const SITE_URL = 'https://www.shyftgrowth.com';
-/** Conteneur Google Tag Manager (« GTM-XXXXXXX ») : GA4, Google Ads et Meta y sont configurés.
- *  Vide : ni GTM, ni bandeau de consentement, aucune mesure. */
-export const GTM_ID = 'GTM-TDNRKQJQ';
-/** Flux GA4 (configuré dans GTM). Sert au serveur (Measurement Protocol, book_call) et à lire l'identifiant de
- *  session dans le cookie _ga_… ; aucun script GA4 n'est chargé directement par le site. */
+/** Balise Google (GA4), avec Google Ads AW-18468970949 en destination liée : chargée après accord seulement. */
 export const GA_ID = 'G-XC6CD5J71S';
+/** Google Ads actif via la balise Google : le bandeau mentionne la publicité et l'accord accorde ad_storage et ad_user_data.
+ *  La conversion « Envoi de formulaire de lead » est comptée par Google Ads au chargement de /audit-offert/merci. */
+export const ADS_ENABLED = true;
+/** Conversion Google Ads de la demande d'audit, au format « AW-123456789/AbCdEfGh ». Vide : aucun événement de conversion envoyé par le code. */
+export const ADS_CONVERSION = '';
+/** Identifiant du pixel Meta. Vide : le pixel n'est jamais chargé. */
+export const META_PIXEL_ID = '';
+/** Conversion Google Ads de la prise de rendez-vous, comptée sur la page /rendez-vous/merci. Vide : rien n'est envoyé. */
+export const ADS_CONVERSION_RDV = '';
 
 /** Coordonnées de l'agence : données structurées, en-tête, pied de page, llms.txt.
  *  Un champ vide n'est jamais affiché ni publié (données structurées comprises). */

@@ -39,9 +39,9 @@ body: |
 
   <h2>Cookies, analytics and advertising</h2>
 
-  <p>With your consent, this site uses, through Google Tag Manager:</p>
+  <p>With your consent, this site uses:</p>
 
-  <ul><li><strong>Google Analytics</strong> (Google Ireland Ltd): pages viewed, where visits come from and requests sent, to understand which content answers your questions.</li><li><strong>Google Ads</strong> (Google Ireland Ltd): to see which Google ads bring in audit requests and calls, and to show our ads to people who have already visited the site.</li><li><strong>Meta</strong> (Meta Platforms Ireland Ltd, Facebook and Instagram): the same use for our ads on Facebook and Instagram.</li></ul>
+  <ul><li><strong>Google Analytics</strong> (Google Ireland Ltd): pages viewed, where visits come from and requests sent, to understand which content answers your questions.</li><li><strong>Google Ads</strong> (Google Ireland Ltd): to see which Google ads bring in audit requests and calls. No personalized advertising is enabled based on your visit.</li><li><strong>Meta</strong> (Meta Platforms Ireland Ltd, Facebook and Instagram), when our Facebook and Instagram ads are running: the same use.</li></ul>
 
   <p>These tools may store cookies on your device for up to 13 months and process browsing data (pages viewed, device identifier, clicks on our ads). Google and Meta may transfer this data outside the European Union, under the safeguards provided by the GDPR. No data is sold.</p>
 

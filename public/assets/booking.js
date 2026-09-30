@@ -6,7 +6,7 @@
    Transmis à Cal.com en métadonnées de la réservation : page d'origine, emplacement du bouton, UTM,
    et l'identifiant GA4 du visiteur seulement s'il a accepté la mesure d'audience.
    La réservation elle-même est comptée côté serveur (webhook), jamais ici : le navigateur ne signale
-   que le clic (clic_prise_rdv), puis emmène la page sur /rendez-vous/merci une fois la réservation acceptée. */
+   que le clic (open_booking), puis emmène la page sur /rendez-vous/merci une fois la réservation acceptée. */
 (function () {
  const PREFIX = 'https://cal.com/shyftgrowth/';
  const SCRIPT = document.currentScript;
@@ -107,7 +107,7 @@
   event.preventDefault();
   const emplacement = link.dataset.emplacement || 'lien';
   remember(emplacement);
-  // Clic compté tout de suite (clic_prise_rdv dans analytics.js), même si la fenêtre Cal.com ne charge pas.
+  // Clic compté tout de suite (open_booking dans analytics.js), même si la fenêtre Cal.com ne charge pas.
   document.dispatchEvent(new CustomEvent('shyft:booking', {detail: {emplacement, page: location.pathname}}));
   const external = link.href.startsWith(PREFIX);
   const calLink = external ? new URL(link.href).pathname.replace(/^\//, '') : CAL_LINK;

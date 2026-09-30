@@ -1,48 +1,84 @@
-/* Consentement et événements de mesure. Toute la mesure passe par Google Tag Manager (GA4, Google Ads, Meta
-   y sont configurés) : ce script ne charge aucun outil lui-même.
-   - Google Consent Mode v2 : tout est refusé par défaut dans le <head> (Site.astro), avant GTM. Ce script
-     affiche le bandeau, mémorise le choix et envoie la mise à jour (gtag('consent', 'update')), puis
-     l'événement dataLayer « consent_update » pour les balises qui n'utilisent pas le mode consentement (Meta).
-   - Événements poussés dans le dataLayer, quel que soit le choix (GTM décide selon le consentement) :
-     clic_telephone, clic_email, clic_prise_rdv, soumission_formulaire_audit, rdv_confirme. */
+/* Mesure d'audience Google Analytics 4, et conversions publicitaires si elles sont configurées.
+   Aucune requête vers Google ou Meta n'est faite avant un accord explicite : les scripts ne sont chargés qu'après.
+   Le mode consentement est refusé par défaut, conformément à ce qu'impose l'Espace économique européen.
+   data-ads (conversion Google Ads « AW-…/… ») et data-meta (pixel Meta) restent vides tant qu'ils ne sont pas
+   renseignés dans src/lib/site.ts : rien ne part alors vers ces régies. */
 (function () {
  const data = (document.currentScript && document.currentScript.dataset) || {};
- const GA = data.ga || '';
+ const ID = data.ga || '';
+ if (!ID) return;
+ const ADS = data.ads || '';
+ const ADS_RDV = data.adsRdv || '';
+ const META = data.meta || '';
+ // data-ads-enabled : Google Ads reçoit les données par la balise Google (destination liée à GA4), sans libellé à câbler.
+ const ADS_ENABLED = data.adsEnabled === 'true';
+ const ADVERTISING = Boolean(ADS_ENABLED || ADS || ADS_RDV || META);
  const KEY = 'shyft:consent';
 
  window.dataLayer = window.dataLayer || [];
  function gtag() { window.dataLayer.push(arguments); }
- window.gtag = window.gtag || gtag;
- const push = (event, params) => window.dataLayer.push(Object.assign({ event }, params || {}));
+ window.gtag = gtag;
+ gtag('consent', 'default', {
+  ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+  analytics_storage: 'denied', wait_for_update: 500,
+ });
 
  const choice = {
   get() { try { return localStorage.getItem(KEY); } catch { return null; } },
   set(v) { try { localStorage.setItem(KEY, v); } catch {} },
  };
 
- // Accord : mesure d'audience et publicitaire. Refus : tout reste refusé.
- function consentFor(value) {
-  return {
-   analytics_storage: value, ad_storage: value, ad_user_data: value, ad_personalization: value,
-   functionality_storage: value, personalization_storage: value,
-  };
+ let loaded = false;
+ function loadGoogle() {
+  if (loaded) return;
+  loaded = true;
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(ID);
+  document.head.appendChild(script);
+  gtag('js', new Date());
+  gtag('config', ID, {anonymize_ip: true});
+  const account = (ADS || ADS_RDV).split('/')[0];
+  if (account) gtag('config', account);
+  if (META) loadMeta();
+ }
+
+ // Pixel Meta, chargé seulement après accord et seulement si un identifiant est renseigné.
+ function loadMeta() {
+  if (window.fbq) return;
+  const fbq = function () { fbq.callMethod ? fbq.callMethod.apply(fbq, arguments) : fbq.queue.push(arguments); };
+  fbq.queue = []; fbq.loaded = true; fbq.version = '2.0'; fbq.push = fbq;
+  window.fbq = fbq; window._fbq = fbq;
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://connect.facebook.net/fr_FR/fbevents.js';
+  document.head.appendChild(script);
+  fbq('init', META);
+  fbq('track', 'PageView');
  }
 
  let banner = null;
  function hide() { if (banner) { banner.remove(); banner = null; } }
 
- // Textes du bandeau, dans la langue de la page (<html lang>).
+ // Textes du bandeau, dans la langue de la page (<html lang>). Version courte sur téléphone (tokens.css).
+ const ADS_TOOLS = META ? 'Google Ads, Meta' : 'Google Ads';
  const TEXTS = {
   fr: {
-   title: 'Mesure d’audience et publicité',
-   text: 'On utilise Google Analytics pour savoir quelles pages répondent à vos questions, et des outils publicitaires (Google Ads, Meta) pour savoir quelles publicités amènent des demandes. Le site fonctionne exactement pareil si vous refusez. ',
-   short: 'Google Analytics, Google Ads et Meta nous disent ce qui amène des demandes. Le site marche pareil si vous refusez. ',
+   title: 'Mesure d’audience',
+   ads: 'On utilise Google Analytics pour savoir quelles pages répondent à vos questions, et des outils de mesure publicitaire (' + ADS_TOOLS + ') pour savoir quelles publicités amènent des demandes. ',
+   short: 'Google Analytics et ' + ADS_TOOLS + ' nous disent ce qui amène des demandes. Le site marche pareil si vous refusez. ',
+   shortNoAds: 'Google Analytics nous dit quelles pages vous sont utiles. Le site marche pareil si vous refusez. ',
+   noAds: 'On utilise Google Analytics pour savoir quelles pages répondent à vos questions. Rien de plus, aucune publicité ciblée. ',
+   same: 'Le site fonctionne exactement pareil si vous refusez. ',
    more: 'En savoir plus', privacy: '/confidentialite', deny: 'Refuser', accept: 'Accepter',
   },
   en: {
-   title: 'Analytics and advertising',
-   text: 'We use Google Analytics to see which pages answer your questions, and ad tools (Google Ads, Meta) to see which ads bring in requests. The site works exactly the same if you decline. ',
-   short: 'Google Analytics, Google Ads and Meta tell us what brings in requests. The site works the same if you decline. ',
+   title: 'Analytics',
+   ads: 'We use Google Analytics to see which pages answer your questions, and ad measurement tools (' + ADS_TOOLS + ') to see which ads bring in requests. ',
+   short: 'Google Analytics and ' + ADS_TOOLS + ' tell us what brings in requests. The site works the same if you decline. ',
+   shortNoAds: 'Google Analytics tells us which pages help you. The site works the same if you decline. ',
+   noAds: 'We use Google Analytics to see which pages answer your questions. Nothing more, no targeted ads. ',
+   same: 'The site works exactly the same if you decline. ',
    more: 'Learn more', privacy: '/en/privacy-policy', deny: 'Decline', accept: 'Accept',
   },
  };
@@ -56,7 +92,8 @@
   banner.setAttribute('aria-labelledby', 'consentTitle');
   banner.innerHTML =
    '<div class="consent-text"><b id="consentTitle">' + t.title + '</b>' +
-   '<p><span class="consent-long">' + t.text + '</span><span class="consent-short">' + t.short + '</span>' +
+   '<p><span class="consent-long">' + (ADVERTISING ? t.ads : t.noAds) + t.same + '</span>' +
+   '<span class="consent-short">' + (ADVERTISING ? t.short : t.shortNoAds) + '</span>' +
    '<a href="' + t.privacy + '">' + t.more + '</a></p></div>' +
    '<div class="consent-actions">' +
    '<button type="button" class="btn btn-ghost" data-consent="denied">' + t.deny + '</button>' +
@@ -68,64 +105,81 @@
  function decide(value) {
   choice.set(value);
   gtag('consent', 'update', consentFor(value));
-  push('consent_update', { consent_analytics: value, consent_ads: value });
+  if (value === 'granted') { loadGoogle(); pending.splice(0).forEach(track); pendingRdv.splice(0).forEach(trackRdv); }
+  else { pending.length = 0; pendingRdv.length = 0; }
   hide();
  }
 
- // Choix déjà fait : la mise à jour du consentement est déjà partie dans le <head>, on le signale aux balises.
- const current = choice.get();
- if (current === 'granted' || current === 'denied') push('consent_update', { consent_analytics: current, consent_ads: current });
- else show();
+ // Accord : mesure d'audience, et mesure publicitaire seulement si une régie est configurée. Jamais de personnalisation.
+ function consentFor(value) {
+  const update = {analytics_storage: value};
+  if (ADVERTISING) { update.ad_storage = value; update.ad_user_data = value; }
+  return update;
+ }
 
  document.addEventListener('click', event => {
-  const target = event.target;
-  if (!target || !target.closest) return;
-  const button = target.closest('[data-consent]');
+  const button = event.target.closest('[data-consent]');
   if (button) return decide(button.dataset.consent);
-  const reopen = target.closest('[data-cookies]');
+  const reopen = event.target.closest('[data-cookies]');
   if (reopen) { event.preventDefault(); show(); return; }
-  // Clics sur le téléphone et l'email, où qu'ils soient (en-tête, pied de page, contenus).
-  const link = target.closest('a[href^="tel:"], a[href^="mailto:"]');
-  if (!link) return;
-  const tel = link.getAttribute('href').startsWith('tel:');
-  push(tel ? 'clic_telephone' : 'clic_email', { emplacement: link.dataset.emplacement || 'lien', page_origine: location.pathname });
+  // Clics sur le téléphone et l'email (en-tête, pied de page, page rendez-vous), après accord seulement.
+  const contact = event.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+  if (contact && choice.get() === 'granted') {
+   const tel = contact.getAttribute('href').startsWith('tel:');
+   gtag('event', tel ? 'clic_telephone' : 'clic_email', { emplacement: contact.dataset.emplacement || 'lien', page_origine: location.pathname });
+  }
  });
 
- // Clic sur une prise de rendez-vous (booking.js), avant l'ouverture de la fenêtre Cal.com.
+ // Ouverture de la fenêtre de rendez-vous (booking.js). La réservation, elle, est comptée par le serveur (book_call).
  document.addEventListener('shyft:booking', event => {
-  const d = event.detail || {};
-  push('clic_prise_rdv', { emplacement: d.emplacement || 'lien', page_origine: d.page || location.pathname });
+  if (choice.get() !== 'granted') return;
+  const detail = event.detail || {};
+  gtag('event', 'open_booking', { emplacement: detail.emplacement || '', page_origine: detail.page || location.pathname });
  });
 
- // Demande d'audit envoyée : signalée une seule fois par la page merci (note laissée par le formulaire).
- document.addEventListener('shyft:lead', event => {
-  const d = event.detail || {};
-  if (d.formulaire !== 'audit') return;
-  const services = d.services || [];
-  push('soumission_formulaire_audit', { secteur: d.secteur || '', leviers: services.length, services: services.join(',') });
- });
-
- // Rendez-vous confirmé dans Cal.com (bookingSuccessfulV2) : signalé une seule fois par la page merci du rendez-vous.
- document.addEventListener('shyft:rdv', event => {
-  const d = event.detail || {};
-  push('rdv_confirme', { emplacement: d.emplacement || 'lien', page_origine: d.page || '' });
- });
-
- // Identifiants GA4 du visiteur (cookies posés par GA4 via GTM), pour rattacher la réservation Cal.com à sa visite
- // côté serveur (book_call). Uniquement après accord : sans accord, ces cookies n'existent pas et rien n'est lu.
- function cookie(name) {
-  const hit = document.cookie.split('; ').find(c => c.startsWith(name + '='));
-  return hit ? decodeURIComponent(hit.slice(name.length + 1)) : '';
+ // Identifiants GA4 du visiteur, pour rattacher la réservation à sa visite. Uniquement après accord.
+ function readField(field) {
+  return new Promise(resolve => gtag('get', ID, field, value => resolve(value ? String(value) : '')));
  }
  window.shyftAnalytics = {
   ids() {
-   if (choice.get() !== 'granted') return Promise.resolve(null);
-   const ga = cookie('_ga').split('.');
-   const client_id = ga.length >= 4 ? ga.slice(-2).join('.') : '';
-   if (!client_id) return Promise.resolve(null);
-   const session = GA ? cookie('_ga_' + GA.replace(/^G-/, '')) : '';
-   const match = session.match(/^GS2\.\d\.s(\d+)/) || session.match(/^GS1\.\d\.(\d+)\./);
-   return Promise.resolve({ client_id, session_id: match ? match[1] : '', ads: true });
+   if (choice.get() !== 'granted' || !loaded) return Promise.resolve(null);
+   return Promise.all([readField('client_id'), readField('session_id')])
+    .then(([client_id, session_id]) => (client_id ? { client_id, session_id, ads: ADVERTISING } : null));
   },
  };
+
+ const pending = [];
+ const pendingRdv = [];
+ const current = choice.get();
+ if (current === 'granted') { gtag('consent', 'update', consentFor('granted')); loadGoogle(); }
+ else if (current !== 'denied') show();
+
+ // Une demande envoyée : c'est la conversion qui compte. Pour l'audit, elle est signalée par la page merci.
+ // Sans réponse au bandeau, elle attend la décision ; en cas de refus, elle est abandonnée.
+ function track(detail) {
+  detail = detail || {};
+  gtag('event', 'generate_lead', { secteur: detail.secteur || '', page: location.pathname });
+  if (detail.formulaire !== 'audit') return;
+  const levers = detail.services || [];
+  gtag('event', 'demande_audit', { leviers: levers.length, services: levers.join(',') });
+  if (ADS) gtag('event', 'conversion', { send_to: ADS });
+  if (META && window.fbq) window.fbq('track', 'Lead', { content_name: 'audit-offert' });
+ }
+ document.addEventListener('shyft:lead', event => {
+  const state = choice.get();
+  if (state === 'granted') track(event.detail);
+  else if (state !== 'denied') pending.push(event.detail);
+ });
+ // Rendez-vous réservé : page /rendez-vous/merci. Pas d'événement GA4 ici (book_call part du serveur),
+ // seulement les conversions publicitaires configurées. Même règle de consentement que pour les demandes.
+ function trackRdv() {
+  if (ADS_RDV) gtag('event', 'conversion', { send_to: ADS_RDV });
+  if (META && window.fbq) window.fbq('track', 'Schedule');
+ }
+ document.addEventListener('shyft:rdv', event => {
+  const state = choice.get();
+  if (state === 'granted') trackRdv(event.detail);
+  else if (state !== 'denied') pendingRdv.push(event.detail);
+ });
 })();

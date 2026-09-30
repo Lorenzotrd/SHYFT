@@ -2,7 +2,7 @@
 // Pied de page : accroche et rendez-vous, services, agence, mentions, grande signature.
 import Bouton from './Bouton.astro';
 import { single, services as allServices } from '../../lib/content';
-import { GTM_ID, YEAR, CONTACT, rich } from '../../lib/site';
+import { GA_ID, YEAR, CONTACT, rich } from '../../lib/site';
 import { langOf, route, ui } from '../../lib/i18n';
 const lang = langOf(Astro.url);
 const r = route[lang];
@@ -23,7 +23,7 @@ const [site, services] = await Promise.all([single('site', lang), allServices(la
   <nav class="compact" aria-label={t.services}>{services.map((s) => <a href={r.service(s.id)}>{s.data.nomCourt}</a>)}{r.about && <a href={r.about}>{t.about}</a>}</nav>
   <div class="bottom">
     <div class="contact"><span>© {YEAR} shyft</span>{CONTACT.phone && <a href={`tel:${CONTACT.phone}`} data-emplacement="pied-de-page">{CONTACT.phoneDisplay || CONTACT.phone}</a>}<a href={`mailto:${CONTACT.email}`} data-emplacement="pied-de-page">{CONTACT.email}</a></div>
-    <div class="legal"><a href={r.page('mentions-legales')}>{t.legal}</a><a href={r.page('confidentialite')}>{t.privacy}</a>{GTM_ID && <a href="#" data-cookies>{t.cookies}</a>}</div>
+    <div class="legal"><a href={r.page('mentions-legales')}>{t.legal}</a><a href={r.page('confidentialite')}>{t.privacy}</a>{GA_ID && <a href="#" data-cookies>{t.cookies}</a>}</div>
   </div>
   <div class="wordmark" aria-hidden="true">shyft<span>.</span></div>
 </footer>
