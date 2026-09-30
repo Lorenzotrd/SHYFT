@@ -1,0 +1,62 @@
+---
+// Page introuvable, rendue par le serveur pour garder le statut 404 et l'adresse demandée :
+// en anglais pour toute adresse sous /en, en français ailleurs. Liens vers les services et l'audit offert.
+import Site from '../layouts/Site.astro';
+import Nav from '../components/shyft/Nav.astro';
+import Footer from '../components/shyft/Footer.astro';
+import Bouton from '../components/shyft/Bouton.astro';
+import Icon from '../components/shyft/Icon.astro';
+import { rich } from '../lib/site';
+import { services as allServices } from '../lib/content';
+import { langOf, route, pathsFor, ui } from '../lib/i18n';
+
+export const prerender = false;
+
+const lang = langOf(Astro.url);
+const r = route[lang];
+const t = ui[lang].notFound;
+const paths = pathsFor((x) => x.home);
+const services = await allServices(lang);
+Astro.response.status = 404;
+---
+<Site title={t.title} description={t.description} paths={paths} noindex>
+  <Nav paths={paths} />
+  <main id="main">
+    <section class="hero">
+      <span class="code" aria-hidden="true">404</span>
+      <h1 class="kw">{t.h1}</h1>
+      <p class="title" set:html={rich(t.titre)}></p>
+      <p class="lead">{t.texte}</p>
+      <div class="ctas">
+        <Bouton href={r.audit}>{t.audit}</Bouton>
+        <Bouton href={r.home} variant="outline">{t.home}</Bouton>
+      </div>
+    </section>
+    <nav class="section levers" aria-labelledby="services-404">
+      <h2 id="services-404" class="k">{t.services}</h2>
+      <div>{services.map((s) => <a href={r.service(s.id)}>{s.data.hero.h1}<span><Icon name="arrow" size={11} /></span></a>)}</div>
+    </nav>
+  </main>
+  <Footer />
+</Site>
+<style>
+  .hero{padding:70px var(--gutter) 0;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+  .code{font-size:clamp(90px, 14vw, 180px);line-height:.85;font-weight:600;letter-spacing:-.06em;color:var(--accent)}
+  .kw{font-size:17px;line-height:1.3;letter-spacing:-.01em;color:var(--ink-2)}
+  .title{font-size:clamp(40px, 5.6vw, 80px);line-height:.96;font-weight:600;letter-spacing:-.05em}
+  .lead{max-width:560px}
+  .ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;padding-top:6px}
+  .levers{display:flex;flex-direction:column;align-items:center;gap:20px}
+  .k{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--label)}
+  .levers div{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+  .levers a{display:inline-flex;align-items:center;gap:10px;padding:12px 14px 12px 20px;border-radius:999px;background:var(--card);font-size:15px;font-weight:500;transition:background .2s}
+  .levers a:hover{background:var(--accent)}
+  .levers a span{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--chip)}
+  @media (max-width:640px){
+    .hero{padding-top:40px;gap:14px}
+    .kw{font-size:14px}
+    .title{font-size:40px;letter-spacing:-.055em}
+    .ctas{width:100%;flex-direction:column}
+    .levers a{font-size:14px}
+  }
+</style>

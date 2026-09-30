@@ -36,11 +36,13 @@
   fr: {
    title: 'Mesure d’audience et publicité',
    text: 'On utilise Google Analytics pour savoir quelles pages répondent à vos questions, et des outils publicitaires (Google Ads, Meta) pour savoir quelles publicités amènent des demandes. Le site fonctionne exactement pareil si vous refusez. ',
+   short: 'Google Analytics, Google Ads et Meta nous disent ce qui amène des demandes. Le site marche pareil si vous refusez. ',
    more: 'En savoir plus', privacy: '/confidentialite', deny: 'Refuser', accept: 'Accepter',
   },
   en: {
    title: 'Analytics and advertising',
    text: 'We use Google Analytics to see which pages answer your questions, and ad tools (Google Ads, Meta) to see which ads bring in requests. The site works exactly the same if you decline. ',
+   short: 'Google Analytics, Google Ads and Meta tell us what brings in requests. The site works the same if you decline. ',
    more: 'Learn more', privacy: '/en/privacy-policy', deny: 'Decline', accept: 'Accept',
   },
  };
@@ -54,7 +56,8 @@
   banner.setAttribute('aria-labelledby', 'consentTitle');
   banner.innerHTML =
    '<div class="consent-text"><b id="consentTitle">' + t.title + '</b>' +
-   '<p>' + t.text + '<a href="' + t.privacy + '">' + t.more + '</a></p></div>' +
+   '<p><span class="consent-long">' + t.text + '</span><span class="consent-short">' + t.short + '</span>' +
+   '<a href="' + t.privacy + '">' + t.more + '</a></p></div>' +
    '<div class="consent-actions">' +
    '<button type="button" class="btn btn-ghost" data-consent="denied">' + t.deny + '</button>' +
    '<button type="button" class="btn btn-lime" data-consent="granted">' + t.accept + '</button></div>';

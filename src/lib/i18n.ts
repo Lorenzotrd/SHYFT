@@ -60,6 +60,12 @@ export const ui = {
       legal: 'Mentions légales', privacy: 'Confidentialité', cookies: 'Gérer les cookies',
     },
     crumbs: 'Fil d’Ariane',
+    notFound: {
+      title: 'Page introuvable | SHYFT', description: 'Cette page n’existe pas ou a été déplacée.',
+      h1: 'Page introuvable', titre: 'Cette page n’existe *plus*',
+      texte: 'L’adresse a peut-être changé. Voici ce que vous cherchiez sans doute :',
+      services: 'Nos services', audit: 'Recevoir l’audit offert', home: 'Retour à l’accueil',
+    },
     rdvPage: {
       seoTitle: 'Prendre rendez-vous avec SHYFT | 30 minutes en visio',
       seoDescription: 'Réservez un appel de 30 minutes en visio avec un expert SHYFT : SEO, Google Ads, Meta Ads, site, tracking ou IA. Gratuit et sans engagement.',
@@ -95,6 +101,12 @@ export const ui = {
       legal: 'Legal notice', privacy: 'Privacy', cookies: 'Cookie settings',
     },
     crumbs: 'Breadcrumb',
+    notFound: {
+      title: 'Page not found | SHYFT', description: 'This page doesn’t exist or has moved.',
+      h1: 'Page not found', titre: 'This page is *gone*',
+      texte: 'The address may have changed. Here’s what you were probably looking for:',
+      services: 'Our services', audit: 'Get the free audit', home: 'Back to home',
+    },
     rdvPage: {
       seoTitle: 'Book a call with SHYFT | 30-minute video call',
       seoDescription: 'Book a free 30-minute video call with a SHYFT expert: SEO, Google Ads, Meta Ads, websites, tracking or AI. No commitment.',
