@@ -14,34 +14,26 @@ import Pourquoi from '../components/home/Pourquoi.astro';
 import Services from '../components/home/Services.astro';
 import Resultats from '../components/home/Resultats.astro';
 import Audit from '../components/home/Audit.astro';
-import { SITE_URL, rich, texteSeul } from '../lib/site';
-import { single, services } from '../lib/content';
+import { SITE_URL, rich } from '../lib/site';
+import { ORG_ID } from '../lib/schema';
+import { single } from '../lib/content';
 import { langOf, route, pathsFor, ui } from '../lib/i18n';
 
 const lang = langOf(Astro.url);
 const r = route[lang];
 const t = ui[lang];
-const [home, site, allServices] = await Promise.all([single('accueil', lang), single('site', lang), services(lang)]);
+const home = await single('accueil', lang);
 const homeUrl = `${SITE_URL}${r.home}`;
 
 const jsonLd = [
-  {
-    '@context': 'https://schema.org', '@type': 'Organization', '@id': `${SITE_URL}/#organisation`,
-    name: 'SHYFT Growth', alternateName: 'SHYFT', url: `${SITE_URL}/`, logo: `${SITE_URL}/assets/icon-512.png`, image: `${SITE_URL}/assets/og.png?v=2`,
-    description: texteSeul(home.hero.texte), areaServed: t.areaServed,
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog', name: 'Services',
-      itemListElement: allServices.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.data.nom, description: s.data.carte.texte, url: `${SITE_URL}${r.service(s.id)}`, provider: { '@id': `${SITE_URL}/#organisation` } } })),
-    },
-  },
-  { '@context': 'https://schema.org', '@type': 'WebSite', name: 'SHYFT Growth', alternateName: 'SHYFT', inLanguage: t.inLanguage, url: homeUrl },
+  { '@context': 'https://schema.org', '@type': 'WebSite', name: 'SHYFT Growth', alternateName: 'SHYFT', inLanguage: t.inLanguage, url: homeUrl, publisher: { '@id': ORG_ID } },
   { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: home.faq.questions.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })) },
 ];
 ---
 <Site title={home.seoTitle} description={home.seoDescription} paths={pathsFor((x) => x.home)} jsonLd={jsonLd}>
   <Nav paths={pathsFor((x) => x.home)} />
   <main id="main">
-    <Hero hero={home.hero} calUrl={site.calUrl} />
+    <Hero hero={home.hero} rdvHref={r.rdv} />
     <Eventail cards={home.eventail} legende={home.hero.legende} />
     <Pourquoi pourquoi={home.pourquoi} />
     <Services intro={home.services} />
@@ -57,7 +49,7 @@ const jsonLd = [
         <span class="eyebrow">{home.faq.surtitre}</span>
         <h2 id="faq-titre" class="h2" set:html={rich(home.faq.titre)}></h2>
         <p>{home.faq.texte}</p>
-        <Bouton href={site.calUrl} variant="dark" size="sm" emplacement="accueil-faq">{home.faq.cta}</Bouton>
+        <Bouton href={r.rdv} variant="dark" size="sm" emplacement="accueil-faq">{home.faq.cta}</Bouton>
       </div>
       <Faq items={home.faq.questions} />
     </section>

@@ -14,6 +14,7 @@ audit:
   tag: Productivity
   description: Your team's repetitive tasks and what we could automate first.
 hero:
+  h1: "AI automation for small businesses"
   titre: Less busywork, *better follow-up*
   texte: Quotes, follow-ups, bids and RFPs, documents to chase. We automate what costs your team hours and costs your business customers.
 suivi:
@@ -21,18 +22,20 @@ suivi:
 - Quotes followed up automatically
 - Hours saved, measured
 - Quote close rate
+problemesTitre: "Why your business needs *AI automation*"
 problemes:
 - titre: Leads slip through the cracks
-  texte: They come in by email, phone and web form. Some never get a reply.
+  texte: "They come in by email, phone and web form. Some never get a reply, which [the free audit](/en/free-audit) puts a number on."
 - titre: Forgotten follow-ups
   texte: Quotes only get followed up when someone remembers.
 - titre: Bids that eat up days
   texte: Answering one RFP takes days, so you let some go.
+miseEnPlaceTitre: "What we *automate with AI* for you"
 miseEnPlace:
 - titre: All leads in one place
-  texte: Everything lands in one place. Nothing gets lost.
+  texte: "Everything lands in one place, including leads from [your website](/en/services/website-design). Nothing gets lost."
 - titre: Quote follow-up
-  texte: Automatic follow-ups at the right time, in the right tone.
+  texte: "Automatic follow-ups at the right time, in the right tone, including for leads from [your Google Ads campaigns](/en/services/google-ads)."
 - titre: Bid and RFP support
   texte: Monitoring, reading the specs and a first draft.
 - titre: Document collection
@@ -40,7 +43,7 @@ miseEnPlace:
 - titre: Answers to common questions
   texte: Recurring questions handled without tying up your team.
 - titre: Tracking dashboard
-  texte: A clear view for management, no double entry.
+  texte: "A clear view for management, no double entry, connected to [your conversion tracking](/en/services/data-tracking)."
 couverture:
   discriminant: false
 etapes:
@@ -82,11 +85,15 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: Do we have to change our tools?
-  answer: No. We start from what you already use, and only add a tool if it's truly needed.
-- question: What if the AI gets it wrong?
-  answer: At first, nothing goes out to a customer without human review. We automate more once it's reliable.
-- question: Where does our data go?
-  answer: We tell you exactly which services are used and where your data goes before we connect anything.
-- question: We're a small team. Is it worth it?
-  answer: 'That''s often where it pays off most: every hour saved counts.'
+- question: "Which tasks can a small business automate with AI?"
+  answer: "Mostly repetitive ones: quote follow-ups, sorting incoming requests, collecting documents, answering common questions and a first read of bids and tenders. We start with the ones that save the most hours."
+- question: "How much does AI automation cost for a small business?"
+  answer: "It depends on the number of tasks and the tools to connect. Each automation is priced in the plan, with the hours it should save, so you can judge the return before launch."
+- question: "Do we need to change our tools to automate?"
+  answer: "No. We start from what you already use, and only add a tool when it's truly needed."
+- question: "What happens if the AI makes a mistake?"
+  answer: "At first, nothing reaches a customer without a human review. We automate further once the output is reliable."
+- question: "Where does our data go with AI?"
+  answer: "We tell you exactly which services are used and where your data goes before connecting anything."
+- question: "Is automation worth it for a small team?"
+  answer: "Yes, that's often where it pays off most: every hour saved counts when the team is small."

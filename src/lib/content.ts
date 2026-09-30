@@ -38,6 +38,16 @@ export async function legalPages(lang: Lang = 'fr'): Promise<CollectionEntry<'pa
   return (lang === 'en' ? await getCollection('pagesEn') : await getCollection('pages')) as CollectionEntry<'pages'>[];
 }
 
+export type Post = CollectionEntry<'blog'>;
+
+/** Articles publiés, du plus récent au plus ancien. Les brouillons (draft: true) ne sont jamais construits. */
+export async function publishedPosts(): Promise<Post[]> {
+  return (await getCollection('blog', (p) => !p.data.draft)).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+}
+
+/** Temps de lecture en minutes, à 200 mots par minute. */
+export const readingTime = (body = '') => Math.max(1, Math.ceil(body.split(/\s+/).filter(Boolean).length / 200));
+
 export const expertiseUrl = (slug?: string) => (slug ? `/expertises/${slug}` : '/expertises');
 
 export const find = <T extends { id: string }>(list: T[], id: string): T => {

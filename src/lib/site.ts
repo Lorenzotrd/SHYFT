@@ -2,13 +2,41 @@
 export const BRAND = 'SHYFT';
 export const YEAR = 2026;
 export const SITE_URL = 'https://www.shyftgrowth.com';
+/** Balise Google (GA4), avec Google Ads AW-18468970949 en destination liée : chargée après accord seulement. */
 export const GA_ID = 'G-XC6CD5J71S';
-/** Conversion Google Ads de la demande d'audit, au format « AW-123456789/AbCdEfGh ». Vide : rien n'est envoyé à Google Ads. */
+/** Google Ads actif via la balise Google : le bandeau mentionne la publicité et l'accord accorde ad_storage et ad_user_data.
+ *  La conversion « Envoi de formulaire de lead » est comptée par Google Ads au chargement de /audit-offert/merci. */
+export const ADS_ENABLED = true;
+/** Conversion Google Ads de la demande d'audit, au format « AW-123456789/AbCdEfGh ». Vide : aucun événement de conversion envoyé par le code. */
 export const ADS_CONVERSION = '';
 /** Identifiant du pixel Meta. Vide : le pixel n'est jamais chargé. */
 export const META_PIXEL_ID = '';
 /** Conversion Google Ads de la prise de rendez-vous, comptée sur la page /rendez-vous/merci. Vide : rien n'est envoyé. */
 export const ADS_CONVERSION_RDV = '';
+
+/** Coordonnées de l'agence : données structurées, en-tête, pied de page, llms.txt.
+ *  Un champ vide n'est jamais affiché ni publié (données structurées comprises). */
+export const CONTACT = {
+  email: 'team@shyftgrowth.com',
+  /** Numéro au format international, sans espace (lien tel:) : '+33612345678'. Vide : le numéro n'apparaît nulle part. */
+  phone: '',
+  /** Numéro tel qu'il s'affiche : '06 12 34 56 78'. */
+  phoneDisplay: '',
+};
+
+/** Pages de l'agence sur les réseaux (LinkedIn, Instagram…), en adresses complètes. Publiées en sameAs. */
+export const SOCIALS: string[] = [];
+
+/** Zone desservie, en noms de pays anglais (schema.org). */
+export const AREA_SERVED = ['France', 'Canada', 'United States'];
+
+/** Fondateurs : page à propos et données structurées. Photos dans public/team/. */
+export const FOUNDERS = [
+  { id: 'lorenzo', givenName: 'Lorenzo', familyName: 'Trichard', linkedin: '', photo: '/team/lorenzo.jpg' },
+  { id: 'quentin', givenName: 'Quentin', familyName: '', linkedin: '', photo: '/team/quentin.jpg' },
+] as const;
+export type Founder = (typeof FOUNDERS)[number];
+export const founderName = (f: Founder) => [f.givenName, f.familyName].filter(Boolean).join(' ');
 
 /** Retours à la ligne du contenu → <br>, avec une espace devant pour que les mots ne se collent pas sur mobile. */
 export const br = (text: string) => text.replace(/\s*\n/g, ' <br>');

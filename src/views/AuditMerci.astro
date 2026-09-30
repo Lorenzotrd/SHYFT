@@ -12,7 +12,7 @@ import { langOf, route, pathsFor } from '../lib/i18n';
 const lang = langOf(Astro.url);
 const r = route[lang];
 const paths = pathsFor((x) => x.auditMerci);
-const [page, site, services] = await Promise.all([single('merci', lang), single('site', lang), allServices(lang)]);
+const [page, services] = await Promise.all([single('merci', lang), allServices(lang)]);
 const [avant, apres] = page.email.texte.split('{adresse}');
 ---
 <Site title={page.seoTitle} description={page.seoDescription} paths={paths} noindex>
@@ -47,7 +47,7 @@ const [avant, apres] = page.email.texte.split('{adresse}');
           <span class="k">{page.attente.surtitre}</span>
           <p class="wait-title" set:html={rich(page.attente.titre)}></p>
           <p>{page.attente.texte}</p>
-          <Bouton href={site.calUrl} emplacement="merci" block class="wait-cta">{page.attente.cta}</Bouton>
+          <Bouton href={r.rdv} emplacement="merci" block class="wait-cta">{page.attente.cta}</Bouton>
         </div>
         <div class="mail">
           <span class="mail-ico"><Icon name="mail" size={20} stroke={1.9} /></span>

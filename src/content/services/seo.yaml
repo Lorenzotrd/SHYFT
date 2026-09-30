@@ -14,6 +14,7 @@ audit:
   tag: Recherche Google
   description: Vos positions, Google Maps, votre site vu par Google et ce que répondent les moteurs IA.
 hero:
+  h1: "Agence SEO et SEO local pour PME"
   titre: Être trouvé sur Google *avant* vos concurrents
   texte: "[Un site que Google comprend](/expertises/creation-site), des pages qui répondent à ce que tapent vos clients, et une autorité qui se construit dans la durée. Puis le local et les moteurs IA pour couvrir toute la recherche."
 suivi:
@@ -21,6 +22,7 @@ suivi:
 - Mots clés en première page
 - Demandes générées par le SEO
 - Position sur Google Maps et dans les IA
+problemesTitre: "Pourquoi votre entreprise est *invisible* sur Google"
 problemes:
 - titre: Absent sur ce qui se cherche
   texte: Vous sortez sur votre nom, mais pas sur votre métier ni sur vos services.
@@ -28,19 +30,20 @@ problemes:
   texte: 'Pages lentes, contenus trop courts, structure confuse : Google ne sait pas quoi en faire.'
 - titre: Des concurrents qui prennent la place
   texte: Ils publient, obtiennent des liens et captent les recherches que vous devriez avoir.
+miseEnPlaceTitre: "Ce qu'on met en place pour *votre SEO local*"
 miseEnPlace:
 - titre: Audit technique
-  texte: Vitesse, indexation, structure, erreurs. On remet les fondations d'aplomb.
+  texte: "Vitesse, indexation, structure, erreurs : tout ce que relève [l'audit SEO offert](/audit-offert). On remet les fondations d'aplomb."
 - titre: Stratégie de mots clés
   texte: Les recherches qui amènent des clients, classées par potentiel et difficulté.
 - titre: Pages services et contenus
-  texte: Des pages qui répondent vraiment aux questions de vos clients.
+  texte: "Des pages qui répondent vraiment aux questions de vos clients, et qui servent aussi de [pages d'arrivée pour Google Ads](/expertises/google-ads)."
 - titre: Optimisation des pages
   texte: Titres, balises, maillage interne, données structurées.
 - titre: Netlinking
   texte: Des liens depuis des sites sérieux de votre secteur et de votre région.
 - titre: Suivi des positions
-  texte: Vos mots clés suivis chaque semaine, face à vos concurrents.
+  texte: "Vos mots clés suivis chaque semaine face à vos concurrents, et [les demandes venues de Google mesurées](/expertises/data-tracking)."
 couverture:
   discriminant: true
   value:
@@ -124,11 +127,15 @@ geogrid:
     - 13,9,6,5,8,11,14
     - 16,14,11,9,12,15,18
 faq:
-- question: En combien de temps je vois des résultats ?
-  answer: Les corrections techniques jouent en quelques semaines. Les contenus et l'autorité prennent plusieurs mois, selon la concurrence. On vous donne un calendrier réaliste dès l'audit.
-- question: Quelle différence entre SEO, local et GEO ?
-  answer: Le SEO vous place dans les résultats classiques de Google. Le local vous place sur Google Maps. Le GEO vous fait citer par les moteurs IA. Les trois se renforcent.
-- question: Je dois écrire des articles ?
-  answer: Non. On rédige, vous relisez et vous validez. Votre connaissance du métier nous sert, pas votre temps.
-- question: Vous achetez des liens ?
-  answer: Non. On obtient des liens depuis des sites réels de votre secteur et de votre région, pas depuis des réseaux de sites artificiels.
+- question: "En combien de temps voit-on des résultats en SEO local ?"
+  answer: "Comptez en général deux à trois mois pour les premiers gains sur Google Maps, et quatre à six mois pour des positions solides sur les recherches disputées. Les corrections techniques jouent dès les premières semaines. On vous donne un calendrier réaliste dès l'audit, selon votre ville et vos concurrents."
+- question: "Quelle est la différence entre SEO, SEO local et GEO ?"
+  answer: "Le SEO vous place dans les résultats classiques de Google, le SEO local sur Google Maps, et le GEO dans les réponses des moteurs IA comme ChatGPT ou Perplexity. Les trois se renforcent : un site clair et des avis solides servent partout."
+- question: "Combien coûte le référencement d'une PME ?"
+  answer: "Le prix dépend du nombre de pages à créer, de votre zone et de la concurrence. Il est fixé noir sur blanc dans le plan, après l'audit offert et avant tout démarrage. Il n'y a pas d'engagement de durée."
+- question: "Comment apparaître dans le top 3 de Google Maps ?"
+  answer: "En travaillant trois choses : une fiche Google complète et cohérente, des avis réguliers, et des pages de votre site qui parlent de votre métier dans chaque ville. La distance compte aussi, c'est pourquoi on mesure votre position point par point sur toute votre zone."
+- question: "Comment être cité par ChatGPT ou Perplexity ?"
+  answer: "En étant présent là où ces outils puisent leurs réponses : un site structuré, des pages qui répondent aux questions précises de vos clients, des avis et des mentions sur des sites de référence de votre secteur. L'audit offert montre ce qu'ils répondent aujourd'hui sur votre métier."
+- question: "Achetez-vous des liens ?"
+  answer: "Non. On obtient des liens depuis des sites réels de votre secteur et de votre région, pas depuis des réseaux de sites artificiels que Google finit par pénaliser."

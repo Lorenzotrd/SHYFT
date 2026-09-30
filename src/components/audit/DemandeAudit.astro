@@ -9,7 +9,7 @@ import { langOf, route, ui } from '../../lib/i18n';
 const lang = langOf(Astro.url);
 const r = route[lang];
 const t = ui[lang].form;
-const [page, site, services] = await Promise.all([single('auditOffert', lang), single('site', lang), allServices(lang)]);
+const [page, services] = await Promise.all([single('auditOffert', lang), allServices(lang)]);
 const { champs: f, envoi, etape1 } = page;
 const total = services.length;
 const labels = {
@@ -59,7 +59,7 @@ const labels = {
         <button type="submit" class="submit" data-submit><span data-submit-label>{envoi.bouton}</span><span class="dot"><Icon name="arrow" size={16} /></span></button>
       </div>
       <p class="error" data-error role="alert" hidden data-default={envoi.erreur}></p>
-      <noscript><p class="error">{t.noscript} <a href={site.calUrl}>{t.noscriptLink}</a>.</p></noscript>
+      <noscript><p class="error">{t.noscript} <a href={r.rdv}>{t.noscriptLink}</a>.</p></noscript>
     </form>
   </div>
 </div>

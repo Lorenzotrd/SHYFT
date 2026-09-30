@@ -11,7 +11,7 @@ body: |
 
   <h2>Data collected</h2>
 
-  <p>The audit request collects: company name, website, main city, industry, first and last name, business email, phone number, number of branches or locations, an optional message and the channels you would like audited. We also record the page from which the request was sent, any campaign parameters present in the URL and the site that referred you to ours. This information helps us understand which content answers your questions. No advertising profiling is carried out.</p>
+  <p>The audit request collects: company name, website, main city, industry, first and last name, business email, phone number, number of branches or locations, an optional message and the channels you would like audited. We also record the page from which the request was sent, any campaign parameters present in the URL and the site that referred you to ours. This information helps us understand which content and which ads bring in requests.</p>
 
   <p>Appointments are booked in a window provided by our booking tool, which collects your name, your email and the time slot you choose. We add the page and the button from which you opened it, any campaign parameters and, only if you have accepted audience measurement, the audience measurement identifier of your visit. The appointment is then recorded in our tracking workspace.</p>
 
@@ -37,18 +37,22 @@ body: |
 
   <p>You can access your data, correct it, request its deletion, restrict or object to its processing and request its portability. Write to <a href="mailto:team@shyftgrowth.com">team@shyftgrowth.com</a>. You can also lodge a complaint with the CNIL, the French data protection authority (<a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>).</p>
 
-  <h2>Cookies and audience measurement</h2>
+  <h2>Cookies, analytics and advertising</h2>
 
-  <p>This site uses an audience measurement tool: pages viewed, where visits come from and requests sent. No targeted advertising is enabled, and no data is sold.</p>
+  <p>With your consent, this site uses:</p>
 
-  <p>If you have accepted audience measurement, booking or cancelling an appointment is reported to the audience measurement tool by our server, linked to your visit, without your name or email. If you have declined it, or have not responded, nothing is sent to it, not even anonymously: your appointment is only recorded in our tracking workspace.</p>
+  <ul><li><strong>Google Analytics</strong> (Google Ireland Ltd): pages viewed, where visits come from and requests sent, to understand which content answers your questions.</li><li><strong>Google Ads</strong> (Google Ireland Ltd): to see which Google ads bring in audit requests and calls. No personalized advertising is enabled based on your visit.</li><li><strong>Meta</strong> (Meta Platforms Ireland Ltd, Facebook and Instagram), when our Facebook and Instagram ads are running: the same use.</li></ul>
 
-  <p>Nothing is stored on your device or sent to the measurement tool before you consent. On your first visit, a banner lets you accept or decline. If you decline, the measurement script is not loaded at all and the site works exactly the same. You can change your choice at any time using the <a href="#" data-cookies>Cookie settings</a> link at the bottom of every page.</p>
+  <p>These tools may store cookies on your device for up to 13 months and process browsing data (pages viewed, device identifier, clicks on our ads). Google and Meta may transfer this data outside the European Union, under the safeguards provided by the GDPR. No data is sold.</p>
 
-  <p>Your IP address is anonymized. Fonts are hosted on this site: loading them sends nothing to any third party.</p>
+  <p>On your first visit, a banner lets you accept or decline. Until you accept, no analytics or advertising cookie is stored and these tools receive nothing from you. If you decline, the site works exactly the same. Your choice is kept on your device, and you can change it at any time using the <a href="#" data-cookies>Cookie settings</a> link at the bottom of every page.</p>
+
+  <p>If you have accepted, booking or cancelling an appointment is also reported to Google Analytics by our server, linked to your visit, without your name or email. Otherwise, nothing is sent to it: your appointment is only recorded in our tracking workspace.</p>
+
+  <p>Fonts are hosted on this site: loading them sends nothing to any third party.</p>
 
   <h2>Security</h2>
 
   <p>Form data is verified server-side, protected by an anti-bot field and transmitted in encrypted form when the site is served over HTTPS.</p>
 
-  <p>Last updated: September 24, 2026.</p>
+  <p>Last updated: September 30, 2026.</p>

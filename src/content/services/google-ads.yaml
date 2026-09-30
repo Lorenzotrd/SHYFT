@@ -14,6 +14,7 @@ audit:
   tag: Publicité
   description: Votre compte s’il existe, le coût des mots clés de votre métier et les annonces concurrentes.
 hero:
+  h1: "Agence Google Ads pour PME"
   titre: Capter la demande *au moment* où elle se cherche
   texte: Des campagnes locales, serrées sur votre zone et vos métiers rentables. Chaque euro suivi jusqu'à l'appel ou au devis.
 suivi:
@@ -21,16 +22,18 @@ suivi:
 - Nombre de demandes reçues
 - Part de visibilité sur vos mots clés
 - Budget dépensé face au budget prévu
+problemesTitre: "Pourquoi vos campagnes Google Ads *coûtent trop cher*"
 problemes:
 - titre: Des clics inutiles
   texte: Vous payez pour des recherches qui ne vous concernent pas, ou hors de votre zone.
 - titre: Un compte en roue libre
-  texte: Les campagnes tournent depuis des mois sans que personne ne les ajuste.
+  texte: "Les campagnes tournent depuis des mois sans que personne ne les ajuste. Un [audit offert de votre compte Google Ads](/audit-offert) montre ce qui coûte sans rapporter."
 - titre: Aucune idée du retour
   texte: Personne ne sait combien de devis viennent réellement de la publicité.
+miseEnPlaceTitre: "Ce qu'on met en place sur *votre compte Google Ads*"
 miseEnPlace:
 - titre: Campagnes par métier et zone
-  texte: Une structure claire, alignée sur ce que vous vendez et où.
+  texte: "Une structure claire, alignée sur ce que vous vendez et où, cohérente avec [votre SEO local](/expertises/seo)."
 - titre: Mots clés exclus
   texte: On coupe tout ce qui coûte sans jamais rapporter.
 - titre: Annonces et appels
@@ -82,11 +85,15 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: Quel budget faut-il prévoir ?
-  answer: Ça dépend de votre zone et de la concurrence. On le fixe ensemble dans le plan, avant de lancer. Le budget publicitaire est réglé directement à Google, sur votre compte.
-- question: Le compte est à mon nom ?
-  answer: Oui. Le compte Google Ads vous appartient, avec tout son historique.
-- question: Et si ça ne marche pas ?
-  answer: On le voit vite, parce que chaque demande est comptée. On coupe ce qui ne rapporte pas et on vous le dit.
-- question: J'ai déjà un compte qui tourne
-  answer: Très bien, on commence par l'auditer. Souvent, il y a du budget à récupérer avant même d'en ajouter.
+- question: "Combien coûte une campagne Google Ads pour une PME ?"
+  answer: "Il dépend de votre zone, de votre métier et de la concurrence. Le budget publicitaire est payé directement à Google, sur votre compte, et on le fixe ensemble dans le plan, avant de lancer."
+- question: "En combien de temps Google Ads génère-t-il des demandes ?"
+  answer: "Dès les premiers jours de diffusion. Il faut ensuite quatre à huit semaines d'ajustements pour faire baisser le coût par demande, le temps de couper les recherches qui ne rapportent pas."
+- question: "Comment savoir si mes publicités Google Ads rapportent ?"
+  answer: "En comptant chaque appel et chaque formulaire, campagne par campagne. On installe ce suivi avant le lancement et vous voyez chaque mois votre coût par demande. Une campagne qui ne rapporte pas est coupée, et on vous le dit."
+- question: "Faut-il une page d'atterrissage pour Google Ads ?"
+  answer: "Oui, dans la plupart des cas. Une page dédiée au service et à la zone transforme bien plus de clics en demandes que la page d'accueil. On la crée si votre site n'en a pas."
+- question: "Le compte Google Ads est-il à mon nom ?"
+  answer: "Oui. Le compte vous appartient, avec tout son historique. Si vous arrêtez, vous gardez tout."
+- question: "J'ai déjà un compte Google Ads, pouvez-vous le reprendre ?"
+  answer: "Oui, et on commence par l'auditer. Souvent, il y a du budget à récupérer sur des recherches inutiles avant même d'en ajouter."

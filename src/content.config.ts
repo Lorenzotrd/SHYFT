@@ -94,7 +94,8 @@ const [accueil, accueilEn] = bilingual('accueil', z.object({
   seoTitle: z.string(),
   seoDescription: z.string(),
   hero: z.object({
-    badge: z.string(), badgeTexte: z.string(), titre: lines, texte: z.string(),
+    // h1 : mot clé de la page (balise H1) ; titre : l'accroche, affichée en grand juste en dessous.
+    badge: z.string(), badgeTexte: z.string(), h1: z.string(), titre: lines, texte: z.string(),
     cta: z.string(), ctaSecondaire: z.string(), legende: z.string(),
   }),
   eventail: z.array(z.object({
@@ -153,9 +154,13 @@ const serviceSchema = z.object({
   seoDescription: z.string(),
   carte: z.object({ texte: z.string(), texteCourt: z.string(), icone: z.enum(['repere', 'cible', 'megaphone', 'robot', 'site', 'graphique']), ton: tone }),
   audit: z.object({ tag: z.string(), description: z.string() }),
-  hero: z.object({ titre: lines, texte: z.string() }),
+  // h1 : mot clé de la page (balise H1) ; titre : l'accroche, affichée en grand juste en dessous.
+  hero: z.object({ h1: z.string(), titre: lines, texte: z.string() }),
   suivi: z.array(z.string()),
+  // Titres H2 propres à chaque service, avec le mot clé ou une variante.
+  problemesTitre: lines,
   problemes: z.array(titled),
+  miseEnPlaceTitre: lines,
   miseEnPlace: z.array(titled),
   couverture: optional(z.object({
     titre: lines, texte: z.string(),
@@ -185,8 +190,7 @@ const servicesEn = defineCollection({ loader: glob({ pattern: '*.yaml', base: '.
 const [serviceCommun, serviceCommunEn] = bilingual('service-commun', z.object({
   filAccueil: z.string(), filServices: z.string(), ctaRdv: z.string(), ctaAudit: z.string(),
   suiviSurtitre: z.string(), suiviTitre: lines,
-  problemesTitre: lines, problemeEtiquette: z.string(),
-  miseEnPlaceTitre: lines, miseEnPlaceTexte: z.string(),
+  problemeEtiquette: z.string(), miseEnPlaceTexte: z.string(),
   friseTitre: lines, faqTitre: lines, faqTexte: z.string(),
   autresLeviers: z.string(), exempleFictif: z.string(),
 }));
@@ -228,6 +232,30 @@ const [rdvMerci, rdvMerciEn] = bilingual('rendez-vous-merci', z.object({
   email: z.object({ titre: z.string(), texte: z.string(), adresse: z.string() }),
   leviersTitre: z.string(),
 }));
+
+// Page à propos (français seulement). Parcours vide : le paragraphe n'est pas affiché.
+const aPropos = single('a-propos', z.object({
+  seoTitle: z.string(), seoDescription: z.string(),
+  h1: z.string(), titre: lines, intro: z.string(),
+  quiTitre: lines, qui: z.array(z.string()),
+  fondateursTitre: lines,
+  fondateurs: z.array(z.object({ id: z.enum(['lorenzo', 'quentin']), role: z.string(), parcours: z.string() })),
+}));
+
+// Blog : un fichier Markdown par article (src/content/blog/<adresse>.md). draft: true l'exclut du build et du sitemap.
+const blog = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/blog' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    author: z.enum(['lorenzo', 'quentin']),
+    /** Services liés, affichés en fin d'article (identifiants des fiches services). */
+    services: z.array(z.enum(['seo', 'google-ads', 'meta-ads', 'agence-ia', 'creation-site', 'data-tracking'])).default([]),
+    draft: z.boolean().default(false),
+  }),
+});
 
 const navigation = single('navigation', z.object({
   groups: z.array(z.object({ name: z.string(), expertises: z.array(z.string()) })),
@@ -272,7 +300,7 @@ const listes = single('listes', z.object({
 }));
 
 export const collections = {
-  secteurs, expertises, services, pages, accueil, site, rendezVous, serviceCommun, auditOffert, merci, rdvMerci, navigation, leviers, methode, mesure, formulaire, piedDePage, listes,
+  secteurs, expertises, services, pages, accueil, site, rendezVous, aPropos, blog, serviceCommun, auditOffert, merci, rdvMerci, navigation, leviers, methode, mesure, formulaire, piedDePage, listes,
   // Version anglaise
   servicesEn, pagesEn, accueilEn, siteEn, rendezVousEn, serviceCommunEn, auditOffertEn, merciEn, rdvMerciEn,
 };

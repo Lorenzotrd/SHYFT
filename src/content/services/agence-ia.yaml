@@ -14,6 +14,7 @@ audit:
   tag: Productivité
   description: Les tâches répétitives de vos équipes et ce qu’on pourrait automatiser en premier.
 hero:
+  h1: "Automatisation IA pour PME"
   titre: Le répétitif en moins, *le suivi* en plus
   texte: Devis, relances, appels d'offres, documents à réclamer. On automatise ce qui fait perdre des heures à vos équipes et des clients à votre entreprise.
 suivi:
@@ -21,18 +22,20 @@ suivi:
 - Devis relancés automatiquement
 - Heures gagnées, mesurées
 - Taux de signature des devis
+problemesTitre: "Pourquoi votre PME a besoin d'*automatisation IA*"
 problemes:
 - titre: Des demandes qui se perdent
-  texte: Elles arrivent par mail, téléphone et formulaire. Certaines restent sans réponse.
+  texte: "Elles arrivent par mail, téléphone et formulaire. Certaines restent sans réponse, ce que l'[audit offert](/audit-offert) permet de chiffrer."
 - titre: Des relances oubliées
   texte: Les devis ne sont relancés que quand quelqu'un y pense.
 - titre: Des appels d'offres chronophages
   texte: Répondre à un dossier prend des jours, alors on en laisse passer.
+miseEnPlaceTitre: "Ce qu'on *automatise avec l'IA* chez vous"
 miseEnPlace:
 - titre: Demandes centralisées
-  texte: Tout arrive au même endroit, rien ne se perd.
+  texte: "Tout arrive au même endroit, y compris les demandes de [votre site internet](/expertises/creation-site). Rien ne se perd."
 - titre: Relance des devis
-  texte: Des relances automatiques au bon moment, avec le bon ton.
+  texte: "Des relances automatiques au bon moment, avec le bon ton, y compris pour les demandes venues de [vos campagnes Google Ads](/expertises/google-ads)."
 - titre: Aide aux appels d'offres
   texte: Veille, lecture du cahier des charges et première rédaction.
 - titre: Collecte de documents
@@ -40,7 +43,7 @@ miseEnPlace:
 - titre: Réponses aux questions courantes
   texte: Les questions qui reviennent traitées sans mobiliser l'équipe.
 - titre: Tableau de suivi
-  texte: Une vue claire pour la direction, sans ressaisie.
+  texte: "Une vue claire pour la direction, sans ressaisie, reliée au [suivi des conversions](/expertises/data-tracking)."
 couverture:
   discriminant: false
 etapes:
@@ -82,11 +85,15 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: Faut-il changer nos outils ?
-  answer: Non. On part de ce que vous utilisez déjà, et on ne rajoute un outil que s'il est vraiment nécessaire.
-- question: Et si l'IA se trompe ?
-  answer: Au départ, rien ne part chez un client sans validation humaine. On automatise davantage une fois que c'est fiable.
-- question: Où vont nos données ?
-  answer: On vous dit précisément quels services sont utilisés et où vont vos données avant de brancher quoi que ce soit.
-- question: On est une petite équipe, ça vaut le coup ?
-  answer: 'C''est souvent là que ça rapporte le plus : chaque heure gagnée compte.'
+- question: "Quelles tâches peut-on automatiser avec l'IA dans une PME ?"
+  answer: "Surtout les tâches répétitives : relance des devis, tri des demandes entrantes, collecte de documents, réponses aux questions courantes et première lecture des appels d'offres. On commence par celles qui font gagner le plus d'heures."
+- question: "Combien coûte l'automatisation IA pour une PME ?"
+  answer: "Le coût dépend du nombre de tâches et des outils à relier. Chaque automatisation est chiffrée dans le plan, avec les heures qu'elle doit faire gagner, pour que vous jugiez la rentabilité avant de lancer."
+- question: "Faut-il changer nos outils pour automatiser ?"
+  answer: "Non. On part de ce que vous utilisez déjà, et on n'ajoute un outil que s'il est vraiment nécessaire."
+- question: "Que se passe-t-il si l'IA se trompe ?"
+  answer: "Au départ, rien ne part chez un client sans validation humaine. On automatise davantage une fois que le résultat est fiable."
+- question: "Où vont nos données avec l'IA ?"
+  answer: "On vous dit précisément quels services sont utilisés et où vont vos données avant de brancher quoi que ce soit."
+- question: "L'automatisation vaut-elle le coup pour une petite équipe ?"
+  answer: "Oui, c'est souvent là qu'elle rapporte le plus : chaque heure gagnée compte quand l'équipe est réduite."

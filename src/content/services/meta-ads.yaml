@@ -14,6 +14,7 @@ audit:
   tag: Publicité
   description: Vos publicités Facebook et Instagram, et celles que diffusent vos concurrents.
 hero:
+  h1: "Agence Facebook et Instagram Ads pour PME"
   titre: Toucher ceux qui ne vous cherchent *pas encore*
   texte: Facebook et Instagram, ciblés sur votre rayon d'intervention. Pour créer la demande avant qu'elle parte chez un concurrent.
 suivi:
@@ -21,13 +22,15 @@ suivi:
 - Demandes qualifiées
 - Personnes touchées dans votre zone
 - Taux de réponse aux demandes
+problemesTitre: "Pourquoi vos publicités Facebook et Instagram *ne rapportent pas*"
 problemes:
 - titre: On ne pense pas à vous
-  texte: Vos futurs clients ne savent pas encore qu'ils auront besoin de vous.
+  texte: "Vos futurs clients ne savent pas encore qu'ils auront besoin de vous. Ils ne cherchent rien, donc [vos campagnes Google Ads](/expertises/google-ads) ne les touchent pas."
 - titre: Des posts qui tournent en rond
   texte: Vos publications touchent surtout ceux qui vous connaissent déjà.
 - titre: Des boosts sans résultat
-  texte: Vous avez déjà boosté des posts sans savoir ce que ça a rapporté.
+  texte: "Vous avez déjà boosté des posts sans savoir ce que ça a rapporté. Un [audit offert de vos publicités Facebook et Instagram](/audit-offert) fait le point."
+miseEnPlaceTitre: "Ce qu'on met en place sur *vos campagnes Meta Ads*"
 miseEnPlace:
 - titre: Ciblage par rayon
   texte: Autour de vos agences, pas dans toute la France.
@@ -82,11 +85,15 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: Mes clients sont des pros, ça marche ?
-  answer: Oui, à condition de cibler finement. Et pour certains métiers, on vous dira honnêtement que Google Ads passe avant.
-- question: Il faut que je fournisse des photos ?
-  answer: Les vôtres de préférence, même prises au téléphone. On s'occupe du montage.
-- question: Quel budget prévoir ?
-  answer: Il est fixé dans le plan, selon votre zone. Il est réglé directement à Meta, sur votre compte.
-- question: Je gère déjà ma page Facebook
-  answer: Parfait, on ne touche pas à votre communication. On s'occupe de la publicité qui génère des demandes.
+- question: "Combien coûte une campagne Facebook et Instagram pour une PME ?"
+  answer: "Il dépend de votre rayon d'intervention et de vos objectifs. Le budget est payé directement à Meta, sur votre compte, et fixé ensemble dans le plan, avant de lancer."
+- question: "Quelle différence entre Meta Ads et Google Ads ?"
+  answer: "Google Ads capte les personnes qui cherchent déjà votre service. Meta Ads va chercher celles qui en auront besoin mais ne cherchent pas encore. Les deux se complètent souvent."
+- question: "Facebook Ads fonctionne-t-il si mes clients sont des professionnels ?"
+  answer: "Oui, à condition de cibler finement par zone, métier et centres d'intérêt. Pour certains métiers, on vous dira honnêtement que Google Ads passe avant."
+- question: "En combien de temps voit-on des demandes avec Meta Ads ?"
+  answer: "Les premières demandes arrivent en général dans les deux premières semaines. Il faut ensuite un à deux mois de tests pour trouver les messages et les visuels qui font baisser le coût par demande."
+- question: "Faut-il fournir des photos et des vidéos ?"
+  answer: "Les vôtres de préférence, même prises au téléphone. Des images de vos chantiers et de vos produits rapportent plus que des photos de banque d'images. On s'occupe du montage."
+- question: "Je gère déjà ma page Facebook, qu'est-ce qui change ?"
+  answer: "Rien pour votre communication. On s'occupe uniquement de la publicité qui génère des demandes, avec un suivi du coût de chacune."

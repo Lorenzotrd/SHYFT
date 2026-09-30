@@ -1,5 +1,6 @@
 ---
 // Pages légales (/mentions-legales, /en/legal-notice…) : en-tête simple et contenu HTML issu de la collection « pages ».
+// En noindex et hors du sitemap : elles n'ont rien à faire dans les résultats de recherche.
 // Les passages <mark>À compléter</mark> restent visibles tant que les informations manquent.
 import type { CollectionEntry } from 'astro:content';
 import Site from '../layouts/Site.astro';
@@ -12,7 +13,7 @@ const { page } = Astro.props;
 const p = page.data;
 const paths = pathsFor((x) => x.page(page.id));
 ---
-<Site title={p.seoTitle} description={p.seoDescription} paths={paths}>
+<Site title={p.seoTitle} description={p.seoDescription} paths={paths} noindex>
   <Nav paths={paths} />
   <main id="main" class="legal">
     <header class="head">

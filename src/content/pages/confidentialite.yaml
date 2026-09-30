@@ -11,7 +11,7 @@ body: |
 
   <h2>Données collectées</h2>
 
-  <p>La demande d’audit recueille : nom de l’entreprise, site internet, ville principale, secteur, prénom et nom, email professionnel, téléphone, nombre d’agences ou de points de vente, un message facultatif et les leviers que vous souhaitez faire auditer. Nous enregistrons également la page depuis laquelle la demande a été envoyée, les paramètres de campagne éventuellement présents dans l’adresse et le site qui vous a orienté vers le nôtre. Ces informations nous servent à savoir quels contenus répondent à vos questions. Aucun profilage publicitaire n’est réalisé.</p>
+  <p>La demande d’audit recueille : nom de l’entreprise, site internet, ville principale, secteur, prénom et nom, email professionnel, téléphone, nombre d’agences ou de points de vente, un message facultatif et les leviers que vous souhaitez faire auditer. Nous enregistrons également la page depuis laquelle la demande a été envoyée, les paramètres de campagne éventuellement présents dans l’adresse et le site qui vous a orienté vers le nôtre. Ces informations nous servent à savoir quels contenus et quelles publicités amènent des demandes.</p>
 
   <p>La prise de rendez-vous se fait dans une fenêtre fournie par notre outil de réservation, qui recueille votre nom, votre email et le créneau choisi. Nous y joignons la page et le bouton depuis lesquels vous l’avez ouverte, les paramètres de campagne éventuels et, seulement si vous avez accepté la mesure d’audience, l’identifiant de mesure d’audience de votre visite. Le rendez-vous est ensuite enregistré dans notre espace de suivi.</p>
 
@@ -37,18 +37,22 @@ body: |
 
   <p>Vous pouvez accéder à vos données, les rectifier, demander leur effacement, limiter ou refuser leur traitement et demander leur portabilité. Écrivez à <a href="mailto:team@shyftgrowth.com">team@shyftgrowth.com</a>. Vous pouvez aussi adresser une réclamation à la CNIL (<a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>).</p>
 
-  <h2>Cookies et mesure d’audience</h2>
+  <h2>Cookies, mesure d’audience et publicité</h2>
 
-  <p>Ce site utilise un outil de mesure d’audience : pages consultées, provenance des visites et demandes envoyées. Aucune publicité ciblée n’est activée, aucune donnée n’est revendue.</p>
+  <p>Avec votre accord, ce site utilise :</p>
 
-  <p>Si vous avez accepté la mesure d’audience, la prise ou l’annulation d’un rendez-vous est signalée à l’outil de mesure d’audience par notre serveur, rattachée à votre visite, sans votre nom ni votre email. Si vous l’avez refusée, ou n’avez pas répondu, rien ne lui est transmis, pas même de façon anonyme : votre rendez-vous est seulement enregistré dans notre espace de suivi.</p>
+  <ul><li><strong>Google Analytics</strong> (Google Ireland Ltd) : pages consultées, provenance des visites, demandes envoyées, pour savoir quels contenus répondent à vos questions.</li><li><strong>Google Ads</strong> (Google Ireland Ltd) : pour savoir quelles publicités Google amènent des demandes d’audit et des rendez-vous. Aucune publicité personnalisée n’est activée à partir de votre visite.</li><li><strong>Meta</strong> (Meta Platforms Ireland Ltd, Facebook et Instagram), lorsque nos publicités Facebook et Instagram sont actives : même usage.</li></ul>
 
-  <p>Rien n’est déposé sur votre appareil ni transmis à l’outil de mesure avant votre accord. Au premier passage, un bandeau vous laisse accepter ou refuser. Si vous refusez, le script de mesure n’est pas chargé du tout et le site fonctionne à l’identique. Vous pouvez revenir sur votre choix à tout moment avec le lien <a href="#" data-cookies>Gérer les cookies</a>, en bas de chaque page.</p>
+  <p>Ces outils peuvent déposer des cookies sur votre appareil, pour 13 mois au maximum, et traiter des données de navigation (pages vues, identifiant de l’appareil, clics sur nos publicités). Google et Meta peuvent transférer ces données hors de l’Union européenne, dans le cadre des garanties prévues par le RGPD. Aucune donnée n’est revendue.</p>
 
-  <p>Votre adresse IP est anonymisée. Les polices de caractères sont hébergées sur ce site : leur chargement ne transmet rien à un tiers.</p>
+  <p>Au premier passage, un bandeau vous laisse accepter ou refuser. Tant que vous n’avez pas accepté, aucun cookie de mesure ou publicitaire n’est déposé et ces outils ne reçoivent rien de votre part. Si vous refusez, le site fonctionne exactement pareil. Votre choix est conservé sur votre appareil, et vous pouvez le modifier à tout moment avec le lien <a href="#" data-cookies>Gérer les cookies</a>, en bas de chaque page.</p>
+
+  <p>Si vous avez accepté, la prise ou l’annulation d’un rendez-vous est aussi signalée à Google Analytics par notre serveur, rattachée à votre visite, sans votre nom ni votre email. Sinon, rien ne lui est transmis : votre rendez-vous est seulement enregistré dans notre espace de suivi.</p>
+
+  <p>Les polices de caractères sont hébergées sur ce site : leur chargement ne transmet rien à un tiers.</p>
 
   <h2>Sécurité</h2>
 
   <p>Les données du formulaire sont vérifiées côté serveur, protégées par un champ anti-robot et transmises de façon chiffrée lorsque le site est servi en HTTPS.</p>
 
-  <p>Dernière mise à jour : 24 septembre 2026.</p>
+  <p>Dernière mise à jour : 30 septembre 2026.</p>

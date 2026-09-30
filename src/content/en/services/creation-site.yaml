@@ -14,6 +14,7 @@ audit:
   tag: Conversion
   description: Your site on mobile, its speed, and the path to a call, a form or a sale.
 hero:
+  h1: "Website design for small businesses"
   titre: A website that *converts*, not just looks good
   texte: Fast, clear on mobile and [built for Google](/en/services/seo). Designed to turn visitors into customers, whether that's a call, a booking, a request or a purchase. And easy for you to update.
 suivi:
@@ -21,18 +22,20 @@ suivi:
 - Mobile page speed
 - Visits to city pages
 - Calls from the website
+problemesTitre: "Why your website *doesn't bring in* leads"
 problemes:
 - titre: Nobody gets what you do
   texte: In three seconds, visitors can't tell what you do, where, or how to reach you.
 - titre: A pain on mobile
   texte: Hunting for the phone number, pinching to zoom, waiting for pages to load.
 - titre: No results online
-  texte: The site is live, but it brings you no leads and no customers.
+  texte: "The site is live, but it brings you no leads and no customers. The [free website audit](/en/free-audit) measures what it's costing you."
+miseEnPlaceTitre: "What we build into *your website*"
 miseEnPlace:
 - titre: Built to convert
   texte: 'Every page leads to an action: call, book, request, buy.'
 - titre: Service and city pages
-  texte: So you get found for every service in every city.
+  texte: "So you get found for every service in every city, and give [your Google Ads campaigns](/en/services/google-ads) pages that convert."
 - titre: One-tap contact
   texte: The button that matters to you, on every page.
 - titre: Speed and technical SEO
@@ -82,11 +85,15 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: Do I need to start over?
-  answer: Not necessarily. If your site is doing its job, we improve it. We only recommend a redesign if it will get you more leads.
-- question: Can I update it myself?
-  answer: Yes. Your copy, photos and pages, from a simple editor.
-- question: How long does it take?
-  answer: It depends on the size of the site. We set the timeline during discovery, with review dates.
-- question: Do I own the website?
-  answer: Yes. The domain, the content and the site are all yours.
+- question: "How much does a website cost for a small business?"
+  answer: "It depends on the number of pages, the features and the content to produce. The price is set during scoping, before any development, along with the schedule and review dates."
+- question: "How long does it take to build a website?"
+  answer: "Usually four to eight weeks for a small business site, from mockup to launch. The exact schedule is set during scoping."
+- question: "Should I rebuild my website or improve it?"
+  answer: "Not necessarily rebuild it. If your site does its job, we improve it. We only suggest a redesign when it will win you more leads."
+- question: "Will my new website rank on Google?"
+  answer: "Yes, it's built for that. Speed, structure, tags and pages for each service and city are planned from the mockup, not bolted on later."
+- question: "Can I update my website myself?"
+  answer: "Yes. Your text, photos and pages can be edited from a simple interface, without going through us."
+- question: "Do I own the website?"
+  answer: "Yes. The domain name, the content and the site are yours."

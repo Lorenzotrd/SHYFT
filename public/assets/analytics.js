@@ -10,7 +10,9 @@
  const ADS = data.ads || '';
  const ADS_RDV = data.adsRdv || '';
  const META = data.meta || '';
- const ADVERTISING = Boolean(ADS || ADS_RDV || META);
+ // data-ads-enabled : Google Ads reçoit les données par la balise Google (destination liée à GA4), sans libellé à câbler.
+ const ADS_ENABLED = data.adsEnabled === 'true';
+ const ADVERTISING = Boolean(ADS_ENABLED || ADS || ADS_RDV || META);
  const KEY = 'shyft:consent';
 
  window.dataLayer = window.dataLayer || [];
@@ -58,18 +60,23 @@
  let banner = null;
  function hide() { if (banner) { banner.remove(); banner = null; } }
 
- // Textes du bandeau, dans la langue de la page (<html lang>).
+ // Textes du bandeau, dans la langue de la page (<html lang>). Version courte sur téléphone (tokens.css).
+ const ADS_TOOLS = META ? 'Google Ads, Meta' : 'Google Ads';
  const TEXTS = {
   fr: {
    title: 'Mesure d’audience',
-   ads: 'On utilise Google Analytics pour savoir quelles pages répondent à vos questions, et des outils de mesure publicitaire (Google Ads, Meta) pour savoir quelles publicités amènent des demandes. ',
+   ads: 'On utilise Google Analytics pour savoir quelles pages répondent à vos questions, et des outils de mesure publicitaire (' + ADS_TOOLS + ') pour savoir quelles publicités amènent des demandes. ',
+   short: 'Google Analytics et ' + ADS_TOOLS + ' nous disent ce qui amène des demandes. Le site marche pareil si vous refusez. ',
+   shortNoAds: 'Google Analytics nous dit quelles pages vous sont utiles. Le site marche pareil si vous refusez. ',
    noAds: 'On utilise Google Analytics pour savoir quelles pages répondent à vos questions. Rien de plus, aucune publicité ciblée. ',
    same: 'Le site fonctionne exactement pareil si vous refusez. ',
    more: 'En savoir plus', privacy: '/confidentialite', deny: 'Refuser', accept: 'Accepter',
   },
   en: {
    title: 'Analytics',
-   ads: 'We use Google Analytics to see which pages answer your questions, and ad measurement tools (Google Ads, Meta) to see which ads bring in requests. ',
+   ads: 'We use Google Analytics to see which pages answer your questions, and ad measurement tools (' + ADS_TOOLS + ') to see which ads bring in requests. ',
+   short: 'Google Analytics and ' + ADS_TOOLS + ' tell us what brings in requests. The site works the same if you decline. ',
+   shortNoAds: 'Google Analytics tells us which pages help you. The site works the same if you decline. ',
    noAds: 'We use Google Analytics to see which pages answer your questions. Nothing more, no targeted ads. ',
    same: 'The site works exactly the same if you decline. ',
    more: 'Learn more', privacy: '/en/privacy-policy', deny: 'Decline', accept: 'Accept',
@@ -85,7 +92,8 @@
   banner.setAttribute('aria-labelledby', 'consentTitle');
   banner.innerHTML =
    '<div class="consent-text"><b id="consentTitle">' + t.title + '</b>' +
-   '<p>' + (ADVERTISING ? t.ads : t.noAds) + t.same +
+   '<p><span class="consent-long">' + (ADVERTISING ? t.ads : t.noAds) + t.same + '</span>' +
+   '<span class="consent-short">' + (ADVERTISING ? t.short : t.shortNoAds) + '</span>' +
    '<a href="' + t.privacy + '">' + t.more + '</a></p></div>' +
    '<div class="consent-actions">' +
    '<button type="button" class="btn btn-ghost" data-consent="denied">' + t.deny + '</button>' +
@@ -114,6 +122,12 @@
   if (button) return decide(button.dataset.consent);
   const reopen = event.target.closest('[data-cookies]');
   if (reopen) { event.preventDefault(); show(); return; }
+  // Clics sur le téléphone et l'email (en-tête, pied de page, page rendez-vous), après accord seulement.
+  const contact = event.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+  if (contact && choice.get() === 'granted') {
+   const tel = contact.getAttribute('href').startsWith('tel:');
+   gtag('event', tel ? 'clic_telephone' : 'clic_email', { emplacement: contact.dataset.emplacement || 'lien', page_origine: location.pathname });
+  }
  });
 
  // Ouverture de la fenêtre de rendez-vous (booking.js). La réservation, elle, est comptée par le serveur (book_call).

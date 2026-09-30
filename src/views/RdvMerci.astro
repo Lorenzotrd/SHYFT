@@ -15,12 +15,9 @@ const r = route[lang];
 const paths = pathsFor((x) => x.rdvMerci);
 const [page, services] = await Promise.all([single('rdvMerci', lang), allServices(lang)]);
 const [avant, apres] = page.email.texte.split('{adresse}');
+// Cal.com peut ajouter nom et email dans l'adresse : cleanUrl les retire avant le chargement de la mesure d'audience.
 ---
-<Site title={page.seoTitle} description={page.seoDescription} paths={paths} noindex>
-  <script is:inline>
-    // Cal.com peut ajouter nom et email dans l'adresse : on les retire avant tout chargement de la mesure d'audience.
-    if (location.search) history.replaceState(null, '', location.pathname + location.hash);
-  </script>
+<Site title={page.seoTitle} description={page.seoDescription} paths={paths} noindex cleanUrl>
   <Nav paths={paths} />
   <main id="main">
     <section class="hero">

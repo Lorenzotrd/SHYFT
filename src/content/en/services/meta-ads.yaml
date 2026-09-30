@@ -14,6 +14,7 @@ audit:
   tag: Paid ads
   description: Your Facebook and Instagram ads, and the ones your competitors are running.
 hero:
+  h1: "Facebook and Instagram ads agency for small businesses"
   titre: Reach people who aren't looking for you *yet*
   texte: Facebook and Instagram, targeted to the area you serve. Create demand before it goes to a competitor.
 suivi:
@@ -21,13 +22,15 @@ suivi:
 - Qualified leads
 - People reached in your area
 - Lead response rate
+problemesTitre: "Why your Facebook and Instagram ads *don't pay off*"
 problemes:
 - titre: Nobody thinks of you
-  texte: Your future customers don't know yet that they'll need you.
+  texte: "Your future customers don't know yet that they'll need you. They aren't searching, so [your Google Ads campaigns](/en/services/google-ads) don't reach them."
 - titre: Posts that go nowhere
   texte: Your posts mostly reach people who already know you.
 - titre: Boosts with no results
-  texte: You've boosted posts before without knowing what they brought in.
+  texte: "You've boosted posts before without knowing what they brought in. A [free audit of your Facebook and Instagram ads](/en/free-audit) sets the record straight."
+miseEnPlaceTitre: "What we set up in *your Meta Ads campaigns*"
 miseEnPlace:
 - titre: Radius targeting
   texte: Around your locations, not across the whole country.
@@ -82,11 +85,15 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: My customers are businesses. Will it work?
-  answer: Yes, as long as the targeting is precise. And for some industries, we'll tell you honestly that Google Ads should come first.
-- question: Do I need to provide photos?
-  answer: Your own are best, even if they're shot on your phone. We handle the editing.
-- question: How much budget should I plan for?
-  answer: It's set in the plan, based on your area. Ad spend is paid directly to Meta, on your own account.
-- question: I already manage my Facebook page
-  answer: Perfect, we won't touch your posts. We handle the ads that bring in leads.
+- question: "How much do Facebook and Instagram ads cost for a small business?"
+  answer: "It depends on your service radius and your goals. Ad spend is paid directly to Meta, on your own account, and set together in the plan, before launch."
+- question: "What is the difference between Meta Ads and Google Ads?"
+  answer: "Google Ads captures people already searching for your service. Meta Ads reaches people who will need it but aren't searching yet. The two often work best together."
+- question: "Do Facebook ads work if my customers are businesses?"
+  answer: "Yes, as long as targeting is tight by area, trade and interests. For some trades, we'll tell you honestly that Google Ads should come first."
+- question: "How fast do Meta Ads bring in leads?"
+  answer: "The first leads usually come in within the first two weeks. It then takes one to two months of testing to find the messages and visuals that bring the cost per lead down."
+- question: "Do I need to provide photos and videos?"
+  answer: "Yours, ideally, even shot on a phone. Real photos of your jobs and products outperform stock images. We handle the editing."
+- question: "I already manage my Facebook page. What changes?"
+  answer: "Nothing for your regular posts. We only handle the advertising that brings in leads, with the cost of each one tracked."
