@@ -25,7 +25,7 @@ suivi:
 problemesTitre: "Why your business needs *AI automation*"
 problemes:
 - titre: Leads slip through the cracks
-  texte: They come in by email, phone and web form. Some never get a reply.
+  texte: "They come in by email, phone and web form. Some never get a reply, which [the free audit](/en/free-audit) puts a number on."
 - titre: Forgotten follow-ups
   texte: Quotes only get followed up when someone remembers.
 - titre: Bids that eat up days
@@ -33,9 +33,9 @@ problemes:
 miseEnPlaceTitre: "What we *automate with AI* for you"
 miseEnPlace:
 - titre: All leads in one place
-  texte: Everything lands in one place. Nothing gets lost.
+  texte: "Everything lands in one place, including leads from [your website](/en/services/website-design). Nothing gets lost."
 - titre: Quote follow-up
-  texte: Automatic follow-ups at the right time, in the right tone.
+  texte: "Automatic follow-ups at the right time, in the right tone, including for leads from [your Google Ads campaigns](/en/services/google-ads)."
 - titre: Bid and RFP support
   texte: Monitoring, reading the specs and a first draft.
 - titre: Document collection
@@ -43,7 +43,7 @@ miseEnPlace:
 - titre: Answers to common questions
   texte: Recurring questions handled without tying up your team.
 - titre: Tracking dashboard
-  texte: A clear view for management, no double entry.
+  texte: "A clear view for management, no double entry, connected to [your conversion tracking](/en/services/data-tracking)."
 couverture:
   discriminant: false
 etapes:

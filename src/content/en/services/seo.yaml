@@ -33,17 +33,17 @@ problemes:
 miseEnPlaceTitre: "What we set up for *your local SEO*"
 miseEnPlace:
 - titre: Technical audit
-  texte: Speed, indexing, structure, errors. We fix the foundations first.
+  texte: "Speed, indexing, structure, errors: everything [the free SEO audit](/en/free-audit) flags. We fix the foundations first."
 - titre: Keyword strategy
   texte: The searches that bring in customers, ranked by potential and difficulty.
 - titre: Service pages and content
-  texte: Pages that actually answer your customers' questions.
+  texte: "Pages that actually answer your customers' questions, and double as [landing pages for Google Ads](/en/services/google-ads)."
 - titre: On-page optimization
   texte: Titles, meta tags, internal linking, structured data.
 - titre: Link building
   texte: Links from credible sites in your industry and your region.
 - titre: Rank tracking
-  texte: Your keywords tracked every week, side by side with your competitors.
+  texte: "Your keywords tracked every week side by side with your competitors, and [the leads from Google measured](/en/services/data-tracking)."
 couverture:
   discriminant: true
   value:

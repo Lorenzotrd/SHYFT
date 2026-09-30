@@ -27,7 +27,7 @@ problemes:
 - titre: No idea where leads come from
   texte: Google, ads, word of mouth? Nobody really knows.
 - titre: Tools nobody reads
-  texte: Analytics is installed, but it doesn't track what matters.
+  texte: "Analytics is installed, but it doesn't track what matters. The [free tracking audit](/en/free-audit) lists what's missing."
 - titre: Budgets set by gut feel
   texte: Decisions get made on instinct because there are no reliable numbers.
 miseEnPlaceTitre: "What we set up in *GA4 and GTM*"
@@ -37,7 +37,7 @@ miseEnPlace:
 - titre: Call tracking
   texte: Every call tied to its source.
 - titre: Lead tracking
-  texte: Forms and quote requests tracked end to end.
+  texte: "Forms and quote requests tracked end to end, including those from [your Google Ads campaigns](/en/services/google-ads) and [Facebook and Instagram ads](/en/services/meta-ads)."
 - titre: Connected to your tools
   texte: '[Your CRM](/en/services/ai-automation) or spreadsheet linked to your tracking.'
 - titre: Dashboard

@@ -27,7 +27,7 @@ problemes:
 - titre: Aucune idée de la source
   texte: Google, la pub, le bouche à oreille ? Personne ne sait vraiment.
 - titre: Des outils que personne ne lit
-  texte: Analytics est installé, mais il ne mesure pas ce qui compte.
+  texte: "Analytics est installé, mais il ne mesure pas ce qui compte. L'[audit offert de votre tracking](/audit-offert) liste ce qui manque."
 - titre: Des budgets au feeling
   texte: Les décisions se prennent à l'intuition, faute de chiffres fiables.
 miseEnPlaceTitre: "Ce qu'on met en place dans *GA4 et GTM*"
@@ -37,7 +37,7 @@ miseEnPlace:
 - titre: Suivi des appels
   texte: Chaque appel rattaché à sa source.
 - titre: Suivi des devis
-  texte: Formulaires et demandes comptés de bout en bout.
+  texte: "Formulaires et demandes comptés de bout en bout, y compris ceux de [vos campagnes Google Ads](/expertises/google-ads) et [Facebook et Instagram](/expertises/meta-ads)."
 - titre: Lien avec vos outils
   texte: '[Votre CRM](/expertises/agence-ia) ou votre tableur relié à la mesure.'
 - titre: Tableau de bord

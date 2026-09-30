@@ -25,7 +25,7 @@ suivi:
 problemesTitre: "Pourquoi votre PME a besoin d'*automatisation IA*"
 problemes:
 - titre: Des demandes qui se perdent
-  texte: Elles arrivent par mail, téléphone et formulaire. Certaines restent sans réponse.
+  texte: "Elles arrivent par mail, téléphone et formulaire. Certaines restent sans réponse, ce que l'[audit offert](/audit-offert) permet de chiffrer."
 - titre: Des relances oubliées
   texte: Les devis ne sont relancés que quand quelqu'un y pense.
 - titre: Des appels d'offres chronophages
@@ -33,9 +33,9 @@ problemes:
 miseEnPlaceTitre: "Ce qu'on *automatise avec l'IA* chez vous"
 miseEnPlace:
 - titre: Demandes centralisées
-  texte: Tout arrive au même endroit, rien ne se perd.
+  texte: "Tout arrive au même endroit, y compris les demandes de [votre site internet](/expertises/creation-site). Rien ne se perd."
 - titre: Relance des devis
-  texte: Des relances automatiques au bon moment, avec le bon ton.
+  texte: "Des relances automatiques au bon moment, avec le bon ton, y compris pour les demandes venues de [vos campagnes Google Ads](/expertises/google-ads)."
 - titre: Aide aux appels d'offres
   texte: Veille, lecture du cahier des charges et première rédaction.
 - titre: Collecte de documents
@@ -43,7 +43,7 @@ miseEnPlace:
 - titre: Réponses aux questions courantes
   texte: Les questions qui reviennent traitées sans mobiliser l'équipe.
 - titre: Tableau de suivi
-  texte: Une vue claire pour la direction, sans ressaisie.
+  texte: "Une vue claire pour la direction, sans ressaisie, reliée au [suivi des conversions](/expertises/data-tracking)."
 couverture:
   discriminant: false
 etapes:

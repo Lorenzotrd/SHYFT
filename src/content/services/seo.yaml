@@ -33,17 +33,17 @@ problemes:
 miseEnPlaceTitre: "Ce qu'on met en place pour *votre SEO local*"
 miseEnPlace:
 - titre: Audit technique
-  texte: Vitesse, indexation, structure, erreurs. On remet les fondations d'aplomb.
+  texte: "Vitesse, indexation, structure, erreurs : tout ce que relève [l'audit SEO offert](/audit-offert). On remet les fondations d'aplomb."
 - titre: Stratégie de mots clés
   texte: Les recherches qui amènent des clients, classées par potentiel et difficulté.
 - titre: Pages services et contenus
-  texte: Des pages qui répondent vraiment aux questions de vos clients.
+  texte: "Des pages qui répondent vraiment aux questions de vos clients, et qui servent aussi de [pages d'arrivée pour Google Ads](/expertises/google-ads)."
 - titre: Optimisation des pages
   texte: Titres, balises, maillage interne, données structurées.
 - titre: Netlinking
   texte: Des liens depuis des sites sérieux de votre secteur et de votre région.
 - titre: Suivi des positions
-  texte: Vos mots clés suivis chaque semaine, face à vos concurrents.
+  texte: "Vos mots clés suivis chaque semaine face à vos concurrents, et [les demandes venues de Google mesurées](/expertises/data-tracking)."
 couverture:
   discriminant: true
   value:
