@@ -30,6 +30,7 @@ const routes = (lang: Lang) => {
     page: (id: string) => (en ? `/en/${pageSlug(id, lang)}` : `/${id}`),
     /** Pages sans version anglaise : null en anglais. */
     about: en ? null : '/a-propos',
+    blog: en ? null : '/blog',
   };
 };
 
@@ -53,7 +54,7 @@ export const ui = {
       groupes: { 'Acquisition et visibilité': 'Acquisition et visibilité', 'Conversion et mesure': 'Conversion et mesure', 'IA et automatisation': 'IA et automatisation' },
     },
     footer: {
-      services: 'Services', agence: 'Agence', about: 'À propos', audit: 'Audit offert', rdv: 'Prendre rendez-vous',
+      services: 'Services', agence: 'Agence', about: 'À propos', blog: 'Blog', audit: 'Audit offert', rdv: 'Prendre rendez-vous',
       legal: 'Mentions légales', privacy: 'Confidentialité', cookies: 'Gérer les cookies',
     },
     crumbs: 'Fil d’Ariane',
@@ -80,7 +81,7 @@ export const ui = {
       groupes: { 'Acquisition et visibilité': 'Acquisition & visibility', 'Conversion et mesure': 'Conversion & tracking', 'IA et automatisation': 'AI & automation' },
     },
     footer: {
-      services: 'Services', agence: 'Agency', about: 'About', audit: 'Free audit', rdv: 'Book a call',
+      services: 'Services', agence: 'Agency', about: 'About', blog: 'Blog', audit: 'Free audit', rdv: 'Book a call',
       legal: 'Legal notice', privacy: 'Privacy', cookies: 'Cookie settings',
     },
     crumbs: 'Breadcrumb',

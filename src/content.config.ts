@@ -242,6 +242,21 @@ const aPropos = single('a-propos', z.object({
   fondateurs: z.array(z.object({ id: z.enum(['lorenzo', 'quentin']), role: z.string(), parcours: z.string() })),
 }));
 
+// Blog : un fichier Markdown par article (src/content/blog/<adresse>.md). draft: true l'exclut du build et du sitemap.
+const blog = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/blog' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    author: z.enum(['lorenzo', 'quentin']),
+    /** Services liés, affichés en fin d'article (identifiants des fiches services). */
+    services: z.array(z.enum(['seo', 'google-ads', 'meta-ads', 'agence-ia', 'creation-site', 'data-tracking'])).default([]),
+    draft: z.boolean().default(false),
+  }),
+});
+
 const navigation = single('navigation', z.object({
   groups: z.array(z.object({ name: z.string(), expertises: z.array(z.string()) })),
   system: z.array(z.object({ stage: z.string(), line: z.string(), expertises: z.array(z.string()) })),
@@ -285,7 +300,7 @@ const listes = single('listes', z.object({
 }));
 
 export const collections = {
-  secteurs, expertises, services, pages, accueil, site, rendezVous, aPropos, serviceCommun, auditOffert, merci, rdvMerci, navigation, leviers, methode, mesure, formulaire, piedDePage, listes,
+  secteurs, expertises, services, pages, accueil, site, rendezVous, aPropos, blog, serviceCommun, auditOffert, merci, rdvMerci, navigation, leviers, methode, mesure, formulaire, piedDePage, listes,
   // Version anglaise
   servicesEn, pagesEn, accueilEn, siteEn, rendezVousEn, serviceCommunEn, auditOffertEn, merciEn, rdvMerciEn,
 };

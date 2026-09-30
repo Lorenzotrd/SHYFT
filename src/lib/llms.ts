@@ -43,6 +43,7 @@ export async function llmsIndex(): Promise<string> {
     '## Agence',
     '',
     `- [À propos de SHYFT et de ses fondateurs](${url('/a-propos')})`,
+    `- [Blog : acquisition et marketing digital pour PME](${url('/blog')})`,
     '',
     '## English',
     '',
