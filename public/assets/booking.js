@@ -1,12 +1,18 @@
-/* Prise de rendez-vous dans la fenêtre officielle de Cal.com, chargée au premier clic seulement.
-   Chaque lien vers cal.com/shyftgrowth garde son adresse : si le script de Cal.com ne charge pas
-   (bloqueur, réseau), le visiteur suit le lien normal, avec les mêmes informations de provenance.
+/* Prise de rendez-vous avec Cal.com, sans quitter le site.
+   - Les liens vers /rendez-vous (/en/book-a-call) et vers cal.com/shyftgrowth ouvrent la fenêtre officielle de
+     Cal.com, chargée au premier clic seulement. Si le script de Cal.com ne charge pas (bloqueur, réseau), le
+     visiteur part sur la page de réservation Cal.com, avec les mêmes informations de provenance.
+   - La page /rendez-vous affiche le calendrier intégré ([data-cal-inline]) et un lien de secours (data-direct).
    Transmis à Cal.com en métadonnées de la réservation : page d'origine, emplacement du bouton, UTM,
    et l'identifiant GA4 du visiteur seulement s'il a accepté la mesure d'audience.
    La réservation elle-même est comptée côté serveur (webhook), jamais ici : le navigateur ne signale
    que le clic (clic_prise_rdv), puis emmène la page sur /rendez-vous/merci une fois la réservation acceptée. */
 (function () {
  const PREFIX = 'https://cal.com/shyftgrowth/';
+ const SCRIPT = document.currentScript;
+ // Événement Cal.com par défaut (« shyftgrowth/30min »), transmis par Site.astro depuis le réglage calUrl.
+ const CAL_LINK = (SCRIPT && SCRIPT.dataset.cal) || 'shyftgrowth/30min';
+ const LINKS = 'a[href^="' + PREFIX + '"]:not([data-direct]), a[href="/rendez-vous"], a[href="/en/book-a-call"]';
  const ORIGIN = 'https://app.cal.com';
  const EMBED = ORIGIN + '/embed/embed.js';
  const NS = 'shyft';
@@ -54,8 +60,8 @@
  }
 
  // Note lue par /rendez-vous/merci : la conversion publicitaire n'y est comptée que si la réservation vient du site.
- function remember(link) {
-  try { sessionStorage.setItem('shyft:booking', JSON.stringify({emplacement: link.dataset.emplacement || 'lien', page: location.pathname})); } catch {}
+ function remember(emplacement) {
+  try { sessionStorage.setItem('shyft:booking', JSON.stringify({emplacement, page: location.pathname})); } catch {}
  }
 
  function confirmed(booking) {
@@ -73,8 +79,8 @@
   return Promise.race([api.ids(), new Promise(r => setTimeout(() => r(null), IDS_TIMEOUT))]).catch(() => null);
  }
 
- async function metadata(link) {
-  const meta = {page: location.pathname, emplacement: link.dataset.emplacement || 'lien'};
+ async function metadata(emplacement) {
+  const meta = {page: location.pathname, emplacement};
   STORED.forEach(key => { const v = stored(key); if (v) meta[key] = v; });
   const ids = await analyticsIds();
   if (ids && ids.client_id) {
@@ -94,18 +100,19 @@
  }
 
  document.addEventListener('click', async event => {
-  const link = event.target.closest && event.target.closest('a[href^="' + PREFIX + '"]');
+  const link = event.target.closest && event.target.closest(LINKS);
   if (!link || event.defaultPrevented) return;
   // Nouvel onglet, clic du milieu : comportement normal du navigateur.
   if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   event.preventDefault();
-  remember(link);
+  const emplacement = link.dataset.emplacement || 'lien';
+  remember(emplacement);
   // Clic compté tout de suite (clic_prise_rdv dans analytics.js), même si la fenêtre Cal.com ne charge pas.
-  document.dispatchEvent(new CustomEvent('shyft:booking', {detail: {emplacement: link.dataset.emplacement || 'lien', page: location.pathname}}));
-  const href = link.href;
-  const calLink = new URL(href).pathname.replace(/^\//, '');
-  const config = await metadata(link);
-  fallback = fallbackUrl(href, config);
+  document.dispatchEvent(new CustomEvent('shyft:booking', {detail: {emplacement, page: location.pathname}}));
+  const external = link.href.startsWith(PREFIX);
+  const calLink = external ? new URL(link.href).pathname.replace(/^\//, '') : CAL_LINK;
+  const config = await metadata(emplacement);
+  fallback = fallbackUrl('https://cal.com/' + calLink, config);
   try {
    await loadCal();
   } catch {
@@ -114,4 +121,20 @@
   }
   window.Cal.ns[NS]('modal', {calLink, config: {layout: 'month_view', ...config}});
  });
+
+ // Page /rendez-vous : calendrier intégré. En cas d'échec, le lien de secours reste affiché.
+ async function inline(box) {
+  remember('page-rendez-vous');
+  const config = await metadata('page-rendez-vous');
+  fallback = fallbackUrl('https://cal.com/' + CAL_LINK, config);
+  try {
+   await loadCal();
+   window.Cal.ns[NS]('inline', {elementOrSelector: box, calLink: CAL_LINK, config: {layout: 'month_view', ...config}});
+   box.dataset.state = 'ready';
+  } catch {
+   box.dataset.state = 'failed';
+  }
+ }
+ const box = document.querySelector('[data-cal-inline]');
+ if (box) inline(box);
 })();

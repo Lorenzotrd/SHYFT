@@ -4,10 +4,10 @@ import Bouton from '../shyft/Bouton.astro';
 import { rich, pad, liens } from '../../lib/site';
 import { langOf, route, ui } from '../../lib/i18n';
 interface Props {
-  nom: string; h1: string; titre: string; texte: string; suivi: string[]; calUrl: string;
+  nom: string; h1: string; titre: string; texte: string; suivi: string[]; rdvHref: string;
   commun: { filAccueil: string; filServices: string; ctaRdv: string; ctaAudit: string; suiviSurtitre: string; suiviTitre: string };
 }
-const { nom, h1, titre, texte, suivi, calUrl, commun } = Astro.props;
+const { nom, h1, titre, texte, suivi, rdvHref, commun } = Astro.props;
 const lang = langOf(Astro.url);
 const r = route[lang];
 ---
@@ -22,7 +22,7 @@ const r = route[lang];
     </div>
     <p class="lead" set:html={liens(texte)}></p>
     <div class="ctas">
-      <Bouton href={calUrl} emplacement="service-en-tete" block>{commun.ctaRdv}</Bouton>
+      <Bouton href={rdvHref} emplacement="service-en-tete" block>{commun.ctaRdv}</Bouton>
       <Bouton href={r.audit} variant="outline" block>{commun.ctaAudit}</Bouton>
     </div>
   </div>

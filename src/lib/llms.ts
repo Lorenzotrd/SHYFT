@@ -9,13 +9,13 @@ export const plain = (text: string) => texteSeul(text).replace(/\s*\n\s*/g, ' ')
 const url = (path: string) => `${SITE_URL}${path}`;
 
 export async function llmsIndex(): Promise<string> {
-  const [fr, en, site] = await Promise.all([services('fr'), services('en'), single('site', 'fr')]);
+  const [fr, en] = await Promise.all([services('fr'), services('en')]);
   const rf = route.fr;
   const contact = [
     `- Email : ${CONTACT.email}`,
     CONTACT.phone && `- Téléphone : ${CONTACT.phoneDisplay || CONTACT.phone}`,
     `- Audit offert (gratuit, réponse en 24 h) : ${url(rf.audit)}`,
-    `- Prendre rendez-vous (30 minutes en visio) : ${site.calUrl}`,
+    `- Prendre rendez-vous (30 minutes en visio) : ${url(rf.rdv)}`,
   ].filter(Boolean);
   return [
     '# SHYFT Growth',

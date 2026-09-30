@@ -2,7 +2,7 @@
 // Pied de page : accroche et rendez-vous, services, agence, mentions, grande signature.
 import Bouton from './Bouton.astro';
 import { single, services as allServices } from '../../lib/content';
-import { GTM_ID, YEAR, rich } from '../../lib/site';
+import { GTM_ID, YEAR, CONTACT, rich } from '../../lib/site';
 import { langOf, route, ui } from '../../lib/i18n';
 const lang = langOf(Astro.url);
 const r = route[lang];
@@ -13,16 +13,16 @@ const [site, services] = await Promise.all([single('site', lang), allServices(la
   <div class="top">
     <div class="pitch">
       <p set:html={rich(site.footer.accroche)}></p>
-      <Bouton href={site.calUrl} variant="dark" size="sm" emplacement="pied-de-page">{site.footer.cta}</Bouton>
+      <Bouton href={r.rdv} variant="dark" size="sm" emplacement="pied-de-page">{site.footer.cta}</Bouton>
     </div>
     <div class="cols">
       <nav aria-label={t.services}><span class="col-title">{t.services}</span>{services.map((s) => <a href={r.service(s.id)}>{s.data.nom}</a>)}</nav>
-      <nav aria-label={t.agence}><span class="col-title">{t.agence}</span>{r.about && <a href={r.about}>{t.about}</a>}{r.blog && <a href={r.blog}>{t.blog}</a>}<a href={r.anchor('methode')}>{site.nav.methode}</a><a href={r.anchor('resultats')}>{site.nav.resultats}</a><a href={r.audit}>{t.audit}</a><a href={site.calUrl} data-emplacement="pied-de-page-lien">{t.rdv}</a></nav>
+      <nav aria-label={t.agence}><span class="col-title">{t.agence}</span>{r.about && <a href={r.about}>{t.about}</a>}{r.blog && <a href={r.blog}>{t.blog}</a>}<a href={r.anchor('methode')}>{site.nav.methode}</a><a href={r.anchor('resultats')}>{site.nav.resultats}</a><a href={r.audit}>{t.audit}</a><a href={r.rdv} data-emplacement="pied-de-page-lien">{t.rdv}</a></nav>
     </div>
   </div>
   <nav class="compact" aria-label={t.services}>{services.map((s) => <a href={r.service(s.id)}>{s.data.nomCourt}</a>)}{r.about && <a href={r.about}>{t.about}</a>}</nav>
   <div class="bottom">
-    <span>© {YEAR} shyft</span>
+    <div class="contact"><span>© {YEAR} shyft</span>{CONTACT.phone && <a href={`tel:${CONTACT.phone}`} data-emplacement="pied-de-page">{CONTACT.phoneDisplay || CONTACT.phone}</a>}<a href={`mailto:${CONTACT.email}`} data-emplacement="pied-de-page">{CONTACT.email}</a></div>
     <div class="legal"><a href={r.page('mentions-legales')}>{t.legal}</a><a href={r.page('confidentialite')}>{t.privacy}</a>{GTM_ID && <a href="#" data-cookies>{t.cookies}</a>}</div>
   </div>
   <div class="wordmark" aria-hidden="true">shyft<span>.</span></div>
@@ -38,7 +38,9 @@ const [site, services] = await Promise.all([single('site', lang), allServices(la
   .cols a{font-size:15px;color:var(--ink-2)}
   .cols a:hover,.legal a:hover{text-decoration:underline;text-underline-offset:4px}
   .bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line-3);font-size:13px;color:var(--label)}
-  .legal{display:flex;gap:26px;flex-wrap:wrap}
+  .legal,.contact{display:flex;gap:26px;flex-wrap:wrap}
+  .contact a{color:var(--ink-2);font-weight:600}
+  .contact a:hover{text-decoration:underline;text-underline-offset:4px}
   .compact{display:none}
   .wordmark{font-size:clamp(116px, 23vw, 330px);line-height:.74;font-weight:700;letter-spacing:-.07em;text-align:center;margin-bottom:-.06em}
   .wordmark span{color:var(--accent)}
@@ -48,6 +50,7 @@ const [site, services] = await Promise.all([single('site', lang), allServices(la
     .compact{display:flex;flex-wrap:wrap;gap:10px 18px}
     .compact a{font-size:14px;color:var(--ink-2)}
     .bottom{padding-top:16px;font-size:11px}
-    .legal{gap:14px}
+    .legal,.contact{gap:14px}
+    .contact a{font-size:13px}
   }
 </style>

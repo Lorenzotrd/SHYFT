@@ -22,7 +22,7 @@ import { langOf, route, pathsFor, ui } from '../lib/i18n';
 const lang = langOf(Astro.url);
 const r = route[lang];
 const t = ui[lang];
-const [home, site] = await Promise.all([single('accueil', lang), single('site', lang)]);
+const home = await single('accueil', lang);
 const homeUrl = `${SITE_URL}${r.home}`;
 
 const jsonLd = [
@@ -33,7 +33,7 @@ const jsonLd = [
 <Site title={home.seoTitle} description={home.seoDescription} paths={pathsFor((x) => x.home)} jsonLd={jsonLd}>
   <Nav paths={pathsFor((x) => x.home)} />
   <main id="main">
-    <Hero hero={home.hero} calUrl={site.calUrl} />
+    <Hero hero={home.hero} rdvHref={r.rdv} />
     <Eventail cards={home.eventail} legende={home.hero.legende} />
     <Pourquoi pourquoi={home.pourquoi} />
     <Services intro={home.services} />
@@ -49,7 +49,7 @@ const jsonLd = [
         <span class="eyebrow">{home.faq.surtitre}</span>
         <h2 id="faq-titre" class="h2" set:html={rich(home.faq.titre)}></h2>
         <p>{home.faq.texte}</p>
-        <Bouton href={site.calUrl} variant="dark" size="sm" emplacement="accueil-faq">{home.faq.cta}</Bouton>
+        <Bouton href={r.rdv} variant="dark" size="sm" emplacement="accueil-faq">{home.faq.cta}</Bouton>
       </div>
       <Faq items={home.faq.questions} />
     </section>

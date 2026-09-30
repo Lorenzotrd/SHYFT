@@ -26,6 +26,8 @@ const routes = (lang: Lang) => {
     service: (id: string) => (en ? `/en/services/${serviceSlug(id, lang)}` : `/expertises/${id}`),
     audit: en ? '/en/free-audit' : '/audit-offert',
     auditMerci: en ? '/en/free-audit/thank-you' : '/audit-offert/merci',
+    /** Prise de rendez-vous : page avec le calendrier Cal.com intégré (la fenêtre s'ouvre au clic si le script charge). */
+    rdv: en ? '/en/book-a-call' : '/rendez-vous',
     rdvMerci: en ? '/en/booking/thank-you' : '/rendez-vous/merci',
     page: (id: string) => (en ? `/en/${pageSlug(id, lang)}` : `/${id}`),
     /** Pages sans version anglaise : null en anglais. */
@@ -49,7 +51,7 @@ export const ui = {
     skip: 'Aller au contenu',
     ogAlt: 'SHYFT Growth, agence digitale pour PME : SEO, Google Ads, Meta Ads, Google Maps et IA',
     nav: {
-      home: 'shyft, accueil', about: 'À propos', main: 'Navigation principale', open: 'Ouvrir le menu', close: 'Fermer le menu',
+      home: 'shyft, accueil', about: 'À propos', call: 'Appeler le', main: 'Navigation principale', open: 'Ouvrir le menu', close: 'Fermer le menu',
       switchLabel: 'Read this page in English', switchText: 'EN',
       groupes: { 'Acquisition et visibilité': 'Acquisition et visibilité', 'Conversion et mesure': 'Conversion et mesure', 'IA et automatisation': 'IA et automatisation' },
     },
@@ -58,6 +60,14 @@ export const ui = {
       legal: 'Mentions légales', privacy: 'Confidentialité', cookies: 'Gérer les cookies',
     },
     crumbs: 'Fil d’Ariane',
+    rdvPage: {
+      seoTitle: 'Prendre rendez-vous avec SHYFT | 30 minutes en visio',
+      seoDescription: 'Réservez un appel de 30 minutes en visio avec un expert SHYFT : SEO, Google Ads, Meta Ads, site, tracking ou IA. Gratuit et sans engagement.',
+      h1: 'Prendre rendez-vous avec un expert acquisition',
+      calendar: 'Calendrier de réservation',
+      fallback: 'Le calendrier ne s’affiche pas ?', fallbackLink: 'Réserver directement sur Cal.com',
+      phone: 'Ou appelez-nous', email: 'Ou écrivez-nous',
+    },
     eventail: 'Exemples de demandes et de suivis, données d’illustration',
     geo: {
       keyword: 'Mot clé', zone: 'Zone', points: 'points', average: 'Position moyenne', top3: 'Zone en top 3',
@@ -76,7 +86,7 @@ export const ui = {
     skip: 'Skip to content',
     ogAlt: 'SHYFT Growth, digital agency for small businesses: SEO, Google Ads, Meta Ads, Google Maps and AI',
     nav: {
-      home: 'shyft, home', about: 'About', main: 'Main navigation', open: 'Open menu', close: 'Close menu',
+      home: 'shyft, home', about: 'About', call: 'Call', main: 'Main navigation', open: 'Open menu', close: 'Close menu',
       switchLabel: 'Lire cette page en français', switchText: 'FR',
       groupes: { 'Acquisition et visibilité': 'Acquisition & visibility', 'Conversion et mesure': 'Conversion & tracking', 'IA et automatisation': 'AI & automation' },
     },
@@ -85,6 +95,14 @@ export const ui = {
       legal: 'Legal notice', privacy: 'Privacy', cookies: 'Cookie settings',
     },
     crumbs: 'Breadcrumb',
+    rdvPage: {
+      seoTitle: 'Book a call with SHYFT | 30-minute video call',
+      seoDescription: 'Book a free 30-minute video call with a SHYFT expert: SEO, Google Ads, Meta Ads, websites, tracking or AI. No commitment.',
+      h1: 'Book a call with a customer acquisition expert',
+      calendar: 'Booking calendar',
+      fallback: 'Calendar not showing?', fallbackLink: 'Book directly on Cal.com',
+      phone: 'Or call us', email: 'Or email us',
+    },
     eventail: 'Sample leads and reports, illustrative data',
     geo: {
       keyword: 'Keyword', zone: 'Area', points: 'points', average: 'Average rank', top3: 'Area in the top 3',

@@ -5,8 +5,8 @@ import Icon from '../shyft/Icon.astro';
 import { rich, liens } from '../../lib/site';
 import { langOf, route } from '../../lib/i18n';
 import type { CollectionEntry } from 'astro:content';
-interface Props { hero: CollectionEntry<'accueil'>['data']['hero']; calUrl: string }
-const { hero, calUrl } = Astro.props;
+interface Props { hero: CollectionEntry<'accueil'>['data']['hero']; rdvHref: string }
+const { hero, rdvHref } = Astro.props;
 const r = route[langOf(Astro.url)];
 ---
 <section class="hero" id="top">
@@ -16,7 +16,7 @@ const r = route[langOf(Astro.url)];
   <p class="lead" set:html={liens(hero.texte)}></p>
   <div class="ctas">
     <Bouton href={r.audit} block>{hero.cta}</Bouton>
-    <Bouton href={calUrl} variant="outline" emplacement="accueil-en-tete" block>{hero.ctaSecondaire}</Bouton>
+    <Bouton href={rdvHref} variant="outline" emplacement="accueil-en-tete" block>{hero.ctaSecondaire}</Bouton>
   </div>
 </section>
 <style>
