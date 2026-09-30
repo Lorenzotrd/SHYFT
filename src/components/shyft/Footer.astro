@@ -17,10 +17,10 @@ const [site, services] = await Promise.all([single('site', lang), allServices(la
     </div>
     <div class="cols">
       <nav aria-label={t.services}><span class="col-title">{t.services}</span>{services.map((s) => <a href={r.service(s.id)}>{s.data.nom}</a>)}</nav>
-      <nav aria-label={t.agence}><span class="col-title">{t.agence}</span><a href={r.anchor('methode')}>{site.nav.methode}</a><a href={r.anchor('resultats')}>{site.nav.resultats}</a><a href={r.audit}>{t.audit}</a><a href={site.calUrl} data-emplacement="pied-de-page-lien">{t.rdv}</a></nav>
+      <nav aria-label={t.agence}><span class="col-title">{t.agence}</span>{r.about && <a href={r.about}>{t.about}</a>}<a href={r.anchor('methode')}>{site.nav.methode}</a><a href={r.anchor('resultats')}>{site.nav.resultats}</a><a href={r.audit}>{t.audit}</a><a href={site.calUrl} data-emplacement="pied-de-page-lien">{t.rdv}</a></nav>
     </div>
   </div>
-  <nav class="compact" aria-label={t.services}>{services.map((s) => <a href={r.service(s.id)}>{s.data.nomCourt}</a>)}</nav>
+  <nav class="compact" aria-label={t.services}>{services.map((s) => <a href={r.service(s.id)}>{s.data.nomCourt}</a>)}{r.about && <a href={r.about}>{t.about}</a>}</nav>
   <div class="bottom">
     <span>© {YEAR} shyft</span>
     <div class="legal"><a href={r.page('mentions-legales')}>{t.legal}</a><a href={r.page('confidentialite')}>{t.privacy}</a>{GA_ID && <a href="#" data-cookies>{t.cookies}</a>}</div>

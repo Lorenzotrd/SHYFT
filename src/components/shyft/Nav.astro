@@ -1,6 +1,6 @@
 ---
 // Navigation : grille à trois colonnes (logo, pilule au centre exact, bouton rendez-vous).
-// Pilule : Services (menu déroulant en trois colonnes), Méthode, Résultats, Audit. La page en cours est surlignée.
+// Pilule : Services (menu déroulant en trois colonnes), Méthode, Résultats, À propos (français), Audit. La page en cours est surlignée.
 // Téléphone : pilule noire avec bouton jaune ; le menu s'ouvre en dessous, Services devient un accordéon.
 // À droite, le lien vers la même page dans l'autre langue (FR ↔ EN).
 import Icon from './Icon.astro';
@@ -8,7 +8,7 @@ import Bouton from './Bouton.astro';
 import { single, services as allServices } from '../../lib/content';
 import { highlight } from '../../lib/site';
 import { langOf, route, ui, type Paths } from '../../lib/i18n';
-interface Props { current?: 'services' | 'audit'; paths: Paths }
+interface Props { current?: 'services' | 'audit' | 'a-propos'; paths: Paths }
 const { current, paths } = Astro.props;
 const lang = langOf(Astro.url);
 const other = lang === 'en' ? 'fr' : 'en';
@@ -49,12 +49,13 @@ const colonnes = groupes
     </div>
     <a href={r.anchor('methode')}>{nav.methode}</a>
     <a href={r.anchor('resultats')}>{nav.resultats}</a>
+    {r.about && <a href={r.about} class:list={{ active: current === 'a-propos' }} aria-current={current === 'a-propos' ? 'page' : undefined}>{t.about}</a>}
     <a href={r.audit} class:list={{ active: current === 'audit' }} aria-current={current === 'audit' ? 'page' : undefined}><span set:html={highlight(nav.audit)} /></a>
     <a class="menu-cta" href={calUrl} data-emplacement="menu-mobile">{nav.cta}</a>
   </nav>
 
   <div class="end">
-    <a class="lang" href={paths[other]} hreflang={ui[other].htmlLang} lang={ui[other].htmlLang} aria-label={t.switchLabel} title={t.switchLabel}>{t.switchText}</a>
+    <a class="lang" href={paths[other] ?? route[other].home} hreflang={ui[other].htmlLang} lang={ui[other].htmlLang} aria-label={t.switchLabel} title={t.switchLabel}>{t.switchText}</a>
     <Bouton href={calUrl} size="sm" emplacement="menu" class="nav-cta">{nav.cta}</Bouton>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label={t.open} data-label-open={t.open} data-label-close={t.close} data-menu>
       <Icon name="menu" size={18} stroke={2.2} class="i-open" /><Icon name="close" size={18} stroke={2.2} class="i-close" />

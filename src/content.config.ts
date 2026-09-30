@@ -233,6 +233,15 @@ const [rdvMerci, rdvMerciEn] = bilingual('rendez-vous-merci', z.object({
   leviersTitre: z.string(),
 }));
 
+// Page à propos (français seulement). Parcours vide : le paragraphe n'est pas affiché.
+const aPropos = single('a-propos', z.object({
+  seoTitle: z.string(), seoDescription: z.string(),
+  h1: z.string(), titre: lines, intro: z.string(),
+  quiTitre: lines, qui: z.array(z.string()),
+  fondateursTitre: lines,
+  fondateurs: z.array(z.object({ id: z.enum(['lorenzo', 'quentin']), role: z.string(), parcours: z.string() })),
+}));
+
 const navigation = single('navigation', z.object({
   groups: z.array(z.object({ name: z.string(), expertises: z.array(z.string()) })),
   system: z.array(z.object({ stage: z.string(), line: z.string(), expertises: z.array(z.string()) })),
@@ -276,7 +285,7 @@ const listes = single('listes', z.object({
 }));
 
 export const collections = {
-  secteurs, expertises, services, pages, accueil, site, rendezVous, serviceCommun, auditOffert, merci, rdvMerci, navigation, leviers, methode, mesure, formulaire, piedDePage, listes,
+  secteurs, expertises, services, pages, accueil, site, rendezVous, aPropos, serviceCommun, auditOffert, merci, rdvMerci, navigation, leviers, methode, mesure, formulaire, piedDePage, listes,
   // Version anglaise
   servicesEn, pagesEn, accueilEn, siteEn, rendezVousEn, serviceCommunEn, auditOffertEn, merciEn, rdvMerciEn,
 };

@@ -28,14 +28,17 @@ const routes = (lang: Lang) => {
     auditMerci: en ? '/en/free-audit/thank-you' : '/audit-offert/merci',
     rdvMerci: en ? '/en/booking/thank-you' : '/rendez-vous/merci',
     page: (id: string) => (en ? `/en/${pageSlug(id, lang)}` : `/${id}`),
+    /** Pages sans version anglaise : null en anglais. */
+    about: en ? null : '/a-propos',
   };
 };
 
 export type Routes = ReturnType<typeof routes>;
 export const route: Record<Lang, Routes> = { fr: routes('fr'), en: routes('en') };
 
-/** Adresse d'une même page dans chaque langue, pour hreflang et le sélecteur de langue. */
-export type Paths = Record<Lang, string>;
+/** Adresse d'une même page dans chaque langue, pour hreflang et le sélecteur de langue.
+ *  Une page sans version anglaise (à propos, blog) n'a que fr : ni hreflang, et le sélecteur mène à l'accueil anglais. */
+export type Paths = { fr: string; en?: string };
 export const pathsFor = (pick: (r: Routes) => string): Paths => ({ fr: pick(route.fr), en: pick(route.en) });
 
 /** Libellés fixes du code (hors contenu Keystatic). */
@@ -45,12 +48,12 @@ export const ui = {
     skip: 'Aller au contenu',
     ogAlt: 'SHYFT Growth, agence digitale pour PME : SEO, Google Ads, Meta Ads, Google Maps et IA',
     nav: {
-      home: 'shyft, accueil', main: 'Navigation principale', open: 'Ouvrir le menu', close: 'Fermer le menu',
+      home: 'shyft, accueil', about: 'À propos', main: 'Navigation principale', open: 'Ouvrir le menu', close: 'Fermer le menu',
       switchLabel: 'Read this page in English', switchText: 'EN',
       groupes: { 'Acquisition et visibilité': 'Acquisition et visibilité', 'Conversion et mesure': 'Conversion et mesure', 'IA et automatisation': 'IA et automatisation' },
     },
     footer: {
-      services: 'Services', agence: 'Agence', audit: 'Audit offert', rdv: 'Prendre rendez-vous',
+      services: 'Services', agence: 'Agence', about: 'À propos', audit: 'Audit offert', rdv: 'Prendre rendez-vous',
       legal: 'Mentions légales', privacy: 'Confidentialité', cookies: 'Gérer les cookies',
     },
     crumbs: 'Fil d’Ariane',
@@ -72,12 +75,12 @@ export const ui = {
     skip: 'Skip to content',
     ogAlt: 'SHYFT Growth, digital agency for small businesses: SEO, Google Ads, Meta Ads, Google Maps and AI',
     nav: {
-      home: 'shyft, home', main: 'Main navigation', open: 'Open menu', close: 'Close menu',
+      home: 'shyft, home', about: 'About', main: 'Main navigation', open: 'Open menu', close: 'Close menu',
       switchLabel: 'Lire cette page en français', switchText: 'FR',
       groupes: { 'Acquisition et visibilité': 'Acquisition & visibility', 'Conversion et mesure': 'Conversion & tracking', 'IA et automatisation': 'AI & automation' },
     },
     footer: {
-      services: 'Services', agence: 'Agency', audit: 'Free audit', rdv: 'Book a call',
+      services: 'Services', agence: 'Agency', about: 'About', audit: 'Free audit', rdv: 'Book a call',
       legal: 'Legal notice', privacy: 'Privacy', cookies: 'Cookie settings',
     },
     crumbs: 'Breadcrumb',

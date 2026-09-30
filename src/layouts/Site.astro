@@ -20,7 +20,9 @@ interface Props {
 const { title, description, paths, noindex = false, jsonLd } = Astro.props;
 const lang = langOf(Astro.url);
 const t = ui[lang];
-const canonical = `${SITE_URL}${paths[lang]}`;
+const canonical = `${SITE_URL}${paths[lang] ?? paths.fr}`;
+// hreflang seulement si la page existe dans les deux langues ; x-default vers le français.
+const alternates = paths.en ? LANGS.map((l) => ({ hreflang: ui[l].htmlLang, href: `${SITE_URL}${paths[l]}` })) : [];
 // « < » échappé : aucun contenu ne peut refermer la balise script.
 const structured = JSON.stringify(clean([organisation(lang, await services(lang)), ...((jsonLd ?? []) as never[])])).replace(/</g, '\\u003c');
 const range = {
@@ -44,14 +46,14 @@ const fontCss =
 <meta name="description" content={description}>
 {noindex && <meta name="robots" content="noindex, follow">}
 <link rel="canonical" href={canonical}>
-{!noindex && LANGS.map((l) => <link rel="alternate" hreflang={ui[l].htmlLang} href={`${SITE_URL}${paths[l]}`}>)}
-{!noindex && <link rel="alternate" hreflang="x-default" href={`${SITE_URL}${paths.fr}`}>}
+{!noindex && alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href}>)}
+{!noindex && alternates.length > 0 && <link rel="alternate" hreflang="x-default" href={`${SITE_URL}${paths.fr}`}>}
 <meta property="og:title" content={title}>
 <meta property="og:description" content={description}>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content={BRAND}>
 <meta property="og:locale" content={t.ogLocale}>
-{LANGS.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={ui[l].ogLocale}>)}
+{alternates.length > 0 && LANGS.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={ui[l].ogLocale}>)}
 <meta property="og:url" content={canonical}>
 <meta property="og:image" content={`${SITE_URL}/assets/og.png?v=2`}>
 <meta property="og:image:width" content="1200">

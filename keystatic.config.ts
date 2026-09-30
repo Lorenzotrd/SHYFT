@@ -317,6 +317,24 @@ const base = {
       },
     }),
 
+    aPropos: singleton({
+      label: 'Page à propos',
+      path: 'src/content/site/a-propos',
+      format: { data: 'yaml' },
+      schema: {
+        seoTitle: text('Titre pour Google'), seoDescription: paragraph('Description pour Google'),
+        h1: text('Titre H1 (mot clé)'), titre: title('Titre (accroche)'), intro: paragraph('Texte d’introduction'),
+        quiTitre: title('Titre « qui on est »'),
+        qui: fields.array(paragraph('Paragraphe', 'Un lien interne s’écrit [ancre](/chemin).'), { label: 'Qui on est', itemLabel: (p) => p.value.slice(0, 60) }),
+        fondateursTitre: title('Titre des fondateurs'),
+        fondateurs: fields.array(fields.object({
+          id: fields.select({ label: 'Fondateur', description: 'Nom, photo et LinkedIn : src/lib/site.ts (FOUNDERS).', defaultValue: 'lorenzo', options: [{ label: 'Lorenzo', value: 'lorenzo' }, { label: 'Quentin', value: 'quentin' }] }),
+          role: text('Rôle'),
+          parcours: paragraph('Parcours', 'Vide : le paragraphe n’est pas affiché.'),
+        }), { label: 'Fondateurs', itemLabel: (p) => p.fields.id.value }),
+      },
+    }),
+
     serviceCommun: singleton({
       label: 'Pages services : libellés communs',
       path: 'src/content/site/service-commun',
@@ -488,7 +506,7 @@ export default config({
     ...base.ui,
     navigation: {
       Pages: ['accueil', 'services', 'listes', 'secteurs', 'expertises', 'pages'],
-      'Blocs communs': ['site', 'rendezVous', 'serviceCommun', 'auditOffert', 'merci', 'rdvMerci', 'methode', 'mesure', 'formulaire', 'piedDePage', 'navigation', 'leviers'],
+      'Blocs communs': ['aPropos', 'site', 'rendezVous', 'serviceCommun', 'auditOffert', 'merci', 'rdvMerci', 'methode', 'mesure', 'formulaire', 'piedDePage', 'navigation', 'leviers'],
       English: ['accueilEn', 'servicesEn', 'pagesEn', 'siteEn', 'rendezVousEn', 'serviceCommunEn', 'auditOffertEn', 'merciEn', 'rdvMerciEn'],
     },
   },
