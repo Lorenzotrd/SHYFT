@@ -1,9 +1,12 @@
 ---
 // Gabarit des pages refaites : polices Instrument auto-hébergées, tokens, cadre arrondi,
-// bandeau de consentement et mesure d'audience existants, données structurées.
+// bandeau de consentement et mesure d'audience existants, données structurées (l'agence sur toutes les pages,
+// puis celles de la page), nettoyées de tout champ vide.
 import '../styles/tokens.css';
 import { BRAND, SITE_URL, GA_ID, ADS_CONVERSION, ADS_CONVERSION_RDV, META_PIXEL_ID } from '../lib/site';
 import { langOf, ui, LANGS, type Paths } from '../lib/i18n';
+import { services } from '../lib/content';
+import { organisation, clean } from '../lib/schema';
 
 interface Props {
   title: string;
@@ -18,6 +21,8 @@ const { title, description, paths, noindex = false, jsonLd } = Astro.props;
 const lang = langOf(Astro.url);
 const t = ui[lang];
 const canonical = `${SITE_URL}${paths[lang]}`;
+// « < » échappé : aucun contenu ne peut refermer la balise script.
+const structured = JSON.stringify(clean([organisation(lang, await services(lang)), ...((jsonLd ?? []) as never[])])).replace(/</g, '\\u003c');
 const range = {
   latin: 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD',
   ext: 'U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF',
@@ -64,7 +69,7 @@ const fontCss =
 <body>
 <a class="skip-link" href="#main">{t.skip}</a>
 <div class="frame"><slot /></div>
-{jsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>}
+<script type="application/ld+json" is:inline set:html={structured}></script>
 <script>
   // Provenance de la visite (campagne, gclid, site d'origine, première visite), gardée pour la demande d'audit.
   const KEEP = ['utm_source', 'utm_medium', 'utm_campaign', 'gclid'];

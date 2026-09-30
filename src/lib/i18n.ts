@@ -44,7 +44,6 @@ export const ui = {
     htmlLang: 'fr', ogLocale: 'fr_FR', inLanguage: 'fr-FR',
     skip: 'Aller au contenu',
     ogAlt: 'SHYFT Growth, agence digitale pour PME : SEO, Google Ads, Meta Ads, Google Maps et IA',
-    areaServed: [{ '@type': 'Country', name: 'France' }],
     nav: {
       home: 'shyft, accueil', main: 'Navigation principale', open: 'Ouvrir le menu', close: 'Fermer le menu',
       switchLabel: 'Read this page in English', switchText: 'EN',
@@ -72,7 +71,6 @@ export const ui = {
     htmlLang: 'en', ogLocale: 'en_US', inLanguage: 'en-US',
     skip: 'Skip to content',
     ogAlt: 'SHYFT Growth, digital agency for small businesses: SEO, Google Ads, Meta Ads, Google Maps and AI',
-    areaServed: [{ '@type': 'Country', name: 'United States' }, { '@type': 'Country', name: 'Canada' }],
     nav: {
       home: 'shyft, home', main: 'Main navigation', open: 'Open menu', close: 'Close menu',
       switchLabel: 'Lire cette page en français', switchText: 'FR',

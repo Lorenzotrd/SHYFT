@@ -16,6 +16,7 @@ import GeoGrid from '../components/service/GeoGrid.astro';
 import AutresLeviers from '../components/service/AutresLeviers.astro';
 import { SITE_URL, rich, texteSeul } from '../lib/site';
 import { single, type Service } from '../lib/content';
+import { ORG_ID, areaServed } from '../lib/schema';
 import { langOf, route, pathsFor, ui } from '../lib/i18n';
 
 interface Props { service: Service }
@@ -32,8 +33,8 @@ const chiffresHref = s.chiffres.lienVers === 'rendez-vous' ? site.calUrl : r.anc
 const jsonLd = [
   {
     '@context': 'https://schema.org', '@type': 'Service', name: s.nom, description: texteSeul(s.hero.texte), url,
-    serviceType: s.nom, areaServed: t.areaServed,
-    provider: { '@type': 'Organization', '@id': `${SITE_URL}/#organisation`, name: 'shyft', url: `${SITE_URL}/` }, inLanguage: t.inLanguage,
+    serviceType: s.nom, areaServed: areaServed(),
+    provider: { '@id': ORG_ID }, inLanguage: t.inLanguage,
   },
   {
     '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [

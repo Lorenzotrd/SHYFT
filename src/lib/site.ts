@@ -10,6 +10,30 @@ export const META_PIXEL_ID = '';
 /** Conversion Google Ads de la prise de rendez-vous, comptée sur la page /rendez-vous/merci. Vide : rien n'est envoyé. */
 export const ADS_CONVERSION_RDV = '';
 
+/** Coordonnées de l'agence : données structurées, en-tête, pied de page, llms.txt.
+ *  Un champ vide n'est jamais affiché ni publié (données structurées comprises). */
+export const CONTACT = {
+  email: 'team@shyftgrowth.com',
+  /** Numéro au format international, sans espace (lien tel:) : '+33612345678'. Vide : le numéro n'apparaît nulle part. */
+  phone: '',
+  /** Numéro tel qu'il s'affiche : '06 12 34 56 78'. */
+  phoneDisplay: '',
+};
+
+/** Pages de l'agence sur les réseaux (LinkedIn, Instagram…), en adresses complètes. Publiées en sameAs. */
+export const SOCIALS: string[] = [];
+
+/** Zone desservie, en noms de pays anglais (schema.org). */
+export const AREA_SERVED = ['France', 'Canada', 'United States'];
+
+/** Fondateurs : page à propos et données structurées. Photos dans public/team/. */
+export const FOUNDERS = [
+  { id: 'lorenzo', givenName: 'Lorenzo', familyName: 'Trichard', linkedin: '', photo: '/team/lorenzo.jpg' },
+  { id: 'quentin', givenName: 'Quentin', familyName: '', linkedin: '', photo: '/team/quentin.jpg' },
+] as const;
+export type Founder = (typeof FOUNDERS)[number];
+export const founderName = (f: Founder) => [f.givenName, f.familyName].filter(Boolean).join(' ');
+
 /** Retours à la ligne du contenu → <br>, avec une espace devant pour que les mots ne se collent pas sur mobile. */
 export const br = (text: string) => text.replace(/\s*\n/g, ' <br>');
 
