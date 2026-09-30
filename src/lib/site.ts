@@ -4,7 +4,7 @@ export const YEAR = 2026;
 export const SITE_URL = 'https://www.shyftgrowth.com';
 /** Conteneur Google Tag Manager (« GTM-XXXXXXX ») : GA4, Google Ads et Meta y sont configurés.
  *  Vide : ni GTM, ni bandeau de consentement, aucune mesure. */
-export const GTM_ID = '';
+export const GTM_ID = 'GTM-TDNRKQJQ';
 /** Flux GA4 (configuré dans GTM). Sert au serveur (Measurement Protocol, book_call) et à lire l'identifiant de
  *  session dans le cookie _ga_… ; aucun script GA4 n'est chargé directement par le site. */
 export const GA_ID = 'G-XC6CD5J71S';
