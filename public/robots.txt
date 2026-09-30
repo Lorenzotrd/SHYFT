@@ -1,6 +1,23 @@
+# Moteurs de recherche et moteurs IA : tout le site public est ouvert.
+# Les robots nommés ci-dessous ont leur propre groupe : les exclusions y sont répétées.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /keystatic
+
 User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /api/
 Disallow: /keystatic
+
 Sitemap: https://www.shyftgrowth.com/sitemap.xml
