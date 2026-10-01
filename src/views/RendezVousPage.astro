@@ -5,7 +5,7 @@ import Site from '../layouts/Site.astro';
 import Nav from '../components/shyft/Nav.astro';
 import Footer from '../components/shyft/Footer.astro';
 import Icon from '../components/shyft/Icon.astro';
-import { SITE_URL, CONTACT, rich } from '../lib/site';
+import { SITE_URL, CONTACT, rich, whatsappUrl } from '../lib/site';
 import { single } from '../lib/content';
 import { langOf, route, pathsFor, ui } from '../lib/i18n';
 
@@ -38,6 +38,7 @@ const jsonLd = [{
         {p.fallback} <a href={site.calUrl} data-direct data-emplacement="page-rendez-vous-secours" rel="noopener">{p.fallbackLink}</a>
         {CONTACT.phone && <><br>{p.phone} : <a href={`tel:${CONTACT.phone}`} data-emplacement="page-rendez-vous">{CONTACT.phoneDisplay || CONTACT.phone}</a></>}
         <br>{p.email} : <a href={`mailto:${CONTACT.email}`} data-emplacement="page-rendez-vous">{CONTACT.email}</a>
+        {CONTACT.whatsapp && <><br>{p.whatsapp} : <a href={whatsappUrl(t.whatsapp.message)} target="_blank" rel="noopener" data-emplacement="page-rendez-vous">{t.whatsapp.label}</a></>}
       </p>
     </section>
   </main>

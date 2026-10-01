@@ -7,6 +7,7 @@ import { BRAND, SITE_URL, GA_ID, ADS_ENABLED, ADS_CONVERSION, ADS_CONVERSION_RDV
 import { langOf, ui, LANGS, type Paths } from '../lib/i18n';
 import { services, single } from '../lib/content';
 import { organisation, clean } from '../lib/schema';
+import WhatsApp from '../components/shyft/WhatsApp.astro';
 
 interface Props {
   title: string;
@@ -77,6 +78,7 @@ const fontCss =
 <body>
 <a class="skip-link" href="#main">{t.skip}</a>
 <div class="frame"><slot /></div>
+<WhatsApp />
 <script type="application/ld+json" is:inline set:html={structured}></script>
 <script>
   // Provenance de la visite (campagne, gclid, site d'origine, première visite), gardée pour la demande d'audit.
