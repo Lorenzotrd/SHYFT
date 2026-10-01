@@ -128,6 +128,11 @@
    const tel = contact.getAttribute('href').startsWith('tel:');
    gtag('event', tel ? 'clic_telephone' : 'clic_email', { emplacement: contact.dataset.emplacement || 'lien', page_origine: location.pathname });
   }
+  // Clics vers WhatsApp (bouton flottant, pied de page, page rendez-vous), après accord seulement.
+  const whatsapp = event.target.closest('a[href^="https://wa.me/"]');
+  if (whatsapp && choice.get() === 'granted') {
+   gtag('event', 'clic_whatsapp', { emplacement: whatsapp.dataset.emplacement || 'lien', page_origine: location.pathname });
+  }
  });
 
  // Ouverture de la fenêtre de rendez-vous (booking.js). La réservation, elle, est comptée par le serveur (book_call).

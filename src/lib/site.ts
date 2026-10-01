@@ -22,7 +22,12 @@ export const CONTACT = {
   phone: '',
   /** Numéro tel qu'il s'affiche : '06 12 34 56 78'. */
   phoneDisplay: '',
+  /** Numéro WhatsApp au format international, chiffres seuls, sans + : '33612345678'. Vide : aucun lien WhatsApp. */
+  whatsapp: '33743601993',
 };
+
+/** Lien WhatsApp avec un premier message prérempli. */
+export const whatsappUrl = (message: string) => `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(message)}`;
 
 /** Pages de l'agence sur les réseaux (LinkedIn, Instagram…), en adresses complètes. Publiées en sameAs. */
 export const SOCIALS: string[] = [];

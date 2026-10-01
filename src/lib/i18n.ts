@@ -72,8 +72,9 @@ export const ui = {
       h1: 'Prendre rendez-vous avec un expert acquisition',
       calendar: 'Calendrier de réservation',
       fallback: 'Le calendrier ne s’affiche pas ?', fallbackLink: 'Réserver directement sur Cal.com',
-      phone: 'Ou appelez-nous', email: 'Ou écrivez-nous',
+      phone: 'Ou appelez-nous', email: 'Ou écrivez-nous', whatsapp: 'Ou sur WhatsApp',
     },
+    whatsapp: { label: 'Nous écrire sur WhatsApp', message: 'Bonjour, je suis intéressé par vos services.' },
     eventail: 'Exemples de demandes et de suivis, données d’illustration',
     geo: {
       keyword: 'Mot clé', zone: 'Zone', points: 'points', average: 'Position moyenne', top3: 'Zone en top 3',
@@ -113,8 +114,9 @@ export const ui = {
       h1: 'Book a call with a customer acquisition expert',
       calendar: 'Booking calendar',
       fallback: 'Calendar not showing?', fallbackLink: 'Book directly on Cal.com',
-      phone: 'Or call us', email: 'Or email us',
+      phone: 'Or call us', email: 'Or email us', whatsapp: 'Or on WhatsApp',
     },
+    whatsapp: { label: 'Message us on WhatsApp', message: 'Hello, I’m interested in your services.' },
     eventail: 'Sample leads and reports, illustrative data',
     geo: {
       keyword: 'Keyword', zone: 'Area', points: 'points', average: 'Average rank', top3: 'Area in the top 3',
