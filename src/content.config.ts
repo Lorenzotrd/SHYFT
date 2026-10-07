@@ -256,8 +256,8 @@ const blog = defineCollection({
     services: z.array(z.enum(['seo', 'google-ads', 'meta-ads', 'agence-ia', 'creation-site', 'data-tracking'])).default([]),
     /** Questions fréquentes affichées après l'article et publiées en JSON-LD FAQPage. */
     faq: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
-    /** Visuel d'en-tête : maquette dessinée en HTML (résultats Google, fiche Google, site sur téléphone). */
-    couverture: z.enum(['serp', 'fiche', 'telephone']).optional(),
+    /** Image d'en-tête, dans public/assets/blog/ (format 3:2, .webp). Absente : l'en-tête reste en texte seul. */
+    image: z.object({ src: z.string(), alt: z.string() }).optional(),
     draft: z.boolean().default(false),
   }),
 });

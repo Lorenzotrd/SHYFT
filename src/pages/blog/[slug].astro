@@ -8,10 +8,6 @@ import Footer from '../../components/shyft/Footer.astro';
 import Bouton from '../../components/shyft/Bouton.astro';
 import Icon from '../../components/shyft/Icon.astro';
 import Faq from '../../components/shyft/Faq.astro';
-import SerpMaquette from '../../components/blog/SerpMaquette.astro';
-import FicheMaquette from '../../components/blog/FicheMaquette.astro';
-import TelephoneMaquette from '../../components/blog/TelephoneMaquette.astro';
-import ResumerIA from '../../components/blog/ResumerIA.astro';
 import { SITE_URL, FOUNDERS, founderName } from '../../lib/site';
 import { ORG_ID, personId } from '../../lib/schema';
 import { publishedPosts, readingTime, services as allServices, type Post } from '../../lib/content';
@@ -30,7 +26,6 @@ const minutes = readingTime(post.body);
 const date = (x: Date) => x.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 const { Content } = await render(post);
 const lies = (await allServices('fr')).filter((s) => d.services.includes(s.id as never));
-const Couverture = d.couverture && { serp: SerpMaquette, fiche: FicheMaquette, telephone: TelephoneMaquette }[d.couverture];
 
 const jsonLd = [
   {
@@ -38,7 +33,7 @@ const jsonLd = [
     headline: d.title, description: d.description, inLanguage: ui.fr.inLanguage,
     datePublished: d.pubDate.toISOString(), dateModified: (d.updatedDate ?? d.pubDate).toISOString(),
     author: { '@type': 'Person', '@id': personId(auteur), name: founderName(auteur), url: `${SITE_URL}/a-propos#${auteur.id}` },
-    publisher: { '@id': ORG_ID }, image: `${SITE_URL}/assets/og.png?v=2`, timeRequired: `PT${minutes}M`,
+    publisher: { '@id': ORG_ID }, image: `${SITE_URL}${d.image?.src ?? '/assets/og.png?v=2'}`, timeRequired: `PT${minutes}M`,
   },
   {
     '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
@@ -57,8 +52,7 @@ const jsonLd = [
   <Nav paths={{ fr: path }} />
   <main id="main">
     <article class="article">
-      <header class:list={['head', { 'avec-couv': Couverture }]}>
-        <div class="head-txt">
+      <header class="head">
         <nav class="crumbs" aria-label={ui.fr.crumbs}>
           <ol><li><a href={r.home}>Accueil</a></li><li><a href="/blog">Blog</a></li><li aria-current="page">{d.title}</li></ol>
         </nav>
@@ -70,10 +64,8 @@ const jsonLd = [
           {d.updatedDate && <><span aria-hidden="true">·</span> mis à jour le <time datetime={d.updatedDate.toISOString()}>{date(d.updatedDate)}</time></>}
           <span aria-hidden="true">·</span> {minutes} min de lecture
         </p>
-        <ResumerIA url={url} />
-        </div>
-        {Couverture && <div class="couv"><Couverture legende={false} /></div>}
       </header>
+      {d.image && <img class="couv" src={d.image.src} alt={d.image.alt} width="1536" height="1024" fetchpriority="high" decoding="async" />}
       <div class="prose"><Content /></div>
 
       {d.faq.length > 0 && (
@@ -122,10 +114,10 @@ const jsonLd = [
   });
 </script>
 <style>
-  .article{padding:60px var(--gutter) 0;display:flex;flex-direction:column;gap:44px;max-width:calc(1160px + 2 * var(--gutter));margin:0 auto;width:100%}
-  /* L'en-tête prend toute la largeur ; le texte et les blocs suivants restent sur une colonne de lecture. */
-  .article > :not(.head){width:100%;max-width:780px;margin-inline:auto}
-  .head:not(.avec-couv){width:100%;max-width:780px;margin-inline:auto}
+  .article{padding:60px var(--gutter) 0;display:flex;flex-direction:column;gap:44px;max-width:calc(1060px + 2 * var(--gutter));margin:0 auto;width:100%}
+  /* L'image d'en-tête prend toute la largeur ; le texte et les blocs restent sur une colonne de lecture. */
+  .article > :not(.couv){width:100%;max-width:780px;margin-inline:auto}
+  .couv{width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover;border-radius:var(--r-card);background:var(--card)}
   .head{display:flex;flex-direction:column;gap:18px}
   .crumbs ol{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:10px;font-size:14px;color:var(--muted)}
   .crumbs li+li::before{content:"/";margin-right:10px}
@@ -149,10 +141,6 @@ const jsonLd = [
   .prose :global(figcaption){font-size:14px;line-height:1.55;color:var(--muted)}
   .prose :global(> h2:first-child){margin-top:0}
   .questions{display:flex;flex-direction:column;gap:20px}
-  .head.avec-couv{display:grid;grid-template-columns:minmax(0, 1fr) 360px;gap:40px;align-items:center}
-  .head-txt{display:flex;flex-direction:column;gap:18px;min-width:0}
-  .couv{padding:28px 22px;border-radius:var(--r-card);background:var(--accent)}
-  .couv :global(figure){margin:0}
   .auteur{display:flex;gap:18px;align-items:flex-start;padding:24px;border-radius:var(--r);background:var(--card)}
   .auteur img{flex:none;width:72px;height:72px;border-radius:50%;object-fit:cover}
   .auteur div{display:flex;flex-direction:column;gap:4px}
@@ -172,13 +160,9 @@ const jsonLd = [
   .cta-title{font-size:34px;line-height:1.05;font-weight:600;letter-spacing:-.04em}
   .cta-title :global(.serif){color:var(--accent)}
   .cta p:not(.cta-title){max-width:560px;font-size:15px;line-height:1.6;color:var(--on-dark-muted)}
-  @media (max-width:980px){
-    .head.avec-couv{grid-template-columns:1fr;gap:28px}
-    .couv{max-width:460px;width:100%}
-  }
   @media (max-width:640px){
     .article{padding-top:34px;gap:28px}
-    .couv{padding:22px 14px}
+    .couv{border-radius:20px}
     .cta-btns{flex-direction:column;width:100%}
     .cta-btns :global(.btn){width:100%}
     .prose{font-size:16px}
