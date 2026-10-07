@@ -41,7 +41,7 @@ export const AREA_SERVED = ['France', 'Canada', 'United States'];
 
 /** Fondateurs : page à propos et données structurées. Photos dans public/team/. */
 export const FOUNDERS = [
-  { id: 'lorenzo', givenName: 'Lorenzo', familyName: 'Trichard', linkedin: '', photo: '/team/lorenzo.jpg' },
+  { id: 'lorenzo', givenName: 'Lorenzo', familyName: 'T.', linkedin: '', photo: '/team/lorenzo.jpg' },
   { id: 'quentin', givenName: 'Quentin', familyName: 'Garcia', linkedin: 'https://www.linkedin.com/in/quentin-garcia-b45271346/', photo: '/team/quentin.jpg' },
 ] as const;
 export type Founder = (typeof FOUNDERS)[number];

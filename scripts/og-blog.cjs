@@ -11,7 +11,7 @@ const { chromium } = require('playwright');
 const ROOT = path.join(__dirname, '..');
 const PUBLIC = path.join(ROOT, 'public');
 const BLOG = path.join(ROOT, 'src/content/blog');
-const AUTEURS = { lorenzo: 'Lorenzo Trichard', quentin: 'Quentin Garcia' };
+const AUTEURS = { lorenzo: 'Lorenzo T.', quentin: 'Quentin Garcia' };
 
 const dataUrl = (file, type) => `data:${type};base64,${fs.readFileSync(path.join(PUBLIC, file)).toString('base64')}`;
 const escape = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
