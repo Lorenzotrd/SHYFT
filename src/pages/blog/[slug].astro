@@ -1,12 +1,13 @@
 ---
 // Article du blog (/blog/<fichier>) : auteur, date, temps de lecture, contenu Markdown, services liés,
-// audit offert. JSON-LD BlogPosting et fil d'Ariane. Les brouillons ne sont jamais générés.
+// questions fréquentes, audit offert. JSON-LD BlogPosting, FAQPage et fil d'Ariane. Les brouillons ne sont jamais générés.
 import { render } from 'astro:content';
 import Site from '../../layouts/Site.astro';
 import Nav from '../../components/shyft/Nav.astro';
 import Footer from '../../components/shyft/Footer.astro';
 import Bouton from '../../components/shyft/Bouton.astro';
 import Icon from '../../components/shyft/Icon.astro';
+import Faq from '../../components/shyft/Faq.astro';
 import { SITE_URL, FOUNDERS, founderName } from '../../lib/site';
 import { ORG_ID, personId } from '../../lib/schema';
 import { publishedPosts, readingTime, services as allServices, type Post } from '../../lib/content';
@@ -41,6 +42,10 @@ const jsonLd = [
       { '@type': 'ListItem', position: 3, name: d.title, item: url },
     ],
   },
+  ...(d.faq.length ? [{
+    '@context': 'https://schema.org', '@type': 'FAQPage', '@id': `${url}#faq`,
+    mainEntity: d.faq.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+  }] : []),
 ];
 ---
 <Site title={`${d.title} | SHYFT`} description={d.description} paths={{ fr: path }} jsonLd={jsonLd}>
@@ -61,6 +66,13 @@ const jsonLd = [
         </p>
       </header>
       <div class="prose"><Content /></div>
+
+      {d.faq.length > 0 && (
+        <section class="questions" aria-labelledby="faq-titre">
+          <h2 id="faq-titre">Questions fréquentes</h2>
+          <Faq items={d.faq} />
+        </section>
+      )}
 
       {lies.length > 0 && (
         <nav class="related" aria-labelledby="lies-titre">
@@ -97,6 +109,26 @@ const jsonLd = [
   .prose :global(a){text-decoration:underline;text-underline-offset:.22em}
   .prose :global(img){border-radius:var(--r);margin:10px 0}
   .prose :global(blockquote){margin:0 0 18px;padding:4px 0 4px 20px;border-left:3px solid var(--accent)}
+  .prose :global(strong){color:var(--ink)}
+  .prose :global(table){width:100%;margin:10px 0 24px;border-collapse:collapse;font-size:16px;line-height:1.5;display:block;overflow-x:auto}
+  .prose :global(th),.prose :global(td){padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  .prose :global(th){font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--label);white-space:nowrap}
+  /* Encadré « l'essentiel » et schémas insérés en HTML dans le Markdown. */
+  .prose :global(.essentiel){margin:0 0 28px;padding:24px 28px;border-radius:var(--r);background:var(--card)}
+  .prose :global(.essentiel p:first-child){margin-bottom:8px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--label)}
+  .prose :global(.essentiel ul){margin:0}
+  .prose :global(figure){margin:10px 0 28px;padding:24px;border-radius:var(--r);background:var(--card)}
+  .prose :global(figcaption){margin-top:16px;font-size:14px;line-height:1.55;color:var(--muted)}
+  .prose :global(.geogrid){display:grid;grid-template-columns:repeat(7, 1fr);gap:8px;max-width:420px;margin:0 auto}
+  .prose :global(.geogrid span){display:grid;place-items:center;aspect-ratio:1;border-radius:50%;font-size:14px;font-weight:700;color:#fff}
+  .prose :global(.geogrid .t){background:var(--map-top)}
+  .prose :global(.geogrid .m){background:var(--map-mid)}
+  .prose :global(.geogrid .l){background:var(--map-low)}
+  .prose :global(.geogrid .c){outline:3px solid var(--ink);outline-offset:2px}
+  .prose :global(.legende){display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-top:16px;font-size:14px;color:var(--muted)}
+  .prose :global(.legende i){display:inline-block;width:12px;height:12px;margin-right:6px;border-radius:50%;vertical-align:-1px}
+  .questions{display:flex;flex-direction:column;gap:20px}
+  .questions h2{font-size:30px;line-height:1.15;letter-spacing:-.03em}
   .related{display:flex;flex-direction:column;gap:16px;padding-top:30px;border-top:1px solid var(--line)}
   .related h2{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--label)}
   .related div{display:flex;flex-wrap:wrap;gap:10px}
@@ -112,6 +144,10 @@ const jsonLd = [
     .article{padding-top:34px;gap:28px}
     .prose{font-size:16px}
     .prose :global(h2){font-size:24px}
+    .prose :global(.essentiel),.prose :global(figure){padding:20px}
+    .prose :global(.geogrid){gap:5px}
+    .prose :global(.geogrid span){font-size:12px}
+    .questions h2{font-size:24px}
     .cta{padding:26px 22px;border-radius:22px}
     .cta-title{font-size:27px}
   }

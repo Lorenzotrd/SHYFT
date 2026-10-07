@@ -253,6 +253,8 @@ const blog = defineCollection({
     author: z.enum(['lorenzo', 'quentin']),
     /** Services liés, affichés en fin d'article (identifiants des fiches services). */
     services: z.array(z.enum(['seo', 'google-ads', 'meta-ads', 'agence-ia', 'creation-site', 'data-tracking'])).default([]),
+    /** Questions fréquentes affichées après l'article et publiées en JSON-LD FAQPage. */
+    faq: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
     draft: z.boolean().default(false),
   }),
 });
