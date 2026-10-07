@@ -1,0 +1,42 @@
+---
+// GeoGrid sur une carte OpenStreetMap (image fixe de Lyon) : même rendu que le composant GeoGrid des pages services.
+// Chaque ligne de « positions » est une liste de rangs séparés par des virgules ; seuls les points du cercle sont affichés.
+interface Props { positions: string[]; legende: string; aria: string }
+const { positions, legende, aria } = Astro.props;
+const grid = positions.map((row) => row.split(',').map((v) => Number(v.trim())));
+const mid = (grid.length - 1) / 2;
+const classe = (n: number) => (n <= 3 ? 't' : n <= 10 ? 'm' : 'l');
+---
+<figure class="geo-fig">
+  <div class="geomap" role="img" aria-label={aria}>
+    <img src="/assets/blog/geogrid-carte.webp" alt="" width="900" height="900" loading="lazy" decoding="async">
+    <div class="grille" style={`grid-template-columns:repeat(${grid.length}, minmax(0, 1fr))`}>
+      {grid.flatMap((row, r) => row.map((n, c) => Math.hypot(r - mid, c - mid) > mid + 0.2
+        ? <span class="out"></span>
+        : <span class:list={[classe(n), { c: r === mid && c === mid }]}>{n > 20 ? '20+' : n}</span>))}
+    </div>
+    <a class="osm" href="https://www.openstreetmap.org/copyright" rel="noopener">© OpenStreetMap</a>
+  </div>
+  <div class="cles"><span><i class="t"></i>Top 3 : visible dans le bloc Maps</span><span><i class="m"></i>4 à 10 : visible en faisant défiler</span><span><i class="l"></i>Au-delà de 10 : quasi invisible</span></div>
+  <figcaption>{legende}</figcaption>
+</figure>
+<style>
+  .geo-fig{margin:10px 0 30px;padding:24px;border-radius:var(--r);background:var(--card)}
+  .geomap{position:relative;max-width:560px;margin:0 auto;aspect-ratio:1;border-radius:16px;overflow:hidden;background:#e8e6df}
+  .geomap img{position:absolute;inset:0;width:100%;height:100%;margin:0;border-radius:0;object-fit:cover;filter:saturate(.55)}
+  .grille{position:absolute;inset:6%;display:grid;gap:10px;place-items:center}
+  .grille span{width:100%;max-width:50px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;border:3px solid #fff;box-shadow:0 6px 14px rgba(0,0,0,.18);color:var(--ink);font-size:15px;font-weight:700;line-height:1}
+  .t{background:var(--map-top)} .m{background:var(--map-mid)} .l{background:var(--map-low)}
+  .grille .c{border:4px solid var(--ink)}
+  .grille .out{visibility:hidden}
+  .osm{position:absolute;right:0;bottom:0;padding:3px 8px;border-top-left-radius:8px;background:rgba(255,255,255,.85);font-size:11px;line-height:1.4;color:#333;text-decoration:none!important}
+  .cles{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-top:16px;font-size:14px;color:var(--muted)}
+  .cles i{display:inline-block;width:12px;height:12px;margin-right:6px;border-radius:50%;vertical-align:-1px}
+  figcaption{margin-top:12px}
+  @media (max-width:640px){
+    .geo-fig{padding:16px}
+    .grille{gap:5px}
+    .grille span{font-size:11px;border-width:2px}
+    .grille .c{border-width:3px}
+  }
+</style>

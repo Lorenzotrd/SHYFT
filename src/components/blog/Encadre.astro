@@ -1,0 +1,23 @@
+---
+// Encadré dans un article : l'essentiel, une astuce, un point d'attention ou un exemple.
+interface Props { type?: 'essentiel' | 'astuce' | 'attention' | 'exemple'; titre?: string }
+const { type = 'essentiel', titre } = Astro.props;
+const defaut = { essentiel: 'Ce qu’il faut retenir', astuce: 'Astuce', attention: 'Attention', exemple: 'Exemple' }[type];
+const pictos = { essentiel: '★', astuce: '💡', attention: '⚠', exemple: '→' };
+---
+<div class:list={['encadre', type]}>
+  <p class="tete"><span aria-hidden="true">{pictos[type]}</span>{titre ?? defaut}</p>
+  <div class="corps"><slot /></div>
+</div>
+<style>
+  .encadre{margin:28px 0;padding:22px 26px;border-radius:var(--r);background:var(--card);border-left:5px solid var(--line-3)}
+  .essentiel{border-left-color:var(--accent)}
+  .astuce{border-left-color:var(--map-top)}
+  .attention{border-left-color:var(--map-low);background:var(--bad-bg)}
+  .exemple{border-left-color:var(--ink)}
+  .tete{display:flex;align-items:center;gap:10px;margin:0 0 10px!important;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+  .corps{font-size:17px;line-height:1.65}
+  .corps :global(p:last-child),.corps :global(ul:last-child),.corps :global(ol:last-child){margin-bottom:0}
+  .corps :global(li+li){margin-top:6px}
+  @media (max-width:640px){ .encadre{padding:18px 18px} .corps{font-size:15.5px} }
+</style>

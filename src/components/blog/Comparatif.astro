@@ -1,0 +1,28 @@
+---
+// Deux colonnes : ce qu'il faut éviter, ce qu'il faut faire.
+interface Props { eviter: { titre: string; points: string[] }; faire: { titre: string; points: string[] } }
+const { eviter, faire } = Astro.props;
+---
+<div class="comp">
+  <div class="col non">
+    <p class="t"><span aria-hidden="true">✕</span>{eviter.titre}</p>
+    <ul>{eviter.points.map((p) => <li>{p}</li>)}</ul>
+  </div>
+  <div class="col oui">
+    <p class="t"><span aria-hidden="true">✓</span>{faire.titre}</p>
+    <ul>{faire.points.map((p) => <li>{p}</li>)}</ul>
+  </div>
+</div>
+<style>
+  .comp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0 30px}
+  .col{padding:22px;border-radius:var(--r)}
+  .non{background:var(--bad-bg)}
+  .oui{background:var(--ok-bg)}
+  .t{display:flex;align-items:center;gap:10px;margin:0 0 12px!important;font-size:17px;font-weight:700;color:var(--ink)}
+  .t span{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;font-size:14px;color:#fff}
+  .non .t span{background:var(--map-low)}
+  .oui .t span{background:var(--map-top)}
+  ul{margin:0!important;padding-left:20px!important;font-size:15.5px;line-height:1.6}
+  li+li{margin-top:6px}
+  @media (max-width:760px){ .comp{grid-template-columns:1fr} }
+</style>

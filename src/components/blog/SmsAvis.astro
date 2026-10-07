@@ -1,0 +1,22 @@
+---
+// Exemple de SMS de demande d'avis, présenté comme une conversation sur téléphone.
+interface Props { message: string; reponse?: string }
+const { message, reponse } = Astro.props;
+---
+<figure class="sms-fig">
+  <div class="sms">
+    <p class="de">Message envoyé à votre client</p>
+    <p class="bulle moi">{message}</p>
+    {reponse && <p class="bulle lui">{reponse}</p>}
+  </div>
+  <figcaption>Exemple de message à adapter. Le lien se copie depuis votre fiche, bouton « Demander des avis ».</figcaption>
+</figure>
+<style>
+  .sms-fig{margin:10px 0 30px;padding:24px;border-radius:var(--r);background:var(--card)}
+  .sms{display:flex;flex-direction:column;gap:8px;max-width:420px;margin:0 auto}
+  .de{margin:0 0 4px!important;text-align:center;font-size:12px;color:var(--label)}
+  .bulle{max-width:85%;margin:0!important;padding:10px 14px;border-radius:18px;font-size:15px;line-height:1.45;white-space:pre-line}
+  .moi{align-self:flex-end;background:#0b84ff;color:#fff;border-bottom-right-radius:6px}
+  .lui{align-self:flex-start;background:var(--chip);color:var(--ink);border-bottom-left-radius:6px}
+  figcaption{margin-top:14px;text-align:center}
+</style>

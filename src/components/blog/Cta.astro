@@ -1,0 +1,35 @@
+---
+// Appel à l'action dans un article : l'audit offert et l'appel de 30 min, côte à côte.
+// « clair » sur fond jaune, « sombre » sur fond noir. L'emplacement sert à la mesure des clics.
+import Bouton from '../shyft/Bouton.astro';
+import { route } from '../../lib/i18n';
+interface Props { titre: string; texte?: string; ton?: 'clair' | 'sombre'; emplacement: string }
+const { titre, texte, ton = 'clair', emplacement } = Astro.props;
+const r = route.fr;
+---
+<aside class:list={['cta', ton, { 'on-dark': ton === 'sombre' }]} aria-label={titre}>
+  <div class="txt">
+    <p class="titre">{titre}</p>
+    {texte && <p class="texte">{texte}</p>}
+  </div>
+  <div class="actions">
+    <Bouton href={r.audit} variant={ton === 'clair' ? 'dark' : 'accent'} size="sm" emplacement={`blog-${emplacement}-audit`}>Recevoir mon audit offert</Bouton>
+    <Bouton href={r.rdv} variant={ton === 'clair' ? 'outline' : 'outline-light'} size="sm" emplacement={`blog-${emplacement}-appel`}>Réserver un appel de 30 min</Bouton>
+  </div>
+</aside>
+<style>
+  .cta{display:flex;flex-direction:column;gap:18px;margin:34px 0;padding:28px;border-radius:var(--r)}
+  .clair{background:var(--accent);color:var(--ink)}
+  .sombre{background:var(--dark);color:var(--on-dark)}
+  .txt{display:flex;flex-direction:column;gap:6px}
+  .titre{margin:0;font-size:24px;line-height:1.15;font-weight:600;letter-spacing:-.03em}
+  .texte{margin:0;font-size:16px;line-height:1.55;opacity:.85}
+  .actions{display:flex;flex-wrap:wrap;gap:10px}
+  .cta :global(a){text-decoration:none}
+  @media (max-width:640px){
+    .cta{padding:22px 20px}
+    .titre{font-size:20px}
+    .actions{flex-direction:column}
+    .actions :global(.btn){width:100%}
+  }
+</style>
