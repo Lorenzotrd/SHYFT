@@ -11,12 +11,12 @@ export const POSTHOG_HOST = 'https://eu.i.posthog.com';
 /** Google Ads actif via la balise Google : le bandeau mentionne la publicité et l'accord accorde ad_storage et ad_user_data.
  *  La conversion « Envoi de formulaire de lead » est comptée par Google Ads au chargement de /audit-offert/merci. */
 export const ADS_ENABLED = true;
-/** Conversion Google Ads de la demande d'audit, au format « AW-123456789/AbCdEfGh ». Vide : aucun événement de conversion envoyé par le code. */
-export const ADS_CONVERSION = '';
+/** Conversion Google Ads « SHYFT - Demande d'audit » (principale), au format « AW-123456789/AbCdEfGh ». Vide : aucun événement de conversion envoyé par le code. */
+export const ADS_CONVERSION = 'AW-18468970949/j2KACMWM85MdEMXD2OZE';
 /** Identifiant du pixel Meta. Vide : le pixel n'est jamais chargé. */
 export const META_PIXEL_ID = '';
-/** Conversion Google Ads de la prise de rendez-vous, comptée sur la page /rendez-vous/merci. Vide : rien n'est envoyé. */
-export const ADS_CONVERSION_RDV = '';
+/** Conversion Google Ads « SHYFT - RDV réservé » (principale), comptée sur la page /rendez-vous/merci. Vide : rien n'est envoyé. */
+export const ADS_CONVERSION_RDV = 'AW-18468970949/uCCTCMiM85MdEMXD2OZE';
 
 /** Coordonnées de l'agence : données structurées, en-tête, pied de page, llms.txt.
  *  Un champ vide n'est jamais affiché ni publié (données structurées comprises). */
