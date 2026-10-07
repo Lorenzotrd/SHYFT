@@ -248,6 +248,8 @@ const blog = defineCollection({
   loader: glob({ pattern: '*.{md,mdx}', base: './src/content/blog' }),
   schema: z.object({
     title: z.string(),
+    /** Titre affiché dans Google (60 caractères environ, « | SHYFT » compris). Absent : le titre suivi de « | SHYFT ». */
+    seoTitle: z.string().max(60).optional(),
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),

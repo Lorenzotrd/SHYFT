@@ -50,7 +50,7 @@ const jsonLd = [
   }] : []),
 ];
 ---
-<Site title={`${d.title} | SHYFT`} description={d.description} paths={{ fr: path }} jsonLd={jsonLd} ogImage={ogImage}>
+<Site title={d.seoTitle ?? `${d.title} | SHYFT`} description={d.description} paths={{ fr: path }} jsonLd={jsonLd} ogImage={ogImage}>
   <Nav paths={{ fr: path }} />
   <main id="main">
     <article class="article">
