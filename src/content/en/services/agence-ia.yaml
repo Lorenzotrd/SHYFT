@@ -3,7 +3,7 @@ nomCourt: AI
 ordre: 4
 groupeMenu: IA et automatisation
 phraseMenu: Follow-ups, bids, custom CRM
-seoTitle: 'AI Automation Agency for Small Businesses | SHYFT Growth'
+seoTitle: 'AI Automation Agency | Workflows & Lead Follow-Up | SHYFT'
 seoDescription: 'Automate lead qualification, follow-ups, CRM, email, SMS and internal tasks with AI workflows built around your business.'
 carte:
   texte: 'Quotes, follow-ups, bids, chasing documents: less busywork for your team.'
@@ -14,7 +14,7 @@ audit:
   tag: Productivity
   description: Your team's repetitive tasks and what we could automate first.
 hero:
-  h1: "AI automation for small businesses"
+  h1: "AI automation agency"
   titre: Less busywork, *better follow-up*
   texte: Quotes, follow-ups, bids and RFPs, documents to chase. We automate what costs your team hours and costs your business customers.
 suivi:
@@ -85,9 +85,9 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: "Which tasks can a small business automate with AI?"
+- question: "Which tasks can a business automate with AI?"
   answer: "Mostly repetitive ones: quote follow-ups, sorting incoming requests, collecting documents, answering common questions and a first read of bids and tenders. We start with the ones that save the most hours."
-- question: "How much does AI automation cost for a small business?"
+- question: "How much does AI automation cost?"
   answer: "It depends on the number of tasks and the tools to connect. Each automation is priced in the plan, with the hours it should save, so you can judge the return before launch."
 - question: "Do we need to change our tools to automate?"
   answer: "No. We start from what you already use, and only add a tool when it's truly needed."

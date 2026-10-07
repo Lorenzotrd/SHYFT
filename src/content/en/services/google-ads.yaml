@@ -3,7 +3,7 @@ nomCourt: Google Ads
 ordre: 2
 groupeMenu: Acquisition et visibilité
 phraseMenu: Capture demand, right now
-seoTitle: 'Google Ads Management for Small Businesses | SHYFT'
+seoTitle: 'Google Ads Agency | Campaign Management | SHYFT Growth'
 seoDescription: 'SHYFT builds and manages Google Ads campaigns that drive profitable calls and quote requests, with every conversion tracked accurately.'
 carte:
   texte: Capture urgent requests the moment people search for them, without burning your budget.
@@ -14,7 +14,7 @@ audit:
   tag: Paid ads
   description: Your account if you have one, what your industry's keywords cost, and your competitors' ads.
 hero:
-  h1: "Google Ads agency for small businesses"
+  h1: "Google Ads agency"
   titre: Capture demand *the moment* people search
   texte: Local campaigns, tightly focused on your service area and your most profitable services. Every dollar tracked all the way to the call or quote request.
 suivi:
@@ -85,7 +85,7 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: "How much does a Google Ads campaign cost for a small business?"
+- question: "How much does a Google Ads campaign cost?"
   answer: "It depends on your area, your trade and your competition. Ad spend is paid directly to Google, on your own account, and we set it together in the plan, before launch."
 - question: "How fast does Google Ads bring in leads?"
   answer: "Within the first days of running. It then takes four to eight weeks of adjustments to bring the cost per lead down, while we cut the searches that don't pay off."

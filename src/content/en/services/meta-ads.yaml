@@ -3,8 +3,8 @@ nomCourt: Meta Ads
 ordre: 3
 groupeMenu: Acquisition et visibilité
 phraseMenu: Create demand on Facebook and Instagram
-seoTitle: 'Meta Ads Agency for Small Businesses | Facebook & Instagram'
-seoDescription: 'Facebook and Instagram ads for small businesses: targeting, creatives, testing and qualified lead forms that bring in more sales inquiries.'
+seoTitle: 'Facebook Ads Agency | Facebook & Instagram Ads | SHYFT'
+seoDescription: 'Facebook and Instagram ads that sell: targeting, creatives, testing and qualified lead forms that bring in more sales inquiries.'
 carte:
   texte: Reach people who aren't looking for you yet, on Facebook and Instagram, within your service radius.
   texteCourt: Reach people who aren't looking for you yet, near you.
@@ -14,7 +14,7 @@ audit:
   tag: Paid ads
   description: Your Facebook and Instagram ads, and the ones your competitors are running.
 hero:
-  h1: "Facebook and Instagram ads agency for small businesses"
+  h1: "Facebook and Instagram ads agency"
   titre: Reach people who aren't looking for you *yet*
   texte: Facebook and Instagram, targeted to the area you serve. Create demand before it goes to a competitor.
 suivi:
@@ -85,7 +85,7 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: "How much do Facebook and Instagram ads cost for a small business?"
+- question: "How much do Facebook and Instagram ads cost?"
   answer: "It depends on your service radius and your goals. Ad spend is paid directly to Meta, on your own account, and set together in the plan, before launch."
 - question: "What is the difference between Meta Ads and Google Ads?"
   answer: "Google Ads captures people already searching for your service. Meta Ads reaches people who will need it but aren't searching yet. The two often work best together."

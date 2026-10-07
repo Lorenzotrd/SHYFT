@@ -91,7 +91,7 @@ export const ui = {
   en: {
     htmlLang: 'en', ogLocale: 'en_US', inLanguage: 'en-US',
     skip: 'Skip to content',
-    ogAlt: 'SHYFT Growth, digital agency for small businesses: SEO, Google Ads, Meta Ads, Google Maps and AI',
+    ogAlt: 'SHYFT Growth, growth marketing agency: SEO, Google Ads, Meta Ads, Google Maps and AI',
     nav: {
       home: 'shyft, home', about: 'About', call: 'Call', main: 'Main navigation', open: 'Open menu', close: 'Close menu',
       switchLabel: 'Lire cette page en français', switchText: 'FR',

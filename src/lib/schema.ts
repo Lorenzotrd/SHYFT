@@ -37,7 +37,7 @@ export function organisation(lang: Lang, services: Service[]) {
     name: 'SHYFT Growth', alternateName: 'SHYFT', url: `${SITE_URL}/`,
     logo: `${SITE_URL}/assets/icon-512.png`, image: `${SITE_URL}/assets/og.png?v=2`,
     description: lang === 'en'
-      ? 'Customer acquisition agency for small businesses: SEO, Google Ads, Meta Ads, websites, conversion tracking and AI automation.'
+      ? 'Growth marketing agency: SEO, Google Ads, Meta Ads, websites, conversion tracking and AI automation.'
       : 'Agence d’acquisition pour PME et négoces BTP : SEO, Google Ads, Meta Ads, sites internet, tracking des conversions et automatisation IA.',
     email: CONTACT.email, telephone: CONTACT.phone,
     areaServed: areaServed(), knowsLanguage: ['fr', 'en'],

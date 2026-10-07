@@ -3,7 +3,7 @@ nomCourt: Websites
 ordre: 5
 groupeMenu: Conversion et mesure
 phraseMenu: A site that converts, not just looks good
-seoTitle: 'Website Design for Small Businesses | SHYFT Growth'
+seoTitle: 'Web Design Agency | Websites That Convert | SHYFT Growth'
 seoDescription: 'Fast, modern websites built to rank on Google and turn visits into calls, quote requests and new customers.'
 carte:
   texte: A fast, clear website built to get you calls and quote requests. Not just another online brochure.
@@ -14,7 +14,7 @@ audit:
   tag: Conversion
   description: Your site on mobile, its speed, and the path to a call, a form or a sale.
 hero:
-  h1: "Website design for small businesses"
+  h1: "Web design agency for websites that convert"
   titre: A website that *converts*, not just looks good
   texte: Fast, clear on mobile and [built for Google](/en/services/seo). Designed to turn visitors into customers, whether that's a call, a booking, a request or a purchase. And easy for you to update.
 suivi:
@@ -85,10 +85,10 @@ chiffres:
 geogrid:
   discriminant: false
 faq:
-- question: "How much does a website cost for a small business?"
+- question: "How much does a business website cost?"
   answer: "It depends on the number of pages, the features and the content to produce. The price is set during scoping, before any development, along with the schedule and review dates."
 - question: "How long does it take to build a website?"
-  answer: "Usually four to eight weeks for a small business site, from mockup to launch. The exact schedule is set during scoping."
+  answer: "Usually four to eight weeks for a business site, from mockup to launch. The exact schedule is set during scoping."
 - question: "Should I rebuild my website or improve it?"
   answer: "Not necessarily rebuild it. If your site does its job, we improve it. We only suggest a redesign when it will win you more leads."
 - question: "Will my new website rank on Google?"
