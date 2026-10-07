@@ -25,8 +25,8 @@ const auteur = FOUNDERS.find((f) => f.id === d.author)!;
 const minutes = readingTime(post.body);
 const date = (x: Date) => x.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 const { Content } = await render(post);
-// Image de partage : même nom que l'image d'en-tête, suffixe -og (1200 × 630).
-const ogImage = d.image && { src: d.image.src.replace(/\.webp$/, '-og.jpg'), alt: d.image.alt };
+// Image de partage générée par npm run og (public/assets/blog/<article>-og.jpg, 1200 × 630).
+const ogImage = { src: `/assets/blog/${post.id}-og.jpg`, alt: d.title };
 const lies = (await allServices('fr')).filter((s) => d.services.includes(s.id as never));
 
 const jsonLd = [
