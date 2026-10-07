@@ -2,9 +2,12 @@
 // Grille de cartes : un titre, un texte, une étiquette facultative. Sert aux listes qui méritent mieux que des puces.
 // « vedette » : la carte prend toute la largeur, sur fond noir, pour mettre en avant l'élément principal.
 import Icon from '../shyft/Icon.astro';
+import { langOf } from '../../lib/i18n';
+import { blogUi } from '../../lib/blog';
 type Picto = 'phone' | 'check' | 'mail' | 'trend' | 'repere' | 'cible' | 'megaphone' | 'site' | 'graphique';
 interface Props { cartes: { titre: string; texte: string; tag?: string; icone?: Picto; lien?: string; vedette?: boolean }[]; colonnes?: 2 | 3 }
 const { cartes, colonnes = 2 } = Astro.props;
+const lire = blogUi[langOf(Astro.url)].lireArticle;
 ---
 <div class="cartes" style={`--cols:${colonnes}`}>
   {cartes.map((c) => {
@@ -15,7 +18,7 @@ const { cartes, colonnes = 2 } = Astro.props;
         {c.tag && <span class="tag">{c.tag}</span>}
         <p class="t">{c.titre}</p>
         <p class="x">{c.texte}</p>
-        {c.lien && <span class="go">Lire l’article <Icon name="arrow" size={11} stroke={2.6} /></span>}
+        {c.lien && <span class="go">{lire} <Icon name="arrow" size={11} stroke={2.6} /></span>}
       </Tag>
     );
   })}

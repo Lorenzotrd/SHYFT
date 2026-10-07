@@ -2,10 +2,13 @@
 // Appel à l'action dans un article : l'audit offert et l'appel de 30 min, côte à côte.
 // « clair » sur fond jaune, « sombre » sur fond noir. L'emplacement sert à la mesure des clics.
 import Bouton from '../shyft/Bouton.astro';
-import { route } from '../../lib/i18n';
+import { langOf, route } from '../../lib/i18n';
+import { blogUi } from '../../lib/blog';
 interface Props { titre: string; texte?: string; ton?: 'clair' | 'sombre'; emplacement: string }
 const { titre, texte, ton = 'clair', emplacement } = Astro.props;
-const r = route.fr;
+const lang = langOf(Astro.url);
+const r = route[lang];
+const t = blogUi[lang];
 ---
 <aside class:list={['cta', ton, { 'on-dark': ton === 'sombre' }]} aria-label={titre}>
   <div class="txt">
@@ -13,8 +16,8 @@ const r = route.fr;
     {texte && <p class="texte">{texte}</p>}
   </div>
   <div class="actions">
-    <Bouton href={r.audit} variant={ton === 'clair' ? 'dark' : 'accent'} size="sm" emplacement={`blog-${emplacement}-audit`}>Recevoir mon audit offert</Bouton>
-    <Bouton href={r.rdv} variant={ton === 'clair' ? 'outline' : 'outline-light'} size="sm" emplacement={`blog-${emplacement}-appel`}>Réserver un appel de 30 min</Bouton>
+    <Bouton href={r.audit} variant={ton === 'clair' ? 'dark' : 'accent'} size="sm" emplacement={`blog-${emplacement}-audit`}>{t.audit}</Bouton>
+    <Bouton href={r.rdv} variant={ton === 'clair' ? 'outline' : 'outline-light'} size="sm" emplacement={`blog-${emplacement}-appel`}>{t.appel}</Bouton>
   </div>
 </aside>
 <style>

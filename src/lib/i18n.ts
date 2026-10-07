@@ -32,7 +32,7 @@ const routes = (lang: Lang) => {
     page: (id: string) => (en ? `/en/${pageSlug(id, lang)}` : `/${id}`),
     /** Pages sans version anglaise : null en anglais. */
     about: en ? null : '/a-propos',
-    blog: en ? null : '/blog',
+    blog: en ? '/en/blog' : '/blog',
   };
 };
 
@@ -40,7 +40,7 @@ export type Routes = ReturnType<typeof routes>;
 export const route: Record<Lang, Routes> = { fr: routes('fr'), en: routes('en') };
 
 /** Adresse d'une même page dans chaque langue, pour hreflang et le sélecteur de langue.
- *  Une page sans version anglaise (à propos, blog) n'a que fr : ni hreflang, et le sélecteur mène à l'accueil anglais. */
+ *  Une page sans version anglaise (à propos, article non traduit) n'a que fr : ni hreflang, et le sélecteur mène à l'accueil anglais. */
 export type Paths = { fr: string; en?: string };
 export const pathsFor = (pick: (r: Routes) => string): Paths => ({ fr: pick(route.fr), en: pick(route.en) });
 

@@ -40,9 +40,10 @@ export async function legalPages(lang: Lang = 'fr'): Promise<CollectionEntry<'pa
 
 export type Post = CollectionEntry<'blog'>;
 
-/** Articles publiés, du plus récent au plus ancien. Les brouillons (draft: true) ne sont jamais construits. */
-export async function publishedPosts(): Promise<Post[]> {
-  return (await getCollection('blog', (p) => !p.data.draft)).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+/** Articles publiés dans la langue demandée, du plus récent au plus ancien. Les brouillons (draft: true) ne sont jamais construits. */
+export async function publishedPosts(lang: Lang = 'fr'): Promise<Post[]> {
+  const list = (lang === 'en' ? await getCollection('blogEn', (p) => !p.data.draft) : await getCollection('blog', (p) => !p.data.draft)) as Post[];
+  return list.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 }
 
 /** Temps de lecture en minutes, à 200 mots par minute. */

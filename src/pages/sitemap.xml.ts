@@ -8,10 +8,11 @@ import { services, publishedPosts } from '../lib/content';
 import { LANGS, route } from '../lib/i18n';
 
 export const GET: APIRoute = async () => {
-  const [x, posts] = await Promise.all([services('fr'), publishedPosts()]);
+  const [x, postsFr, postsEn] = await Promise.all([services('fr'), publishedPosts('fr'), publishedPosts('en')]);
+  const posts = { fr: postsFr, en: postsEn };
   const urls = LANGS.flatMap((lang) => {
     const r = route[lang];
-    return [r.home, ...x.map((s) => r.service(s.id)), r.audit, r.rdv, r.about, r.blog, ...(r.blog ? posts.map((p) => `${r.blog}/${p.id}`) : [])].filter((u): u is string => Boolean(u));
+    return [r.home, ...x.map((s) => r.service(s.id)), r.audit, r.rdv, r.about, r.blog, ...posts[lang].map((p) => `${r.blog}/${p.id}`)].filter((u): u is string => Boolean(u));
   });
   const body = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     + urls.map((u) => `  <url><loc>${SITE_URL}${u}</loc></url>\n`).join('') + '</urlset>\n';

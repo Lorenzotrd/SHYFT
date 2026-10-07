@@ -1,10 +1,13 @@
 ---
 // GeoGrid sur une carte OpenStreetMap (image fixe de Lyon) : même rendu que le composant GeoGrid des pages services.
 // Chaque ligne de « positions » est une liste de rangs séparés par des virgules ; seuls les points du cercle sont affichés.
+import { langOf } from '../../lib/i18n';
+import { blogUi } from '../../lib/blog';
 interface Props { positions: string[]; legende: string; aria: string }
 const { positions, legende, aria } = Astro.props;
 const grid = positions.map((row) => row.split(',').map((v) => Number(v.trim())));
 const mid = (grid.length - 1) / 2;
+const t = blogUi[langOf(Astro.url)].geo;
 const classe = (n: number) => (n <= 3 ? 't' : n <= 10 ? 'm' : 'l');
 ---
 <figure class="geo-fig">
@@ -17,7 +20,7 @@ const classe = (n: number) => (n <= 3 ? 't' : n <= 10 ? 'm' : 'l');
     </div>
     <a class="osm" href="https://www.openstreetmap.org/copyright" rel="noopener">© OpenStreetMap</a>
   </div>
-  <div class="cles"><span><i class="t"></i>Top 3 : visible dans le bloc Maps</span><span><i class="m"></i>4 à 10 : visible en faisant défiler</span><span><i class="l"></i>Au-delà de 10 : quasi invisible</span></div>
+  <div class="cles"><span><i class="t"></i>{t.top}</span><span><i class="m"></i>{t.mid}</span><span><i class="l"></i>{t.low}</span></div>
   <figcaption>{legende}</figcaption>
 </figure>
 <style>

@@ -1,0 +1,11 @@
+---
+// Blog article in English (/en/blog/<file>). The template is shared with the French blog.
+import ArticlePage from '../../../components/blog/ArticlePage.astro';
+import { publishedPosts, type Post } from '../../../lib/content';
+
+export async function getStaticPaths() {
+  return (await publishedPosts('en')).map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props as { post: Post };
+---
+<ArticlePage post={post} lang="en" />

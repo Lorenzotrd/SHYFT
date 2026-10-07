@@ -242,11 +242,10 @@ const aPropos = single('a-propos', z.object({
   fondateurs: z.array(z.object({ id: z.enum(['lorenzo', 'quentin']), role: z.string(), parcours: z.string() })),
 }));
 
-// Blog : un fichier Markdown ou MDX par article (src/content/blog/<adresse>.mdx). Le MDX accepte les composants
-// de src/components/blog (quiz, maquettes, appels à l'action). draft: true l'exclut du build et du sitemap.
-const blog = defineCollection({
-  loader: glob({ pattern: '*.{md,mdx}', base: './src/content/blog' }),
-  schema: z.object({
+// Blog : un fichier Markdown ou MDX par article (src/content/blog/<adresse>.mdx, src/content/en/blog/ en anglais).
+// Le MDX accepte les composants de src/components/blog (quiz, cartes, appels à l'action), qui suivent la langue de la page.
+// draft: true l'exclut du build et du sitemap.
+const blogSchema = z.object({
     title: z.string(),
     /** Titre affiché dans Google (60 caractères environ, « | SHYFT » compris). Absent : le titre suivi de « | SHYFT ». */
     seoTitle: z.string().max(60).optional(),
@@ -262,9 +261,12 @@ const blog = defineCollection({
     ogTitre: z.string().optional(),
     /** Image d'en-tête, dans public/assets/blog/ (format 3:2, .webp). Absente : l'en-tête reste en texte seul. */
     image: z.object({ src: z.string(), alt: z.string() }).optional(),
+    /** Adresse (nom de fichier) de l'article traduit dans l'autre langue : hreflang et sélecteur de langue. */
+    traduction: z.string().optional(),
     draft: z.boolean().default(false),
-  }),
 });
+const blog = defineCollection({ loader: glob({ pattern: '*.{md,mdx}', base: './src/content/blog' }), schema: blogSchema });
+const blogEn = defineCollection({ loader: glob({ pattern: '*.{md,mdx}', base: './src/content/en/blog' }), schema: blogSchema });
 
 const navigation = single('navigation', z.object({
   groups: z.array(z.object({ name: z.string(), expertises: z.array(z.string()) })),
@@ -309,7 +311,7 @@ const listes = single('listes', z.object({
 }));
 
 export const collections = {
-  secteurs, expertises, services, pages, accueil, site, rendezVous, aPropos, blog, serviceCommun, auditOffert, merci, rdvMerci, navigation, leviers, methode, mesure, formulaire, piedDePage, listes,
+  secteurs, expertises, services, pages, accueil, site, rendezVous, aPropos, blog, blogEn, serviceCommun, auditOffert, merci, rdvMerci, navigation, leviers, methode, mesure, formulaire, piedDePage, listes,
   // Version anglaise
   servicesEn, pagesEn, accueilEn, siteEn, rendezVousEn, serviceCommunEn, auditOffertEn, merciEn, rdvMerciEn,
 };

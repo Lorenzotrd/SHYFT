@@ -1,8 +1,10 @@
 ---
 // Encadré dans un article : l'essentiel, une astuce, un point d'attention ou un exemple.
+import { langOf } from '../../lib/i18n';
+import { blogUi } from '../../lib/blog';
 interface Props { type?: 'essentiel' | 'astuce' | 'attention' | 'exemple'; titre?: string }
 const { type = 'essentiel', titre } = Astro.props;
-const defaut = { essentiel: 'Ce qu’il faut retenir', astuce: 'Astuce', attention: 'Attention', exemple: 'Exemple' }[type];
+const defaut = blogUi[langOf(Astro.url)].encadre[type];
 const pictos = { essentiel: '★', astuce: '💡', attention: '⚠', exemple: '→' };
 ---
 <div class:list={['encadre', type]}>
