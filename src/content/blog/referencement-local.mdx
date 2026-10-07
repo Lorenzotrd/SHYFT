@@ -25,10 +25,30 @@ import Cartes from '../../components/blog/Cartes.astro';
 import Etapes from '../../components/blog/Etapes.astro';
 import Comparatif from '../../components/blog/Comparatif.astro';
 import Cta from '../../components/blog/Cta.astro';
+import Quiz from '../../components/blog/Quiz.astro';
 
 Le référencement local, c'est **tout ce qui fait apparaître votre entreprise quand quelqu'un cherche votre métier près de chez lui** : « plombier Nantes », « garage ouvert dimanche », « couvreur près de moi ». Ces recherches se font au moment où la personne a besoin de vous. Être visible à ce moment-là, c'est recevoir l'appel plutôt que votre concurrent.
 
 Ce guide est le point de départ de nos articles sur le sujet. Si vous cherchez une [agence de référencement local](/expertises/seo) pour s'en occuper, c'est notre métier. Mais tout ce qui suit peut se faire en interne.
+
+<Quiz
+  id="referencement-local"
+  titre="Êtes-vous visible sur Google dans votre ville ?"
+  intro="Faites le point avant de lire : six questions, un score, et les actions à mener en priorité. Le guide détaille chacune."
+  questions={[
+    { question: 'Votre fiche Google Business est-elle validée, avec la bonne catégorie principale ?', conseil: 'Valider la fiche Google et choisir la catégorie principale la plus précise pour votre métier.' },
+    { question: 'Votre nom, votre adresse et votre téléphone sont-ils identiques partout (fiche, site, annuaires) ?', conseil: 'Lister les endroits où vous apparaissez et harmoniser nom, adresse et téléphone.' },
+    { question: 'Recevez-vous de nouveaux avis Google chaque mois ?', conseil: 'Envoyer le lien d’avis après chaque client satisfait et répondre à tous les avis.' },
+    { question: 'Votre site a-t-il une page pour chacune de vos prestations principales ?', conseil: 'Créer une page par prestation principale, avec la zone d’intervention écrite en clair.' },
+    { question: 'Si vous couvrez plusieurs villes, ont-elles chacune une page avec un contenu propre ?', conseil: 'Créer une page pour chaque ville principale, avec des chantiers et des informations locales.' },
+    { question: 'Savez-vous d’où viennent vos appels et vos demandes de devis ?', conseil: 'Mettre en place le suivi des appels et des formulaires, et une GeoGrid sur vos recherches principales.' },
+  ]}
+  verdicts={[
+    { min: 10, titre: 'Vous êtes bien placé', texte: 'Les fondations sont solides. Le levier suivant : gagner les quartiers et les villes où vos concurrents passent encore devant.' },
+    { min: 6, titre: 'Visible, mais pas partout', texte: 'Vous apparaissez sur une partie des recherches. Quelques actions ciblées peuvent vous faire gagner des appels rapidement.' },
+    { min: 0, titre: 'Vos concurrents captent vos clients', texte: 'Quand on cherche votre métier dans votre ville, d’autres apparaissent avant vous. Les bases du guide ci-dessous sont votre priorité.' },
+  ]}
+/>
 
 ## Ce que voit un client qui vous cherche
 
