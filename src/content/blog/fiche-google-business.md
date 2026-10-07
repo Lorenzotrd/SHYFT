@@ -101,17 +101,21 @@ Vérifier sa position en tapant « plombier Lyon » sur son téléphone ne dit p
 C'est ce que montre une **GeoGrid**. Un outil pose une grille de points autour de votre entreprise (par exemple 7 × 7 points sur quelques kilomètres). Pour chaque point, il simule la recherche d'un client situé à cet endroit et relève votre position dans les résultats Maps.
 
 <figure>
-<div class="geogrid" role="img" aria-label="Exemple de GeoGrid : positions 1 à 3 au centre, 4 à 10 autour, au-delà de 10 sur les bords, surtout à l'est.">
-<span class="l">14</span><span class="l">11</span><span class="m">9</span><span class="m">9</span><span class="m">10</span><span class="l">14</span><span class="l">19</span>
-<span class="m">10</span><span class="m">7</span><span class="m">5</span><span class="m">5</span><span class="m">6</span><span class="m">10</span><span class="l">15</span>
+<div class="geomap" role="img" aria-label="Exemple de GeoGrid sur une carte de Lyon : positions 1 à 3 autour de l'entreprise, 4 à 10 un peu plus loin, au-delà de 10 sur les bords, surtout à l'est.">
+<img src="/assets/blog/geogrid-carte.webp" alt="" width="900" height="900" loading="lazy" decoding="async">
+<div class="geogrid">
+<span class="out"></span><span class="out"></span><span class="m">9</span><span class="m">9</span><span class="m">10</span><span class="out"></span><span class="out"></span>
+<span class="out"></span><span class="m">7</span><span class="m">5</span><span class="m">5</span><span class="m">6</span><span class="m">10</span><span class="out"></span>
 <span class="m">7</span><span class="m">4</span><span class="t">2</span><span class="t">2</span><span class="m">4</span><span class="m">8</span><span class="l">12</span>
 <span class="m">6</span><span class="t">3</span><span class="t">1</span><span class="t c">1</span><span class="t">3</span><span class="m">7</span><span class="l">11</span>
 <span class="m">7</span><span class="t">3</span><span class="t">2</span><span class="t">2</span><span class="t">3</span><span class="m">7</span><span class="l">12</span>
-<span class="m">9</span><span class="m">5</span><span class="m">4</span><span class="m">4</span><span class="m">5</span><span class="m">9</span><span class="l">14</span>
-<span class="l">12</span><span class="m">9</span><span class="m">7</span><span class="m">7</span><span class="m">8</span><span class="l">13</span><span class="l">17</span>
+<span class="out"></span><span class="m">5</span><span class="m">4</span><span class="m">4</span><span class="m">5</span><span class="m">9</span><span class="out"></span>
+<span class="out"></span><span class="out"></span><span class="m">7</span><span class="m">7</span><span class="m">8</span><span class="out"></span><span class="out"></span>
+</div>
+<a class="osm" href="https://www.openstreetmap.org/copyright" rel="noopener">© OpenStreetMap</a>
 </div>
 <div class="legende"><span><i style="background:var(--map-top)"></i>Top 3 : visible dans le bloc Maps</span><span><i style="background:var(--map-mid)"></i>4 à 10 : visible en faisant défiler</span><span><i style="background:var(--map-low)"></i>Au-delà de 10 : quasi invisible</span></div>
-<figcaption>Exemple illustratif pour une recherche « plombier ». Le point encadré est l'adresse de l'entreprise. Elle est dans le top 3 au centre, mais perd des places dès qu'on s'éloigne, surtout vers l'est, où un concurrent est mieux implanté.</figcaption>
+<figcaption>Exemple illustratif pour une recherche « plombier » à Lyon. Le point entouré est l'adresse de l'entreprise. Elle est dans le top 3 autour de chez elle, mais perd des places dès qu'on s'éloigne, surtout vers l'est, où un concurrent est mieux implanté.</figcaption>
 </figure>
 
 ### Ce qu'une GeoGrid permet de faire
