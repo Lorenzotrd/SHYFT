@@ -1,5 +1,6 @@
 // Images de partage (og:image) des articles du blog : 1200 × 630, fond noir SHYFT, titre, auteur, et la photo
-// d'en-tête de l'article si elle existe. Écrit public/assets/blog/<article>-og.jpg pour chaque article publié.
+// d'en-tête de l'article si elle existe. Écrit public/assets/blog/<article>-og.jpg pour chaque article publié,
+// français (src/content/blog) et anglais (src/content/en/blog).
 //   npm run og            tous les articles
 //   npm run og -- <slug>  un seul article
 // Le titre vient de « ogTitre » dans l'en-tête de l'article (les *mots* entre astérisques passent en jaune),
@@ -10,7 +11,8 @@ const { chromium } = require('playwright');
 
 const ROOT = path.join(__dirname, '..');
 const PUBLIC = path.join(ROOT, 'public');
-const BLOG = path.join(ROOT, 'src/content/blog');
+const BLOGS = { fr: path.join(ROOT, 'src/content/blog'), en: path.join(ROOT, 'src/content/en/blog') };
+const PAR = { fr: 'Par', en: 'By' };
 const AUTEURS = { lorenzo: 'Lorenzo T.', quentin: 'Quentin Garcia' };
 
 const dataUrl = (file, type) => `data:${type};base64,${fs.readFileSync(path.join(PUBLIC, file)).toString('base64')}`;
@@ -18,16 +20,17 @@ const escape = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/
 const champ = (fm, nom) => (fm.match(new RegExp(`^${nom}:\\s*"?(.*?)"?\\s*$`, 'm')) || [])[1];
 
 function articles(filtre) {
-  return fs.readdirSync(BLOG).filter((f) => /\.mdx?$/.test(f)).map((f) => {
-    const fm = fs.readFileSync(path.join(BLOG, f), 'utf8').split('---')[1] || '';
+  return Object.entries(BLOGS).filter(([, dir]) => fs.existsSync(dir)).flatMap(([lang, dir]) => fs.readdirSync(dir).filter((f) => /\.mdx?$/.test(f)).map((f) => {
+    const fm = fs.readFileSync(path.join(dir, f), 'utf8').split('---')[1] || '';
     return {
+      lang,
       slug: f.replace(/\.mdx?$/, ''),
       titre: champ(fm, 'ogTitre') || champ(fm, 'title'),
       auteur: AUTEURS[champ(fm, 'author')] || 'SHYFT',
       image: (fm.match(/^\s+src:\s*(\S+)/m) || [])[1],
       brouillon: champ(fm, 'draft') === 'true',
     };
-  }).filter((a) => !a.brouillon && (!filtre || a.slug === filtre));
+  })).filter((a) => !a.brouillon && (!filtre || a.slug === filtre));
 }
 
 const html = (a) => `<!doctype html><html><head><meta charset="utf-8"><style>
@@ -53,7 +56,7 @@ h1 em{font-family:ISe;font-weight:400;color:#f9c940;letter-spacing:-.01em}
 </style></head><body>
 <div class="txt"><div class="top"><span class="logo">shyft<b>.</b></span><span class="pill">Blog</span></div>
 <h1>${escape(a.titre).replace(/\*([^*]+)\*/g, '<em>$1</em>')}</h1>
-<p class="by"><i></i><span>Par <strong>${escape(a.auteur)}</strong> · shyftgrowth.com</span></p></div>
+<p class="by"><i></i><span>${PAR[a.lang]} <strong>${escape(a.auteur)}</strong> · shyftgrowth.com</span></p></div>
 ${a.image
     ? `<div class="pic"><div></div><img src="${dataUrl(a.image.replace(/^\//, ''), 'image/webp')}"></div>`
     : '<div class="deco"></div><svg class="fleche" width="150" height="150" viewBox="0 0 64 64"><path d="M14 50 50 14M17 14h33v33" fill="none" stroke="#0e0e0c" stroke-width="7"/></svg>'}

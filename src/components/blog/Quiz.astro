@@ -3,18 +3,21 @@
 // des actions à faire pour chaque réponse qui n'est pas « Oui ». Se termine sur l'audit offert et l'appel.
 // Sans JavaScript, les questions restent lisibles en liste.
 import Bouton from '../shyft/Bouton.astro';
-import { route } from '../../lib/i18n';
+import { langOf, route } from '../../lib/i18n';
+import { blogUi } from '../../lib/blog';
 interface Question { question: string; conseil: string }
 interface Verdict { min: number; titre: string; texte: string }
 interface Props { id: string; titre: string; intro: string; questions: Question[]; verdicts: Verdict[] }
 const { id, titre, intro, questions, verdicts } = Astro.props;
 const max = questions.length * 2;
-const r = route.fr;
-const reponses = [{ label: 'Oui', points: 2 }, { label: 'En partie', points: 1 }, { label: 'Non', points: 0 }];
+const lang = langOf(Astro.url);
+const r = route[lang];
+const t = blogUi[lang];
+const reponses = t.quiz.reponses.map((label, i) => ({ label, points: 2 - i }));
 ---
 <section class="quiz" data-quiz={id} data-max={max} data-verdicts={JSON.stringify([...verdicts].sort((a, b) => b.min - a.min))} aria-labelledby={`${id}-titre`}>
   <div class="tete">
-    <span class="k">Quiz · {questions.length} questions · 1 min</span>
+    <span class="k">{t.quiz.meta(questions.length)}</span>
     <p id={`${id}-titre`} class="titre">{titre}</p>
     <p class="intro">{intro}</p>
     <div class="barre" aria-hidden="true"><i></i></div>
@@ -22,7 +25,7 @@ const reponses = [{ label: 'Oui', points: 2 }, { label: 'En partie', points: 1 }
   <ol class="questions">
     {questions.map((q, i) => (
       <li class="q" data-conseil={q.conseil}>
-        <p class="num">Question {i + 1} sur {questions.length}</p>
+        <p class="num">{t.quiz.question(i + 1, questions.length)}</p>
         <p class="enonce">{q.question}</p>
         <div class="choix">
           {reponses.map((rep) => <button type="button" data-points={rep.points}>{rep.label}</button>)}
@@ -35,14 +38,14 @@ const reponses = [{ label: 'Oui', points: 2 }, { label: 'En partie', points: 1 }
     <p class="verdict" data-verdict-titre></p>
     <p class="intro" data-verdict-texte></p>
     <div class="todo" data-todo-bloc>
-      <p class="k">Vos priorités</p>
+      <p class="k">{t.quiz.priorites}</p>
       <ul data-todo></ul>
     </div>
     <div class="actions">
-      <Bouton href={r.audit} variant="accent" size="sm" emplacement={`quiz-${id}-audit`}>Recevoir mon audit offert</Bouton>
-      <Bouton href={r.rdv} variant="outline-light" size="sm" emplacement={`quiz-${id}-appel`}>Réserver un appel de 30 min</Bouton>
+      <Bouton href={r.audit} variant="accent" size="sm" emplacement={`quiz-${id}-audit`}>{t.audit}</Bouton>
+      <Bouton href={r.rdv} variant="outline-light" size="sm" emplacement={`quiz-${id}-appel`}>{t.appel}</Bouton>
     </div>
-    <button type="button" class="refaire" data-refaire>Refaire le quiz</button>
+    <button type="button" class="refaire" data-refaire>{t.quiz.refaire}</button>
   </div>
 </section>
 <script>

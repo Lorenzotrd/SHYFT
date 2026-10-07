@@ -1,15 +1,18 @@
 ---
 // Exemple de SMS de demande d'avis, présenté comme une conversation sur téléphone.
+import { langOf } from '../../lib/i18n';
+import { blogUi } from '../../lib/blog';
 interface Props { message: string; reponse?: string }
 const { message, reponse } = Astro.props;
+const t = blogUi[langOf(Astro.url)].sms;
 ---
 <figure class="sms-fig">
   <div class="sms">
-    <p class="de">Message envoyé à votre client</p>
+    <p class="de">{t.de}</p>
     <p class="bulle moi">{message}</p>
     {reponse && <p class="bulle lui">{reponse}</p>}
   </div>
-  <figcaption>Exemple de message à adapter. Le lien se copie depuis votre fiche, bouton « Demander des avis ».</figcaption>
+  <figcaption>{t.legende}</figcaption>
 </figure>
 <style>
   .sms-fig{margin:10px 0 30px;padding:24px;border-radius:var(--r);background:var(--card)}
