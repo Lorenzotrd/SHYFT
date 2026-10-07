@@ -1,0 +1,47 @@
+---
+// Maquette d'un site d'artisan sur téléphone : ce qu'un visiteur doit voir sans faire défiler.
+import Reperes from './Reperes.astro';
+interface Props { legende?: boolean }
+const { legende = true } = Astro.props;
+---
+<figure class="tel-fig">
+  <div class="tel" role="img" aria-label="Schéma de la page d'accueil d'un site d'artisan sur téléphone : le métier et la zone en titre, deux boutons devis et appel, la note des avis, les prestations et des photos de chantiers.">
+    <div class="ecran">
+      <div class="nav"><span class="logo">Votre entreprise</span><span class="appel">☎</span></div>
+      <div class="hero">
+        <p class="h"><b class="pin">1</b>Plombier chauffagiste</p>
+        <p class="zone"><b class="pin">2</b>Lyon, Villeurbanne et alentours</p>
+        <div class="btns"><b class="pin p3">3</b><span class="dev">Demander un devis</span><span class="tel-b">Appeler</span></div>
+        <p class="avis"><b class="pin">4</b><em>★★★★★</em> 4,8 · avis Google</p>
+      </div>
+      <div class="presta"><b class="pin p5">5</b><span>Dépannage</span><span>Chauffe-eau</span><span>Salle de bain</span></div>
+      <div class="photos"><b class="pin p6">6</b><span></span><span></span><span></span></div>
+    </div>
+  </div>
+  {legende && <Reperes reperes={['Le métier, en mots simples', 'La zone d’intervention', 'Demande de devis et appel en un geste', 'Les avis, dès le haut de page', 'Les prestations, chacune avec sa page', 'De vraies photos de chantiers']} />}
+</figure>
+<style>
+  .tel-fig{margin:10px 0 30px;padding:0;background:none}
+  .tel{width:min(290px, 100%);margin:0 auto;padding:12px;border-radius:42px;background:var(--ink);box-shadow:var(--shadow-card)}
+  .ecran{display:flex;flex-direction:column;gap:12px;padding:14px 14px 18px;border-radius:32px;background:#fff;color:var(--ink);font-size:12px;line-height:1.35}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:4px 2px}
+  .logo{font-weight:700;font-size:13px}
+  .appel{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--accent);font-size:14px}
+  .hero{position:relative;display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:18px;background:var(--frame)}
+  .h{margin:0!important;font-size:19px;font-weight:700;line-height:1.1;letter-spacing:-.03em}
+  .zone{margin:0!important;color:var(--muted)}
+  .btns{position:relative;display:flex;flex-direction:column;gap:6px;margin-top:4px}
+  .btns span{display:grid;place-items:center;height:36px;border-radius:999px;font-weight:700}
+  .dev{background:var(--ink);color:#fff}
+  .tel-b{border:1px solid var(--line-3)}
+  .avis{margin:0!important;color:var(--muted)}
+  .avis em{font-style:normal;color:#f4b400}
+  .presta{position:relative;display:flex;flex-wrap:wrap;gap:6px}
+  .presta span{padding:6px 10px;border-radius:999px;background:var(--chip);font-weight:600}
+  .photos{position:relative;display:grid;grid-template-columns:repeat(3, 1fr);gap:6px}
+  .photos span{aspect-ratio:1;border-radius:10px;background:linear-gradient(135deg,#d9d4c7,#b7ad97)}
+  .photos span:nth-child(2){background:linear-gradient(135deg,#cfdbe2,#93abba)}
+  .photos span:nth-child(3){background:linear-gradient(135deg,#dbe5d4,#a3bd99)}
+  .pin{display:inline-grid;place-items:center;width:20px;height:20px;margin-right:6px;border-radius:50%;background:var(--accent);color:var(--ink);font-size:11px;vertical-align:2px;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+  .p3,.p5,.p6{position:absolute;left:-12px;top:-10px;z-index:1;margin:0}
+</style>

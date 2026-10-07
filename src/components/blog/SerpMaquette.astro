@@ -1,0 +1,58 @@
+---
+// Maquette d'une page de résultats Google pour une recherche locale : annonces, bloc Maps, résultats naturels.
+// Dessin schématique (barres grises au lieu de vraies entreprises), avec des repères numérotés.
+import Reperes from './Reperes.astro';
+interface Props { recherche?: string; legende?: boolean }
+const { recherche = 'plombier lyon', legende = true } = Astro.props;
+const fiches = [4.8, 4.6, 4.9];
+---
+<figure class="serp-fig">
+  <div class="serp" role="img" aria-label={`Schéma d'une page de résultats Google pour « ${recherche} » : annonces en haut, puis le bloc Maps avec trois entreprises, puis les sites internet.`}>
+    <div class="barre"><span class="g">G</span><span class="q">{recherche}</span><span class="loupe" aria-hidden="true">⌕</span></div>
+    <div class="zone ads"><b class="pin">1</b>
+      <span class="sp">Sponsorisé</span><i class="l w60"></i><i class="l w90 s"></i>
+    </div>
+    <div class="zone maps"><b class="pin">2</b>
+      <div class="carte"><img src="/assets/blog/geogrid-carte.webp" alt="" loading="lazy" decoding="async" width="900" height="900"><span class="m m1"></span><span class="m m2"></span><span class="m m3"></span></div>
+      {fiches.map((n) => (
+        <div class="fiche"><div><i class="l w50 d"></i><span class="note">{n.toString().replace('.', ',')} <em>★★★★★</em></span><i class="l w70 s"></i></div><span class="btns"><u>Site</u><u>Itinéraire</u></span></div>
+      ))}
+    </div>
+    <div class="zone orga"><b class="pin">3</b>
+      {[0, 1].map(() => <div class="res"><i class="l w40 s"></i><i class="l w70 bleu"></i><i class="l w90 s"></i><i class="l w80 s"></i></div>)}
+    </div>
+  </div>
+  {legende && <Reperes reperes={['Annonces payantes (Google Ads)', 'Bloc Maps : les 3 fiches Google les mieux placées', 'Résultats naturels : les sites internet']} />}
+</figure>
+<style>
+  .serp-fig{margin:10px 0 30px;padding:0;background:none}
+  .serp{display:flex;flex-direction:column;gap:10px;max-width:560px;margin:0 auto;padding:18px;border-radius:20px;background:#fff;box-shadow:var(--shadow-card);color:#202124;font-size:13px;line-height:1.3}
+  .barre{display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;box-shadow:0 1px 6px rgba(32,33,36,.28)}
+  .g{font-weight:700;font-size:18px;color:#4285f4}
+  .q{flex:1;font-size:15px}
+  .loupe{font-size:18px;color:#5f6368}
+  .zone{position:relative;display:flex;flex-direction:column;gap:7px;padding:14px;border-radius:14px;border:2px dashed transparent}
+  .ads{border-color:#e5e5e5}
+  .maps{border-color:var(--accent);background:#fffbea}
+  .orga{border-color:#e5e5e5}
+  .pin{position:absolute;top:-11px;left:-11px;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--ink);font-size:13px;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+  .sp{font-weight:700;font-size:12px}
+  .l{display:block;height:9px;border-radius:5px;background:#dadce0}
+  .l.s{height:7px;background:#ececec}
+  .l.d{background:#9aa0a6;height:10px}
+  .l.bleu{background:#8ab4f8;height:10px}
+  .w40{width:40%}.w50{width:50%}.w60{width:60%}.w70{width:70%}.w80{width:80%}.w90{width:90%}
+  .carte{position:relative;height:120px;border-radius:10px;overflow:hidden}
+  .carte img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;margin:0;border-radius:0;filter:saturate(.5)}
+  .m{position:absolute;width:16px;height:16px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#ea4335;border:2px solid #fff}
+  .m1{left:30%;top:40%}.m2{left:55%;top:25%}.m3{left:68%;top:58%}
+  .fiche{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid #f1f1f1}
+  .fiche div{flex:1;display:flex;flex-direction:column;gap:5px}
+  .note{font-size:12px;color:#70757a}
+  .note em{font-style:normal;color:#fbbc04;letter-spacing:-1px}
+  .btns{display:flex;gap:6px}
+  .btns u{padding:5px 9px;border:1px solid #dadce0;border-radius:999px;text-decoration:none;font-size:11px;color:#1a73e8}
+  .res{display:flex;flex-direction:column;gap:6px}
+  .res+.res{padding-top:10px;border-top:1px solid #f1f1f1}
+  @media (max-width:640px){ .serp{padding:14px} .btns u:last-child{display:none} }
+</style>

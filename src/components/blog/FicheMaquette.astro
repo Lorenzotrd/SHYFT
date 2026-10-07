@@ -1,0 +1,46 @@
+---
+// Maquette d'une fiche Google Business, avec des repères sur les champs qui comptent.
+import Reperes from './Reperes.astro';
+interface Props { legende?: boolean }
+const { legende = true } = Astro.props;
+---
+<figure class="fiche-fig">
+  <div class="fiche" role="img" aria-label="Schéma d'une fiche Google Business : photos, nom, note et avis, catégorie, boutons d'action, horaires et services.">
+    <div class="photos"><b class="pin p1">1</b><span class="ph a"></span><span class="ph b"></span><span class="ph c"></span></div>
+    <div class="corps">
+      <p class="nom">Votre entreprise</p>
+      <p class="note"><b class="pin in">2</b>4,8 <em>★★★★★</em> <u>126 avis Google</u></p>
+      <p class="cat"><b class="pin in">3</b>Plombier · Chauffagiste</p>
+      <div class="actions"><b class="pin p4">4</b>
+        {['Appeler', 'Itinéraire', 'Site Web', 'Enregistrer'].map((a) => <span><i></i>{a}</span>)}
+      </div>
+      <p class="ligne"><strong>Zone desservie :</strong> Lyon et alentours</p>
+      <p class="ligne"><strong>Horaires :</strong> <span class="ok">Ouvert</span> · Ferme à 19:00</p>
+      <p class="ligne svc"><b class="pin in">5</b><strong>Services :</strong> Dépannage, chauffe-eau, salle de bain…</p>
+    </div>
+  </div>
+  {legende && <Reperes reperes={['Photos réelles, ajoutées régulièrement', 'Note et nombre d’avis', 'Catégorie principale et secondaires', 'Boutons : appel, itinéraire, site', 'Services et zone desservie']} />}
+</figure>
+<style>
+  .fiche-fig{margin:10px 0 30px;padding:0;background:none}
+  .fiche{max-width:420px;margin:0 auto;border-radius:20px;background:#fff;box-shadow:var(--shadow-card);overflow:visible;color:#202124;font-size:13px}
+  .photos{position:relative;display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:3px;height:150px;border-radius:20px 20px 0 0;overflow:hidden}
+  .ph{display:block}
+  .a{grid-row:span 2;background:linear-gradient(135deg,#c9d6df,#8fa9b8)}
+  .b{background:linear-gradient(135deg,#e4d7c5,#c4ab8a)}
+  .c{background:linear-gradient(135deg,#d5e3cf,#9db893)}
+  .corps{display:flex;flex-direction:column;gap:8px;padding:16px 18px 18px}
+  .nom{margin:0!important;font-size:22px;font-weight:500;color:#202124}
+  .note,.cat,.ligne{position:relative;margin:0!important;color:#70757a;font-size:13px;line-height:1.4}
+  .note em{font-style:normal;color:#fbbc04}
+  .note u{color:#1a73e8;text-decoration:none}
+  .ligne strong{color:#202124;font-weight:600}
+  .ok{color:#188038}
+  .actions{position:relative;display:grid;grid-template-columns:repeat(4, 1fr);gap:4px;padding:10px 0;border-block:1px solid #f1f1f1;margin:4px 0}
+  .actions span{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:11px;color:#1a73e8}
+  .actions i{width:34px;height:34px;border-radius:50%;border:1px solid #dadce0;background:#f8fbff}
+  .pin{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--ink);font-size:12px;font-style:normal;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+  .pin.in{margin-right:8px;vertical-align:-5px}
+  .p1{position:absolute;top:10px;left:10px;z-index:1}
+  .p4{position:absolute;top:-8px;left:-12px}
+</style>

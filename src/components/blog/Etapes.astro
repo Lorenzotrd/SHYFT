@@ -1,0 +1,28 @@
+---
+// Étapes numérotées, reliées par une ligne verticale. « Semaine 1 », « Étape 1 »… selon le libellé choisi.
+interface Props { etapes: { titre: string; texte: string; libelle?: string }[] }
+const { etapes } = Astro.props;
+---
+<ol class="etapes">
+  {etapes.map((e, i) => (
+    <li>
+      <span class="num" aria-hidden="true">{i + 1}</span>
+      <div>
+        {e.libelle && <span class="lib">{e.libelle}</span>}
+        <p class="t">{e.titre}</p>
+        <p class="x">{e.texte}</p>
+      </div>
+    </li>
+  ))}
+</ol>
+<style>
+  .etapes{list-style:none;margin:24px 0 30px!important;padding:0!important;display:flex;flex-direction:column}
+  li{position:relative;display:flex;gap:18px;padding-bottom:22px}
+  li:not(:last-child)::before{content:"";position:absolute;left:21px;top:46px;bottom:0;width:2px;background:var(--line-3)}
+  .num{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--accent);font-weight:700;font-size:17px}
+  .lib{display:block;margin-bottom:2px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--label)}
+  .t{margin:0 0 4px!important;font-size:19px;font-weight:600;line-height:1.3;color:var(--ink);padding-top:9px}
+  .lib + .t{padding-top:0}
+  .x{margin:0!important;font-size:16.5px;line-height:1.6}
+  @media (max-width:640px){ .num{width:36px;height:36px;font-size:15px} li:not(:last-child)::before{left:17px;top:38px} .t{font-size:17px;padding-top:6px} .x{font-size:15px} }
+</style>

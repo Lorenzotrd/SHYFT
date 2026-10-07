@@ -242,9 +242,10 @@ const aPropos = single('a-propos', z.object({
   fondateurs: z.array(z.object({ id: z.enum(['lorenzo', 'quentin']), role: z.string(), parcours: z.string() })),
 }));
 
-// Blog : un fichier Markdown par article (src/content/blog/<adresse>.md). draft: true l'exclut du build et du sitemap.
+// Blog : un fichier Markdown ou MDX par article (src/content/blog/<adresse>.mdx). Le MDX accepte les composants
+// de src/components/blog (quiz, maquettes, appels à l'action). draft: true l'exclut du build et du sitemap.
 const blog = defineCollection({
-  loader: glob({ pattern: '*.md', base: './src/content/blog' }),
+  loader: glob({ pattern: '*.{md,mdx}', base: './src/content/blog' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -255,6 +256,8 @@ const blog = defineCollection({
     services: z.array(z.enum(['seo', 'google-ads', 'meta-ads', 'agence-ia', 'creation-site', 'data-tracking'])).default([]),
     /** Questions fréquentes affichées après l'article et publiées en JSON-LD FAQPage. */
     faq: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
+    /** Visuel d'en-tête : maquette dessinée en HTML (résultats Google, fiche Google, site sur téléphone). */
+    couverture: z.enum(['serp', 'fiche', 'telephone']).optional(),
     draft: z.boolean().default(false),
   }),
 });
