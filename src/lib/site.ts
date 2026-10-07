@@ -2,8 +2,12 @@
 export const BRAND = 'SHYFT';
 export const YEAR = 2026;
 export const SITE_URL = 'https://www.shyftgrowth.com';
-/** Balise Google (GA4), avec Google Ads AW-18468970949 en destination liée : chargée après accord seulement. */
+/** Balise Google (GA4), avec Google Ads AW-18468970949 en destination liée : chargée dès l'arrivée en mode consentement
+ *  avancé (signaux sans cookie tant que le visiteur n'a pas accepté). */
 export const GA_ID = 'G-XC6CD5J71S';
+/** Clé publique du projet PostHog (EU), mesure d'audience sans cookie. Vide : PostHog n'est jamais chargé. */
+export const POSTHOG_KEY = 'phc_zBtr46Rb5u5VxA5Y3Nu7daCvvi6Spw8ENYU9CFJCCykh';
+export const POSTHOG_HOST = 'https://eu.i.posthog.com';
 /** Google Ads actif via la balise Google : le bandeau mentionne la publicité et l'accord accorde ad_storage et ad_user_data.
  *  La conversion « Envoi de formulaire de lead » est comptée par Google Ads au chargement de /audit-offert/merci. */
 export const ADS_ENABLED = true;

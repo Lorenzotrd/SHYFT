@@ -39,13 +39,15 @@ body: |
 
   <h2>Cookies, analytics and advertising</h2>
 
+  <p>Without cookies and without requiring consent, this site measures its traffic with <strong>PostHog</strong> (PostHog Inc., servers in the European Union): pages viewed, where visits come from, clicks on contact buttons and requests sent. No cookie is stored and nothing is saved on your device; visits are counted with an anonymous identifier renewed every day, which cannot recognise you from one day to the next. These statistics are only used to improve the site and are never combined with other data or sold.</p>
+
   <p>With your consent, this site uses:</p>
 
   <ul><li><strong>Google Analytics</strong> (Google Ireland Ltd): pages viewed, where visits come from and requests sent, to understand which content answers your questions.</li><li><strong>Google Ads</strong> (Google Ireland Ltd): to see which Google ads bring in audit requests and calls. No personalized advertising is enabled based on your visit.</li><li><strong>Meta</strong> (Meta Platforms Ireland Ltd, Facebook and Instagram), when our Facebook and Instagram ads are running: the same use.</li></ul>
 
   <p>These tools may store cookies on your device for up to 13 months and process browsing data (pages viewed, device identifier, clicks on our ads). Google and Meta may transfer this data outside the European Union, under the safeguards provided by the GDPR. No data is sold.</p>
 
-  <p>On your first visit, a banner lets you accept or decline. Until you accept, no analytics or advertising cookie is stored and these tools receive nothing from you. If you decline, the site works exactly the same. Your choice is kept on your device, and you can change it at any time using the <a href="#" data-cookies>Cookie settings</a> link at the bottom of every page.</p>
+  <p>On your first visit, a banner lets you accept or decline. Until you accept, no analytics or advertising cookie is stored. Google only receives cookieless signals with no identifier (page viewed, request sent), which it uses to estimate overall traffic and ad performance; Meta receives nothing. If you decline, the site works exactly the same. Your choice is kept on your device, and you can change it at any time using the <a href="#" data-cookies>Cookie settings</a> link at the bottom of every page.</p>
 
   <p>If you have accepted, booking or cancelling an appointment is also reported to Google Analytics by our server, linked to your visit, without your name or email. Otherwise, nothing is sent to it: your appointment is only recorded in our tracking workspace.</p>
 
