@@ -1,0 +1,144 @@
+---
+title: "Small Business Automation: Which Tasks to Automate First"
+seoTitle: "Small Business Automation: What to Automate First | SHYFT"
+description: "Small business automation made simple: which tasks to automate first, how to choose, which tools to use, and what to keep human. A simple 5-step method."
+pubDate: 2026-10-08
+author: quentin
+ogTitre: "Small business automation: *what to automate first*"
+traduction: automatiser-taches
+services: [agence-ia, data-tracking]
+faq:
+  - question: "What tasks can a small business automate?"
+    answer: "Repetitive tasks that always follow the same rules: replying to a new lead, following up on a quote, sending appointment reminders, asking for a review after a job, copying a lead into a spreadsheet or CRM, putting together a weekly report. If you can describe the task as \"when X happens, do Y\", it can usually be automated."
+  - question: "Do I need to know how to code to automate my business?"
+    answer: "No, not for your first automations. No-code automation tools connect a form, an inbox, a calendar and a spreadsheet in a few clicks. Code becomes useful for more complex workflows or for business software that doesn't connect to anything else."
+  - question: "How long does it take to set up an automation?"
+    answer: "A simple automation, like an instant reply to a quote request, takes one to a few hours. A full workflow (lead, qualification, follow-up, CRM tracking) takes a few days including testing. Start small, test on real cases, then expand."
+  - question: "Will automation replace the personal touch with customers?"
+    answer: "It shouldn't. The goal is to remove low-value tasks (copying, chasing, reminding) so you keep time for what matters: advice, estimates, the job itself. A customer should always be able to reach a real person easily."
+  - question: "Are there legal rules for automated texts and emails?"
+    answer: "Yes. Automated marketing texts in the US fall under the TCPA, which generally requires prior written consent, and marketing emails must follow CAN-SPAM (clear sender, physical address, easy opt-out). Transactional messages like appointment reminders have lighter rules, but check with your provider or a legal advisor before sending at scale."
+---
+import Encadre from '../../../components/blog/Encadre.astro';
+import Cartes from '../../../components/blog/Cartes.astro';
+import Comparatif from '../../../components/blog/Comparatif.astro';
+import Cta from '../../../components/blog/Cta.astro';
+import Etapes from '../../../components/blog/Etapes.astro';
+import Quiz from '../../../components/blog/Quiz.astro';
+
+Copying a quote request into a spreadsheet. Chasing a customer who never replied. Reminding someone of tomorrow's appointment. Each task takes a few minutes, but added up, they eat your evenings. **Small business automation means handing off to software whatever repeats the same way every time**, so you keep your time for the work that pays.
+
+**Short answer:** start with one task that's frequent, repetitive and easy to describe ("when a lead comes in, send a confirmation and add it to the sheet"). Automate it, test it on real cases for two weeks, measure the time saved, then move on to the next one. Keep anything that requires judgment in human hands.
+
+<Encadre>
+- A task can be automated if you can describe it as "when X happens, do Y".
+- Automate first what's frequent, repetitive, and occasionally forgotten.
+- Lead replies and quote follow-ups usually pay off the most.
+- Automate one task at a time, test it, measure it. Not everything at once.
+</Encadre>
+
+This is the core of our work as an [AI automation agency](/en/services/ai-automation): spotting these tasks, connecting them and measuring the time saved. Here's the method, which you can apply yourself.
+
+<Quiz
+  id="small-business-automation"
+  titre="Which tasks are costing you time?"
+  intro="Six questions to spot the tasks your business should automate first."
+  questions={[
+    { question: 'Does every new lead get a reply within an hour, even in the evening?', conseil: 'Set up an instant auto-reply that confirms the request and says when you’ll call back.' },
+    { question: 'Do you follow up on every quote that gets no answer?', conseil: 'Automate a follow-up on day 3 and day 10 for every quote sent and not yet signed.' },
+    { question: 'Do customers get a reminder before every appointment?', conseil: 'Send an automatic text or email reminder the day before.' },
+    { question: 'Do you ask for a Google review after every successful job?', conseil: 'Trigger an automatic review request when a job or order is closed.' },
+    { question: 'Do all your leads land in one place (sheet, CRM) without retyping?', conseil: 'Connect your form, inbox and calls to one sheet or CRM that fills itself.' },
+    { question: 'Do you know every week how many leads and signed quotes you got?', conseil: 'Automate a weekly report: leads received, quotes sent, quotes signed.' },
+  ]}
+  verdicts={[
+    { min: 10, titre: 'Your operations are solid', texte: 'The basics run on their own. Your next gains will come from lead qualification and sales follow-up.' },
+    { min: 6, titre: 'Hours to win back', texte: 'Several repetitive tasks still take your time. Two or three simple automations can change your week.' },
+    { min: 0, titre: 'You do everything by hand', texte: 'Every lead, follow-up and reminder depends on your memory. Start with lead replies and quote follow-ups.' },
+  ]}
+/>
+
+## Which tasks should you automate first?
+
+Run every task in your week through these three filters. The more boxes it ticks, the higher it goes on the list:
+
+<Cartes colonnes={3} cartes={[
+  { icone: 'trend', titre: 'Frequent', texte: 'It comes up daily or weekly. A once-a-year task isn’t worth it.' },
+  { icone: 'repere', titre: 'Always the same', texte: 'Same steps, same order, no decisions to make.' },
+  { icone: 'cible', titre: 'Sometimes forgotten', texte: 'When you forget it, you lose a customer or money: a follow-up, a reminder, a reply.' },
+]} />
+
+## 8 small business automation ideas
+
+Here are the most common automations in a small business, from the simplest to the most complete. *Setup times are rough, indicative ranges.*
+
+| Task | What the automation does | Setup |
+|---|---|---|
+| Reply to a new lead | Instant confirmation with your callback time | A few hours |
+| Appointment reminder | Text or email the day before, with address and time | A few hours |
+| Review request | Message with your Google profile link after the job | A few hours |
+| Quote follow-up | Spaced follow-ups until the quote is signed or declined | One day |
+| Centralize leads | Form, email and calls in one sheet or CRM | One day |
+| Missed call | Automatic "we'll call you back" text when no one picks up | One day |
+| Weekly report | Leads, quotes and wins sent every Monday | One to two days |
+| Qualify leads | Automatic questions (area, budget, timing) before you call | A few days |
+
+<Encadre type="exemple" titre="Illustrative example: quote follow-up">
+A remodeling company sends quotes by email. Before: follow-ups depended on whether there was time on Friday. After: three days after sending, the customer gets a short message ("Did you get a chance to look at our proposal? Happy to talk it through"), then a second one a week later. As soon as the quote is marked signed or declined in the sheet, follow-ups stop.
+</Encadre>
+
+<Cta emplacement="automation-mid" titre="What should your business automate?" texte="We'll review for free how your leads come in and get handled, and point out the automations that would save you the most time." />
+
+## How to automate your business in 5 steps
+
+<Etapes etapes={[
+  { libelle: 'Step 1', titre: 'Log your tasks for one week', texte: 'Write down everything that repeats: who does it, how often, how long. A notebook is enough.' },
+  { libelle: 'Step 2', titre: 'Pick one task', texte: 'The most frequent and easiest to describe. Write it in one sentence: "when X happens, do Y".' },
+  { libelle: 'Step 3', titre: 'Choose the tool', texte: 'Your current tools (calendar, quoting software, CRM) often already have automation features. If not, a no-code automation tool connects them.' },
+  { libelle: 'Step 4', titre: 'Test on real cases', texte: 'Run the automation for two weeks and check every message sent. Fix the wording and the cases you missed.' },
+  { libelle: 'Step 5', titre: 'Measure, then move on', texte: 'Time saved, faster replies, quotes signed: if the results are there, automate the next task on your list.' },
+]} />
+
+## Small business automation tools
+
+You don't need expensive software to get started. Three families of tools cover most small business needs:
+
+<Cartes cartes={[
+  { icone: 'site', tag: 'Already yours', titre: 'Features in your current tools', texte: 'Online calendars, quoting and invoicing software, CRMs, email: many already offer reminders, follow-ups and message templates. Look there first.' },
+  { icone: 'repere', tag: 'To connect', titre: 'No-code automation tools', texte: 'Tools like Zapier, Make or n8n connect your apps: "when a form comes in, add a row, send an email, notify the team".' },
+  { icone: 'megaphone', tag: 'To go further', titre: 'AI', texte: 'It can sort and summarize leads, draft a first reply or answer common questions. Keep it supervised: a person approves anything that commits the business.' },
+]} />
+
+## What not to automate
+
+<Comparatif
+  eviter={{ titre: 'Keep it human', points: [
+    'Pricing a quote and your commercial terms',
+    'Replying to an unhappy customer or a negative review',
+    'Decisions that commit the business (discounts, deadlines, warranties)',
+    'Marketing messages to contacts who never opted in',
+  ] }}
+  faire={{ titre: 'Hand it to the software', points: [
+    'Confirmations, reminders and follow-ups',
+    'Copying leads into a sheet or CRM',
+    'Review requests after a successful job',
+    'Weekly reports and tracking dashboards',
+  ] }}
+/>
+
+<Encadre type="attention" titre="Pitfalls to avoid">
+- **Automating everything at once.** A mistake in a complex workflow is hard to find. One task at a time.
+- **Forgetting to check.** A broken automation sends the wrong message to all your customers. Test, then check in regularly.
+- **Robotic messages.** Write automated messages the way you'd talk to a customer, with your name and a real phone number.
+- **Ignoring consent.** Marketing texts need prior consent in the US. Keep automated outreach to people who opted in.
+</Encadre>
+
+## Measuring the time you save
+
+An automation is judged on facts. Before you launch it, note how much time the task took each week. After a month, compare: time spent, leads handled, reply time, quotes signed. To track these numbers effortlessly, you need to know where your leads come from: that's what our [conversion tracking agency](/en/services/data-tracking) work is about.
+
+And if leads are short upstream, start at the source: a website that brings in contacts (see [how to make a small business website](/en/blog/how-to-make-a-small-business-website)) and a local presence that helps you [get construction leads](/en/blog/construction-leads) without depending on lead platforms.
+
+## Where to start
+
+Small business automation isn't about finding the perfect tool: it's about finding the task that costs you the most time or customers. Take the quiz at the top of this article, pick one task, automate it, test it for two weeks and measure. For most small businesses, lead replies and quote follow-ups are the two best places to start.
