@@ -136,10 +136,11 @@ function show(authenticated) {
 $('#loginForm').addEventListener('submit', async event => {
  event.preventDefault();
  const button = event.target.querySelector('button');
- button.disabled = true; button.textContent = 'Vérification…';
+ const label = button.querySelector('span');
+ button.disabled = true; label.textContent = 'Vérification…';
  token.set($('#pass').value);
  const result = await fetchLeads();
- button.disabled = false; button.textContent = 'Ouvrir le panneau';
+ button.disabled = false; label.textContent = 'Ouvrir le panneau';
  if (!result.ok) return fail(result.error);
  $('#loginError').hidden = true; $('#pass').value = '';
  show(true); paint(result.data);
