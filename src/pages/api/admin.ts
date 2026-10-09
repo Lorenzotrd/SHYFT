@@ -1,9 +1,10 @@
-// GET /api/admin : liste des demandes (JSON ou CSV) ; DELETE /api/admin?id= : suppression. Protégé par ADMIN_PASSWORD.
+// GET /api/admin : liste des demandes (JSON ou CSV) ; PATCH /api/admin?id= : étape et note du suivi ;
+// DELETE /api/admin?id= : suppression. Protégé par ADMIN_PASSWORD.
 import type { APIRoute } from 'astro';
 // @ts-ignore — modules JavaScript partagés avec le serveur local
-import { listLeads, deleteLead, storeMode } from '../../../lib/store.mjs';
+import { listLeads, deleteLead, updateLead, storeMode } from '../../../lib/store.mjs';
 // @ts-ignore
-import { adminReady, checkPassword, bearer, toCsv, clientKey, attemptState, noteFailure, noteSuccess } from '../../../lib/admin.mjs';
+import { adminReady, checkPassword, bearer, toCsv, followUp, clientKey, attemptState, noteFailure, noteSuccess } from '../../../lib/admin.mjs';
 
 export const prerender = false;
 
@@ -31,6 +32,15 @@ export const ALL: APIRoute = async ({ request, url }) => {
         return new Response(toCsv(leads), { status: 200, headers: { ...base, 'Content-Type': 'text/csv; charset=utf-8', 'Content-Disposition': `attachment; filename="shyft-demandes-${day}.csv"` } });
       }
       return json(200, { ok: true, mode: storeMode(), count: leads.length, leads });
+    }
+    if (request.method === 'PATCH') {
+      const id = url.searchParams.get('id');
+      if (!id) return json(400, { error: 'Identifiant manquant.' });
+      const body = await request.json().catch(() => null);
+      const { patch, error } = followUp(body);
+      if (error) return json(400, { error });
+      const lead = await updateLead(id, patch);
+      return lead ? json(200, { ok: true, lead }) : json(404, { error: 'Demande introuvable.' });
     }
     if (request.method === 'DELETE') {
       const id = url.searchParams.get('id');

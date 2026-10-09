@@ -61,13 +61,14 @@ const fontCss =
 <link rel="preload" as="image" href={heroImage} fetchpriority="high">
 <link rel="stylesheet" href="/assets/base.css">
 <link rel="stylesheet" href="/assets/design.css">
+{admin && <link rel="stylesheet" href="/assets/admin.css">}
 </head>
 <body>
 <a class="skip-link" href="#main">Aller au contenu</a>
 <slot />
 {jsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>}
 {admin
-  ? <script is:inline src="/assets/admin.js" defer></script>
+  ? <script is:inline type="module" src="/assets/admin/main.js"></script>
   : <script is:inline src="/assets/site.js" defer></script>}
 {!admin && <script is:inline src="/assets/booking.js" defer></script>}
 </body>

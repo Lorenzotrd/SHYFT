@@ -1,5 +1,6 @@
 ---
 // Panneau privé des demandes : exclu des robots et du plan du site, protégé par mot de passe côté API.
+// Tableau de bord (indicateurs, graphiques), suivi en colonnes ou en liste, brief complet de chaque demande.
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
 import { BRAND } from '../lib/site';
@@ -19,21 +20,60 @@ import { BRAND } from '../lib/site';
   <p class="admin-error" id="loginError" role="alert" hidden></p>
  </div>
 </section>
+
 <section class="admin-panel" id="panel" hidden>
- <div class="admin-head"><div><div class="kicker">Demandes et rendez-vous</div><h1>Vos demandes.</h1></div>
-  <div class="admin-actions"><button class="btn btn-ghost" id="refresh">Actualiser</button>
-  <button class="btn btn-lime" id="export">Exporter en CSV</button></div></div>
- <div class="admin-stats" id="stats"></div>
- <div class="admin-filters"><label class="admin-search">Rechercher<input type="search" id="search" placeholder="Nom, entreprise, email, page…"></label>
+ <div class="adm-hero">
+  <div class="adm-hero-head">
+   <div><div class="adm-eyebrow"><span></span><b id="updated">Demandes et rendez-vous</b></div><h1>Vos demandes.</h1></div>
+   <div class="admin-actions"><button class="btn btn-glass" id="refresh">Actualiser</button>
+   <button class="btn btn-lime" id="export">Exporter en CSV</button></div>
+  </div>
+  <div class="adm-kpis" id="stats"></div>
+ </div>
+
+ <div class="admin-filters" id="filters">
+  <label class="admin-search">Rechercher<input type="search" id="search" placeholder="Nom, entreprise, email, page, note…"></label>
   <label>Type<select id="type"><option value="">Tous</option><option value="demande">Demandes</option><option value="rdv">Rendez-vous</option></select></label>
   <label>Secteur<select id="sector"><option value="">Tous</option></select></label>
   <label>Période<select id="period"><option value="">Depuis le début</option><option value="7">7 derniers jours</option><option value="30">30 derniers jours</option><option value="90">90 derniers jours</option></select></label>
-  <span class="admin-count" id="count"></span></div>
- <div class="table-scroll"><table class="data-table admin-table"><thead><tr>
-  <th>Reçue le</th><th>Contact</th><th>Entreprise ou rendez-vous</th><th>Secteur ou statut</th><th>Page d’origine</th><th>Source</th><th></th>
- </tr></thead><tbody id="rows"></tbody></table></div>
- <p class="admin-empty" id="empty" hidden></p>
- <p class="admin-note">Les demandes sont conservées pour votre suivi commercial. Pensez à les effacer quand elles n’ont plus d’utilité : c’est une obligation, et le panneau le permet ligne par ligne.</p>
+  <span class="admin-count" id="count"></span>
+ </div>
+
+ <section class="adm-section" aria-labelledby="t-trends">
+  <div class="adm-section-head"><h2 id="t-trends">Tendances</h2><p>Les graphiques suivent les filtres.</p></div>
+  <div class="adm-charts">
+   <article class="adm-box adm-box-wide"><header><span>Activité</span><i id="activityNote"></i></header><div id="activity"></div></article>
+   <article class="adm-box"><header><span>Suivi commercial</span></header><div id="funnel"></div></article>
+   <article class="adm-box"><header><span>Canaux d’acquisition</span></header><div id="channels"></div></article>
+   <article class="adm-box"><header><span>Secteurs</span></header><div id="sectors"></div></article>
+   <article class="adm-box"><header><span>Leviers demandés</span></header><div id="levers"></div></article>
+   <article class="adm-box"><header><span>Pages qui convertissent</span></header><div id="pages"></div></article>
+  </div>
+ </section>
+
+ <section class="adm-section" aria-labelledby="t-follow">
+  <div class="adm-section-head"><h2 id="t-follow">Suivi</h2>
+   <div class="adm-switch" role="tablist" aria-label="Affichage">
+    <button role="tab" id="viewBoard" aria-selected="true" data-view="board">Colonnes</button>
+    <button role="tab" id="viewList" aria-selected="false" data-view="list">Liste</button>
+   </div>
+  </div>
+  <p class="adm-hint" id="boardHint">Glissez une carte d’une colonne à l’autre, ou ouvrez-la pour lire le brief.</p>
+  <div class="adm-board" id="board"></div>
+  <div class="table-scroll adm-list" id="list" hidden><table class="data-table admin-table"><thead><tr>
+   <th>Reçue le</th><th>Contact</th><th>Entreprise ou rendez-vous</th><th>Secteur et leviers</th><th>Étape</th><th>Source</th>
+  </tr></thead><tbody id="rows"></tbody></table></div>
+  <p class="admin-empty" id="empty" hidden></p>
+ </section>
+
+ <p class="admin-note">Les demandes sont conservées pour votre suivi commercial. Pensez à les effacer quand elles n’ont plus d’utilité : c’est une obligation, et le brief de chaque demande le permet.</p>
 </section>
-</main></div>
+</main>
+
+<div class="adm-scrim" id="scrim" hidden></div>
+<aside class="adm-brief" id="brief" role="dialog" aria-modal="true" aria-labelledby="briefName" hidden>
+ <div class="adm-brief-inner" id="briefBody"></div>
+</aside>
+<div class="adm-toast" id="toast" role="status" aria-live="polite" hidden></div>
+</div>
 </Base>
