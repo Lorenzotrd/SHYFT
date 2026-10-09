@@ -42,7 +42,17 @@ try {
  assert.equal((await admin({pass: 'faux'})).status, 401, 'mauvais mot de passe');
  const list = await admin(); if (list.status !== 200) console.error('Panneau, réponse inattendue :', list.status, (await list.clone().text()).slice(0, 300)); assert.equal(list.status, 200); const body = await list.json(); assert.equal(body.ok, true); assert.ok(body.count >= 1, 'au moins une demande stockée');
  const csv = await admin({query: '?format=csv'}); assert.equal(csv.status, 200); assert.match(csv.headers.get('content-type'), /text\/csv/); assert.match(await csv.text(), /Test local/);
- const del = await admin({method: 'DELETE', query: '?id=' + body.leads[0].id}); assert.equal(del.status, 200);
+ // Suivi : étape et note modifiables, le reste du brief intact, valeurs hors liste refusées.
+ const follow = (id, data) => fetch(base + '/api/admin?id=' + encodeURIComponent(id), {method: 'PATCH', headers: {Authorization: 'Bearer test-admin', Origin: base, 'Content-Type': 'application/json'}, body: JSON.stringify(data)});
+ const target = body.leads[0];
+ const staged = await follow(target.id, {etape: 'contacte', note: '  Rappeler mardi  '}); assert.equal(staged.status, 200, "suivi enregistré");
+ const stagedLead = (await staged.json()).lead; assert.equal(stagedLead.etape, 'contacte'); assert.equal(stagedLead.note, "Rappeler mardi"); assert.equal(stagedLead.email, target.email, "brief conservé"); assert.ok(stagedLead.suiviLe);
+ assert.equal((await follow(target.id, {etape: 'inconnue'})).status, 400, 'étape hors liste refusée');
+ assert.equal((await follow(target.id, {note: 'x'.repeat(2001)})).status, 400, 'note trop longue refusée');
+ assert.equal((await follow(target.id, {email: 'pirate@example.com'})).status, 400, 'champ du brief non modifiable');
+ assert.equal((await follow('absent-123', {etape: 'gagne'})).status, 404, 'demande absente');
+ assert.match(await (await admin({query: '?format=csv'})).text(), /Rappeler mardi/, 'note exportée');
+ const del = await admin({method: 'DELETE', query: '?id=' + target.id}); assert.equal(del.status, 200);
  // Webhook Cal.com : signature, dédoublonnage, GA4 côté serveur, lignes du panneau.
  const hook = (event, payload, secret = 'test-cal') => { const raw = JSON.stringify({triggerEvent: event, createdAt: new Date().toISOString(), payload}); return fetch(base + '/api/cal-webhook', {method: 'POST', headers: {'Content-Type': 'application/json', 'X-Cal-Signature-256': createHmac('sha256', secret).update(raw).digest('hex')}, body: raw}); };
  const uid = 'test-' + Date.now();
