@@ -1,0 +1,169 @@
+---
+title: "Refonte de site internet : les étapes pour la réussir sans perdre son référencement"
+seoTitle: "Refonte de site internet sans perdre son SEO | SHYFT"
+description: "Refonte de site internet : quand la lancer, les 8 étapes, le plan de redirections et la check-list pour garder vos positions Google et vos demandes."
+pubDate: 2026-10-09
+author: quentin
+ogTitre: "Refonte de site internet : *les étapes pour la réussir*"
+traduction: small-business-website-redesign
+services: [creation-site, seo]
+faq:
+  - question: "Combien de temps dure une refonte de site internet ?"
+    answer: "Pour un site vitrine de PME, comptez en général de un à trois mois entre l'état des lieux et la mise en ligne. Le délai dépend surtout de la préparation des contenus et du nombre de pages à reprendre, plus que de la technique. Prévoyez ensuite quelques semaines de suivi après la mise en ligne."
+  - question: "Une refonte fait-elle perdre son référencement ?"
+    answer: "Elle peut, si les anciennes adresses disparaissent sans redirection ou si les contenus qui se positionnaient sont supprimés. Avec un inventaire des pages, un plan de redirections 301 et une vérification à la mise en ligne, le risque est fortement réduit. Des variations de positions pendant quelques semaines restent courantes."
+  - question: "Faut-il changer d'adresse (nom de domaine) pendant une refonte ?"
+    answer: "Seulement si c'est nécessaire, par exemple après un changement de nom de l'entreprise. Changer de domaine ajoute une difficulté : toutes les adresses changent. Si vous le faites, redirigez chaque ancienne page vers la nouvelle et déclarez le changement d'adresse dans la Search Console."
+  - question: "Refonte ou simple optimisation : comment choisir ?"
+    answer: "Si le site est récent, rapide, facile à modifier et que seuls les textes ou le formulaire posent problème, une optimisation suffit souvent. Si le site est lent sur téléphone, impossible à mettre à jour, construit sur un outil abandonné ou ne reflète plus votre activité, une refonte est plus adaptée."
+  - question: "Qu'est-ce qu'un cahier des charges de refonte ?"
+    answer: "C'est le document qui décrit ce que le nouveau site doit faire : objectifs, pages à garder et à créer, fonctions (formulaire, prise de rendez-vous), contraintes de référencement, suivi des demandes, délais. Il permet de comparer les devis sur une même base et d'éviter les oublis."
+---
+import Encadre from '../../components/blog/Encadre.astro';
+import Cartes from '../../components/blog/Cartes.astro';
+import Comparatif from '../../components/blog/Comparatif.astro';
+import Cta from '../../components/blog/Cta.astro';
+import Etapes from '../../components/blog/Etapes.astro';
+import Quiz from '../../components/blog/Quiz.astro';
+
+Votre site a vieilli : il s'affiche mal sur téléphone, personne n'ose plus le modifier, et il ne ressemble plus à votre entreprise. Vous pensez à une refonte de site internet. Bonne idée, à une condition : **ne pas casser ce qui fonctionne déjà**, à commencer par les pages que Google vous envoie aujourd'hui.
+
+**En bref :** une refonte de site internet réussie commence par un état des lieux : quelles pages reçoivent des visites et des demandes, et sur quelles recherches. On garde ou on redirige chaque adresse existante, on reprend les contenus qui se positionnent, puis on met en ligne avec une check-list et on surveille la Search Console pendant plusieurs semaines.
+
+<Encadre>
+- La refonte se prépare avec les chiffres de l'ancien site : pages visitées, recherches, demandes reçues.
+- Chaque ancienne adresse doit mener quelque part : à la même adresse, ou à une redirection 301 vers la page équivalente.
+- Les contenus qui se positionnent se gardent et s'améliorent. On ne les supprime pas pour « faire propre ».
+- Le suivi des appels et des formulaires se remet en place le jour de la mise en ligne, pas un mois après.
+</Encadre>
+
+C'est la méthode que nous appliquons dans nos projets de [création et de refonte de site internet pour PME](/expertises/creation-site). Elle reste valable si vous confiez la refonte à un autre prestataire ou si vous la faites vous-même.
+
+<Quiz
+  id="refonte-site"
+  titre="Votre site a-t-il besoin d'une refonte ?"
+  intro="Six questions sur votre site actuel. Cochez « oui » quand l'affirmation est vraie."
+  questions={[
+    { question: 'Votre site s’affiche correctement et rapidement sur téléphone.', conseil: 'Tester le site sur votre propre téléphone : lisibilité, temps d’affichage, bouton d’appel.' },
+    { question: 'Vous pouvez modifier un texte ou une photo sans appeler quelqu’un.', conseil: 'Vérifier que l’outil du site est encore maintenu et que vous avez les accès.' },
+    { question: 'Le site présente vos prestations et votre zone d’intervention actuelles.', conseil: 'Lister ce qui a changé dans votre activité depuis la création du site.' },
+    { question: 'Chaque prestation importante a sa propre page.', conseil: 'Prévoir une page par prestation : c’est elle qui se positionne sur Google.' },
+    { question: 'Le site vous apporte des demandes chaque mois.', conseil: 'Compter les appels et les formulaires reçus via le site sur les trois derniers mois.' },
+    { question: 'Vous savez quelles pages reçoivent des visites depuis Google.', conseil: 'Ouvrir la Search Console, rapport Performances, onglet Pages.' },
+  ]}
+  verdicts={[
+    { min: 10, titre: 'Une optimisation suffit sans doute', texte: 'Les fondations sont saines. Améliorer les textes, le formulaire et quelques pages coûtera moins cher qu’une refonte complète.' },
+    { min: 6, titre: 'Refonte partielle à envisager', texte: 'Certains points bloquent. Une refonte ciblée sur les pages et fonctions qui posent problème peut suffire.' },
+    { min: 0, titre: 'La refonte se justifie', texte: 'Le site freine votre activité. Préparez la refonte avec un état des lieux complet pour ne pas perdre ce qui fonctionne encore.' },
+  ]}
+/>
+
+## Quand faut-il refaire son site internet ?
+
+Une refonte n'est pas une question d'âge du site, mais de ce qu'il vous empêche de faire. Voici les signaux qui justifient de s'y mettre :
+
+<Cartes colonnes={3} cartes={[
+  { icone: 'phone', titre: 'Illisible sur téléphone', texte: 'Textes trop petits, boutons difficiles à toucher, pages lentes : la plupart de vos visiteurs arrivent sur mobile.' },
+  { icone: 'site', titre: 'Impossible à modifier', texte: 'Outil abandonné, accès perdus, prestataire injoignable : chaque changement devient un projet.' },
+  { icone: 'cible', titre: 'Activité qui a changé', texte: 'Nouvelles prestations, nouvelles villes, nouveau positionnement que le site ne montre pas.' },
+  { icone: 'mail', titre: 'Peu ou pas de demandes', texte: 'Des visites, mais presque aucun appel ni formulaire : le site ne transforme pas.' },
+  { icone: 'graphique', titre: 'Aucune mesure', texte: 'Vous ne savez pas d’où viennent vos demandes, ni quelles pages servent à quelque chose.' },
+  { icone: 'check', titre: 'Image dépassée', texte: 'Photos anciennes, logo ou couleurs qui ne correspondent plus à l’entreprise d’aujourd’hui.' },
+]} />
+
+Si un seul de ces points pose problème, une **optimisation** (réécrire des pages, revoir le formulaire, accélérer le site) coûte souvent moins cher qu'une refonte complète. Si plusieurs se cumulent, la refonte devient plus rentable que des réparations successives.
+
+## Les 8 étapes d'une refonte de site internet
+
+<Etapes etapes={[
+  { libelle: 'Étape 1', titre: 'Faire l’état des lieux', texte: 'Listez toutes les adresses du site actuel. Dans la Search Console, notez les pages qui reçoivent des clics et les recherches qui y mènent. Comptez les demandes reçues par le site.' },
+  { libelle: 'Étape 2', titre: 'Fixer les objectifs', texte: 'Ce que le nouveau site doit apporter : plus d’appels, des devis mieux qualifiés, de nouvelles villes, une nouvelle prestation. Un objectif mesurable par ligne.' },
+  { libelle: 'Étape 3', titre: 'Décider du sort de chaque page', texte: 'Pour chaque page : on la garde (même adresse), on la fusionne avec une autre, ou on la supprime avec une redirection. Aucune page qui reçoit des visites ne disparaît sans redirection.' },
+  { libelle: 'Étape 4', titre: 'Rédiger le cahier des charges', texte: 'Pages, fonctions, contraintes de référencement, suivi des demandes, délais. Il sert à comparer les devis sur la même base.' },
+  { libelle: 'Étape 5', titre: 'Reprendre et améliorer les contenus', texte: 'Les textes qui se positionnent sont conservés et enrichis. Les nouvelles pages répondent à des recherches réelles de vos clients.' },
+  { libelle: 'Étape 6', titre: 'Construire sur un site de test', texte: 'Le nouveau site est monté à une adresse de test, fermée à Google, puis vérifié page par page sur téléphone et sur ordinateur.' },
+  { libelle: 'Étape 7', titre: 'Mettre en ligne avec la check-list', texte: 'Redirections actives, accès Google rouverts, plan du site envoyé, suivi des appels et formulaires en place. Détail plus bas.' },
+  { libelle: 'Étape 8', titre: 'Surveiller pendant 4 à 8 semaines', texte: 'Pages en erreur, positions, clics et demandes : on compare avec l’état des lieux et on corrige vite ce qui décroche.' },
+]} />
+
+<Encadre type="astuce">
+Gardez une copie de l'ancien site (fichiers et textes) au moins quelques mois après la mise en ligne. Si une page oubliée recevait des visites, vous pourrez retrouver son contenu et sa bonne redirection.
+</Encadre>
+
+## Comment faire une refonte sans perdre son référencement ?
+
+Google a appris à associer vos pages actuelles à certaines recherches. Si ces pages disparaissent ou changent d'adresse sans prévenir, Google se retrouve devant des pages introuvables (erreur 404) et vos positions peuvent baisser. La parade tient en un document : **le plan de redirections**.
+
+Pour chaque ancienne adresse, il indique la nouvelle. La redirection « 301 » dit à Google et aux visiteurs : cette page a déménagé définitivement, voici sa nouvelle adresse.
+
+| Ancienne adresse | Nouvelle adresse | Décision |
+|---|---|---|
+| /nos-services.html | /services/renovation-salle-de-bain | Redirection 301 vers la page la plus proche |
+| /renovation-tours | /renovation-tours | Adresse conservée, contenu enrichi |
+| /actualites/salon-2019 | /realisations | Redirection 301 vers une page utile |
+| /contact.php | /contact | Redirection 301 |
+
+*Exemple illustratif d'un plan de redirections.*
+
+<Comparatif
+  eviter={{ titre: 'Ce qui fait chuter un site refait', points: [
+    'Changer toutes les adresses sans aucune redirection',
+    'Supprimer les pages qui se positionnaient, jugées « trop longues »',
+    'Rediriger toutes les anciennes pages vers l’accueil',
+    'Oublier de rouvrir le site à Google après la phase de test',
+    'Réinstaller le suivi des demandes un mois après la mise en ligne',
+  ] }}
+  faire={{ titre: 'Ce qui protège vos positions', points: [
+    'Garder les adresses qui fonctionnent quand c’est possible',
+    'Reprendre et enrichir les contenus qui reçoivent des clics',
+    'Rediriger chaque ancienne page vers son équivalent le plus proche',
+    'Vérifier les accès Google (robots.txt, balises noindex) le jour J',
+    'Comparer clics et demandes avec l’état des lieux pendant plusieurs semaines',
+  ] }}
+/>
+
+Le référencement local suit les mêmes règles. Si votre fiche Google renvoie vers une page du site, mettez à jour le lien de la fiche le jour de la mise en ligne. Nous détaillons les réglages de la fiche dans notre guide pour [créer et optimiser sa fiche Google](/blog/fiche-google-business), et le reste de la méthode dans notre guide du [référencement local](/blog/referencement-local).
+
+<Cta emplacement="refonte-milieu" titre="Vous préparez une refonte ?" texte="On analyse gratuitement votre site actuel : pages qui reçoivent des visites, recherches qui y mènent, demandes. Vous savez ce qu'il faut garder avant de tout refaire." />
+
+## La check-list de mise en ligne
+
+Le jour de la bascule, une dizaine de vérifications évitent la plupart des mauvaises surprises :
+
+<Cartes cartes={[
+  { vedette: true, tag: 'Le plus important', titre: 'Redirections testées une par une', texte: 'Tapez chaque ancienne adresse importante dans le navigateur : elle doit arriver sur la bonne nouvelle page, en une seule redirection.' },
+  { tag: 'Accès Google', titre: 'Site rouvert aux moteurs', texte: 'Retirez le blocage du site de test : balises « noindex » et interdictions dans le fichier robots.txt.' },
+  { tag: 'Search Console', titre: 'Plan du site envoyé', texte: 'Envoyez le nouveau plan du site (sitemap) et demandez l’indexation des pages principales.' },
+  { tag: 'Mesure', titre: 'Appels et formulaires suivis', texte: 'Faites un envoi de formulaire et un clic sur le téléphone de test, et vérifiez qu’ils sont bien comptés.' },
+  { tag: 'Conversion', titre: 'Formulaire reçu', texte: 'Le message de test arrive dans la bonne boîte mail, et la personne voit une confirmation.' },
+  { tag: 'Local', titre: 'Liens externes à jour', texte: 'Fiche Google, réseaux sociaux, annuaires, signature mail : tous pointent vers les bonnes pages.' },
+]} />
+
+Dans les semaines qui suivent, ouvrez la Search Console chaque semaine : rapport **Pages** pour repérer les adresses en erreur, rapport **Performances** pour comparer les clics avec l'état des lieux. Une baisse de quelques jours est fréquente ; une baisse qui dure sur une page précise signale souvent une redirection manquante ou un contenu supprimé.
+
+## Combien coûte une refonte de site internet ?
+
+Il n'existe pas de prix unique, et méfiez-vous des comparaisons de devis qui ne décrivent pas le même travail. Le budget dépend de quelques postes, faciles à identifier :
+
+| Poste | Ce qui fait varier le budget |
+|---|---|
+| Nombre de pages | Un site de 8 pages et un site de 60 pages ne demandent pas le même travail de contenu et de redirections |
+| Contenus | Textes et photos fournis par vous, ou rédigés et produits par le prestataire |
+| Fonctions | Formulaire de devis qualifiant, prise de rendez-vous, espace client, connexion à un CRM |
+| Référencement | État des lieux, plan de redirections, reprise des contenus, suivi après mise en ligne |
+| Suivi des demandes | Mesure des appels et des formulaires, tableau de bord |
+
+Le poste le plus souvent oublié dans les devis est **le référencement de la refonte** : l'état des lieux, les redirections et le suivi. C'est pourtant lui qui protège les demandes que le site vous apporte déjà. Demandez à chaque prestataire comment il le traite.
+
+## Les questions à poser avant de signer
+
+- **Qui possède le nom de domaine, le site et les contenus ?** Ils doivent être à votre nom, pour pouvoir changer de prestataire sans tout perdre.
+- **Comment les anciennes adresses sont-elles traitées ?** La réponse attendue : un inventaire et un plan de redirections.
+- **Comment saurai-je ce que le nouveau site rapporte ?** Le suivi des appels et des formulaires doit être prévu dès le départ. Notre page sur le [suivi des conversions](/expertises/data-tracking) explique ce qu'il faut mesurer.
+- **Qui pourra modifier le site ensuite ?** Vous, sans appeler personne, pour les textes et les photos courants.
+
+Si vous partez d'une feuille blanche plutôt que d'un site existant, notre guide pour [créer un site internet pour son entreprise](/blog/creer-site-internet) reprend les étapes depuis le début. Et si vous êtes artisan, voyez aussi ce que doit contenir un [site internet pour artisan](/blog/site-internet-artisan).
+
+## Par où commencer votre refonte
+
+Une refonte de site internet réussie se joue avant la première maquette. Commencez par l'état des lieux : les pages qui reçoivent des visites, les recherches qui y mènent et les demandes que le site vous apporte. Faites le quiz en haut de l'article pour savoir si une optimisation suffit, puis préparez votre plan de redirections avant de choisir le design. C'est ce document, plus que le graphisme, qui décide si le nouveau site gardera vos positions sur Google.

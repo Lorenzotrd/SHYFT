@@ -1,0 +1,169 @@
+---
+title: "Small Business Website Redesign: How to Do It Without Losing Your Google Rankings"
+seoTitle: "Small Business Website Redesign: Keep Your SEO | SHYFT"
+description: "Small business website redesign: when to do it, the 8 steps, the redirect plan and the launch checklist that protect your Google rankings and your leads."
+pubDate: 2026-10-09
+author: quentin
+ogTitre: "Small business website redesign: *do it right*"
+traduction: refonte-site-internet
+services: [creation-site, seo]
+faq:
+  - question: "How long does a small business website redesign take?"
+    answer: "For a typical small business site, plan on one to three months from the audit to launch. The timeline depends mostly on preparing content and on the number of pages to rework, more than on the build itself. Then plan a few weeks of monitoring after launch."
+  - question: "Will a website redesign hurt my SEO?"
+    answer: "It can, if old URLs disappear without redirects or if the pages that ranked are deleted. With a full page inventory, a 301 redirect plan and a launch checklist, the risk drops sharply. Some ranking movement for a few weeks after launch is still common."
+  - question: "Should I change my domain name during a redesign?"
+    answer: "Only if you have to, for example after a rebrand. Changing domains means every URL changes at once. If you do it, redirect every old page to its new equivalent and use the Change of Address tool in Google Search Console."
+  - question: "Redesign or just optimize: how do I decide?"
+    answer: "If your site is recent, fast, easy to edit, and only the copy or the contact form is the problem, targeted improvements are usually enough. If it is slow on phones, impossible to update, built on an abandoned platform, or no longer reflects your business, a redesign makes more sense."
+  - question: "What should a website redesign RFP include?"
+    answer: "Your goals, the pages to keep and to create, the features you need (quote form, online booking, CRM connection), your SEO requirements including redirects, how leads will be tracked, and your timeline. It lets you compare proposals on the same basis."
+---
+import Encadre from '../../../components/blog/Encadre.astro';
+import Cartes from '../../../components/blog/Cartes.astro';
+import Comparatif from '../../../components/blog/Comparatif.astro';
+import Cta from '../../../components/blog/Cta.astro';
+import Etapes from '../../../components/blog/Etapes.astro';
+import Quiz from '../../../components/blog/Quiz.astro';
+
+Your website is showing its age: it looks off on phones, nobody dares to edit it, and it no longer looks like your business. A small business website redesign makes sense. Just one rule: **don't break what already works**, starting with the pages Google sends you traffic to today.
+
+**In short:** a successful small business website redesign starts with an audit of which pages get visits and leads, and from which searches. Every existing URL is either kept or redirected, the content that ranks is kept and improved, and the launch follows a checklist, with Google Search Console monitored for several weeks.
+
+<Encadre>
+- Plan the redesign with your old site's numbers: visited pages, search queries, leads received.
+- Every old URL must lead somewhere: the same URL, or a 301 redirect to the matching page.
+- Content that ranks gets kept and improved, not deleted to "clean things up".
+- Call and form tracking goes live on launch day, not a month later.
+</Encadre>
+
+This is the process we follow for our [website design and redesign projects](/en/services/website-design). It works just as well if you hire someone else or do it yourself.
+
+<Quiz
+  id="website-redesign"
+  titre="Does your website need a redesign?"
+  intro="Six questions about your current site. Answer yes when the statement is true."
+  questions={[
+    { question: 'Your site loads fast and reads well on a phone.', conseil: 'Test your site on your own phone: readability, load time, tap-to-call button.' },
+    { question: 'You can change a line of text or a photo without calling anyone.', conseil: 'Check that your platform is still maintained and that you own the logins.' },
+    { question: 'The site shows your current services and service area.', conseil: 'List what has changed in your business since the site was built.' },
+    { question: 'Each main service has its own page.', conseil: 'Plan one page per service: that is the page that ranks on Google.' },
+    { question: 'The site brings you leads every month.', conseil: 'Count the calls and form submissions from the site over the last three months.' },
+    { question: 'You know which pages get visits from Google.', conseil: 'Open Google Search Console, Performance report, Pages tab.' },
+  ]}
+  verdicts={[
+    { min: 10, titre: 'Optimizing is probably enough', texte: 'The foundations are solid. Improving the copy, the form and a few pages will cost less than a full redesign.' },
+    { min: 6, titre: 'Consider a partial redesign', texte: 'Some things are holding you back. A redesign focused on the pages and features that fail may be enough.' },
+    { min: 0, titre: 'A redesign is justified', texte: 'The site is slowing your business down. Start with a full audit so you don’t lose what still works.' },
+  ]}
+/>
+
+## When should you redesign your website?
+
+A redesign isn't about how old your site is. It's about what it stops you from doing. These are the signs it's time:
+
+<Cartes colonnes={3} cartes={[
+  { icone: 'phone', titre: 'Hard to use on phones', texte: 'Tiny text, buttons hard to tap, slow pages: most of your visitors arrive on mobile.' },
+  { icone: 'site', titre: 'Impossible to edit', texte: 'Abandoned platform, lost logins, unreachable developer: every change turns into a project.' },
+  { icone: 'cible', titre: 'Your business changed', texte: 'New services, new cities, a new positioning the site doesn’t show.' },
+  { icone: 'mail', titre: 'Few or no leads', texte: 'Visits, but almost no calls or form submissions: the site doesn’t convert.' },
+  { icone: 'graphique', titre: 'No tracking', texte: 'You don’t know where your leads come from or which pages matter.' },
+  { icone: 'check', titre: 'Dated look', texte: 'Old photos, a logo or colors that no longer match the business you run today.' },
+]} />
+
+If only one of these is a problem, **targeted improvements** (rewriting pages, fixing the form, speeding up the site) often cost less than a full redesign. When several stack up, a redesign beats a string of patches.
+
+## The 8 steps of a website redesign
+
+<Etapes etapes={[
+  { libelle: 'Step 1', titre: 'Audit the current site', texte: 'List every URL on the current site. In Search Console, note which pages get clicks and the queries behind them. Count the leads the site brings in.' },
+  { libelle: 'Step 2', titre: 'Set goals', texte: 'What the new site must deliver: more calls, better-qualified quote requests, new cities, a new service. One measurable goal per line.' },
+  { libelle: 'Step 3', titre: 'Decide the fate of every page', texte: 'For each page: keep it (same URL), merge it, or remove it with a redirect. No page that gets traffic disappears without a redirect.' },
+  { libelle: 'Step 4', titre: 'Write the brief (RFP)', texte: 'Pages, features, SEO requirements, lead tracking, timeline. It lets you compare proposals on the same basis.' },
+  { libelle: 'Step 5', titre: 'Keep and improve the content', texte: 'Copy that ranks is kept and expanded. New pages answer real searches your customers make.' },
+  { libelle: 'Step 6', titre: 'Build on a staging site', texte: 'The new site is built on a test address, closed to Google, then checked page by page on phone and desktop.' },
+  { libelle: 'Step 7', titre: 'Launch with the checklist', texte: 'Redirects live, Google access reopened, sitemap submitted, call and form tracking in place. Details below.' },
+  { libelle: 'Step 8', titre: 'Monitor for 4 to 8 weeks', texte: 'Error pages, rankings, clicks and leads: compare with the audit and quickly fix whatever drops.' },
+]} />
+
+<Encadre type="astuce">
+Keep a copy of the old site (files and copy) for a few months after launch. If a forgotten page was getting traffic, you can recover its content and set the right redirect.
+</Encadre>
+
+## How to redesign a website without losing SEO
+
+Google has learned to connect your current pages to certain searches. If those pages vanish or move without notice, Google hits dead ends (404 errors) and your rankings can drop. The fix fits in one document: **the redirect plan**.
+
+For every old URL, it lists the new one. A "301" redirect tells Google and visitors: this page has moved permanently, here is its new address.
+
+| Old URL | New URL | Decision |
+|---|---|---|
+| /our-services.html | /services/bathroom-remodeling | 301 to the closest matching page |
+| /remodeling-austin | /remodeling-austin | URL kept, content expanded |
+| /news/trade-show-2019 | /projects | 301 to a useful page |
+| /contact.php | /contact | 301 |
+
+*Illustrative example of a redirect plan.*
+
+<Comparatif
+  eviter={{ titre: 'What sinks a redesigned site', points: [
+    'Changing every URL with no redirects',
+    'Deleting the pages that ranked because they felt "too long"',
+    'Redirecting every old page to the homepage',
+    'Forgetting to reopen the site to Google after staging',
+    'Setting up lead tracking a month after launch',
+  ] }}
+  faire={{ titre: 'What protects your rankings', points: [
+    'Keeping URLs that work whenever possible',
+    'Keeping and improving the content that gets clicks',
+    'Redirecting each old page to its closest equivalent',
+    'Checking Google access (robots.txt, noindex tags) on launch day',
+    'Comparing clicks and leads with the audit for several weeks',
+  ] }}
+/>
+
+Local SEO follows the same rules. If your Google Business Profile links to a page on your site, update that link on launch day. We cover profile settings in our [Google Business Profile optimization guide](/en/blog/google-business-profile-optimization), and the rest of the method in our guide to [local SEO](/en/blog/what-is-local-seo).
+
+<Cta emplacement="redesign-middle" titre="Planning a redesign?" texte="We'll review your current site for free: the pages that get visits, the searches behind them and your leads. You'll know what to keep before you rebuild." />
+
+## The launch checklist
+
+On launch day, a handful of checks prevent most bad surprises:
+
+<Cartes cartes={[
+  { vedette: true, tag: 'Most important', titre: 'Redirects tested one by one', texte: 'Type each important old URL into your browser: it must land on the right new page, in a single redirect.' },
+  { tag: 'Google access', titre: 'Site reopened to search engines', texte: 'Remove the staging block: noindex tags and disallow rules in the robots.txt file.' },
+  { tag: 'Search Console', titre: 'Sitemap submitted', texte: 'Submit the new sitemap and request indexing for your main pages.' },
+  { tag: 'Tracking', titre: 'Calls and forms tracked', texte: 'Submit a test form and tap the phone number, then check that both are recorded.' },
+  { tag: 'Conversion', titre: 'Form delivered', texte: 'The test message reaches the right inbox, and the visitor sees a confirmation.' },
+  { tag: 'Local', titre: 'External links updated', texte: 'Google Business Profile, social profiles, directories, email signature: all point to the right pages.' },
+]} />
+
+In the weeks that follow, open Search Console every week: the **Pages** report to spot URLs with errors, the **Performance** report to compare clicks with your audit. A dip for a few days is common; a lasting drop on one specific page usually means a missing redirect or deleted content.
+
+## How much does a website redesign cost?
+
+There's no single price, and be careful comparing quotes that don't describe the same work. The budget comes down to a few line items:
+
+| Line item | What changes the budget |
+|---|---|
+| Number of pages | An 8-page site and a 60-page site don't need the same content and redirect work |
+| Content | Copy and photos you provide, or written and produced by the agency |
+| Features | Qualifying quote form, online booking, client portal, CRM connection |
+| SEO | Audit, redirect plan, content migration, post-launch monitoring |
+| Lead tracking | Call and form tracking, reporting dashboard |
+
+The line item most often missing from proposals is **SEO for the redesign**: the audit, the redirects and the monitoring. Yet it's what protects the leads your site already brings in. Ask every vendor how they handle it.
+
+## Questions to ask before you sign
+
+- **Who owns the domain, the site and the content?** They should be in your name, so you can switch vendors without losing everything.
+- **How will the old URLs be handled?** The answer you want: a full inventory and a redirect plan.
+- **How will I know what the new site brings in?** Call and form tracking should be planned from the start. Our [conversion tracking](/en/services/data-tracking) page explains what to measure.
+- **Who can edit the site afterwards?** You, without calling anyone, for everyday text and photo changes.
+
+Starting from scratch rather than from an existing site? Our guide on [how to make a small business website](/en/blog/how-to-make-a-small-business-website) walks through it from the beginning. And if you're a contractor, see what a [contractor website](/en/blog/contractor-website-design) needs to win jobs.
+
+## Where to start your redesign
+
+A successful small business website redesign is decided before the first mockup. Start with the audit: the pages that get visits, the searches behind them and the leads the site brings in. Take the quiz at the top of this article to see whether optimizing is enough, then build your redirect plan before you pick a design. That document, more than the visuals, decides whether your new site keeps its Google rankings.
