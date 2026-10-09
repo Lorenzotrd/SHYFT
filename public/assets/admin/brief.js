@@ -58,17 +58,17 @@ function render(l, related) {
   <h2 id="briefName">${esc(l.nom || 'Sans nom')}</h2>
   <p class="adm-brief-sub">${esc([l.entreprise, l.email, l.tel].filter(Boolean).join(' · '))}</p>
   <div class="adm-brief-actions">
-   ${l.email ? `<a class="btn btn-lime" href="mailto:${esc(l.email)}?subject=${encodeURIComponent(l.langue === 'en' ? 'Your SHYFT Growth audit' : 'Votre audit SHYFT Growth')}">Écrire</a>` : ''}
-   ${phone(l.tel) ? `<a class="btn btn-ghost" href="tel:${esc(phone(l.tel))}">Appeler</a>` : ''}
-   ${site ? `<a class="btn btn-ghost" href="${esc(site)}" target="_blank" rel="noopener noreferrer">Voir le site ↗</a>` : ''}
-   <button type="button" class="btn btn-ghost" data-copy>Copier le brief</button>
+   ${l.email ? `<a class="abtn abtn-accent abtn-sm" href="mailto:${esc(l.email)}?subject=${encodeURIComponent(l.langue === 'en' ? 'Your SHYFT Growth audit' : 'Votre audit SHYFT Growth')}">Écrire</a>` : ''}
+   ${phone(l.tel) ? `<a class="abtn abtn-outline abtn-sm" href="tel:${esc(phone(l.tel))}">Appeler</a>` : ''}
+   ${site ? `<a class="abtn abtn-outline abtn-sm" href="${esc(site)}" target="_blank" rel="noopener noreferrer">Voir le site ↗</a>` : ''}
+   <button type="button" class="abtn abtn-outline abtn-sm" data-copy>Copier le brief</button>
   </div>
 
   <section class="adm-brief-sec"><h3>Suivi</h3>
    <div class="adm-stages" role="radiogroup" aria-label="Étape du suivi">${STAGES.map(s => `
     <button type="button" role="radio" aria-checked="${s.id === stage}" class="st-${s.id}" data-stage="${s.id}">${esc(s.label)}</button>`).join('')}</div>
    <label class="adm-note-field">Note interne<textarea id="briefNote" rows="4" maxlength="2000" placeholder="Prochaine étape, budget évoqué, interlocuteur…">${esc(l.note || '')}</textarea></label>
-   <div class="adm-note-bar"><span>${l.suiviLe ? `Mis à jour le ${esc(when(l.suiviLe))}` : 'Pas encore de suivi'}</span><button type="button" class="btn btn-ghost" data-save-note>Enregistrer la note</button></div>
+   <div class="adm-note-bar"><span>${l.suiviLe ? `Mis à jour le ${esc(when(l.suiviLe))}` : 'Pas encore de suivi'}</span><button type="button" class="abtn abtn-outline abtn-sm" data-save-note>Enregistrer la note</button></div>
   </section>
 
   <section class="adm-brief-sec"><h3>${call ? 'Le rendez-vous' : 'Le brief'}</h3>${needs(l) || '<p class="adm-none">Le formulaire ne contenait pas de détail.</p>'}</section>

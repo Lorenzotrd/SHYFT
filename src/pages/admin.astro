@@ -1,22 +1,26 @@
 ---
 // Panneau privé des demandes : exclu des robots et du plan du site, protégé par mot de passe côté API.
 // Tableau de bord (indicateurs, graphiques), suivi en colonnes ou en liste, brief complet de chaque demande.
-import Base from '../layouts/Base.astro';
-import Logo from '../components/Logo.astro';
+import Admin from '../layouts/Admin.astro';
 import { BRAND } from '../lib/site';
+
+const arrow = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>';
 ---
-<Base title={`Demandes · ${BRAND}`} description="Panneau privé de suivi des demandes d’audit." path="admin" admin>
+<Admin title={`Demandes · ${BRAND}`}>
 <div class="admin">
-<header class="admin-top"><Logo />
-<div class="admin-top-right"><span class="admin-mode" id="mode" hidden></span>
-<button class="btn btn-ghost" id="logout" hidden>Se déconnecter</button></div></header>
+<header class="admin-top">
+ <a class="logo" href="/" aria-label={`${BRAND}, accueil`}>shyft<span>.</span></a>
+ <div class="admin-top-right"><span class="admin-mode" id="mode" hidden></span>
+ <button class="abtn abtn-outline abtn-sm" id="logout" hidden>Se déconnecter</button></div>
+</header>
 <main id="main">
 <section class="admin-login" id="login">
  <div class="admin-card">
-  <span class="kicker">Accès réservé</span><h1>Demandes reçues.</h1>
+  <span class="eyebrow">Accès réservé</span>
+  <h1>Demandes <span class="serif">reçues</span>.</h1>
   <p>Ce panneau affiche les demandes d’audit et les rendez-vous pris depuis le site.</p>
   <form id="loginForm"><label>Mot de passe<input type="password" id="pass" autocomplete="current-password" required></label>
-  <button class="btn btn-lime" type="submit">Ouvrir le panneau</button></form>
+  <button class="abtn abtn-accent abtn-arrow" type="submit"><span>Ouvrir le panneau</span><span class="abtn-dot" set:html={arrow}></span></button></form>
   <p class="admin-error" id="loginError" role="alert" hidden></p>
  </div>
 </section>
@@ -24,9 +28,9 @@ import { BRAND } from '../lib/site';
 <section class="admin-panel" id="panel" hidden>
  <div class="adm-hero">
   <div class="adm-hero-head">
-   <div><div class="adm-eyebrow"><span></span><b id="updated">Demandes et rendez-vous</b></div><h1>Vos demandes.</h1></div>
-   <div class="admin-actions"><button class="btn btn-glass" id="refresh">Actualiser</button>
-   <button class="btn btn-lime" id="export">Exporter en CSV</button></div>
+   <div><span class="eyebrow" id="updated">Demandes et rendez-vous</span><h1>Vos <span class="serif">demandes</span>.</h1></div>
+   <div class="admin-actions"><button class="abtn abtn-outline-light abtn-sm" id="refresh">Actualiser</button>
+   <button class="abtn abtn-accent abtn-sm abtn-arrow" id="export"><span>Exporter en CSV</span><span class="abtn-dot" set:html={arrow}></span></button></div>
   </div>
   <div class="adm-kpis" id="stats"></div>
  </div>
@@ -40,7 +44,7 @@ import { BRAND } from '../lib/site';
  </div>
 
  <section class="adm-section" aria-labelledby="t-trends">
-  <div class="adm-section-head"><h2 id="t-trends">Tendances</h2><p>Les graphiques suivent les filtres.</p></div>
+  <div class="adm-section-head"><h2 id="t-trends">Les <span class="serif">tendances</span></h2><p>Les graphiques suivent les filtres.</p></div>
   <div class="adm-charts">
    <article class="adm-box adm-box-wide"><header><span>Activité</span><i id="activityNote"></i></header><div id="activity"></div></article>
    <article class="adm-box"><header><span>Suivi commercial</span></header><div id="funnel"></div></article>
@@ -52,7 +56,7 @@ import { BRAND } from '../lib/site';
  </section>
 
  <section class="adm-section" aria-labelledby="t-follow">
-  <div class="adm-section-head"><h2 id="t-follow">Suivi</h2>
+  <div class="adm-section-head"><h2 id="t-follow">Le <span class="serif">suivi</span></h2>
    <div class="adm-switch" role="tablist" aria-label="Affichage">
     <button role="tab" id="viewBoard" aria-selected="true" data-view="board">Colonnes</button>
     <button role="tab" id="viewList" aria-selected="false" data-view="list">Liste</button>
@@ -60,7 +64,7 @@ import { BRAND } from '../lib/site';
   </div>
   <p class="adm-hint" id="boardHint">Glissez une carte d’une colonne à l’autre, ou ouvrez-la pour lire le brief.</p>
   <div class="adm-board" id="board"></div>
-  <div class="table-scroll adm-list" id="list" hidden><table class="data-table admin-table"><thead><tr>
+  <div class="adm-list" id="list" hidden><table class="admin-table"><thead><tr>
    <th>Reçue le</th><th>Contact</th><th>Entreprise ou rendez-vous</th><th>Secteur et leviers</th><th>Étape</th><th>Source</th>
   </tr></thead><tbody id="rows"></tbody></table></div>
   <p class="admin-empty" id="empty" hidden></p>
@@ -76,4 +80,4 @@ import { BRAND } from '../lib/site';
 </aside>
 <div class="adm-toast" id="toast" role="status" aria-live="polite" hidden></div>
 </div>
-</Base>
+</Admin>
